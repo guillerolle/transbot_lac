@@ -1,0 +1,18 @@
+within MobileRobots.Carts.Assemblies.Type20.DifferentialDrives;
+
+model DD2W_Planar
+  extends CommonDiffDrivesParams(
+    w1f(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = true, m = wheels_mass, radius = wheels_radius),
+    w2f(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, m = wheels_mass, radius = wheels_radius));
+  extends PartialCart(world(gravityType = Modelica.Mechanics.MultiBody.Types.GravityTypes.NoGravity));
+  import Modelica.Units.SI;
+  import C=Modelica.Constants;
+  import MobileRobotsMB.Types.InertialModel;
+equation
+  connect(struct_axlemnt.frame_a, f_cart) annotation(
+    Line(points = {{-20, 0}, {0, 0}}, color = {95, 95, 95}));
+annotation(
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_LS_V,LOG_NLS_V,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end DD2W_Planar;

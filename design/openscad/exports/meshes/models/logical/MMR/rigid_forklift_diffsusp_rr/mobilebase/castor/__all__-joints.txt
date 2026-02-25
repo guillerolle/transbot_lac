@@ -1,0 +1,6 @@
+ECHO: ["joint", "differential_axle_suspension", "RR"]
+ECHO: ["joint", "continuous", "mobilebase/castor/cj_castor_dir", "[0, 0, -10]", "[0, 0, 0]", "[0, 0, 1]"]
+ECHO: ["joint", "continuous", "mobilebase/castor/cj_castor_roll", "[40, 0, -60]", "[90, 0, 0]", "[0, 0, 1]"]
+ECHO: ["joint", "differential_axle_suspension", "RR"]
+ECHO: ["joint", "continuous", "mobilebase/castor/cj_castor_dir", "[0, 0, -10]", "[0, 0, 0]", "[0, 0, 1]"]
+ECHO: ["joint", "continuous", "mobilebase/castor/cj_castor_roll", "[40, 0, -60]", "[90, 0, 0]", "[0, 0, 1]"]

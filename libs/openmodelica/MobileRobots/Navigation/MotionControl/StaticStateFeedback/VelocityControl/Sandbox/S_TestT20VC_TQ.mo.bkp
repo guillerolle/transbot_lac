@@ -1,0 +1,75 @@
+within MobileRobots.Navigation.MotionControl.StaticStateFeedback.VelocityControl.Sandbox;
+
+model S_TestT20VC_TQ
+  T20_VelCont controller(lambda1_diag = {1, 1}, e = 0.5, delta = 0, axle_offset = -0.5) annotation(
+    Placement(transformation(origin = {-60, 0}, extent = {{-20, -20}, {20, 20}})));
+  ActuatorConfiguration.T20_WAC_DD2W t20_wac_dd2w(Pr = [1, 0; 0, 1], r = 0.1, track = 0.4) annotation(
+    Placement(transformation(origin = {-2, 0}, extent = {{-20, -20}, {20, 20}})));
+  Carts.Assemblies.Type20.DifferentialDrives.DD2W_Planar cart(diffdrive_axle_position = {-0.5, 0, 0}, diffdrive_track = 0.4, wheels_radius = 0.1, chassis_inertial_model = MobileRobotsMB.Types.InertialModel.Body, chassis_mass = 150, chassis_I_11 = 10, chassis_I_22 = 10, chassis_I_33 = 10, wheels_inertial_model = MobileRobotsMB.Types.InertialModel.Body, wheels_mass = 5, wheels_I_axis = 1, wheels_I_long = 1) annotation(
+    Placement(transformation(origin = {90, 0}, extent = {{-17, -17}, {17, 17}})));
+  Modelica.Mechanics.MultiBody.Sensors.AbsoluteSensor absoluteSensor(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameA.world, get_r = true, get_v = true, get_angles = true, get_w = true, animation = false) annotation(
+    Placement(transformation(origin = {90, 50}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+  Modelica.Blocks.Routing.ExtractSignal extractSignal(nin = 3, nout = 2, extract = {1, 2}) annotation(
+    Placement(transformation(origin = {38, 43}, extent = {{7, -7}, {-7, 7}})));
+  Modelica.Blocks.Routing.Multiplex2 multiplex2(n1 = 2, n2 = 1) annotation(
+    Placement(transformation(origin = {2, 56}, extent = {{6, 6}, {-6, -6}}, rotation = -0)));
+  Modelica.Blocks.Interfaces.RealInput z1d[2] annotation(
+    Placement(transformation(origin = {-103, 32}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-103, 32}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Interfaces.RealInput z1dp[2] annotation(
+    Placement(transformation(origin = {-103, -30}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-103, -30}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Routing.ExtractSignal extractSignal2(extract = {1, 2}, nin = 3, nout = 2) annotation(
+    Placement(transformation(origin = {30, 80}, extent = {{7, -7}, {-7, 7}})));
+  Modelica.Blocks.Routing.ExtractSignal extractSignal11(extract = {3}, nin = 3, nout = 1) annotation(
+    Placement(transformation(origin = {30, 100}, extent = {{7, -7}, {-7, 7}})));
+  Modelica.Blocks.Routing.Multiplex2 multiplex21(n1 = 2, n2 = 1) annotation(
+    Placement(transformation(origin = {-6, 94}, extent = {{6, 6}, {-6, -6}})));
+  Modelica.Blocks.Routing.ExtractSignal extractTheta(extract = {3}, nin = 3, nout = 1) annotation(
+    Placement(transformation(origin = {60, 60}, extent = {{5, -5}, {-5, 5}})));
+  Modelica.Blocks.Sources.RealExpression realExpression(y = cart.planar.revolute.phi) annotation(
+    Placement(transformation(origin = {-12, 74}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Sources.Torque torque annotation(
+    Placement(transformation(origin = {48, 16}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Sources.Torque torque1 annotation(
+    Placement(transformation(origin = {47, -26}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(controller.zp_local, t20_wac_dd2w.zp_local) annotation(
+    Line(points = {{-38, 0}, {-24, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(cart.f_cart, absoluteSensor.frame_a) annotation(
+    Line(points = {{90, 0}, {90, 40}}, color = {95, 95, 95}));
+  connect(absoluteSensor.r, extractSignal.u) annotation(
+    Line(points = {{80, 40}, {60, 40}, {60, 43}, {46, 43}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(extractSignal.y, multiplex2.u1) annotation(
+    Line(points = {{30, 43}, {20, 43}, {20, 52}, {9, 52}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(multiplex2.y, controller.z_fb) annotation(
+    Line(points = {{-4, 56}, {-68, 56}, {-68, 22}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(extractSignal2.y, multiplex21.u1) annotation(
+    Line(points = {{22.3, 80}, {12.3, 80}, {12.3, 90}, {1, 90}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(extractSignal11.y, multiplex21.u2) annotation(
+    Line(points = {{22.3, 100}, {10.65, 100}, {10.65, 98}, {1, 98}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(absoluteSensor.v, extractSignal2.u) annotation(
+    Line(points = {{80, 44}, {70, 44}, {70, 80}, {38, 80}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(absoluteSensor.w, extractSignal11.u) annotation(
+    Line(points = {{80, 56}, {74, 56}, {74, 100}, {38, 100}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(controller.zp_fb, multiplex21.y) annotation(
+    Line(points = {{-52, 22}, {-52, 94}, {-12, 94}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(z1d, controller.z1d) annotation(
+    Line(points = {{-102, 32}, {-94, 32}, {-94, 12}, {-82, 12}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(z1dp, controller.z1dp) annotation(
+    Line(points = {{-102, -30}, {-90, -30}, {-90, -12}, {-82, -12}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(absoluteSensor.angles, extractTheta.u) annotation(
+    Line(points = {{80, 52}, {66, 52}, {66, 60}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(torque.flange, cart.w1f_flange) annotation(
+    Line(points = {{58, 16}, {74, 16}, {74, 10}}));
+  connect(torque1.flange, cart.w2f_flange) annotation(
+    Line(points = {{58, -26}, {74, -26}, {74, -10}}));
+  connect(t20_wac_dd2w.actuation[1], torque.tau) annotation(
+    Line(points = {{20, 0}, {28, 0}, {28, 16}, {36, 16}}, color = {0, 0, 127}));
+  connect(t20_wac_dd2w.actuation[2], torque1.tau) annotation(
+    Line(points = {{20, 0}, {30, 0}, {30, -26}, {36, -26}}, color = {0, 0, 127}));
+  connect(extractTheta.y, multiplex2.u2) annotation(
+    Line(points = {{54, 60}, {10, 60}}, color = {0, 0, 127}, thickness = 0.5));
+  annotation(
+    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.02),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end S_TestT20VC_TQ;

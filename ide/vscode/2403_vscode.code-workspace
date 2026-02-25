@@ -1,0 +1,24 @@
+{
+	"folders": [
+		/*{
+			"path": "../../libs/python/om_processing"
+		},//*/
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../libs/python/mobilecarts"
+		},
+		{
+			"path": "../../libs/python/mobilerobotics"
+		},
+		{
+			"path": "../../libs/python/openscad2physical"
+		}
+	],
+	"settings": {
+		"pythonEnvy.venvName": ".venv",
+		"python.terminal.activateEnvInCurrentTerminal": true,
+		"git.ignoreLimitWarning": true,
+	}
+}

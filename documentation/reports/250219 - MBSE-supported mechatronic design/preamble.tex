@@ -1,0 +1,143 @@
+                        %%%%%   PREAMBLE  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12p,spanish,a4paper,oneside]{article}%Paquete de idioma espa�ol, problema con la separaci�n de palabras
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[spanish,activeacute]{babel} % english francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % Para uso en ingles
+%\usepackage[latin1]{inputenc}	%Para poder ingresar acentos y dem�s directamente
+\usepackage{verbatim}%Paquete para poder comentar oraciones completas
+% Por problemacon el idioma en las referencias ??
+%\renewcommand\refname{{\large Referencias}} 
+%\newcommand\VRule[1][\arrayrulewidth]{\vrule width #1}
+
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%For loading graphic files
+\usepackage{wrapfig} %% For text next to graphics
+%\usepackage{subfigure} %% Subfiguras
+\usepackage[small,bf]{caption} %% Cambio de formato de los captions
+%\usepackage{subfig} %%Subfigures inside a figure
+%\usepackage{tikz} %%Generate vector graphics from within LaTeX
+\usepackage{epsfig}
+
+%% Please note:
+%% Images can be included using \includegraphics{filename}
+%% resp. using the dialog in the Insert menu.
+%% 
+%% The mode "LaTeX => PDF" allows the following formats:
+%%   .jpg  .png  .pdf  .mps
+%% 
+%% The modes "LaTeX => DVI", "LaTeX => PS" und "LaTeX => PS => PDF"
+%% allow the following formats:
+%%   .eps  .ps  .bmp  .pict  .pntg
+
+
+%% Line Spacing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{setspace}
+%\singlespacing        %% 1-spacing (default)
+%\onehalfspacing       %% 1,5-spacing
+%\doublespacing        %% 2-spacing
+
+
+%% Other Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{a4wide} %%Smaller margins = more text per page.
+%\usepackage{fancyhdr} %%Fancy headings
+%\usepackage{longtable} %%For tables, that exceed one page
+%\usepackage{authblk} % For multi author affiliation support.
+\newcommand\Mark[1]{\textsuperscript#1}
+
+%% Math Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amssymb,amsmath}
+\usepackage{arcs} % Para poder escribir arcos... increible.
+\usepackage[amsthm,hyperref,thref]{ntheorem}
+
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{1pt}  %  l�nea horiz. bajo el encabezado
+\renewcommand{\footrulewidth}{1pt}  %  l�nea horiz. sobre el pie
+
+
+
+% \usepackage{makeidx}
+
+%\usepackage{times}
+%\usepackage[OT1,T1]{fontenc}
+
+\usepackage{palatino}
+% palatino: una fuente excelente, pero si sale
+% mal en el .pdf descomentar las dos l�neas anterires
+
+
+%% Reseteo de Margenes
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmarginsrb{2.5cm}{2cm}{1.5cm}{2cm}%
+{1cm}{1cm}%
+{1cm}{1cm}
+
+%% Mejora de visualizaci�n
+\usepackage{color}       % Para el color de las fuentes
+\usepackage{lettrine}    % Letra capital
+\usepackage{enumerate}   % Entorno enumerate mejorado
+\usepackage{mdwlist}     % Entorno descripcion mejorado
+\usepackage{hyperref}
+\usepackage{datetime}	
+\usepackage{listings}	 % Mejora de entorno para mostrar c�digos
+%\usepackage{paralist}	  
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+%\usepackage[autolinebreaks,useliterate]{mcode}% Paquete de matlab para poder agregar el codigo
+  
+
+%\parskip 0.15cm          %  Queda mejor pero mas paginas
+
+
+%\usepackage{appendix}	% Usando paquete de apendices
+
+\usepackage{array,booktabs}
+\usepackage{multirow}
+
+% Para permitir un nuevo nivel de sectionado
+\setcounter{secnumdepth}{5}
+
+% TODO NOTES
+\usepackage{todonotes} % PARA AGREGAR NOTAS 'TODO' DENTRO DEL PDF
+\newcommand{\todosection}[0]{\todo[inline]{Desarrollar Sección \thesection}}
+\newcommand{\todosubsection}[0]{\todo[inline]{Desarrollar Subsección \thesubsection}}
+\newcommand{\pend}[1]{\todo[inline]{\textbf{Pendiente:} #1}}
+\newcommand{\nota}[1]{\todo[inline, color=yellow!40]{\textbf{Nota:} #1}}
+\newcommand{\addref}[1]{\todo[inline, color=red!40]{\textbf{Añadir Referencia: } #1}}
+\newcommand{\done}[1]{\todo[disable]{\textbf{Resuelto: } #1}}
+\newcommand{\pendpres}[1]{\todo[inline, size=\tiny]{{\textbf{Pendiente:} #1}}}
+
+% SUBFIGURES
+\usepackage{subcaption}
+%\usepackage{graphicx}
+% BIBLATEX
+%\usepackage[
+%backend=biber,
+%style=ieee,
+%]{biblatex}
+%\addbibresource{biblio.bib}
+%\addbibresource{biblio_capella.bib}
+
+% Add brackets around citations
+%\renewcommand{\cite}{\parencite} % Ensure \cite uses the parenthetical format
+%\renewcommand{\bibopenparen}{[}
+%\renewcommand{\bibcloseparen}{]}
+%
+%% Format bibliography entries as [Author, year]
+%%\DeclareFieldFormat{labeldate}{\mkbibbrackets{#1}}
+%\DeclareFieldFormat{labelname}{\mkbibbrackets{#1}}
+%\DeclareFieldFormat{extradate}{}

@@ -1,0 +1,85 @@
+within MobileRobots.Carts.Assemblies.Type11.Bicycles;
+
+model BICL_Planar
+  extends PartialCart;
+  import Modelica.Units.SI;
+  parameter SI.Position[3] fxw_axle_position = {-0.3, 0, 0} "Position from cart's frame to the fixed wheels common axle, resolved in cart's frame" annotation(
+    Dialog(tab = "Bicycle"));
+  parameter SI.Position[3] stw_axle_position = {0.3, 0, 0} "Position from cart's frame to the steering wheels common axle, resolved in cart's frame" annotation(
+    Dialog(tab = "Bicycle"));
+  parameter SI.Distance track = 0.4 "Axle width" annotation(
+    Dialog(tab = "Bicycle"));
+    
+  Carts.Components.Wheels.FixedWheel w1f(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = true, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {-70, -10}, extent = {{-10, 10}, {10, -10}}, rotation = 180)));
+  MultiBodyExtension.Parts.FixedTranslation struct_fxwmnt(r = fxw_axle_position) annotation(
+    Placement(transformation(origin = {-30, 0}, extent = {{10, -10}, {-10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation struct_stwmnt(r = stw_axle_position) annotation(
+    Placement(transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -0)));
+  Components.Wheels.CastorWheel w2s(radius = wheels_radius, castor_vector = {-0.0, 0, 0}) annotation(
+    Placement(transformation(origin = {76, -10}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b axlehousing_flange annotation(
+    Placement(transformation(origin = {-86, 10}, extent = {{-6, -6}, {6, 6}}), iconTransformation(origin = {-86, 10}, extent = {{-6, -6}, {6, 6}})));
+  Modelica.Mechanics.MultiBody.Parts.Mounting1D axle_housing(n = {0, 1, 0}) annotation(
+    Placement(transformation(origin = {-70, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w1f_flange annotation(
+    Placement(transformation(origin = {-100, 0}, extent = {{-6, -6}, {6, 6}}), iconTransformation(origin = {-100, 0}, extent = {{-6, -6}, {6, 6}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w2s_flange annotation(
+    Placement(transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w2s_rollingflange annotation(
+    Placement(transformation(origin = {100, -20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {100, -20}, extent = {{-10, -10}, {10, 10}})));
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedTranslation struct_fxwmnt1(r = {0, track/2, 0}) annotation(
+    Placement(transformation(origin = {-40, 30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedTranslation struct_fxwmnt11(r = {0, -track/2, 0}) annotation(
+    Placement(transformation(origin = {-40, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel _w2f(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = false, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {-40, -70}, extent = {{-10, 10}, {10, -10}}, rotation = 180)));
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel _w1f(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = false, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {-40, 70}, extent = {{-10, -10}, {10, 10}}, rotation = -180)));
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedTranslation struct_stwaxl(r = {0, track/2, 0}) annotation(
+    Placement(transformation(origin = {50, 30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedTranslation struct_stwaxr(r = {0, -track/2, 0}) annotation(
+    Placement(transformation(origin = {50, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
+  MobileRobotsMB.Carts.Components.Wheels.CastorWheel _w4s(castor_vector = {-0.0, 0, 0}, radius = wheels_radius, lateralSlidingConstraint = false) annotation(
+    Placement(transformation(origin = {50, -70}, extent = {{-10, -10}, {10, 10}})));
+  MobileRobotsMB.Carts.Components.Wheels.CastorWheel _w3s(castor_vector = {-0.0, 0, 0}, radius = wheels_radius, lateralSlidingConstraint = false) annotation(
+    Placement(transformation(origin = {50, 70}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
+equation
+  connect(struct_fxwmnt.frame_b, w1f.frame_a) annotation(
+    Line(points = {{-40, 0}, {-70, 0}}, color = {95, 95, 95}));
+  connect(struct_fxwmnt.frame_a, f_cart) annotation(
+    Line(points = {{-20, 0}, {0, 0}}, color = {95, 95, 95}));
+  connect(struct_stwmnt.frame_a, f_cart) annotation(
+    Line(points = {{30, 0}, {30, 14}, {0, 14}, {0, 0}}, color = {95, 95, 95}));
+  connect(struct_stwmnt.frame_b, w2s.frame_a) annotation(
+    Line(points = {{50, 0}, {76, 0}}, color = {95, 95, 95}));
+  connect(axlehousing_flange, axle_housing.flange_b) annotation(
+    Line(points = {{-86, 10}, {-70, 10}}));
+  connect(axle_housing.frame_a, struct_fxwmnt.frame_b) annotation(
+    Line(points = {{-60, 20}, {-50, 20}, {-50, 0}, {-40, 0}}, color = {95, 95, 95}));
+  connect(w1f_flange, w1f.flange_rotationaxle) annotation(
+    Line(points = {{-100, 0}, {-80, 0}, {-80, -10}, {-70, -10}}));
+  connect(w2s_flange, w2s.steering_flange) annotation(
+    Line(points = {{100, 0}, {81, 0}}));
+  connect(w2s.flange_rotationaxle, w2s_rollingflange) annotation(
+    Line(points = {{76, -10}, {102, -10}, {102, -20}, {100, -20}}));
+  connect(struct_fxwmnt.frame_b, struct_fxwmnt1.frame_a) annotation(
+    Line(points = {{-40, 0}, {-40, 20}}, color = {95, 95, 95}));
+  connect(struct_fxwmnt11.frame_a, struct_fxwmnt.frame_b) annotation(
+    Line(points = {{-40, -20}, {-40, 0}}, color = {95, 95, 95}));
+  connect(_w2f.frame_a, struct_fxwmnt11.frame_b) annotation(
+    Line(points = {{-40, -60}, {-40, -40}}, color = {95, 95, 95}));
+  connect(struct_fxwmnt1.frame_b, _w1f.frame_a) annotation(
+    Line(points = {{-40, 40}, {-40, 60}}, color = {95, 95, 95}));
+  connect(_w4s.frame_a, struct_stwaxr.frame_b) annotation(
+    Line(points = {{50, -60}, {50, -40}}, color = {95, 95, 95}));
+  connect(struct_stwaxr.frame_a, struct_stwmnt.frame_b) annotation(
+    Line(points = {{50, -20}, {50, 0}}, color = {95, 95, 95}));
+  connect(struct_stwaxl.frame_a, struct_stwmnt.frame_b) annotation(
+    Line(points = {{50, 20}, {50, 0}}, color = {95, 95, 95}));
+  connect(struct_stwaxl.frame_b, _w3s.frame_a) annotation(
+    Line(points = {{50, 40}, {50, 60}}, color = {95, 95, 95}));
+  annotation(
+    Diagram(graphics),
+    Icon(graphics = {Rectangle(origin = {82, -10}, rotation = 30, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}}), Line(origin = {82.82, -9.82}, rotation = 30, points = {{-0.8201, -10.1799}, {-0.8201, -20.1799}, {19.1799, -20.1799}, {19.1799, 19.8201}, {-0.8201, 19.8201}, {-0.8201, 9.8201}}, thickness = 5), Ellipse(origin = {100, 0}, fillColor = {255, 170, 127}, fillPattern = FillPattern.Solid, extent = {{-5, 5}, {5, -5}}), Line(origin = {60, 0}, points = {{40, 0}, {-30, 0}}, thickness = 5), Line(origin = {-40, 0}, points = {{10, 0}, {-60, 0}}, thickness = 5), Rectangle(origin = {-100, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}})}));
+end BICL_Planar;

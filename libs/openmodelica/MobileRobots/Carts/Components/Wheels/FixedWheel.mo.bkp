@@ -1,0 +1,10 @@
+within MobileRobots.Carts.Components.Wheels;
+
+model FixedWheel
+  extends MobileRobotsMB.Carts.Components.Wheels.PartialWheel;
+equation
+  connect(wheeljoint.frame_a, frame_a) annotation(
+    Line(points = {{-28, 0}, {-20, 0}, {-20, 40}, {0, 40}, {0, 100}}, color = {95, 95, 95}));
+  annotation(
+    Icon(graphics = {Text(origin = {1, 10}, extent = {{-99, 90}, {99, -90}}, textString = "F", textStyle = {TextStyle.Bold})}));
+end FixedWheel;

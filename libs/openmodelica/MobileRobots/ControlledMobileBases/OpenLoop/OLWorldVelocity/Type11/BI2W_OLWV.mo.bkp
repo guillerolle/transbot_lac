@@ -1,0 +1,26 @@
+within MobileRobots.ControlledMobileBases.OpenLoop.OLWorldVelocity.Type11;
+
+model BI2W_OLWV
+  extends PartialOpenLoopWorldVelocity(
+    redeclare Navigation.MotionControl.StaticStateFeedback.VelocityControl.World2Nullspace.T11_W2N w2n(
+      e=e, xs=xs, xf=xf), 
+    redeclare Navigation.MotionControl.StaticStateFeedback.VelocityControl.Nullspace2Posture.T11_N2P n2p(
+      e=e, xs=xs, xf=xf),
+    redeclare replaceable Navigation.MotionControl.WheelConfiguration.Type11.WC_BI2W wconfig(
+      r = r, xs = xs),
+    redeclare replaceable Navigation.MotionControl.ActuatorConfiguration.ActuatorConfiguration aconfig(
+      robotType = MobileRobotsMB.Navigation.MotionControl.StaticStateFeedback.RobotType._11,
+      N = 2, Nc = 0, Nm = 1, Pr = [ 1;0]), 
+    redeclare replaceable ActiveCarts.Type11.BI2W_Velocity_Direct mobilebase(
+      xs = xs, xf = xf, r = r));
+  
+  parameter Real e(start = 0.1) "virtual point distance from wheel. e<>0 is required";
+  parameter Real xs(start=0) "location of steering wheel along cart 'x' axis";
+  parameter Real xf(start=-1) "location of fixed wheel along cart 'x' axis";
+  parameter Real r(start = 0.1) "Wheel radius";
+  
+  annotation(
+    experiment(StartTime = 0, StopTime = 5, Tolerance = 1e-06, Interval = 0.02),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=HKDW --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end BI2W_OLWV;

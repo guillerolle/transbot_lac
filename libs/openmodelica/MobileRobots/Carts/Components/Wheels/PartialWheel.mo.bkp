@@ -1,0 +1,92 @@
+within MobileRobots.Carts.Components.Wheels;
+
+partial model PartialWheel "Ideal rolling wheel on flat surface z=0 (5 positional, 3 velocity degrees of freedom)"
+  import MobileRobots.Types.InertialModel;
+  import Modelica.Units.SI;
+  import C=Modelica.Constants;
+  
+  parameter Boolean animation = true "= true, if animation of wheel shall be enabled";
+  parameter Boolean showLabels=false "= true, if labels shall be shown"
+    annotation (Dialog(tab="Visualization", group="if animation = true", enable=animation));  
+  input SI.Distance length=radius*2 "Length of axes arrows"
+    annotation (Dialog(tab="Visualization", group="if animation = true", enable=animation));
+  
+  parameter Modelica.Units.SI.Radius radius "Radius of wheel";
+  parameter Boolean lateralSlidingConstraint = false
+   "= true, if lateral sliding constraint taken into account, = false if lateral force = 0 (needed to avoid overconstraining if two ideal rolling wheels are connect on one axis)"                                                                                                        
+  annotation( );
+  
+  parameter InertialModel inertialModel = MobileRobotsMB.Types.InertialModel.NoInertia "Type of Inertial Model" annotation(Dialog(tab="Inertial", group="Inertial Model"));
+  parameter Modelica.Units.SI.Mass m(start=0) "Mass of wheel" annotation(Dialog(tab="Inertial", group="Inertial Model", enable=(inertialModel > InertialModel.NoInertia)));
+  parameter Modelica.Units.SI.Inertia I_axis(start=0) "Inertia along the wheel axis" annotation(Dialog(tab="Inertial", group="Inertial Model", enable=(inertialModel == InertialModel.Body)));
+  parameter Modelica.Units.SI.Inertia I_long(start=0) "Inertia perpendicular to the wheel axis" annotation(Dialog(tab="Inertial", group="Inertial Model", enable=(inertialModel == InertialModel.Body)));// */
+  parameter StateSelect stateSelect = StateSelect.prefer "Priority to use generalized coordinates as states" annotation(
+    HideResult = true,
+    Evaluate = true);
+parameter Modelica.Units.SI.Distance width = 0.35*radius "Width of wheel" annotation(
+    Dialog(tab = "Animation", group = "if animation = true", enable = animation));
+  parameter Real hollowFraction = 0.6 "For ring-like visualization: wheel radius / inner hole radius; i.e. 1.0: completely hollow, 0.0: full disc" annotation(
+    Dialog(tab = "Animation", group = "if animation = true", enable = animation));
+  parameter Modelica.Mechanics.MultiBody.Types.Color color = {30, 30, 30} "Color of wheel" annotation(
+    Dialog(colorSelector = true, tab = "Animation", group = "if animation = true", enable = animation));
+  //*/
+  Modelica.Mechanics.MultiBody.Visualizers.FixedShape shape(final animation = animation, final r_shape = {0, -width, 0}, final lengthDirection = {0, 1, 0}, final widthDirection = {1, 0, 0}, final length = 2*width, final width = 2*radius, final height = 2*radius, final color = color, final extra = hollowFraction, final shapeType = "pipe") if animation annotation(
+    Placement(transformation(origin = {-40, -8}, extent = {{20, 20}, {40, 40}}, rotation = 90)));
+  //*/
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a "Frame fixed in wheel center point (y-axis: along wheel axis, z-axis: upwards)" annotation(
+    Placement(transformation(origin = {0, 100}, extent = {{-16, -16}, {16, 16}}, rotation = -90), iconTransformation(origin = {0, 100}, extent = {{-16, -16}, {16, 16}}, rotation = -90)));
+  Modelica.Mechanics.MultiBody.Joints.Revolute wheeljoint(n = {0, 1, 0}, useAxisFlange = true, stateSelect = stateSelect) annotation(
+    Placement(transformation(origin = {-39, -1}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+  MultiBodyExtension.Parts.GenericBody wheelBody(inertialModel = inertialModel, m = m, r_CM = {0, 0, 0}, I_11 = I_axis, I_22 = I_long, I_33 = I_axis, I_21 = 0, I_31 = 0, I_32 = 0, showLabels = showLabels, length = length)  annotation(
+    Placement(transformation(origin = {-86, 0}, extent = {{10, -10}, {-10, 10}})));
+  RollingConstraintVerticalWheel rollingConstraintVerticalWheel(final lateralSlidingConstraint = lateralSlidingConstraint, radius = radius) annotation(
+    Placement(transformation(origin = {-70, -22}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a flange_rotationaxle annotation(
+    Placement(transformation(extent = {{-10, -10}, {10, 10}}), iconTransformation(extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.Mounting1D housing(n = {0, 1, 0}) annotation(
+    Placement(transformation(origin = {-28, -41}, extent = {{10, -10}, {-10, 10}}, rotation = -180)));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange_rotationaxle_housing annotation(
+    Placement(transformation(origin = {0, -41}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {0, -41}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_wheelcenter "Frame fixed in wheel center point (y-axis: along wheel axis, z-axis: upwards)" annotation(
+    Placement(transformation(origin = {-73, -67}, extent = {{-16, -16}, {16, 16}}, rotation = 180), iconTransformation(origin = {-73, -67}, extent = {{-16, -16}, {16, 16}}, rotation = 180)));
+equation
+  connect(wheelBody.frame_a, rollingConstraintVerticalWheel.frame_a) annotation(
+    Line(points = {{-76, 0}, {-76, -10}, {-70, -10}, {-70, -20}}, color = {95, 95, 95}));
+  connect(rollingConstraintVerticalWheel.frame_a, wheeljoint.frame_b) annotation(
+    Line(points = {{-70, -20}, {-70, -1}, {-49, -1}}, color = {95, 95, 95}));
+  connect(shape.frame_a, rollingConstraintVerticalWheel.frame_a) annotation(
+    Line(points = {{-70, 12}, {-70, -20}}, color = {95, 95, 95}));
+  connect(wheeljoint.axis, flange_rotationaxle) annotation(
+    Line(points = {{-39, -11}, {-39, -16}, {0, -16}, {0, 0}}));
+  connect(housing.flange_b, flange_rotationaxle_housing) annotation(
+    Line(points = {{-18, -41}, {0, -41}}));
+  connect(housing.frame_a, wheeljoint.frame_a) annotation(
+    Line(points = {{-28, -30}, {-28, 0}}, color = {95, 95, 95}));
+  connect(wheeljoint.frame_b, frame_wheelcenter) annotation(
+    Line(points = {{-48, 0}, {-48, -66}, {-72, -66}}, color = {95, 95, 95}));
+  annotation(
+    defaultComponentName = "wheel",
+    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}), graphics = {Rectangle(fillColor = {175, 175, 175}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-100, -80}, {100, -100}}), Ellipse(lineColor = {175, 175, 175}, fillColor = {215, 215, 215}, fillPattern = FillPattern.Sphere, extent = {{-80, 80}, {80, -80}}), Text(origin = {-8, -194},textColor = {0, 0, 255}, extent = {{-150, 120}, {150, 80}}, textString = "%name"), Line(points = {{-100, -80}, {100, -80}}), Ellipse(lineColor = {64, 64, 64}, extent = {{-80, 80}, {80, -80}})}),
+    Documentation(info = "<html>
+<p>
+A wheel rolling on the x-y plane of the world frame including
+wheel mass and simple visualization.
+The rolling contact is considered being ideal, i.e. there is no
+slip between the wheel and the ground.
+The wheel can not take off but it can incline toward the ground.
+The frame frame_a is placed in the wheel center point and rotates
+with the wheel itself. Therefore, a
+<a href=\"modelica://Modelica.Mechanics.MultiBody.Joints.Revolute\">rotational joint</a>
+with rotation axis <code>n={0,1,0}</code> should be used to
+connect the wheel to a carrier.
+</p>
+
+<h4>Note</h4>
+<p>
+To work properly, the gravity acceleration vector g of the world must point in the negative z-axis, i.e.
+</p>
+<blockquote><pre>
+<span style=\"font-family:'Courier New',courier; color:#0000ff;\">inner</span> <span style=\"font-family:'Courier New',courier; color:#ff0000;\">Modelica.Mechanics.MultiBody.World</span> world(n={0,0,-1});
+</pre></blockquote>
+</html>"));
+end PartialWheel;

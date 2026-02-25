@@ -1,0 +1,29 @@
+{
+    "name": "rigid_forklift_diffsusp_rr",
+    "scad": "models/logical/MMR/Forklift.scad",
+    "params":{
+        "extra_wide": false,
+        "differential_axle_suspension": "RR"
+    },
+    "density": 7850,
+    "components": [
+        "*",
+        "_",
+        "mobilebase/*",
+        "mobilebase/_",
+        "mobilebase/chassis",
+        "mobilebase/doublebar",
+        "mobilebase/diff/*",
+        "mobilebase/diff/_",
+        "mobilebase/diff/wheel",
+        "mobilebase/control",
+        "mobilebase/castor/*",
+        "mobilebase/castor/_",
+        "mobilebase/castor/arm",
+        "mobilebase/castor/wheel",
+        "manipulator/*",
+        "manipulator/portico",
+        "manipulator/horquilla",
+        "manipulator/unna"
+    ]
+}

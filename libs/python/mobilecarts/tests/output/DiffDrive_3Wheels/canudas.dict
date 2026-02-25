@@ -1,0 +1,220 @@
+'wheel_parent_restrictions': {
+	'dd.w_{0f}': [Eq(dd.w_{0f}.ppvx(t), -track*dd.\omega(t)/2 + dd.v_x^{local}(t)), Eq(dd.w_{0f}.ppvy(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{0f}.ppvz(t), 0)],
+	'dd.w_{1f}': [Eq(dd.w_{1f}.ppvx(t), track*dd.\omega(t)/2 + dd.v_x^{local}(t)), Eq(dd.w_{1f}.ppvy(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{1f}.ppvz(t), 0)],
+	'dd.w_{2c}': [Eq(dd.w_{2c}.ppvx(t), dd.v_x^{local}(t)), Eq(dd.w_{2c}.ppvy(t), c*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{2c}.ppvz(t), 0)],
+}
+'wheel_cpoint_restrictions': {
+	'dd.w_{0f}': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) + dd.w_{0f}.ppvx(t)], [dd.w_{0f}.ppvy(t)], [0]]),
+	'dd.w_{1f}': Matrix([[-r*dd.w_{1f}.\dot{\phi}(t) + dd.w_{1f}.ppvx(t)], [dd.w_{1f}.ppvy(t)], [0]]),
+	'dd.w_{2c}': Matrix([[-d*(dd.\omega(t) + dd.w_{2c}.betad(t))*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t)*sin(dd.w_{2c}.beta(t)) + dd.w_{2c}.ppvx(t)], [-d*(dd.\omega(t) + dd.w_{2c}.betad(t))*sin(dd.w_{2c}.beta(t)) + r*dd.w_{2c}.\dot{\phi}(t)*cos(dd.w_{2c}.beta(t)) + dd.w_{2c}.ppvy(t)], [0]]),
+}
+'canudas': {
+	'posture_coords': {
+		'symbol': xi(t),
+		'value': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)]]),
+}
+	'posture_speeds': {
+		'symbol': \dot{xi}(t),
+		'value': Matrix([[dd.vx(t)], [dd.vy(t)], [dd.\omega(t)]]),
+}
+	'orientation_coords': {
+		'symbol': beta(t),
+		'value': Matrix([[dd.w_{2c}.beta(t)]]),
+		'betas': Matrix(0, 1, []),
+		'betac': Matrix([[dd.w_{2c}.beta(t)]]),
+}
+	'rotation_coords': {
+		'symbol': phi(t),
+		'value': Matrix([[dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+}
+	'configuration_coords': {
+		'value': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)], [dd.w_{2c}.beta(t)], [dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+}
+	'restrictions': {
+		'equations': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) - track*dd.\omega(t)/2 + dd.v_x^{local}(t)], [axle_offset*dd.\omega(t) + dd.v_y^{local}(t)], [-r*dd.w_{1f}.\dot{\phi}(t) + track*dd.\omega(t)/2 + dd.v_x^{local}(t)], [axle_offset*dd.\omega(t) + dd.v_y^{local}(t)], [-c*dd.\omega(t)*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t) + dd.v_x^{local}(t)*sin(dd.w_{2c}.beta(t)) - dd.v_y^{local}(t)*cos(dd.w_{2c}.beta(t))], [c*dd.\omega(t)*sin(dd.w_{2c}.beta(t)) + d*(-dd.\omega(t) - dd.w_{2c}.betad(t)) + dd.v_x^{local}(t)*cos(dd.w_{2c}.beta(t)) + dd.v_y^{local}(t)*sin(dd.w_{2c}.beta(t))]]),
+		'J1': Matrix([[1, 0, -track/2], [1, 0, track/2], [sin(dd.w_{2c}.beta(t)), -cos(dd.w_{2c}.beta(t)), -c*cos(dd.w_{2c}.beta(t))]]),
+		'J1f': Matrix([[1, 0, -track/2], [1, 0, track/2]]),
+		'J1s': Matrix(0, 3, []),
+		'J1c': Matrix([[sin(dd.w_{2c}.beta(t)), -cos(dd.w_{2c}.beta(t)), -c*cos(dd.w_{2c}.beta(t))]]),
+		'J1sw': Matrix(0, 3, []),
+		'J2': Matrix([[-r, 0, 0], [0, -r, 0], [0, 0, -r]]),
+		'C1': Matrix([[0, 1, axle_offset], [0, 1, axle_offset], [cos(dd.w_{2c}.beta(t)), sin(dd.w_{2c}.beta(t)), c*sin(dd.w_{2c}.beta(t)) - d]]),
+		'C1f': Matrix([[0, 1, axle_offset], [0, 1, axle_offset]]),
+		'C1s': Matrix(0, 3, []),
+		'C1c': Matrix([[cos(dd.w_{2c}.beta(t)), sin(dd.w_{2c}.beta(t)), c*sin(dd.w_{2c}.beta(t)) - d]]),
+		'C2': Matrix(0, 1, []),
+		'C2c': Matrix([[-d]]),
+		'equations.T': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) - track*dd.\omega(t)/2 + dd.v_x^{local}(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t), -r*dd.w_{1f}.\dot{\phi}(t) + track*dd.\omega(t)/2 + dd.v_x^{local}(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t), -c*dd.\omega(t)*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t) + dd.v_x^{local}(t)*sin(dd.w_{2c}.beta(t)) - dd.v_y^{local}(t)*cos(dd.w_{2c}.beta(t)), c*dd.\omega(t)*sin(dd.w_{2c}.beta(t)) + d*(-dd.\omega(t) - dd.w_{2c}.betad(t)) + dd.v_x^{local}(t)*cos(dd.w_{2c}.beta(t)) + dd.v_y^{local}(t)*sin(dd.w_{2c}.beta(t))]]),
+		'C1*': Matrix([[0, 1, axle_offset], [0, 1, axle_offset]]),
+}
+	'sigma': Matrix([[1, 0], [0, -axle_offset], [0, 1]]),
+	'nullspace_base': Matrix([[1, 0, 0], [0, -axle_offset, 1]]),
+	'pinv(sigma)_left': Matrix([[1, 0, 0], [0, -axle_offset/(axle_offset**2 + 1), 1/(axle_offset**2 + 1)]]),
+	'delta_m': 2,
+	'delta_s': 0,
+	'robot_type': (2,0),
+	'eta': Matrix([[eta_0(t)], [eta_1(t)]]),
+	'zeta': Matrix(0, 1, []),
+	'z': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)]]),
+	'B': Matrix([[1, 0], [0, -axle_offset], [0, 1]]),
+	'u': Matrix([[eta_0(t)], [eta_1(t)]]),
+	'zdot_local': Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])*Matrix([
+[Matrix([
+[eta_0(t)],
+[eta_1(t)]])],
+[                 Matrix(0, 1, [])]]),
+	'R': Matrix([[cos(dd.\theta(t)), sin(dd.\theta(t))], [-sin(dd.\theta(t)), cos(dd.\theta(t))]]),
+	'RR': Matrix([[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0], [sin(dd.\theta(t)), cos(dd.\theta(t)), 0], [0, 0, 1]]),
+	'zdot': Matrix([
+[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0],
+[sin(dd.\theta(t)),  cos(dd.\theta(t)), 0],
+[                0,                  0, 1]])*Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])*Matrix([
+[Matrix([
+[eta_0(t)],
+[eta_1(t)]])],
+[                 Matrix(0, 1, [])]]),
+	'D': Matrix([[cos(dd.w_{2c}.beta(t))/d, sin(dd.w_{2c}.beta(t))/d, (c*sin(dd.w_{2c}.beta(t)) - d)/d]]),
+	'E': Matrix([[1/r, 0, -track/(2*r)], [1/r, 0, track/(2*r)], [sin(dd.w_{2c}.beta(t))/r, -cos(dd.w_{2c}.beta(t))/r, -c*cos(dd.w_{2c}.beta(t))/r]]),
+	'q': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)], [dd.w_{2c}.beta(t)], [dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+	'S': Matrix([
+[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0, 0, 0, 0, 0],
+[sin(dd.\theta(t)),  cos(dd.\theta(t)), 0, 0, 0, 0, 0],
+[                0,                  0, 1, 0, 0, 0, 0],
+[                0,                  0, 0, 1, 0, 0, 0],
+[                0,                  0, 0, 0, 1, 0, 0],
+[                0,                  0, 0, 0, 0, 1, 0],
+[                0,                  0, 0, 0, 0, 0, 1]])*Matrix([
+[                                                                                                                                           Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])],
+[                                                                                                                                                                                        Matrix([[Matrix([[cos(dd.w_{2c}.beta(t))/d, -axle_offset*sin(dd.w_{2c}.beta(t))/d + (c*sin(dd.w_{2c}.beta(t)) - d)/d]]), Matrix(1, 0, [])]])],
+[Matrix([[Matrix([
+[                     1/r,                                                      -track/(2*r)],
+[                     1/r,                                                       track/(2*r)],
+[sin(dd.w_{2c}.beta(t))/r, axle_offset*cos(dd.w_{2c}.beta(t))/r - c*cos(dd.w_{2c}.beta(t))/r]]), Matrix(3, 0, [])]])]]),
+}
+}
+
+'wheel_parent_restrictions': {
+	'dd.w_{0f}': [Eq(dd.w_{0f}.ppvx(t), -track*dd.\omega(t)/2 + dd.v_x^{local}(t)), Eq(dd.w_{0f}.ppvy(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{0f}.ppvz(t), 0)],
+	'dd.w_{1f}': [Eq(dd.w_{1f}.ppvx(t), track*dd.\omega(t)/2 + dd.v_x^{local}(t)), Eq(dd.w_{1f}.ppvy(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{1f}.ppvz(t), 0)],
+	'dd.w_{2c}': [Eq(dd.w_{2c}.ppvx(t), dd.v_x^{local}(t)), Eq(dd.w_{2c}.ppvy(t), c*dd.\omega(t) + dd.v_y^{local}(t)), Eq(dd.w_{2c}.ppvz(t), 0)],
+}
+'wheel_cpoint_restrictions': {
+	'dd.w_{0f}': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) + dd.w_{0f}.ppvx(t)], [dd.w_{0f}.ppvy(t)], [0]]),
+	'dd.w_{1f}': Matrix([[-r*dd.w_{1f}.\dot{\phi}(t) + dd.w_{1f}.ppvx(t)], [dd.w_{1f}.ppvy(t)], [0]]),
+	'dd.w_{2c}': Matrix([[-d*(dd.\omega(t) + dd.w_{2c}.betad(t))*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t)*sin(dd.w_{2c}.beta(t)) + dd.w_{2c}.ppvx(t)], [-d*(dd.\omega(t) + dd.w_{2c}.betad(t))*sin(dd.w_{2c}.beta(t)) + r*dd.w_{2c}.\dot{\phi}(t)*cos(dd.w_{2c}.beta(t)) + dd.w_{2c}.ppvy(t)], [0]]),
+}
+'canudas': {
+	'posture_coords': {
+		'symbol': xi(t),
+		'value': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)]]),
+}
+	'posture_speeds': {
+		'symbol': \dot{xi}(t),
+		'value': Matrix([[dd.vx(t)], [dd.vy(t)], [dd.\omega(t)]]),
+}
+	'orientation_coords': {
+		'symbol': beta(t),
+		'value': Matrix([[dd.w_{2c}.beta(t)]]),
+		'betas': Matrix(0, 1, []),
+		'betac': Matrix([[dd.w_{2c}.beta(t)]]),
+}
+	'rotation_coords': {
+		'symbol': phi(t),
+		'value': Matrix([[dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+}
+	'configuration_coords': {
+		'value': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)], [dd.w_{2c}.beta(t)], [dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+}
+	'restrictions': {
+		'equations': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) - track*dd.\omega(t)/2 + dd.v_x^{local}(t)], [axle_offset*dd.\omega(t) + dd.v_y^{local}(t)], [-r*dd.w_{1f}.\dot{\phi}(t) + track*dd.\omega(t)/2 + dd.v_x^{local}(t)], [axle_offset*dd.\omega(t) + dd.v_y^{local}(t)], [-c*dd.\omega(t)*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t) + dd.v_x^{local}(t)*sin(dd.w_{2c}.beta(t)) - dd.v_y^{local}(t)*cos(dd.w_{2c}.beta(t))], [c*dd.\omega(t)*sin(dd.w_{2c}.beta(t)) + d*(-dd.\omega(t) - dd.w_{2c}.betad(t)) + dd.v_x^{local}(t)*cos(dd.w_{2c}.beta(t)) + dd.v_y^{local}(t)*sin(dd.w_{2c}.beta(t))]]),
+		'J1': Matrix([[1, 0, -track/2], [1, 0, track/2], [sin(dd.w_{2c}.beta(t)), -cos(dd.w_{2c}.beta(t)), -c*cos(dd.w_{2c}.beta(t))]]),
+		'J1f': Matrix([[1, 0, -track/2], [1, 0, track/2]]),
+		'J1s': Matrix(0, 3, []),
+		'J1c': Matrix([[sin(dd.w_{2c}.beta(t)), -cos(dd.w_{2c}.beta(t)), -c*cos(dd.w_{2c}.beta(t))]]),
+		'J1sw': Matrix(0, 3, []),
+		'J2': Matrix([[-r, 0, 0], [0, -r, 0], [0, 0, -r]]),
+		'C1': Matrix([[0, 1, axle_offset], [0, 1, axle_offset], [cos(dd.w_{2c}.beta(t)), sin(dd.w_{2c}.beta(t)), c*sin(dd.w_{2c}.beta(t)) - d]]),
+		'C1f': Matrix([[0, 1, axle_offset], [0, 1, axle_offset]]),
+		'C1s': Matrix(0, 3, []),
+		'C1c': Matrix([[cos(dd.w_{2c}.beta(t)), sin(dd.w_{2c}.beta(t)), c*sin(dd.w_{2c}.beta(t)) - d]]),
+		'C2': Matrix(0, 1, []),
+		'C2c': Matrix([[-d]]),
+		'equations.T': Matrix([[-r*dd.w_{0f}.\dot{\phi}(t) - track*dd.\omega(t)/2 + dd.v_x^{local}(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t), -r*dd.w_{1f}.\dot{\phi}(t) + track*dd.\omega(t)/2 + dd.v_x^{local}(t), axle_offset*dd.\omega(t) + dd.v_y^{local}(t), -c*dd.\omega(t)*cos(dd.w_{2c}.beta(t)) - r*dd.w_{2c}.\dot{\phi}(t) + dd.v_x^{local}(t)*sin(dd.w_{2c}.beta(t)) - dd.v_y^{local}(t)*cos(dd.w_{2c}.beta(t)), c*dd.\omega(t)*sin(dd.w_{2c}.beta(t)) + d*(-dd.\omega(t) - dd.w_{2c}.betad(t)) + dd.v_x^{local}(t)*cos(dd.w_{2c}.beta(t)) + dd.v_y^{local}(t)*sin(dd.w_{2c}.beta(t))]]),
+		'C1*': Matrix([[0, 1, axle_offset], [0, 1, axle_offset]]),
+}
+	'sigma': Matrix([[1, 0], [0, -axle_offset], [0, 1]]),
+	'nullspace_base': Matrix([[1, 0, 0], [0, -axle_offset, 1]]),
+	'pinv(sigma)_left': Matrix([[1, 0, 0], [0, -axle_offset/(axle_offset**2 + 1), 1/(axle_offset**2 + 1)]]),
+	'delta_m': 2,
+	'delta_s': 0,
+	'robot_type': (2,0),
+	'eta': Matrix([[eta_0(t)], [eta_1(t)]]),
+	'zeta': Matrix(0, 1, []),
+	'z': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)]]),
+	'B': Matrix([[1, 0], [0, -axle_offset], [0, 1]]),
+	'u': Matrix([[eta_0(t)], [eta_1(t)]]),
+	'zdot_local': Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])*Matrix([
+[Matrix([
+[eta_0(t)],
+[eta_1(t)]])],
+[                 Matrix(0, 1, [])]]),
+	'R': Matrix([[cos(dd.\theta(t)), sin(dd.\theta(t))], [-sin(dd.\theta(t)), cos(dd.\theta(t))]]),
+	'RR': Matrix([[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0], [sin(dd.\theta(t)), cos(dd.\theta(t)), 0], [0, 0, 1]]),
+	'zdot': Matrix([
+[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0],
+[sin(dd.\theta(t)),  cos(dd.\theta(t)), 0],
+[                0,                  0, 1]])*Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])*Matrix([
+[Matrix([
+[eta_0(t)],
+[eta_1(t)]])],
+[                 Matrix(0, 1, [])]]),
+	'D': Matrix([[cos(dd.w_{2c}.beta(t))/d, sin(dd.w_{2c}.beta(t))/d, (c*sin(dd.w_{2c}.beta(t)) - d)/d]]),
+	'E': Matrix([[1/r, 0, -track/(2*r)], [1/r, 0, track/(2*r)], [sin(dd.w_{2c}.beta(t))/r, -cos(dd.w_{2c}.beta(t))/r, -c*cos(dd.w_{2c}.beta(t))/r]]),
+	'q': Matrix([[dd.x(t)], [dd.y(t)], [dd.\theta(t)], [dd.w_{2c}.beta(t)], [dd.w_{0f}.\phi(t)], [dd.w_{1f}.\phi(t)], [dd.w_{2c}.\phi(t)]]),
+	'S': Matrix([
+[cos(dd.\theta(t)), -sin(dd.\theta(t)), 0, 0, 0, 0, 0],
+[sin(dd.\theta(t)),  cos(dd.\theta(t)), 0, 0, 0, 0, 0],
+[                0,                  0, 1, 0, 0, 0, 0],
+[                0,                  0, 0, 1, 0, 0, 0],
+[                0,                  0, 0, 0, 1, 0, 0],
+[                0,                  0, 0, 0, 0, 1, 0],
+[                0,                  0, 0, 0, 0, 0, 1]])*Matrix([
+[                                                                                                                                           Matrix([
+[Matrix([
+[1,            0],
+[0, -axle_offset],
+[0,            1]]), Matrix(3, 0, [])],
+[                                                  Matrix(0, 2, []), Matrix(0, 0, [])]])],
+[                                                                                                                                                                                        Matrix([[Matrix([[cos(dd.w_{2c}.beta(t))/d, -axle_offset*sin(dd.w_{2c}.beta(t))/d + (c*sin(dd.w_{2c}.beta(t)) - d)/d]]), Matrix(1, 0, [])]])],
+[Matrix([[Matrix([
+[                     1/r,                                                      -track/(2*r)],
+[                     1/r,                                                       track/(2*r)],
+[sin(dd.w_{2c}.beta(t))/r, axle_offset*cos(dd.w_{2c}.beta(t))/r - c*cos(dd.w_{2c}.beta(t))/r]]), Matrix(3, 0, [])]])]]),
+}
+}
+

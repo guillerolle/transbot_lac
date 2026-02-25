@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rigid_forklift">
+    <xacro:arg name="use__all__" default="false"/>
+    <xacro:arg name="standalone" default="true"/>
+
+    <!-- __all__ is used for schematic-rigid complete robot, exported from openscad -->
+    <xacro:if value="$(arg use__all__)">
+        <link name="__all__">
+            <inertial>
+                <origin xyz="0.1432753349846481 0.06287308442628833 0.3382081195656269" rpy="0.0 0.0 0.0"></origin>
+                <mass value="132.728783848385"></mass>
+                <inertia ixx="22.10556312699262" ixy="-0.10445688329743485" ixz="-3.1813848924270305" iyy="23.414765722195412" iyz="0.33707093907462804" izz="10.122101490301148"></inertia>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/__all__.stl" scale="1e-3 1e-3 1e-3"/>
+                </geometry>
+                <material name="">
+                    <color rgba="1.0 1.0 1.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/__all__.stl" scale="1e-3 1e-3 1e-3"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:if>
+
+    <xacro:unless value="$(arg use__all__)">
+        <link name="_">
+            <!-- ROOT LINK IS EMPTY -->
+        </link>
+
+        <xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/mobilebase/mobilebase.urdf.xacro"/>
+        <xacro:mobilebase prefix="mobilebase/" use__all__="false"/>
+        <joint name="fj_mobilebase" type="fixed">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <parent link="_"/>
+            <child link="mobilebase/_"/>
+        </joint>
+
+        <xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/manipulator/manipulator.urdf.xacro"/>
+        <xacro:manipulator prefix="manipulator/" use__all__="false"/>
+        <joint name="pj_forklift" type="prismatic">
+            <origin xyz="0.350 0 0.130" rpy="0.0 0.0 0.0"/>
+            <axis xyz="-1 0.0 0.0"/>
+            <limit lower="0" upper="0.700" effort="-1" velocity="-1"/>
+            <parent link="_"/>
+            <child link="manipulator/portico"/>
+        </joint>
+    </xacro:unless>
+</robot>

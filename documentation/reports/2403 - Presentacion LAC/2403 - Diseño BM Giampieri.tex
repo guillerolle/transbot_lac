@@ -1,0 +1,376 @@
+\input{preamble.tex}
+
+\input{metadatos.tex}
+\title{Proceso de Diseño de una Plataforma Móvil para el transporte de Materiales}
+%\let\oldthecomponent\thecomponent 
+%\renewcommand{\thecomponent}[1]{\textbf{C\ref{cp:#1}}
+
+
+\begin{document}
+
+\input{caratula.tex}
+
+\tableofcontents
+\todototoc
+
+\listoftodos
+
+\pagebreak
+% \section*{Resumen}
+
+\section{Introducción}
+
+
+\section{Descripción Global de la Metodología}
+
+
+
+\section{Desarrollo Específico del Diseño}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figs/DesignMethod.pdf}
+	\caption[Método de Diseño]{Método de Diseño}
+	\label{fig:designmethod}
+\end{figure}
+
+\designlayer{Análisis de las necesidades del cliente}{dl:cliente}
+% \subsection{Etapa 0: Análisis de las necesidades del cliente}
+El proceso de diseño parte siempre del análisis de las necesidades del cliente.
+\pendiente{Desarrollar texto}
+%\subsubsection{Misión Global}
+%La misión global del sistema se definió como: \\
+
+\textbf{Misión Global: }
+\begin{quote}
+	El sistema debe permitir el traslado de materiales, productos y subproductos autónomamente entre el almacén y estaciones de producción internas a la fábrica, garantizando la seguridad de operarios y/o otros humanos,	integridad de los materiales transportados y eficiencia.
+		
+	La solución requerida es un prototipo que priorice los bajos costos de fabricación y la simplicidad del diseño y funcionamiento. Además, se prevé modularidad para que en primera instancia pueda ser utilizado de forma manual pero permita el agregado de módulos que mejoren las funcionalidades y automatización a posterior sin necesidad de rediseñar todo el sistema.
+\end{quote}
+
+\subsubsection{Requerimientos del cliente}
+
+De la \textbf{Misión Global} postulada y de requisitos específicos que impone el cliente, se hace un listado de requerimientos:
+
+\requirement{El sistema debe transportar materiales (entre otras): bolsas con resortes de 30kg c/u de tamaño 50cm x 50cm x 15cm; bolsas grimar de 22kg c/u; bolsas de estantería de 20kg c/u}
+
+\requirement{La carga admisible máxima a transportar es de 100kg}
+
+\requirement{El sistema debe circular por la fábrica}
+
+\requirement{La solución debe requerir la mínima modificación de las instalaciones existentes de la fábrica}
+
+\requirement{El sistema debe ser ergonómico para los operarios}
+
+\requirement{El sistema debe ser capaz de maniobrar seguramente}
+
+\requirement{El sistema debe garantizar la integridad de los materiales transportados}
+
+\requirement{El sistema debe reconfigurable en cuanto al sistema de locomoción y estructuras de operación}
+
+\requirement{El sistema debe tener el mínimo costo}
+
+\requirement{El sistema debe ser eficiente}
+
+\requirement{El sistema debe permitir, en primera instancia, su uso de forma manual y, a posterior, debe permitir agregársele funcionalidades con distintos niveles de autonomía}
+
+\bigskip
+
+\subsubsection{Análisis del entorno}
+Es necesario determinar otros requerimientos que no se deduzcan directamente de la \textbf{Misión Global} o de los requerimientos explícitos del cliente. Por ejemplo, se debe estudiar el entorno de operación que tendrá el sistema.
+
+En este caso, el sistema, que funcionará dentro de la fábrica, deberá interactuar con ésta: en el entorno habrá grasa y aceite, habrán paredes y máquinas fijas, en el suelo de la fábrica se encontrarán virutas de metales, irregularidades y desniveles del suelo, el sistema deberá recibir órdenes y comandos de los operarios y, al mismo tiempo, compartir los senderos de circulación demarcados en el suelo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Contexto_del_Sistema}
+	\caption[Diagrama de Contexto]{Diagrama de Contexto e Interacción del Sistema}
+	\label{fig:contextodelsistema}
+\end{figure}
+\pendiente{Mejorar y detallar diagrama de contexto de la Figura~\ref{fig:contextodelsistema}}
+
+\requirement{La velocidad máxima admisible para transitar de forma segura es de 2m/s ($\approx$ 7.2km/h), según Norma \textit{NN}}
+
+\requirement{El sistema debe superar satisfactoriamente irregularidades del suelo (escalones/pozos) de hasta 1cm de alto}
+
+\requirement{El sistema debe transitar por pendientes del suelo de hasta 5°}
+
+\requirement{El sistema debe circular por dentro de los senderos: el ancho de éstos es de 1m y el radio interno de las curvas es de 0.1m}
+
+\designlayer{Diseño Conceptual}{dl:dc}
+
+
+\subsubsection{Análisis Funcional del Sistema}
+A partir de los requerimientos del sistema se hace un análisis del funcionamiento del sistema. Se describen todas las funciones del sistema de forma general y, luego, estas funciones generales se descomponen y enumeran en funciones más elementales. 
+Las funciones elementales, se asocian a componentes lógicos que se encargan de efectuar dichas funciones.
+Finalmente, éstos componentes lógicos se pueden alojar en componentes, bloques o subsistemas físicos.
+
+\paragraph{Funcionamiento General: }El sistema está quieto. Recibe una orden de para ir desde su ubicación actual A hasta una ubicación B. Debe trasladarse seguramente por los caminos demarcados del suelo de la fábrica.  Si se encuentra con algún
+obstáculo debe evadirlo o detenerse. Cuando llega a B debe detenerse nuevamente. En este momento, se queda quieto/frenado hasta que un operario lo cargue con materiales, le acople a una estructura de transporte, o, debe cargar autónomamente los materiales o acoplarse a una estructura de transporte, si está implementado. Una vez cargado, recibe la orden de ir hacia un nuevo punto y repite el ciclo de trabajo
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/f1AB.png}
+	\caption[Funcionamiento General, Mapa]{El sistema debe trasladar materiales desde A hasta B}
+	\label{fig:funciongeneralmapa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Initial_State_Diagram.pdf}
+	\caption[Funcionamiento General]{Diagrama funcional general del sistema}
+	\label{fig:funciongeneral}
+\end{figure}
+
+\subsubsection{Arquitectura Funcional}
+\activity{Marcha}{Es la posibilidad de andar o trasladarse por el entorno. Implica el movimiento de las ruedas (rotación/dirección)}
+
+\activity{Mantenerse Estático}{Es la posibilidad de mantenerse completamente estático ante esfuerzos externos durante el momento de carga o descarga de materiales}
+
+\activity{Manipulación de Materiales}{Consiste en la posibilidad en sí cargar, trasladar y descargar los materiales. Puede ser, por ejemplo, soportarlos sobre el chasis, acoplarse a un tráiler que tenga los materiales, empujando/llevando una estantería, pallets, etc. Las subactividades de carga y descarga dependen del tipo de traslado seleccionado}
+
+\activity{Modularidad Mecánica}{Distintos módulos acoplables le permitirán efectuar las actividades~\ref{ac:Marcha} a~\ref{ac:Manipulación de Materiales} de distintas maneras}
+
+\activity{Gestión de Energía}{El sistema tener autonomía energética (baterías) y debe convertirla a energía mecánica para efectuar el trabajo correspondiente. Además, las baterías se deben poder recargar}
+
+\activity{Planeamiento de Trayectorias}{El sistema debe determinar la trayectoria de referencia entre los puntos A y B}
+
+\activity{Localización}{El sistema debe poder localizarse y ubicarse dentro de la fábrica}
+
+\activity{Recolección de Datos}{El sistema recopila datos de sensores introceptivos (velocidad de las ruedas, consumo eléctrico, estado de baterías, etc.) y de sensores exteroceptivos (cámaras, sensores de distancias, cámaras térmicas, GPS, antenas de radio, etc.)}
+
+\activity{Evasión de obstáculos}{El sistema debe evadir obstáculos y/o detenerse de forma segura, alertando a los operarios}
+
+\activity{Parada de Emergencia}{El sistema debe poder ser detenido fácil y rápidamente por un operario en caso de emergencias}
+
+\subsubsection{Arquitectura Lógica}
+%\component{arg1}{arg2}
+\component{Sistema de Locomoción}{Ejecuta la Actividad~\acref{Marcha}. Propiedades internas: tipo (ruedas, orugas o patas), cantidad y tipos de apoyos, configuración cinemática}
+
+\component{Sistema de Frenado}{Ejecuta la Actividad~\acref{Mantenerse Estático}. Propiedades internas: Modo de frenado (freno electrónico de motores, brazos desplegables, apoyar el chasis contra el suelo, frenos pedales en las ruedas o chasis)}
+
+\component{Sistema de Materiales}{Ejecuta la actividad~\acref{Manipulación de Materiales}. Propiedades internas: método de traslación, método de carga, método de descarga}
+
+\component{Sistema de Control}{Ejecuta las Actividades~\acref{Localización}, \acref{Planeamiento de Trayectorias} y~\acref{Evasión de obstáculos}. Comanda al Componente~\cpref{Sistema de Locomoción} a través del componente~\cpref{Sistema de Energía} y recibe información de~\cpref{Sistema de Sensores}. Propiedades internas: Controladores de alto/bajo nivel, Computadora SBC, etc.}
+
+\component{Sistema de Sensores}{Ejecuta las actividades de \acref{Recolección de Datos} y envía información a~\cpref{Sistema de Control}. Propiedades internas: cantidades y tipos de sensores (sensores de velocidad, sensores de distancia, IMUs, cámaras, etc.). Recibe información del Sistema de Locomoción y otras fuentes}.
+
+\component{Sistema de Energía}{Ejecuta las actividades de~\acref{Gestión de Energía}. Alimenta a todos los demás sistemas que lo requieran y es comandado por el \cpref{Sistema de Control}. Propiedades internas: Baterías, interruptores, PWM, tipo de motores (DCM, STEPPER, etc.), tipo de reductores etc.}
+
+\component{Sistema de Emergencias}{Ejecuta las actividades~\acref{Parada de Emergencia}. Comanda al Sistema~\cpref{Sistema de Energía}. Propiedades internas: botón de emergencias, algoritmo de parada de emergencia segura}
+
+\component{Interfaz}{Este componente permite comunicarse a través con el exterior (operarios). Permite enviar y recibir señales. Propiedades internas: luces, alarmas sonoras, pantalla, teclado de entrada.}
+
+\component{Estructura Mecánica}{Este componente representa la estructura mecánica en sí. Los otros sistemas tendrán una parte físico-mecánica (ocupan espacio). La estructura mecánica debe ser modular y reconfigurable y alojar los componentes físicos de todos los otros sistemas}
+
+\pendiente{Agregar gráficos de interacción, actividades y subcomponentes}
+
+\subsubsection{Estructura Física}
+
+Si bien la estructura mecánica debe ser modular para permitir distintas configuraciones, se intenta encontrar desde este momento la mejor solución para el problema específico del cliente. Cuando se busque diseñar nuevos módulos, se analizará en dónde se descartó esa decisión originalmente y se realizará otro diseño específico a partir de ese punto.
+
+Se analizan las distintas soluciones <<macro>> para cada uno de los subsistemas.
+
+\paragraph{\cpref{Sistema de Locomoción}}
+
+\subparagraph{Descripción de las opciones}
+Las ruedas suelen ser la solución más económica, simple en cuanto al control, diseño y eficientes energéticamente. Las ruedas son fáciles de hacerles mantenimiento y hay facilidad de recambio. A la vez, si la estructura mecánica lo permite por el espacio, la estabilidad del sistema utilizando ruedas no suele ser muy complicada. Sus desventajas relativas a las otras opciones, radican principalmente en la dificultad para superar irregularidades del terreno, que en este caso, no es un requisito crítico.
+
+Los tipos de ruedas que pueden utilizar normalmente son:
+\begin{itemize}
+	\item Estándar: ruedas comunes. Pueden ser fijas o direccionables y actuadas o libres.
+	\item Cáster: Ruedas tipo carrito de supermercado. El eje de dirección de la rueda no está alineado con el punto de contacto con el suelo. Generalmente son libres en rotación y dirección y permiten agregar puntos de apoyo que no restringen a la movilidad en el plano de la base móvil. También podrían ser actuadas en cualquiera de los 2 ejes.
+	\item Omnidireccionales: Estas ruedas presentan generalmente rodillos por toda la circunferencia exterior de forma que le permite a la rueda deslizarse lateralmente con algún ángulo dado por el ángulo de los rodillos.  
+\end{itemize}
+Las configuraciones con ruedas se pueden caracterizar por el grado de mobilidad $\delta_m$, direccionabilidad $\delta_s$ y maniobrabilidad $\delta_M$ \cite{de_wit_theory_1996} independientemente de la cantidad de ruedas y se listarán de la forma $(\delta_m, \delta_s$). Se pueden encontrar alternativas desde 1 hasta más de 4 ruedas:
+\begin{itemize}
+	\item Configuraciones de 1 sola rueda: el sistema requerirá alguna solución demasiado sofisticada para mantenerse estable y para poder cambiar de dirección, por lo que se descarta como alternativa directamente.
+	\item Configuraciones de 2 ruedas: Se pueden encontrar 2 configuraciones principales: diferencial y bicicleta.
+	\begin{itemize}
+		\item Diferencial $(2, 0)$: 2 ruedas fijas que comparten  el mismo eje de giro. Si el centro de masa se ubica por debajo del eje de rotación de las ruedas, el sistema actúa como un péndulo y mantendrá el equilibrio estático. Sin embargo, es propenso a desestabilizarse durante aceleraciones y frenadas.
+		\item Bicicleta $(1, 1)$: 1 rueda fija y 1 rueda direccionable alineadas sobre el mismo eje longitudinal de la base móvil. Si son muy delgadas, requieren que la base móvil se incline al doblar como una moto o bicicleta para no volcarse. Si son muy anchas, el problema de estabilidad está resuelto pero requerirá de mucho espacio y mucho esfuerzo para cambiar de dirección.
+	\end{itemize}
+	\item Configuraciones de 3 ruedas: Se pueden encontrar 5 configuraciones elementales con subconfiguraciones de actuación:
+	\begin{itemize}
+		\item (3,0): Con ruedas omniwheels (3 actuadores) o con ruedas cáster (2 actuadores de rotación y 2 de dirección). 
+		\item(2,1): 1 rueda direccionable actuada en dirección y rotación y 2 ruedas cáster con 1 actuada en orientación.
+		\item(1,2): 2 ruedas direccionables actuadas completamente y 1 cáster de apoyo.
+		\item(2,0): 2 ruedas fijas actuadas y 1 cáster de apoyo o 2 ruedas fijas libres y cáster actuada en rotación y orientación.
+		\item(1,1): 1 direccionable actuada en rotación y orientación y 2 ruedas fijas libres.
+	\end{itemize}
+	\item Configuraciones de 4 o más ruedas: a las configuraciones anteriores se les pueden agregar más ruedas cáster o omniwheels totalmente libres para que cumplan funciones de apoyo pero no restrinjan la movilidad de la base móvil. Sin embargo, las más típicas son:
+	\begin{itemize}
+		\item (3,0): 4 ruedas mechanum (omniwheel a $\approx$45°) en pares opuestos.
+		\item (2,0): 2 ruedas fijas motorizadas y 2 ruedas cáster libres.
+		\item(1,1): 2 ruedas fijas y 2 ruedas direccionables. En este caso, los actuadores deben estar restringidos para garantizar compatibilidad cinemática: 1 actuador para la rotación de 2 ruedas y 1 actuador para la dirección de las otras 2. Esta configuración se conoce tipo Ackermann o tipo auto.
+	\end{itemize}
+\end{itemize}
+
+Por otra parte, las orugas permiten tener una mejor tracción que las ruedas en general. Al apoyar sobre superficies de mayor tamaño, permiten una mayor estabilidad sin necesidad de sistemas de estabilización complicados. Sin embargo, la mayor tracción sobre el suelo de la fábrica implica que se necesita una mayor potencia eléctrica para alimentarlas, traduciéndose en baterías y motores de mayor potencia y tamaño, implicando incluso la necesidad de un buen sistema de ventilación/refrigeración; y la velocidad de traslación es menor. Además, requieren una mayor cantidad de piezas móviles para garantizar el contacto correcto contra el suelo y no son tan económicas como las ruedas.
+
+En cuanto a la locomoción con patas, éstas son complejas en su diseño, requieren alta cantidad relativas de motores (aproximadamente 1 por cada articulación por cada pata), son ineficientes energéticamente: por cada metro de avance debe hacer una mayor cantidad de movimientos (que consumen energía) para reubicar las patas en posición para poder dar otro paso. Requieren un sistema de estabilidad para garantizar que no se inestabilice el sistema al levantar las patas mientras camina, o, en cambio, una gran cantidad de patas para que siempre tenga muchos apoyos a expensas de utilizar mucho espacio físico. Además, la velocidad de locomoción es muy baja en comparación a las ruedas y a las orugas.
+
+\subparagraph{Evaluación de Alternativas} \label{ev:sistloc}
+
+Se evaluarán los siguientes criterios y subcriterios:
+\begin{itemize}
+	\item Capacidad de maniobrar
+	\begin{itemize}
+		\item Grado de Movilidad
+		\item Grado de Maniobrabilidad
+	\end{itemize}
+	\item Simplicidad del diseño
+	\begin{itemize}
+		\item Cantidad de tipos de ruedas diferentes
+		\item Cantidad de tipos de actuadores diferentes
+		\item Cantidad de partes a diseñar
+	\end{itemize}
+	\item Estabilidad
+	\item Costo
+	\begin{itemize}
+		\item Cantidad de actuadores
+		\item Costo de componentes
+	\end{itemize}
+\end{itemize}
+
+
+A continuación se hace una recopilación de todas las alternativas posibles para el sistema de locomoción:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	  & \multicolumn{4}{c|}{iDDP} \\
+	\hline
+	DA & Propulsión & Apoyos & Familia & Subconf. \\
+	\hline
+	1 & RUEDAS & 2 & (2,0) & - \\
+	\hline
+	2 & RUEDAS & 2 & (1,1) & Ruedas delgadas \\
+	\hline
+	3 & RUEDAS & 2 & (1,1) & Ruedas anchas \\
+	\hline
+	4 & RUEDAS & 3 & (3,0) & Omniwheels \\
+	\hline
+	5 & RUEDAS & 3 & (3,0) & Cáster \\
+	\hline
+	6 & RUEDAS & 3 & (2,1) & - \\
+	\hline
+	7 & RUEDAS & 3 & (1,2) & - \\
+	\hline
+	8 & RUEDAS & 3 & (2,0) & Actuadas fijas \\
+	\hline
+	9 & RUEDAS & 3 & (2,0) & Actuada cáster \\
+	\hline
+	10 & RUEDAS & 3 & (1,1) & - \\
+	\hline
+	11 & RUEDAS & 4 & (3,0) & - \\
+	\hline
+	12 & RUEDAS & 4 & (2,0) & - \\
+	\hline
+	13 & RUEDAS & 4 & (1,1) & - \\
+	\hline
+	14 & ORUGAS & 2 & (2,0) & - \\
+	\hline
+\end{tabular}
+\end{center}
+
+Antes de continuar con la evaluación de todas las alternativas, se descartan las que por similitud son evidentemente peores que otras. Por ejemplo, la alternativa DA1 tiene sus versiones más estables (y simples) DA8 y DA11, solamente agregando 1 o 2 ruedas cáster. La DA2 tiene la complejidad de la estabilidad respecto a la DA10 o DA13 mientras que la DA3 requerirá mucho más espacio para alojar las ruedas y potencia de los motores (más caros y más grandes) para direccionarlas. Por otra parte, las alternativas con ruedas omnidireccionales se descartan porque al ser un ambiente muy sucio el de la fábrica, existe altas posibilidades que los rodillos se traben con mugre y dejen de funcionar de la forma prevista. La alternativa DA13 es mucho más compleja que la DA10 porque requiere que los actuadores de rotación y los de dirección estén restringidos entre sí para que haya compatibilidad cinemática y evitar esfuerzos excesivos sobre los mismos, o que tengan 1 sólo actuador de rotación y 1 de dirección pero con mecanismos de restricción (como un automóvil urbano).
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		& \multicolumn{4}{c|}{iDDP} \\
+		\hline
+		DA & Propulsión & Apoyos & Familia & Subconf. \\
+		\hline
+		5 & RUEDAS & 3 & (3,0) & Cáster \\
+		\hline
+		6 & RUEDAS & 3 & (2,1) & - \\
+		\hline
+		7 & RUEDAS & 3 & (1,2) & - \\
+		\hline
+		8 & RUEDAS & 3 & (2,0) & Actuadas fijas \\
+		\hline
+		9 & RUEDAS & 3 & (2,0) & Actuada cáster \\
+		\hline
+		10 & RUEDAS & 3 & (1,1) & - \\
+		\hline
+		12 & RUEDAS & 4 & (2,0) & - \\
+		\hline
+		14 & ORUGAS & 2 & (2,0) & - \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Con todas estas alternativas y en base los criterios seleccionados, se procede a evaluarlas usando el método de toma de decisiones AHP.
+El detalle se encuentra en el apéndice~\ref{eva:sistloc}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/evsloc000.png}
+	\caption[Diagrama de Contexto]{Resultados del Proceso de Evaluación}
+	%	\label{fig:contextodelsistema}
+\end{figure}
+
+La solución ganadora es la DA12: configuración de 4 ruedas con tracción diferencial con actuadores en las ruedas fijas.
+
+\paragraph{\cpref{Sistema de Frenado}}
+Por simplicidad, en primera instancia se utilizará freno por control de los motores con la opción de pedal en una rueda cáster. Se debe prever que la estructura mecánica pueda aceptar módulos de frenado diferentes en el futuro.
+
+
+\paragraph{\cpref{Sistema de Materiales}} \pendiente{Evaluar alternativas}
+
+\paragraph{\cpref{Sistema de Control}} Futuro...
+
+\paragraph{\cpref{Sistema de Sensores}} Futuro...
+
+\paragraph{\cpref{Sistema de Energía}} \pendiente{Dimensionar Baterías}
+\pendiente{Dimensionar Motores. Elegir Motores In-Wheel}
+
+\paragraph{\cpref{Sistema de Emergencias}} Se prevé botón de parada de emergencias.
+
+\paragraph{\cpref{Interfaz}} Indicador de luz de estado, alarma sonora, 
+
+\paragraph{\cpref{Estructura Mecánica}} Debe ser modular.
+
+Módulos:
+\begin{itemize}
+	\item Chasis
+	\item Módulo de Tracción Diferencial
+	\item Módulo de Ruedas Cáster
+	\item Interfaz de Acople de módulos
+\end{itemize}
+
+
+\subsubsection{Parametrízación de la estructura Física}
+
+\subsection{Etapa 2: Diseño Conceptual + Detallado}
+
+\subsection{Etapa $\boldsymbol{i}$: Diseño +Detallado -Conceptual}
+
+\subsection{Etapa Final: Diseño Detallado}
+
+\section{Producto Final}
+
+\section{Conclusiones}
+
+\pagebreak
+
+\appendix
+\section{Detalles de Evaluación de Alternativas}
+
+\subsection{\cpref{Sistema de Locomoción}. Página \pageref{ev:sistloc}} \label{eva:sistloc}
+
+Se usa el método AHP (Analytical Hierarchy Process).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/evsloc000.png}
+	\caption[Diagrama de Contexto]{Resultados del Proceso de Evaluación}
+%	\label{fig:contextodelsistema}
+\end{figure}
+
+
+\pagebreak
+\bibliographystyle{plain}
+%\bibliography{biblio.bib} 
+\bibliography{2403-biblio.bib}
+\end{document}

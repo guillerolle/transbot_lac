@@ -1,0 +1,49 @@
+within MobileRobots.Carts.Assemblies.Type20.DifferentialDrives;
+
+partial model CommonDiffDrivesParams
+  import Modelica.Units.SI;
+  parameter SI.Position[3] diffdrive_axle_position = {-0.5,0,0} "Position from cart's frame to the wheels common axle, resolved in cart's frame" annotation(
+  Dialog(tab="Differential Drive"));
+  parameter SI.Distance diffdrive_track(min=0, start = 0.5) "Distance between wheels along common axle" 
+    annotation(
+  Dialog(tab="Differential Drive"));
+  parameter Boolean diffdrive_expose_axlehousing = false "if true, expose axle housing flange (serves as support point for actuators";
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel w1f(stateSelect = StateSelect.avoid)  annotation(
+    Placement(transformation(origin = {-50, 60}, extent = {{-10, 10}, {10, -10}})));
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel w2f(stateSelect = StateSelect.avoid)  annotation(
+    Placement(transformation(origin = {-50, -60}, extent = {{-10, -10}, {10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation struct_axlemnt(r = diffdrive_axle_position) annotation(
+    Placement(transformation(origin = {-30, 0}, extent = {{10, -10}, {-10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation struct_w2fmnt(r = {0, -diffdrive_track/2, 0}) annotation(
+    Placement(transformation(origin = {-50, -30}, extent = {{10, 10}, {-10, -10}}, rotation = 90)));
+  MultiBodyExtension.Parts.FixedTranslation struct_w1fmnt(r = {0, diffdrive_track/2, 0}) annotation(
+    Placement(transformation(origin = {-50, 30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w1f_flange annotation(
+    Placement(transformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w2f_flange annotation(
+    Placement(transformation(origin = {-100, -60}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-100, -60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b axlehousing_flange annotation(
+    Placement(transformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.Mounting1D axle_housing(n = {0, 1, 0}) annotation(
+    Placement(transformation(origin = {-68, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
+equation
+  connect(struct_w1fmnt.frame_b, w1f.frame_a) annotation(
+    Line(points = {{-50, 40}, {-50, 50}}, color = {95, 95, 95}));
+  connect(struct_w2fmnt.frame_b, w2f.frame_a) annotation(
+    Line(points = {{-50, -40}, {-50, -50}}, color = {95, 95, 95}));
+  connect(struct_w1fmnt.frame_a, struct_axlemnt.frame_b) annotation(
+    Line(points = {{-50, 20}, {-50, 0}, {-40, 0}}, color = {95, 95, 95}));
+  connect(struct_w2fmnt.frame_a, struct_axlemnt.frame_b) annotation(
+    Line(points = {{-50, -20}, {-50, 0}, {-40, 0}}, color = {95, 95, 95}));
+  connect(w1f_flange, w1f.flange_rotationaxle) annotation(
+    Line(points = {{-100, 60}, {-50, 60}}));
+  connect(axlehousing_flange, axle_housing.flange_b) annotation(
+    Line(points = {{-100, 0}, {-90, 0}, {-90, -10}, {-68, -10}}));
+  connect(axle_housing.frame_a, struct_axlemnt.frame_b) annotation(
+    Line(points = {{-58, 0}, {-40, 0}}, color = {95, 95, 95}));
+  connect(w2f_flange, w2f.flange_rotationaxle) annotation(
+    Line(points = {{-100, -60}, {-50, -60}}));
+annotation(
+    Icon(graphics = {Line(origin = {-100, 0}, points = {{0, -50}, {0, 50}}, thickness = 5), Line( origin = {-40, 0},points = {{40, 0}, {-60, 0}}, thickness = 5), Rectangle(origin = {-100, -50}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}}), Rectangle(origin = {-100, 50}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}})}),
+  Diagram(graphics));
+end CommonDiffDrivesParams;

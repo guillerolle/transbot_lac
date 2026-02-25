@@ -1,0 +1,37 @@
+% TODO NOTES
+\usepackage{todonotes} % PARA AGREGAR NOTAS 'TODO' DENTRO DEL PDF
+\newcommand{\todosection}[0]{\todo[inline]{Desarrollar Sección \thesection}}
+\newcommand{\todosubsection}[0]{\todo[inline]{Desarrollar Subsección \thesubsection}}
+\newcommand{\pendiente}[1]{\todo[inline]{\textbf{Pendiente:} #1}}
+\newcommand{\pendpres}[1]{\todo[inline, size=\tiny]{{\textbf{Pendiente:} #1}}}
+
+% CUSTOM COMMANDS
+\newcounter{designlayer}
+\newcommand{\designlayer}[2]{
+	\refstepcounter{designlayer}\label{#2}
+	\subsection{Etapa \thedesignlayer: #1}
+}
+
+\newcounter{requirement}
+\newcommand{\requirement}[1]{
+	\refstepcounter{requirement}\smallskip
+	\textbf{Requerimiento \therequirement: }{{#1}.\smallskip}
+}
+
+\newcounter{activity}
+\newcommand{\activity}[2]{
+	\refstepcounter{activity}\smallskip \label{ac:#1}
+	\textbf{Actividad \theactivity~(#1): }{#2.\smallskip}
+}
+\newcommand{\acref}[1]{
+	{\textbf{A\ref{ac:#1} (#1)}}
+}
+
+\newcounter{component}
+\newcommand{\component}[2]{
+	\refstepcounter{component}\smallskip \label{cp:#1}
+	\textbf{Componente \thecomponent~(#1): }{{#2}.\smallskip}
+}
+\newcommand{\cpref}[1]{
+	{\textbf{C\ref{cp:#1} (#1)}}
+}

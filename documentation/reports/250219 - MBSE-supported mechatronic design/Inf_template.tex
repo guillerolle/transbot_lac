@@ -1,0 +1,760 @@
+\input{preamble.tex}
+
+%\documentclass[]{report}
+
+\usepackage[spanish]{babel}
+\usepackage{dirtytalk}
+\usepackage{todonotes}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+
+% Title Page
+\title{MBSE-supported mechatronic design of a controlled electric cart for material transportation in an indoor production shop}
+\author{Guillermo Rolle}
+
+
+\begin{document}
+\input{caratula.tex}
+
+%\maketitle
+
+%\begin{abstract}
+%\end{abstract}
+
+
+\renewcommand{\thepage}{\roman{page}}
+
+\todototoc
+
+\tableofcontents 
+\cleardoublepage
+\pagenumbering{arabic}% Reset page numbering and style
+\section{Introducción}\label{sec:intro}
+
+En este informe se detalla el proceso de diseño de un carro para el transporte de materiales en un taller de producción de interior utilizando el método ARCADIA \cite{voirin_model-based_2018} como principal metodología de Model-Based System Engineering (MBSE). 
+
+\subsection{Motivación}\label{sec:motivacion}
+La empresa busca aumentar su productividad mejorando el sistema de traslado de materiales, productos y herramientas internamente dentro de la empresa. 
+
+La planta está constituida por diferentes estaciones de trabajo ubicadas mayormente en las paredes laterales de la misma, otorgando un espacio adecuado para el tránsito de los operarios y el transporte de materiales.  Cerca de cada una de las estaciones de trabajo se encuentran diferentes puntos de almacenamiento que dan disponibilidad de diferentes materias primas y subproductos para ser utilizados en las diferentes estaciones de trabajo.
+
+Actualmente, el traslado de materias primas y subproductos entre los diferentes puntos de
+almacenamiento de la empresa las realizan operarios, que dejan sus tareas de producción, utilizando
+carros y canastos diseñados por la propia empresa.
+
+El objetivo de este desarrollo es ofrecerle a la empresa una solución de bajo costo que le permita aumentar su productividad mediante la mejora del sistema/proceso de transporte de insumos de producción.
+
+\subsection{Metodologías}\label{sec:metodologia}
+\pend{esta sección no está muy desarrollada}
+\begin{itemize}
+	\item breve descripción de las metodologías usadas o referenciadas.
+\end{itemize}
+
+\subsubsection{Métodología en V}\label{sec:v-model}
+\begin{itemize}
+	\item Desarrollado en \cite{gausemeier_vdi_2002}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{figs/V-model}
+		\caption{Modelo V para diseño de sistemas, tomado de \cite{gausemeier_vdi_2002}}
+		\label{fig:v-model}
+	\end{figure}
+	\item Mejorado con \say{Black Box Analysis} (BBA) y \say{White Box Analysis} (WBA) con SysML \cite{mhenni_sysml-based_2014}
+	 \begin{figure}[H]
+	 	\centering
+	 	\includegraphics[width=1\linewidth]{figs/BBA_WBA}
+	 	\caption{Pasos en {Black Box Analysis} y {White Box Analysis}, tomado de \cite{mhenni_sysml-based_2014}}
+	 	\label{fig:bbawba}
+	 \end{figure}
+	\item Enfoque BBA/WBA con pasos RFLP en \cite{vitolo_mobile_2022}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{figs/BBWBA_RFLP}
+		\caption{Vínculo entre BBA y WBA con pasos RFLP, tomado de \cite{vitolo_mobile_2022}}
+		\label{fig:bbwbarflp}
+	\end{figure}
+	
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Metodología en W}\label{sec:w-model}
+\begin{itemize}
+	\item Desarrollado en \cite{nattermann_approach_2010} para sistemas adaptrónicos
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{figs/W-model}
+		\caption{Modelo W para sistemas adaptrónicos, tomado de \cite[p7]{nattermann_approach_2010}}
+		\label{fig:w-model}
+	\end{figure}
+	\item Readaptado para sistemas mecatrónicos en \cite{barbieri_model-based_2014}
+\end{itemize}
+
+
+
+\pend{diferencias claves con método V}
+
+\subsubsection{Arcadia}\label{sec:arcadia}
+\begin{itemize}
+	\item Se divide en 5 perspectivas principales (citado textualmente de \cite[p15]{voirin_model-based_2018}):
+	\begin{itemize}
+		\item \textbf{Operational analysis (or OA)}: 
+			\emph{What system users must achieve}. \\
+			This perspective analyses the issue of operational users, by identifying actors that have to interact with the system, their goals, activities, constraints and the interaction conditions between them. 
+		\item \textbf{System needs analysis (or SA)}: 
+			\emph{What the system must achieve for users}. \\
+			This perspective builds an external functional analysis, which is constructed based on the operational analysis and textual input requirements, and outlined with respect to them, to identify in response functions or system services necessary to its users, under the constraint of non-functional properties requested.
+		\item \textbf{Logical architecture (or LA)}: 
+			\emph{How the system will work to meet expectations}. \\
+			In response to the need expressed by the two previous perspectives, it enables the first major choices of solution design, first via an internal functional analysis of the system: it describes the functions to be performed and assembled in order to implement the service functions identified in the previous phase. \\
+			It continues with the identification of the operational components implementing these solution functions, integrating the non-functional constraints that we chose to be addressed at this level.
+		\item \textbf{Physical architecture (or PA)}: 
+			\emph{How the system will be built}. \\
+			This perspective has the same objective as the logical architecture, except that it defines the finalized architecture of the system, as it should be completed and integrated. \\
+			It adds the functions required by the implementation and technical choices, and reveals the behavioral components that perform these functions. These behavioral components are then implemented using host implementation components that offer them the necessary material resource.
+		\item \textbf{Product building strategy (or BS)}: 
+			\emph{What is expected of each component, and the conditions of its integration into the system}. \\
+			This perspective deduces, from the physical architecture, conditions that each component must comply with to satisfy architecture design constraints and choices, achieved in the previous phases. It also defines the integration, verification and validation strategy of the system as a whole.
+		
+	\end{itemize}
+	\item el método \textbf{ARCADIA comienza con un análisis anterior} a los papers citados sobre métodos V y W de las secciones \ref{sec:v-model} y \ref{sec:w-model}. Este análisis previo es el \say{Operational Analysis} que produce los requerimientos del sistema mientras que los papers citados inician el desarrollo a partir de los requerimientos del sistema.
+	\item desarrollo enfocado en análisis de funcionalidades y comportamiento del sistema \cite[p25, C4]{voirin_model-based_2018}: 
+	\begin{center} \emph{
+			Functional analysis constitutes the major support for the understanding and the
+			expression of need in Arcadia, as well as for the definition of the expected behavior
+			of each system component during the design stage.
+		}
+	\end{center}
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/metodo_arcadia}
+	\caption{Vistas principales y perspectivas estructurales del enfoque ARCADIA, tomado de \cite{voirin_model-based_2018}}
+	\label{fig:metodo_arcadia}
+\end{figure}
+
+\addref{\cite{castro_mbse_nodate}}
+
+\pagebreak
+\section{Estudio de las necesidades}\label{sec:need_understanding} 
+Desarrollo basado en metodología ARCADIA (sección \ref{sec:arcadia}), usando software Capella \cite{capella}.
+
+El punto de partida de los métodos de diseño mecatrónico consiste en clarificar y definir los objetivos y tareas con la ayuda de requerimientos \cite[p. 788]{gausemeier_vdi_2002}. En \cite[p. 4]{mhenni_sysml-based_2014} se define a esta etapa como \say{Black Box Analysis} (BBA) en donde el proceso de diseño inicia con la definición de la misión global y objetivos, luego se identifica el contexto e interfaces externas del sistema. Los requerimientos son recolectados durante todos los pasos del BBA.
+
+El método ARCADIA divide el proceso de definición de requerimientos introduciendo una etapa previa a los pasos antes mencionados. Las 2 etapas para la definición de requerimientos son: \say{Operational Analysis} (OA) y \say{System Need Analysis} (SA).
+
+\subsection{Inicio/Requerimientos Informales}
+El método ARCADIA busca centrar el enfoque en \emph{requerimientos formalizados del modelo} \cite[p165, C11]{voirin_model-based_2018}, por lo que los \say{requerimientos informales} (en lenguaje natural) que impone el cliente deben ser traducidos a requerimientos del modelo.
+
+El objetivo principal del cliente es \textbf{aumentar la productividad de la empresa mejorando el proceso de transporte interno de insumos entre ubicaciones de la fábrica}
+
+A partir de este objetivo principal se deriva que:
+\begin{itemize}
+	\item La disponibilidad de insumos en cada estación productiva debe estar siempre garantizada para evitar demoras del proceso productivo. Es decir que:
+	\begin{itemize}
+		\item Las estaciones productivas no deben quedarse sin materia prima para producir.
+		\item Los productos fabricados en una estación productiva deben ser transportados a la siguiente antes de saturarse el espacio disponible para su almacenamiento.
+	\end{itemize}
+	\item La solución debe requerir la mínima modificación de las instalaciones existentes
+	\item Debe ser de mínimo costo
+\end{itemize}
+
+En la Figura~\ref{fig:pd-operational-requirements} se muestra el diagrama de requerimientos inicial.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[PD] Operational Requirements"}
+	\caption{Requerimientos Informales Operacionales Iniciales}
+	\label{fig:pd-operational-requirements}
+\end{figure}
+
+\subsection{Análisis Operacional}\label{sec:operational_analysis}
+En OA se analiza el \say{para qué} del sistema. Se hace un análisis operacional desde el punto de vista del usuario/cliente/etc. En esta etapa no se debe hacer ninguna mención al sistema en sí para evitar acotar el espacio de solución innecesariamente. Esta es una etapa anterior a las definidas en \cite{gausemeier_vdi_2002} y \cite{mhenni_sysml-based_2014} que producen requisitos iniciales necesarios para el BBA (SA, en ARCADIA).
+
+\subsubsection{Entidades y Actores Operacionales interactuantes}
+Entre las entidades o actores operacionales que interactuarán o tendrán algún interés con el sistema se identifican:
+\begin{itemize}
+	\item \textbf{Depósito}: es el lugar donde se almacena la materia prima, herramientas e insumos para producción. Además, en este lugar, se almacenan los productos terminados hasta que sean transportados fuera de la fábrica.
+	\item \textbf{Estación de producción}: representa las distintas estaciones productivas de la fábrica. Almacena la materia prima necesaria para cada proceso productivo, haciendolas disponible al operario de producción, además que también almacena los subproductos/productos de salida producidos por el operario.
+	\item \textbf{Operario de Producción}: Toma la materia prima, insumos y herramientas de su correspondiente estación de producción y los transforma en productos o subproductos.
+\end{itemize}
+
+	
+\subsubsection{Capacidades Operacionales}
+Luego de identificar Actores y Entidades Operacionales, el siguiente paso es capturar motivaciones, expectativas, objetivos, intenciones, etc. en forma de Capacidades Operacionales (OC). En la Figura~\ref{fig:ocb-operational-capabilities} se muestra un diagrama de capacidades operacionales (OCB) donde se muestran diferentes OCs y Entidades/Actores involucrados para cada una.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{"figs/[OCB] Operational Capabilities"}
+	\caption{Capacidades Operacionales y actores/entidades involucradas}
+	\label{fig:ocb-operational-capabilities}
+\end{figure}
+
+\pagebreak
+\subsubsection{Actividades Operacionales}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[OAB] Operational Entities - v2 - Transp_Prod"}
+	\caption{Arquitectura Operacional: situación original básica}
+	\label{fig:oab-operational-entities---v2---transpprod}
+\end{figure}
+
+\pend{describir más y sacar los bloques de roles (violetas)... no cumplen ninguna función acá}
+a
+\pagebreak
+\subsection{Análisis del Sistema}\label{sec:system_need_analysis}
+En SA se analiza el \say{qué} del sistema como caja negra. Acá se analiza la misión y objetivos propios del sistema, contexto, interfaces, etc. Sólo se define lo que el sistema debe hacer para el usuario/cliente pero no \say{cómo} lo va a hacer. Esta etapa se corresponde con la BBA descripta en \cite{mhenni_sysml-based_2014}.
+\subsubsection{Misión, Capacidades y Actores} \label{sec:sa-mision_capabilities}
+
+La \textbf{misión global} del sistema es (requerimiento informal):
+\begin{center}\texttt{
+El sistema debe permitir el traslado de materiales, productos y subproductos autónomamente entre el almacén y estaciones de producción internas a la fábrica, garantizando la seguridad de operarios y/o otros humanos, integridad de los materiales transportados y eficiencia.
+La solución requerida es un prototipo que priorice los bajos costos de fabricación y la simplicidad del diseño y funcionamiento.
+}
+\end{center}
+
+A partir de la \textbf{misión global} se pueden identificar, derivar y desglozar más requerimientos informales como se muestra en la Figura~\ref{fig:pd-system-requirements}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[PD] System Requirements"}
+	\caption{Requerimientos Informales Iniciales del Sistema}
+	\label{fig:pd-system-requirements}
+\end{figure}
+
+
+Luego, de esos requerimientos se obtienen requerimientos funcionales del sistema utilizados en ARCADIA: \textbf{(M)} misiones del sistema (el propósito del sistema) y \textbf{(C)} capacidades (servicio(s) que el sistema debe proveer). En la Figura~\ref{fig:mcb-capabilities} se muestra un diagrama de misiones y capabilidades con trazabilidad a los requerimientos informales y \textbf{(SA)} actores externos involucrados.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[MCB] Capabilities"}
+	\caption{Misión, Capacidades y Actores principales del Sistema}
+	\label{fig:mcb-capabilities}
+\end{figure}
+
+
+\subsubsection{Funciones del Sistema}\label{sec:sab-system-context}
+
+\begin{itemize}
+	\item Funciones básicas del sistema y actores
+	\item Cadenas funcionales de transporte de materiales y de productos
+	\item Cadenas funcionales de solicitudes de materiales y productos
+\end{itemize}
+
+En la Figura~\ref{fig:sab-system-context} se muestra una primer versión de la arquitectura funcional del sistema. Entre las funciones del sistema detectadas, se destacan:
+\begin{itemize}
+	\item \textbf{cargar/descargar insumos}: el sistema debe cargar y/o descargar los materiales/productos en el depósito y/o estaciones de producción.
+	\item \textbf{navegar por la fábrica}: el sistema debe circular/andar/moverse autónomamente por la fabrica en función de un destino objetivo establecido. Es decir, por ejemplo, en algún momento debe trasladarse al depósito para cargar materia prima y, luego, deberá a ir a una estación de producción específica para descargar los materiales, o viceversa.
+	\item \textbf{transportar insumos}: el sistema debe transportar los insumos cargados aprovechando las funciones de navegación.
+	\item \textbf{procesar solicitud de transporte}: dado que el sistema debe tener destinos objetivos claros hacia dónde navegar, debe tener una forma de recibir solicitudes de transporte por parte de los operarios de planta. La solicitud puede ser: \say{traer materia prima del depósito} o \say{llevarse los productos producidos a una estación siguiente}
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[SAB] System Context - 0.1 - SitRiesgo"}
+	\caption{Funciones Iniciales del Sistema y Actores }
+	\label{fig:sab-system-context}
+\end{figure}
+
+
+\paragraph{Máquina de Modos: Navegación Simple} \label{sec:msm-sa---navegacion}
+Esta máquina de modos representa modos operativos del sistema necesarios para la navegación por la fábrica. Por definición, en cada momento sólo 1 modo de una máquina de modos puede estar activo. Un modo es un comportamiento esperado del sistema en condiciones elegidas \cite[p.305, C18]{voirin_model-based_2018} y está conectado a otros modos a través de \say{transiciones} (flechas) que representan ciertas condiciones. Cuando se activa una transición, si el modo previo estaba activado se desactiva y el modo siguiente es activado.
+
+Descripción de los modos (ver Figura~\ref{fig:msm-sa---navegacion}):
+\begin{itemize}
+	\item \textbf{reposo}: es el modo inicial. Indica que el sistema está en reposo esperando un comando. Cuando recibe el destino hacia dónde debe ir, este modo se apaga y se enciende el modo \textbf{generación de trayectoria}
+	\item \textbf{generación de trayectoria}: este modo indica que el sistema está calculando la mejor trayectoria para ir desde su ubicación actual hasta el destino recibido. Cuando la trayectoria esté definida, el sistema pasa a modo de \textbf{navegación}.
+	\item \textbf{navegación}: el sistema está en modo de navegación. En este modo de operación, el sistema está ejerciciendo las acciones de control necesarias sobre los actuadores para desplazarse por el entorno. Además, mientras el sistema se encuentre en este modo, no podrá recibir otros comandos de destino. Una vez llegado a destino, el sistema vuelve al modo \textbf{reposo} y puede recibir órdenes nuevamente.
+
+\end{itemize} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"figs/[MSM] SA - navegación"}
+	\caption{Máquina de Modos: Proceso de Navegación (inicial)}
+	\label{fig:msm-sa---navegacion}
+\end{figure}
+\pend{mostrar implementación en OpenModelica de la MSM de la Figura~\ref{fig:msm-sa---navegacion}}
+Para mejorar la interpretación de esta máquina de modos, las funciones de la sección\ref{sec:sab-system-context} del sistemas son desglozadas y sus interacciones son detalladas. En la Figura~\ref{fig:sdfb-navegar-por-la-fabrica} se muestra un Diagrama de Flujos de Datos del Sistema (SDFB) en donde se pueden ver las funciones, subfunciones e intercambios funcionales. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[SDFB] navegar por la fábrica"}
+	\caption{[SDFB] navegar por la fábrica y procesar solicitud}
+	\label{fig:sdfb-navegar-por-la-fabrica}
+\end{figure}
+~\\
+\textbf{Funciones habilitadas en cada modo:}
+\begin{itemize}
+	\item \textbf{reposo}: <<procesar ciclo de transporte>>: determina los sectores que debe visitar para una misión (p.ej: desde el depósito a EP01), si debe cargar o descargar y qué tipo de insumos.
+	\item \textbf{generando trayectoria}: <<planear trayectoria>>: a partir del destino específico calculado por la función anterior, planifica la trayectoria deseada para trasladar la base móvil desde la pose actual hacia el destino.
+	\item \textbf{navegación}: <<moverse por el entorno>>: función de moverse o desplazarse por el entorno siguiendo la trayectoria deseada.
+\end{itemize}
+
+En este caso, la relación entre modos y funciones es 1 a 1 pero no necesariamente tiene que ser así. Las otras funciones mostradas en la figura no necesariamente deben ser habilitadas por modos de una misma máquina de estados, sino que pueden depender de otras o siempre estar activadas.
+
+
+
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{0.45\textwidth}
+%		\includegraphics[width=\textwidth]{"figs/bm - reposo"}
+%		\caption{Modo: Reposo}
+%		\label{fig:bm---reposo}
+%	\end{subfigure}
+%	\begin{subfigure}{0.45\textwidth}
+%		\includegraphics[width=\textwidth]{"figs/bm - gentray"}
+%		\caption{Modo: Generación de Trayectoria}
+%		\label{fig:bm---gentray}
+%	\end{subfigure} \\
+%	\begin{subfigure}{0.45\textwidth}
+%		\includegraphics[width=\textwidth]{"figs/bm - navegando"}
+%		\caption{Modo: Navegando}
+%		\label{fig:bm---navegando}
+%	\end{subfigure}
+%	\caption{asdas}
+%\end{figure}
+
+\paragraph{Máquina de Estados: Ubicación del Sistema} \label{sec:msm-location} esta máquina de estados representa las posibles ubicaciones \say{macro} del sistema en el en función del layout de la planta. Por definición de Máquina de Estados, en cada momento sólo 1 estado puede estar activo. 
+
+En la Figura~\ref{fig:bm---layout} se muestra un layout ilustrativo de la fábrica dividido por sectores y al sistema como una caja negra en el sector \textbf{base}. Sectores:
+\begin{itemize}
+	\item \textbf{Base}: sector donde el sistema debería iniciar, apagarse, recargarse, dormir, etc.
+	\item \textbf{Depósito}: sector donde se almacena la materia prima y los productos terminados de producción.
+	\item \textbf{EPxx}: estaciones de producción (EP). Los productos producidos en una EP pueden ser insumos para otra.
+	\item \textbf{Zona de Tránsito}: representa los caminos de circulación de la fábrica.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{"figs/bm - layout"}
+	\caption{Layout fábrica (a modo ilustrativo)}
+	\label{fig:bm---layout}
+\end{figure}
+
+En la Figura~\ref{fig:msm-location} se muestra la máquina de estados de ubicación en función del layout de la fábrica. La máquina de estados usa las mismas reglas para su construcción que las máquinas de modo (comentado en \ref{sec:msm-sa---navegacion}). Un estado es un comportamientos sufrido/experimentado por el sistema bajo algunas condiciones condiciones impuestas por el entorno \cite[p.306, C18]{voirin_model-based_2018}. 
+
+En resumen, el funcionamiento de la máquina de estados es como sigue:
+\begin{itemize}
+	\item \textbf{En Base}: inicialmente, el sistema está localizado en la base. Al cruzar la puerta 3 (ver layout arriba), pasa a estar en zona de tránsito.
+	\item \textbf{En Zona de Tránsito}: El sistema se encuentra por los caminos de circulación de la fábrica, hasta cruzar alguna de las puertas de los otros sectores y el estado cambia en correspondencia.
+	\item \textbf{En Depósito}: al cruzar la puerta 1 o la 2 desde la zona de tránsito, el sistema pasa a estar en el sector de depósito. Al volver a cruzar una de estas puertas en la otra dirección, pasa a zona de tránsito nuevamente.
+	\item \textbf{En EPxx}: \dots (análogo)
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[MSM] Location"}
+	\caption{Máquina de Estados: Ubicación del Sistema}
+	\label{fig:msm-location}
+\end{figure}
+
+\textbf{Nota:} las transiciones (cruzar una puerta) de la máquina de estados mostrada en la Figura~\ref{fig:msm-location} no implican en absoluto algún tipo de barreras físicas, láser o sistemas automáticos de detección de cruces de las puertas. En esta instancia, esas transiciones son puramente descriptivas y pueden usarse únicamente como ayuda para describir procesos o funciones.
+
+\paragraph{Máquina de Modos/Estados: Manipulación de Materiales}
+\pend{Agregar descripción [MSM] u otras para manipulación de materiales}
+
+\subsubsection{Cadenas Funcionales}
+Las cadenas funcionales permiten describir las capabilidades detectadas en \ref{sec:sa-mision_capabilities} u otras cadenas funcionales interesantes.
+
+\paragraph{Solicitud y transporte de materiales} Por ejemplo, en la Figura~\ref{fig:sab-system-context---materiales} se muestran las cadenas funcionales para la \emph{Solicitud de materiales} y el \emph{Transporte de materiales}. 
+
+El proceso de \emph{Solicitud de materiales} comienza con el operario de producción ya que éste debe verificar la disponibilidad de insumos productivos. Cuando se queda sin materiales (o alguna otra condición, a revisar) debe hacer el pedido de entrega de materia prima, que a su vez el sistema procesará determinando el tipo de insumo necesario y calculando la trayectoria más conveniente para ir al depósito y luego a la estación productiva correspondiente. La cadena funcional termina con la función de transporte de insumos (específicamente, de materiales). Es decir, esta cadena funcional indica el proceso funcional entre la acción del operario de verificar insumos disponibles y la respuesta efectiva del sistema de transportar dichos insumos
+
+Por otra parte, se muestra, además, la cadena funcional de \emph{Transporte de Materiales}, en el que se describe el proceso que sufren los propios materiales desde su almacenaje en el depósito hasta que son trabajados en una estación.
+
+Notar que desde el punto de vista de ambas cadenas mencionadas, hay funciones que son comunes a los 2 como, por ejemplo, \emph{cargar insumos} y \emph{transportar insumos}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{"figs/[SAB] System Context - Materiales"}
+	\caption{Cadenas Funcionales: Transporte de Materiales y Solicitud de Materiales}
+	\label{fig:sab-system-context---materiales}
+\end{figure}
+
+\paragraph{Solicitud y transporte de productos} Por otra parte, en la Figura~\ref{fig:sab-system-context---productos} se muestran las cadenas funcionales análogas a las anteriores pero para los productos terminados. Se omite hacer una descripción más detallada dado que son análogas a los casos anteriores.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{"figs/[SAB] System Context - Productos"}
+	\caption{Cadenas Funcionales: Transporte de Productos y Solicitud de Productos}
+	\label{fig:sab-system-context---productos}
+\end{figure}
+
+\paragraph{Capabilities}
+\pend{desarrollar cadenas funcionales para describir las capacidades}
+
+\pagebreak
+\section{Diseño de la Arquitectura de la Solución}\label{sec:solution_architectural_design}
+
+
+\subsection{Arquitectura Lógica}\label{sec:logical_architecture}
+Una vez definido la funcionalidades que debe tener el sistema en la Sección~\ref{sec:system_need_analysis}, se comienzan a diseñar los principios funcionales mediante los cuales el sistema llevará a cabo los requerimientos planteados. Se hace hincapié en que, como el diseño es un proceso recursivo, la arquitectura del sistema será modificada nuevamente, muchas veces debido a requerimientos inducidos desde etapas \say{posteriores} como, por ejemplo, por el diseño de la arquitectura lógica.
+
+En la Figura~\ref{fig:lab-logical-system} se muestra una primera versión de la arquitectura lógica que satisface los requerimientos de navegación. Los bloques celestes claros representan actores o componentes externos al sistema (por ejemplo: Operario de Producción) mientras que los más oscuros son componentes lógicos internos al propio sistema en desarrollo. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{"figs/[LAB] Logical System"}
+	\caption{Arquitectura Lógica Inicial - Sistema de Locomoción}
+	\label{fig:lab-logical-system}
+\end{figure}
+
+En este caso, se muestran los siguientes componentes lógicos:
+\begin{itemize}
+	\item \textbf{Carro Móvil}: Son los componentes \say{físicos} que constituyen al carro en sí mismo pero sin un detalle físico o tecnológico específico. Es importante considerar esto como componentes lógicos (además de físicos en la sección~\ref{sec:physical_architecture}) ya que condicionan al comportamiento de la base móvil. En esta instancia, se determina que el carro se mueve por efectos de rodaduras (\textbf{ruedas}) y no, por ejemplo, con patas; que tiene \textbf{actuadores} que hacen girar o rotar a estas ruedas y que hay un único \textbf{chasis} que vincula rígidamente a todos los componentes. La combinación entre tipo de ruedas, posiciones de montaje sobre el chasis y disposición de actuadores, determina la \emph{configuración cinemática} del carro móvil, propiedad importante para caracterizar el \emph{comportamiento} de la base móvil: \emph{grado de movilidad}, \emph{grado de direccionabilidad} y \emph{grado de maniobrabilidad} \cite{canudas_de_wit_theory_1996}. Estos componentes se definen de una forma genérica dado que, en esta instancia, aún no se evaluaron alternativas de diseño en este sentido.
+	\item \textbf{Sistema de Navegación}: Subsistema encargado de calcular las trayectorias y ejecutar las leyes de control para el movimiento de la base móvil en función de un destino objetivo deseado. Como salida, calcula los comandos de referencia para los actuadores. La ley de control utilizada debe concordar con la configuración cinemática del carro móvil y también debe tener compatiblidad con las entradas de los actuadores.
+	\item \textbf{Sistema de Interfaz}: Se encarga de recibir y procesar la solicitud de trabajo de los operarios. De momento, se considera que los posibles ciclos de transporte son de la forma:
+	\begin{itemize}
+		\item \emph{traer materiales}: 
+		\begin{enumerate}
+			\item ir al depósito/estación anterior a buscar materiales (a definir cómo se indica el destino)
+			\item ir a la estación correspondiente a dejar materiales
+		\end{enumerate}
+		\item \emph{llevar productos}:
+		\begin{enumerate}
+			\item ir a la estación correspondiente a buscar productos
+			\item ir a depósito/estación siguiente a dejarlos (a definir cómo se indica el destino)
+		\end{enumerate}
+	\end{itemize}
+	\item \textbf{Sistema de Suspensión}: Encargado de absorber las irregularidades del suelo y de garantizar la estabilidad de la base. Es posible que la solución final no tenga componentes dedicados a este subsistema, siendo una solución \say{rígida}. De todas maneras, en esta instancia, es importante dejarlas para señalar que estas funciones serán tenidas en cuenta al tomar decisiónes sobre la solución final.
+	\item \textbf{Sistema de Energía}: Provee energía a todos los demás componentes. En esta etapa, sólo se visualiza la energía que debe ser suministrada a los actuadores ya que indican los flujos de potencia. Los flujos funcionales asociados a los otros componentes (Sistema de Navegación y/o de Interacción) son, en principio, señales. La energía que debe alimentar a estos componentes aparecerá en el diseño de la arquitectura física.
+\end{itemize}
+
+
+\subsubsection{Carro Móvil} \label{sec:carro_movil}
+\pend{describir mejor alternativas de carro móvil. Citar a \cite[p.87]{siegwart_introduction_2011} respecto de la estabilidad intrínseca a cada tipo de  configuración}
+
+Como se mencionó antes, el carro móvil está compuesto por un chasis, ruedas y actuadores. Distintas combinaciones entre estos componentes (cantidad, tipo, ubicación) producen carros móviles con comportamientos diferentes. 
+
+\begin{itemize}
+	\item \textbf{chasis}: único cuerpo rígido. Todos los componentes son montados sobre el chasis
+	\item \textbf{ruedas}: aportan estabilidad, distribuyen el peso y permiten y restringen el movimiento del carro móvil
+	\begin{itemize}
+		\item fijas
+		\item direccionables
+		\item caster
+		\item suecas/omniwheel
+	\end{itemize}
+	\item \textbf{actuadores}: normalmente motores eléctricos.
+	\begin{itemize}
+		\item tracción: mueven las ruedas de tracción. Normalmente controlados por velocidad o torque
+		\item dirección: cambian la dirección de las ruedas direccionables o las cáster que estén dotadas con actuación en la dirección. Normalmente controlados por ángulo.
+	\end{itemize}
+\end{itemize}
+
+
+Clasificados según su configuración cinemática, las 3 familias de configuraciones más comunes son:
+\begin{itemize}
+	\item \textbf{Omnidireccional (3,0)} Puede ser de 3 ruedas con ruedas omniwheel o 4 ruedas con ruedas mecanum. Requiere 3 o 4 actuadores, respectivamente. Estas ruedas son caras y no muy recomendables en entornos cerrados y con grasa. Por este motivo, esta alternativa es descartada.
+	\item \textbf{Tracción Diferencial (2,0)} Es una configuración bastante común, relativamente fácil de controlar, con buena maniobrabilidad y estabilidad. 
+	\item \textbf{Ackermann (1,1)} Configuración tipo auto. Es la más estable a altas velocidades pero requiere 2 ruedas fijas actuadas en coordinación o 1 sólo actuador con mecanismos de transmisión (diferencial) y 2 ruedas direccionables con actuadores sincronizados o 1 sólo actuador con mecanismo de dirección. Es más complicado mecánicamente o más caro por cantidad de actuadores y sincronización requerida.
+\end{itemize}
+
+\paragraph{Implementación OpenModelica}
+Para mantener la generalización de carro móvil, se construyó una clase \emph{parcial} que define las interfaces y conexiones \say{estándar} para cualquier modelo de carro móvil. Es decir, debe tener un componente para el chasis, una cantidad arbitraria de tipo arbitrario en ubicación arbitraria de ruedas y algunos actuadores que son comandados desde el exterior.
+
+Una configuración particular para un robot móvil de tracción diferencial con 2 ruedas cáster de apoyo se muestra en la Figura~\ref{fig:md01fk}. El modelo es enteramente en Bond Graph, y está compuesto por varios bloques que pueden ser o no ser intercambiables: ruedas, chasis, transformaciones.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/MD01_FK}
+	\caption{Modelo de carro móvil de tracción diferencial con 2 ruedas cáster de apoyo}
+	\label{fig:md01fk}
+\end{figure}
+
+La ventaja de modelarlo en BG es que permite fácilmente agregar o sacar componentes, agregar inercias y efectos dinámicos a los componentes, cambiar leyes de rozamiento (p.ej: en lugar de restricciones de deslizamiento nulo se pueden proponer leyes de fricción), modelar actuadores de velocidad o de torque, etc. Además, se puede fácilmente extraer información sobre energía y potencia suministrada, disipada o requerida en cualquier eslabón del modelo.
+
+\subparagraph{Chasis}
+La implementación del chasis es simplemente la de un cuerpo rígido plano
+
+\begin{figure}[H]
+	\centering
+	\fbox{\includegraphics[width=0.7\linewidth]{figs/chasis}}
+	\caption{Modelo del chasis}
+	\label{fig:chasis}
+\end{figure}
+
+\subparagraph{Ruedas}
+Cada tipo de rueda es una implementación específica de una clase de rueda \emph{parcial} mostrada en la Figura~\ref{fig:wheel}. En la Figura~\ref{fig:ruedas-implementaciones} se muestran las implementaciones específicas para cada tipo de rueda: fija, direccionable y cáster.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\linewidth}\centering
+		\centering
+		\fbox{\includegraphics[width=0.9\linewidth]{figs/wheel}}
+		\caption{Modelo parcial de una rueda}
+		\label{fig:wheel}
+	\end{subfigure}
+	\begin{subfigure}{0.4\linewidth}\centering
+		\fbox{\includegraphics[width=0.9\textwidth]{"figs/FixedWheel"}}
+		\caption{Implementación de rueda fija}
+	\end{subfigure} \\
+	\begin{subfigure}{0.4\textwidth}\centering
+		\fbox{\includegraphics[width=0.9\textwidth]{"figs/SteeringWheel"}}
+		\caption{Implementación de rueda direccionable}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}\centering
+		\fbox{\includegraphics[width=\textwidth]{"figs/CasterWheel"}}
+		\caption{Implementación de rueda cáster}
+	\end{subfigure}
+	\caption{Implementación específica de cada tipo de rueda}
+	\label{fig:ruedas-implementaciones}
+\end{figure}
+
+\subsubsection{Sistema de Navegación}
+El \textbf{Sistema de Navegación} consta de 3 componentes lógicos principales:
+\begin{itemize}
+	\item Controlador de Movimiento: Ley de control para computar las referencias de los actuadores
+	\item Planificador de Trayectoria: Algoritmo para calcular la trayectoria óptima
+	\item Sensores: tienen la función de medir o estimar ciertas variables del sistemas necesarias para el controlador.
+\end{itemize}
+
+Para este sistema, se traslada directamente la máquina de modos del Sistema mostrada en la Figura~\ref{fig:msm-sa---navegacion} en donde, cada modo activa o desactiva distintas funciones o componentes del Sistema de Navegación.
+
+\paragraph{Controlador de Movimiento} Este componente implementa una ley de control de \emph{Static State Feedback Linearization: Point Tracking}  \cite[C8]{canudas_de_wit_theory_1996}. La implementación específica depende del tipo de carro de móvil y la configuración de actuadores seleccionada. Por eso, en la Figura~\ref{fig:ldfb-static-state-feedback-linearization---point-tracking} se muestra un esquema funcional de la ley de control subdividida en varias funciones. Para cualquier implementación según el tipo de carro móvil (ver \ref{sec:carro_movil}) la estructura funcional y los intercambios es la misma, modificándose únicamente la implementación específica.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{"figs/[LDFB] Static State Feedback Linearization - Point Tracking"}
+	\caption{Static State Feedback Linearization: Point Tracking}
+	\label{fig:ldfb-static-state-feedback-linearization---point-tracking}
+\end{figure}
+\begin{itemize}
+	\item \textbf{difeomorfismo}: esta función calcula los valores de las variables de control estáticamente a partir del estado del sistema. Las variables de control son las coordenadas de un punto vinculado al carro móvil. El punto de control específico cambia según el tipo de carro móvil \cite[C8, p316-318]{canudas_de_wit_theory_1996}
+	\item \textbf{dinámica del error}: computa el error entre la trayectoria deseada y el punto de control en función de ganancias determinadas por el usuario. La dinámica del error del punto de seguimiento a lazo cerrado es un PT2.
+	\item \textbf{desacoplamiento}: transforma las referencias de control en coordenadas del punto de seguimiento a referencias sobre el espacio nulo del robot móvil. Esta transformación depende de la configuración cinemática de base móvil como la función de difeomorfismo.
+	\item \textbf{cálculo del comando de actuadores} computa los comandos de referencia de los actuadores a partir de las referencias sobre espacio nulo. Esta función depende de la configuración de actuadores y del tipo de base móvil.
+\end{itemize}
+
+\subparagraph{Implementación Simulación}
+En la Figura~\ref{fig:sc02ddssfpttrkwactiveport} se muestra el esquema de control implementado en OpenModelica para simulación para el caso de una base diferencial. Cada bloque mostrado cumple una de las funciones indicadas anteriormente (se puede obtener las analogías por su posición visual en el esquema), en donde se hizo un esquema \emph{parcial} como plantilla para controladores de diferente tipo de base móvil. A su vez, cada subfunción, también hereda de una clase \emph{parcial} base.
+\begin{figure}[H]
+	\centering
+	\fbox{\includegraphics[width=0.6\linewidth]{figs/SC02_DD_SSF_PTTRK_wActivePort}}
+	\caption{Implementación Control de Movimiento en OpenModelica}
+	\label{fig:sc02ddssfpttrkwactiveport}
+\end{figure}
+Los esquemas de control específicos para cada tipo de base móvil son instanciados con las implementaciones correspondientes de cada bloque pero todos comparten una misma estructura general y conexiones.
+
+El puerto \textbf{active} indica que el controlador está activo y funcionando. Cuando está inactivo, las salidas de control se fijan a 0.
+\paragraph{Planificador de Trayectoria}
+El planificador de trayectoria se encarga de computar la trayectoria deseada en función de la pose del robot y del objetivo final deseado. Además, debe ir verificando y ajustando la trayectoria en función a los errores, detección y evasión de obstáculos, etc.
+
+El planeamiento de trayectoria es una actividad muy importante para este tipo de robots. En \cite{siciliano_robotics_2010} propone algunos algoritmos de planeamiento que consisten, en principio, calcular un camino suave mediante interpolación de puntos y, luego, asociar una función temporal a lo largo de este camino. Para los distintos tipos de robots se puede hacer algún ajuste en las trayectorias para que las siga correctamente y se podría agregar fases de maniobra.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.3\linewidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T1"}
+			\caption{T1: de base a depósito}
+		\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T2"}
+			\caption{T2: de depósito a EP01}
+		\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T3"}
+			\caption{T3: de EP01 a base}
+		\end{subfigure} \\
+			\begin{subfigure}{0.3\linewidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T4"}
+			\caption{T4: de base a EP02}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T5"}
+			\caption{T5: de EP02 a EP03}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}\centering
+			\includegraphics[width=\textwidth]{"figs/T6"}
+			\caption{T6: de EP03 a base}
+		\end{subfigure}
+	\caption{Trayectorias precomputadas}
+	\label{fig:trayectorias-computadas}
+\end{figure}
+
+Actualmente, lo implementado es seleccionar entre varias trayectorias fijas precargadas, mostradas en la Figura~\ref{fig:trayectorias-computadas}, que no son suaves y son a velocidad constante. De esta forma, un ciclo de trabajo puede ser, por ejemplo:
+\begin{itemize}
+	\item \textbf{Para llevar materiales a EP01}
+	\begin{enumerate} 
+		\item \textbf{T1} Base->T1->Depósito
+		\item Cargar materiales en depósito
+		\item \textbf{T2} Depósito -> T2 -> EP01
+		\item Descargar materiales en EP01
+		\item \textbf{T3} EP01 -> T3 -> Base
+	\end{enumerate}
+	\item \textbf{Para llevar subproductos de EP02 a EP03}
+	\begin{enumerate} 
+		\item \textbf{T4} Base->T4->EP02
+		\item Cargar materiales en EP02
+		\item \textbf{T5} EP02 -> T5 -> EP03
+		\item Descargar materiales en EP03
+		\item \textbf{T6} EP03 -> T6 -> Base
+	\end{enumerate}
+\end{itemize}
+
+\pend{Considero importante mejorar el algoritmo de planeamiento de trayectorias para mostrar simulaciones. Esto implica también cambiar la máquina de modos de la Figura~\ref{fig:msm-sa---navegacion} ya que, posiblemente, debería permitirse modificar la trayectoria durante la navegación}
+
+\pagebreak
+\subsubsection{Sistema de Suspensión}
+El sistema de suspensión se encarga de absorber las irregularidades del suelo y de garantizar la estabilidad de la base móvil estando cargada y descargada. El componente de sistema de suspensión ubicado en la arquitectura lógica actual cumple, principalmente, la función de tener un registro de las decisiones sobre el diseño y las alternativas consideradas \cite{lo_needs_2012, couturier_tracking_2014}. Al aparecer el componente de una forma abstracta, implica que se van a evaluar y diseñar las alternativas pertinentes e incluso puede llegar a desaparecer más adelante.
+
+Algunas de las alternativas consideradas son:
+\begin{itemize}
+	\item \textbf{rígida}: sin suspensión propiamente dicha. Tal vez las propiedades estructurales, las dimensiones, pesos del robot y la superficie del piso de la fábrica sean adecuados para funcionar sin un sistema de suspensión en particular.
+	\item \textbf{resortes}: suspensión con resortes y amortiguadores. Puede haber varias configuraciones diferentes. Reducen considerablemente los esfuerzos sobre las ruedas y el chasis pero es más caro, hay más componentes para ubicar y parametrizar.
+	\item \textbf{ruedas neumáticas}: la amortiguación podría ser en los neumáticos si estos son inflados con aires en lugar de rígidos. Solución descartada porque en la fábrica hay mucha viruta y provoca pinchaduras fácilmente.
+\end{itemize}
+
+Algunos estudios para dimensionar, evaluar o tener restricciones entre parámetros son:
+\begin{itemize}
+	\item análisis cinemático de vuelco: relación entre distancia entre ruedas (longitudinal y lateral), aceleraciones máximas y altura del centro de masa.
+	\item radio de las ruedas: en relación con las irregularidades del suelo
+	\item cálculo del despeje mínimo: relación entre el despeje entre el chasis y el suelo respecto de la distancia entre ejes y pendientes del terreno.
+	\item esfuerzos transmitidos al pasar por una irregularidad: función de los radios de las ruedas, velocidades de desplazamiento, irregularidades.
+\end{itemize}
+
+\nota{ para no hacer tan largo este informe describo principalmente lo nuevo.. Las cosas que vimos antes y que no las cambié no las detallo}
+
+\paragraph{Suspensión Rígida} Se analiza la suspensión rígida dado que puede ser mucho más económica que las otras si los esfuerzos transmitidos son aceptables. 
+
+Se hizo un modelo de simulación para verificar los esfuerzos transmitidos al pasar por una irregularidad del suelo tipo escalón, esquematizado en la Figura~\ref{fig:sistsuspension}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/sistsuspension}
+	\caption{Análisis del punto de contacto al subir un escalón}
+	\label{fig:sistsuspension}
+\end{figure}
+
+\pend{Mejorar Figura~\ref{fig:sistsuspension} del modelo de tránsito por un escalón}
+
+La simulación propuesta funciona de la siguiente manera:\\
+\begin{itemize}
+	\item El movimiento del carro está restringido al plano $xz$, es decir, sólo una dirección horizontal $x$ y la dirección perpendicular al suelo $z$ (eje gravitatorio).
+	\item  En principio, el carro se hace mover a una velocidad constante sobre un plano horizontal a una altura de $0$.
+	\item A una distancia determinada, el plano horizontal cambia su elevación una distancia $e$ en dirección del eje $z$ positivo que es la altura de la irregularidad del suelo.
+	\item Se calcula el punto de contacto entre la rueda y el suelo, de forma que las fuerzas de contacto se aplican sobre este punto. Mientras la rueda esté sobre los planos horizontales, el punto de contacto es completamente vertical. Al colisionar con el escalón, el punto de contacto se desplaza un cierto ángulo que varía conforme la rueda avanza sobre el escalón.
+	\item En este punto de contacto hay un sistema de referencia asociado que tiene una componente $z$ que es en sentido radial (fuerza normal) y una componente $x$ que es tangencial.
+	\item El modelo realizado es un BondGraph, en donde las fuerzas de contacto se implementaron como fuente de flujos nula: implica rodadura perfecta en sentido de rodadura y una fuerza normal indeformable. También se modelan las inercias (masa y  momento de inercia) del chasis.
+	\item como las inercias quedan en causalidad derivativa, es necesario hacer que el punto de contacto varíe suavemente para que aparezcan aceleraciones y, en consecuencia, los esfuerzos necesarios, por lo que al ángulo del punto de contacto se lo hace pasar por un filtro PT2 muy rápido con tiempo de respuesta del orden de 0.1 milésima de segundo.
+\end{itemize}
+
+El modelo BondGraph se muestra en la Figura~\ref{fig:ss01planarxzalpha}.
+\begin{figure}[H]
+	\centering
+	\fbox{\includegraphics[width=1\linewidth]{figs/SS01_PlanarXZ_alpha}}
+	\caption{Modelo de impacto con escalón}
+	\label{fig:ss01planarxzalpha}
+\end{figure}
+\pend{mejorar visualmente modelo de la Figura~\ref{fig:ss01planarxzalpha}}
+
+En la Figura~\ref{fig:graficaesfuerzoescalon} se muestran los resultados obtenidos para:
+\begin{itemize}
+	\item \textbf{Parámetros:}
+	\begin{itemize}
+		\item radio rueda: 12 cm. Si el radio aumenta, el pico de esfuerzo baja
+		\item velocidad desplazamiento: 1m/s. Si la velocidad aumento, el pico de esfuerzo aumenta
+		\item masa chasis: 100 kg. Si la masa aumenta, el pico de esfuerzo aumenta.
+		\item altura escalón: 1 cm. Si el escalón aumenta, el pico de esfuerzo sobre el chasis aumenta en la componente horizontal pero en proporciones muy bajas.
+		\item distancia entre ejes: 0.8 m. si aumenta la distancia, el pico de esfuerzo baja (más torque disponible para rotar el chasis)
+	\end{itemize}
+	\item \textbf{Resultados escalón}
+	\begin{itemize}
+		\item Esfuerzo máximo transmitido al chasis en el impacto: $\approx 70000~\text{N}$
+	\end{itemize}
+	
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/grafica_esfuerzo_escalon}
+	\caption{Esfuerzos transmitidos al chasis por el impacto al transitar irregularidad del suelo}
+	\label{fig:graficaesfuerzoescalon}
+\end{figure}
+
+Con los valores obtenidos se puede diseñar un chasis que soporte esos esfuerzos al impacto y ahí analizar si es factible hacerlo sin suspensión o sería mejor evaluar una suspensión con resortes y amortiguadores.
+
+\subsubsection{Modelos de Simulación}
+Se realizaron diversas simulaciones en OpenModelica para analizar el comportamiento de las bases móviles controladas y ejecutando ciclos de transportes básicos.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\linewidth}\centering
+		\includegraphics[width=0.9\textwidth]{"figs/TC04_DD4W_TSLAY01_TS"}
+		\caption{Modelo completo con base diferencial de 4 ruedas}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}\centering
+		\includegraphics[width=0.9\textwidth]{"figs/TC04_CL2W_TSLAY01_TS"}
+		\caption{Modelo completo tipo ackermann de 2 ruedas (bicicleta)}
+	\end{subfigure}
+	\caption{Modelos completos de simulación con OpenModelica}
+	\label{fig:TC04--TSLAY01-TS}
+\end{figure}
+
+
+\paragraph{Resultados de navegación} En la Figura~\ref{fig:TC04--TSLAY01-TS-ANIMATION} se muestran los resultados obtenidos, superponiendo las trayectorias realizadas por las bases móviles con una imagen del layout (sólo ilustrativo, no hay interacción).
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.49\linewidth}\centering
+		\includegraphics[width=0.9\textwidth]{"figs/TC04_DD4W_TSLAY01_TS_ANIMATION"}
+		\caption{Resultado con base diferencial de 4 ruedas \\ 
+			\url{https://youtu.be/Z2PM_TX_TPs}}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}\centering
+		\includegraphics[width=0.9\textwidth]{"figs/TC04_CL2W_TSLAY01_TS_ANIMATION"}
+		\caption{Resultado tipo ackermann de 2 ruedas (bicicleta)\\
+			\url{https://youtu.be/Qbe2TP-E7iI}}
+	\end{subfigure}
+	\caption{Resultados de simulación con OpenModelica}
+	\label{fig:TC04--TSLAY01-TS-ANIMATION}
+\end{figure}
+
+\subparagraph{Modelo con Tracción Diferencial}
+Al modelo tipo tracción diferencial se le agregaron fenómenos inerciales (en causalidad derivativa) y de resistencia de rodadura permitiendo obtener una estimación de valores relevantes para el dimensionamiento de los actuadores (2 actuadores, 1 en cada rueda fija).
+Los valores usados son (hay que ajustarlos):
+\begin{itemize}
+	\item $100~\text{kg}$ de masa para el chasis
+	\item $40~\text{kg.m}^2$ de momento de inercia para el chasis
+	\item $1~\text{Nm.s}$ coeficiente de fricción de rodadura en el eje de las ruedas. 
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{figs/TC04-10-DD4W-actuators}
+	\caption{Torques, velocidades, potencia y energía para cada actuador}
+	\label{fig:tc04-10-dd4w-actuators}
+\end{figure}
+
+Se observa que los mayores picos de torque y potencia se dan en las aceleraciones debido a que la trayectoria de referencia no es suave en el plano, sino que tiene ángulos de 90° y escalones de velocidad (se transita a velocidad constante). El perfil de velocidad de referencia se muestra en la Figura~\ref{fig:tc04-10-dd4w-desiredtrajectoryvelocity} donde se ven los escalones de la magnitud del vector de velocidad y los escalones en la dirección (ángulo) del vector en el plano.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/TC04-10-DD4W-desired_trajectory_velocity}
+	\caption{Perfil de velocidad de la trayectoria deseada}
+	\label{fig:tc04-10-dd4w-desiredtrajectoryvelocity}
+\end{figure}
+
+Los valores obtenidos de potencia y torques son demasiado altos para dimensionar en base a estos valores pero esta es una primera versión que permite tener una idea de cómo aprovechar estos ensayos por simulaciones en escenario relativamente representativos. Algunas consideraciones:
+\begin{itemize}
+	\item Es necesario mejorar la trayectoria deseada: hacer las curvas en el plano suaves y también suavizar la magnitud de la velocidad, por lo menos con rampas con aceleración constante limitada. 
+	\item Los valores de las inercias y fricciones propuestos pueden variar conforme avance el proceso de diseño. Posiblemente, la inercia suba conforme se incremente el detalle de los componentes. Los picos más elevados se dan en los cambios de velocidad (aceleraciones) debido a las inercias, mientras que a velocidades constantes (fricciones) la potencia consumida es relativamente baja.
+\end{itemize}
+
+\subparagraph{Modelo tipo Ackermann} ~\\
+\pend{implementar modelo tipo ackermann con las mismas inercias y fricciones para comparar con el diferencial, aunque todavía esté hecho con 2 ruedas. Hacer modelo 4 ruedas (agregar sistemas de transmisión como componentes lógicos)}
+
+\subsection{Arquitectura Física}\label{sec:physical_architecture}
+\pend{todavía no...}
+
+
+\pagebreak
+\bibliographystyle{ieeetr}
+\bibliography{biblio, biblio_capella}
+%\printbibliography
+
+\pagebreak
+\listoftodos
+\pagebreak
+\end{document}

@@ -1,0 +1,7 @@
+<map id="mobilecarts.components.mechanical.wheels.fixedwheel.FixedWheel" name="mobilecarts.components.mechanical.wheels.fixedwheel.FixedWheel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,167,396,207"/>
+<area shape="rect" id="Node000002" href="$classmobilecarts_1_1components_1_1mechanical_1_1wheels_1_1wheel_1_1Wheel.html" title=" " alt="" coords="21,79,380,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,133,203,166,198,166,198,133"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="176,5,225,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,44,203,79,198,79,198,44"/>
+</map>

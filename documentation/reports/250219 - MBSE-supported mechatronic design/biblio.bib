@@ -1,0 +1,540 @@
+
+@article{cw_de_silva_design_2013,
+	title = {A design paradigm for mechatronic systems},
+	volume = {23},
+	issn = {09574158},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0957415812001080},
+	doi = {10.1016/j.mechatronics.2012.08.004},
+	abstract = {Concepts of mechatronics are applicable in the design of complex and multi-domain dynamic systems. This paper presents an approach based on the mechatronic design quotient (MDQ) for systematic design of a mechatronic system. Traditional procedures of design are hierarchically separated into topological design and parametric design. Extending this concept, an MDQ may be ‘‘structured’’ into a multi-layered hierarchy. The approach and signiﬁcance of the application of MDQ in mechatronic design are indicated using illustrative examples.},
+	language = {en},
+	number = {8},
+	urldate = {2023-02-22},
+	journal = {Mechatronics},
+	author = {{C.W. de Silva} and Behbahani, S.},
+	month = dec,
+	year = {2013},
+	pages = {960--966},
+	annote = {Anotaciones(10/5/2023 16:17:53)
+"Layered optimization may not yield overall optimization" (C.W. de Silva y Behbahani, 2013, p. 4)
+},
+	annote = {Resumen
+Presenta un método de diseño mecatrónico sistemático basado en un índice MDQ (Mechatronic Design Quotient).
+En un diseño desacoplado, cada subsistema se diseña separadamente del resto considerando las interacciones con los otros subsistemas como constantes. El diseño mecatrónico involucra un diseño “acoplado” entre subsistemas.
+Ejemplo: Motor eléctrico: Parte eléctrica y parte mecánica
+
+De forma desacoplada, los subsistemas tienen un índice de diseño óptimo dado por \$i\_\{ue\}\$ para “uncoupled, electrical” y \$i\_\{um\}\$ para “uncoupled, mechanical”. Al juntarse los subsistemas en un sistema mayor, se define el MDQ como:
+\$MDQ = \{x\_e i\_e{\textasciicircum}2 + x\_m i\_m{\textasciicircum}2 {\textbackslash}over \{x\_e i\_\{ue\}{\textasciicircum}2 + x\_m i\_\{um\}{\textasciicircum}2\}\}\$ donde \$x\_i\$ son pesos para cada subsistema o atributos de diseño. 
+En el ejemplo hace:
+\$MDQ = {\textbackslash}sum{\textbackslash}limits\_\{i=1\}{\textasciicircum}\{n\}W\_iI\_\{ij\}\$ con \$j = 1,2, …, m\$ y \$0 {\textless} M\_j {\textless} 1\$ con \$m\$ el numero total de soluciones, \$W\_i\$ es el peso del atributo de diseño \$i\$ y \$I\_\{ij\}\$ es el coeficiente de diseño para ese ese atributo, respecto a algún valor ideal del atributo.
+Ejemplo: Sistema de posicionamiento para una máquina cortadora de pescado de 2 ejes
+
+Recalca que la clave del MDQ está un enfoque jerárquico para la función objetivo. Por ejemplo, una MDQ puede ser optimizada para una capa de diseño en la que se evalúan dos o más grupos tecnológicos en esa capa. Luego, las subcapas asociadas a cada grupo tecnológico son optimizadas con otra función MDQ separadamente de los otros grupos tecnológicos. En la capa subsiguiente, se seleccionarían componentes específicos y/o parámetros.
+“Speciﬁcally, an upper layer may optimize the actuator type for the particular application (e.g., hydraulic, dc, induction, stepper) with an appropriate MDQ. The next lower level may optimize the motor selection (e.g., a select a motor from an available set of dc motors—see Example given in the previous section) with another MDQ. DC motors available in the market, and matching drive systems, may be included in this level. In particular, linear graph models will facilitate component-based (and model-based) design and optimization. In this manner, a complex design optimization may be achieved through several design optimizations at different design levels. The ﬁnal design may not be precisely optimal, yet intuitively adequate for practical purposes; say in a conceptual design.” La optimización por capas propuesta no asegura una optimización global del problema de diseño.
+Para el caso en particular de la cortadora de pescados, usa una función MDQ de “Choquet fuzzy integral” (Marichal, 2000) porque no se puede hacer por medio de una suma ponderada porque la interacción entre criterios afecta la decisión y la inferencia de un experto humano.
+},
+	file = {de Silva y Behbahani - 2013 - A design paradigm for mechatronic systems.pdf:/home/grolle/Zotero/storage/V8EPKMKY/de Silva y Behbahani - 2013 - A design paradigm for mechatronic systems.pdf:application/pdf},
+}
+
+@article{moulianitis_new_2018,
+	title = {A new index based on mechatronics abilities for the conceptual design evaluation},
+	volume = {49},
+	issn = {09574158},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0957415817301745},
+	doi = {10.1016/j.mechatronics.2017.11.011},
+	abstract = {In this paper, a new mechatronics index is proposed for the evaluation of the alternatives in the conceptual design phase. The criteria aggregated to the index are acquired mostly by the collective knowledge presented in the Multi Annual Roadmap for robotics in Europe and adapted by considering the recent advancements in mechatronics. The mathematical formulation of this design index is based on the discrete Choquet integral, taking into account the interactions among the criteria. An application of the proposed mechatronics index to the design of an educational ﬁreﬁghting robot is presented as a case study to demonstrate the support to the designers in the conceptual design evaluation process.},
+	language = {en},
+	urldate = {2023-02-22},
+	journal = {Mechatronics},
+	author = {Moulianitis, V.C. and Zachiotis, G.-A.D. and Aspragathos, N.A.},
+	month = feb,
+	year = {2018},
+	pages = {67--76},
+	annote = {Resumen
+Presenta un índice basado en competencias mecatrónicas para la optimización del proceso de diseño MDQ (C.W. de Silva y Behbahani, 2013). Las competencias mecatrónicas analizadas están inspiradas en (H2020\_Robotics\_Multi-Annual\_Roadmap\_ICT-2017B.pdf)
+Las competencias que analiza son
+
+
+Adaptabilidad
+
+
+Habilidad cognitiva
+
+
+Configurabilidad
+
+
+Autonomía de Decisión
+
+
+Dependabilidad
+
+
+Habilidad de interacción
+
+
+Habilidad de manipulación
+
+
+Habilidad de movimiento
+
+
+Habilidad de percepción
+
+
+Las habilidades cualitativas están discriminadas en niveles donde el puntaje asociado a cada nivel es lineal
+
+Función de agregación:
+Usa integral de Choquet como método evaluación, considerando también criterios de interacción entre niveles. También usa o propone t-norms y operadores ponderantes para representar criterios independientes (Grabisch, 1996)
+Interacción entre criterios:
+La primer opción es que algunos niveles de un criterio en particular depende de satisfacer ciertos niveles de otro(s) criterio(s) como prerequisitos.
+
+Integral de Choquet:
+Permite agregar peso a la función de agregación no sólo por la importancia de cada criterio, sino también por subconjuntos de criterios.
+El factor de peso de un subconjunto de criterios está representado por \${\textbackslash}mu\$, donde \$X = {\textbackslash}\{ x\_1, {\textbackslash}dots , x\_n{\textbackslash}\}\$ es el conjunto finito de criterios de evaluacion. \$A\$ es subconjunto de criterios del subconjunto \$B\$ de criterios que a su vez es subconjunto de \$X\$.
+
+Este paper toma en cuenta restricciones entre pares de criterios solamente (Grabisch, 1997), habiendo un total de \$2{\textasciicircum}n\$ coeficientes a definir, donde \$n\$ es la cantidad total de criterios.
+En (Grabisch, 1997) define la medida \${\textbackslash}mu(T)\$ de un subconjunto \$T {\textbackslash}subset X\$  como: o sea, con notación Moulianitis: \${\textbackslash}mu(T) = {\textbackslash}sum{\textbackslash}limits\_\{{\textbackslash}\{i,j{\textbackslash}\} {\textbackslash}subset T\} {\textbackslash}mu(x\_i,x\_j) - ( {\textbar}T{\textbar} - 2 ) {\textbackslash}sum{\textbackslash}limits\_\{i {\textbackslash}in T\} {\textbackslash}mu(x\_i)\$
+
+
+Los coeficientes \$a\_i={\textbackslash}mu\_i\$ son los pesos individuales de cada criterio
+
+
+Los coeficientes \${\textbackslash}mu\_\{ij\}\$ son los coeficientes de peso total para cada interacción entre criterios \$i,j\$
+
+
+Los coeficientes \$a\_\{ij\}={\textbackslash}mu\_\{ij\}-{\textbackslash}mu\_i-{\textbackslash}mu\_j\$ son las contribuciones marginales de cada interacción (entre pares de criterios)
+
+
+Las 4 interacciones consideradas en el paper son:
+
+Las interacciones entre pares de criterios no definidas explícitamente, responden a la siguiente regla:
+\${\textbackslash}mu(x\_i, x\_j) = {\textbackslash}mu(x\_i) + {\textbackslash}mu(x\_j)\$
+Los efectos “Veto” y “Pass” actúan sobre conjuntos completos siempre que se cumple la condición. Ver ejemplo abajo para entender cómo funciona con el enfoque de contribución marginal
+Casi textual (p.72 (6) col. 2):  
+“Dado el conjunto de criterios \$X\$ y la medida “fuzzy” \${\textbackslash}mu\$, la integral de Choquet de una función \$f: X {\textbackslash}rightarrow [0, 1]\$ con respecto a \${\textbackslash}mu\$ se define como  
+donde \$(.)\_\{(i)\}\$ indica que los indices se permutaron de forma que \$0{\textbackslash}leq f(x\_1){\textbackslash}leq{\textbackslash}dots{\textbackslash}leq f(x\_n) {\textbackslash}leq 1\$  y \$A\_\{(i)\}: ={\textbackslash}\{x\_i,{\textbackslash}dots,x\_n{\textbackslash}\}\$“
+En este contexto, \$f(x\_i)\$ representa el puntaje de la alternativativa sobre cada criterio individual. La permutación \$(.)\_\{(i)\}\$  significa que los criterios están ordenados de menor a mayor puntaje. Agregar ejemplo con gráficas para que quede claro.
+Ejemplo
+Muestra un ejemplo de un robotito extinguidor diseñado y construido para competencias estudiantiles.
+La información de diseño es presentada en términos de flujos de Energía, Materia e Información:
+
+Funciones de diseño:
+
+
+
+Las subfunciones con múltiples soluciones posibles son (el resto de las subfunciones tienen una sóla solución posible):
+
+Descartando diseños inaceptablemente complicados, caros y/o desconocidos, hay 4 conjuntos de alternativas posibles:
+
+Para la función de evaluación de cada alternativa se proponen 7 competencias mecatrónicas (detalladas en la sección 3 del paper) y también agrega un criterio de
+
+
+trabajo/costo: es la suma de los recursos utilizados en la construcción del robot móvil (etimación del número y tipo de componentes que se deben fabricar/comprar, horas hombres utilizadas para el ensamblaje, escritura del código de control y/o ajustes de parámetros y ensayos, etc). Depende en la familiaridad del equipo de diseño con las tecnológias específicas del robot en consideración.
+
+
+complejidad
+
+
+
+Calculo de la integral de Choquet
+Para el cálculo de la integral, se definen los pesos propios de cada criterio aislado. A cada uno, se le asignó un valor de “Alta importancia = 0.16” o “Baja importancia = 0.05” para simplificación (Notar que la suma de todos los pesos propios vale 1, no sé si es necesario que se cumpla esto).
+
+Recalca que es importante definir la relación entre “alta y baja importancia” de forma acorde. Si la baja importancia fuera 0.01 y la alta 0.16, sería imposible definir la correlación positiva en la interacción entre criterios de alta y baja importancia, debido a las restricciones (1), porque \${\textbackslash}mu(x\_1) + {\textbackslash}mu(x\_2) {\textgreater} {\textbackslash}mu(x\_1, x\_2)\$ y \${\textbackslash}mu(x\_1, x\_2) {\textgreater} {\textbackslash}mu(x\_2)\$, con \${\textbackslash}mu(x\_1) = 0.01\$ y \${\textbackslash}mu(x\_2) = 0.16\$
+Restricciones de interacción de criterios:
+
+
+En el contexto de la competencia de robots extinguidores, los robots tienen que moverse autónomamente, por lo que “Decisional Autonomy (Autonomía de Decisión)” es muy importante y se considera que tiene “Veto Effect”: Si la solución tiene un mal valor en “Decisional Autonomy”, el puntaje global de la solución será malo
+
+
+Favorecimiento de soluciones con baja complejidad y bajo costo: “Complexity” y “Labor/Cost” tienen correlación negativa
+
+
+Más configurabilidad suele hacer que los sistemas se vuelvan más complejos. La configurabilidad permite más flexibilidad del perfil de funcionamiento que, a su vez, simplifica más que complejiza al robot. Esta situación se tiene en cuenta y se agrega restricción para que no favorezca diseños con buena performances en las 2 categorías (correlación positiva)
+
+
+Motion ability es muy importante en este contexto, así que una “dependable motion” aporta una ventaja clara en la competencia. Los recursos limitados en “Labor/Cost” son la esencia tanto para desarrollar como para equipar el sistema de locomoción, entonces los 2 criterios son correlacionados negativamente, lo que refleja favorecimientos a soluciones que tengan buena performance en ambos criterios.
+
+
+
+
+Resultados
+Todas la información de arriba se usa para calcular la integral de Choquet (2) y los resultados son:
+
+La alternativa de diseño \$DA\_1\$  tiene mayor puntaje.
+La \$DA\_1\$ y la \$DA\_4\$ tienen las mismas características de performance pero en \$DA\_4\$ el costo y la complejidad son más altos (en ambas: 0.1 puntos para \$DA\_4\$ y 0.5 puntos para \$DA\_1\$)
+Cálculo de la Integral de Choquet en este caso particular
+No lo hace. Esta es mi resolución (en archivo ‘moulianitis2018.py’ en anexo en contenedor de Zotero.
+Esta explicación de abajo es para la Design Alternative 1
+Con Integral de Choquet:
+Usando la fórmula (5) de (Grabisch, 1997) con los factores \${\textbackslash}mu({\textbackslash}mathcal\{T\})=f({\textbackslash}mu(\{x\_i, x\_j\}))\$, se tiene que con los pesos propuestos por el paper, da como resultado \${\textbackslash}mu({\textbackslash}mathcal\{X\}) = 1.04\$ donde \${\textbackslash}mathcal\{X\}\$ es el conjunto de todos los criterios. A cada valor peso \${\textbackslash}mu(x\_i, x\_j)\$ lo normalizo como \${\textbackslash}mu\_\{ij\} = {\textbackslash}mu\_\{ij\}/1.04\$ y \${\textbackslash}mu\_i = {\textbackslash}mu\_i/1.04\$. De esta forma \${\textbackslash}mu({\textbackslash}mathcal\{X\}) = 1\$
+El método lo que hace es ordenar los criterios de menor puntaje a mayor puntaje para cada solución (eje vertical en la gráfica siguiente). 
+Entonces aplica la integral:
+
+Donde \$C\_{\textbackslash}mu\$ es el valor total de la integral, \${\textbackslash}Delta f = f(x\_i) - f(x\_\{i-1\})\$ es la diferencia de alto entre el puntaje \$i\$ y el anterior (alto de las barras horizontales en la gráfica), y \${\textbackslash}mu(A\_\{(i)\})\$ es el ancho de la barra, que es la medida fuzzy \${\textbackslash}mu\$ evaluada en el conjunto \$A\_\{(i)\} = {\textbackslash}\{x\_i {\textbackslash}dots x\_n{\textbackslash}\}\$. La primer evaluación, tiene el ancho total \${\textbackslash}mu({\textbackslash}mathcal\{X\})\$ y de alto 0.0 = \$f\_1 - 0\$ con \$x\_1 = {\textbackslash}\{{\textbackslash}text\{Interaction ability {\textbar} Adaptability\}{\textbackslash}\}\$.
+Como \${\textbackslash}text\{"Decisional autonomy"\}\$ tiene efecto veto, todo lo que está por “arriba” se trunca.
+
+
+Cuando hace \${\textbackslash}mu({\textbackslash}\{{\textbackslash}text\{Decisional autonomy, Complexity, Labor/cost\}{\textbackslash}\}){\textgreater}=0\$, y \${\textbackslash}Delta f = 0.05\$. OK.
+
+
+El siguiente subconjunto sería \${\textbackslash}mu({\textbackslash}\{{\textbackslash}text\{Complexity, Labor/cost\}{\textbackslash}\})=0\$ porque el subconjunto entero ya no contiene a \${\textbackslash}text\{"Decisional autonomy"\}\$, con lo que trunca todo.
+
+
+Con contribución Marginal:
+Otra forma de ver la integral es con contribución marginal.
+En este caso, los pesos de las interacciones son pensadas como una contribución marginal. Por ejemplo, la interacción:
+\${\textbackslash}mu({\textbackslash}\{{\textbackslash}text\{Labor/cost, Complexity\}{\textbackslash}\}) = 0.30\$ se puede pensar como: \${\textbackslash}mu( {\textbackslash}\{ {\textbackslash}text\{Labor/cost\} {\textbackslash}\} ) + {\textbackslash}mu( {\textbackslash}\{ {\textbackslash}text\{Complexity\} {\textbackslash}\} ) + {\textbackslash}mu\_\{marg\}( {\textbackslash}\{ {\textbackslash}text\{Labor/cost, Complexity\} {\textbackslash}\} ) {\textbackslash}implies {\textbackslash}{\textbackslash} {\textbackslash}mu\_\{marg\}( {\textbackslash}\{ {\textbackslash}text\{Labor/cost, Complexity\} {\textbackslash}\} ) = a\_\{ij\} = 0.30 - 0.05 - 0.16=0.09\$
+Entonces, la función de agregación se puede pensar como la suma pesada de los puntajes de cada criterio respecto al peso de cada criterio. Las contribuciones marginales también tienen su peso y el “puntaje” utilizado es el mínimo de los puntajes entre los criterios involucrados. En la gráfica de abajo los criterios fueron ordenados de mayor a menor para comparar mejor con la otra integral.
+
+En caso que la contribución marginal sea negativa, el tamaño de la columna resta en vez de sumar. En este caso, la que resta se debe a la interacción positiva Configurability {\textless}-{\textgreater} Complexity con peso de -0.14. Notar que los pesos también fueron normalizados (factor 1/1.04) para que el ancho total sea 1 (usando los pesos negativos restantes en el ancho).
+Comparación entre métodos
+Superponiendo gráficas se ve que tienen la misma área, a excepción de la parte roja. Si se agregaran las columnas rojas hacia la izquierda en vez de a la derecha, “restaría” una buena parte del ancho del peso de Configurability respecto al eje \$y\$, quedando las 2 gráficas idénticas.
+
+Mis resultados sobre las alternativas propuestas en el paper
+Solamente da bien la \${\textbackslash}text\{DA\}\_1\$, el resto no. Para mí está mal el paper.
+
+},
+	file = {choquet.odp:/home/grolle/Zotero/storage/II5LMWQS/choquet.odp:application/vnd.oasis.opendocument.presentation;Moulianitis et al. - 2018 - A new index based on mechatronics abilities for th.pdf:/home/grolle/Zotero/storage/G7BWCKHE/Moulianitis et al. - 2018 - A new index based on mechatronics abilities for th.pdf:application/pdf;moulianitis2018.py:/home/grolle/Zotero/storage/WALXRPX4/moulianitis2018.py:text/plain},
+}
+
+@book{canudas_de_wit_theory_1996,
+	address = {London},
+	series = {Communications and {Control} {Engineering}},
+	title = {Theory of {Robot} {Control}},
+	isbn = {978-1-4471-1503-8 978-1-4471-1501-4},
+	url = {http://link.springer.com/10.1007/978-1-4471-1501-4},
+	language = {en},
+	urldate = {2023-02-22},
+	publisher = {Springer London},
+	editor = {Canudas de Wit, Carlos and Siciliano, Bruno and Bastin, Georges},
+	year = {1996},
+	doi = {10.1007/978-1-4471-1501-4},
+	file = {de Wit et al. - 1996 - Theory of Robot Control.pdf:/home/grolle/Zotero/storage/CSAQ73FC/de Wit et al. - 1996 - Theory of Robot Control.pdf:application/pdf},
+}
+
+@article{barbieri_model-based_2014,
+	title = {A model-based design methodology for the development of mechatronic systems},
+	volume = {24},
+	issn = {09574158},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0957415813002389},
+	doi = {10.1016/j.mechatronics.2013.12.004},
+	abstract = {The development of mechatronic systems involves the use of multiple disciplines, from mechanical engineering to electronics engineering and computer science. Traditionally, every discipline was developed independently and then integrated to generate the ﬁnal system. However, high-quality designs cannot be achieved without simultaneously considering all the engineering disciplines. This integrated approach carries an intrinsic complexity into system design process and numerous researches are on-going in order to ﬁnd out optimal methods. This article illustrates a methodology based on Model-Based System Engineering to support the integrated development of complex mechatronic devices. The main contribution is the introduction of a design methodology based on the W model and the identiﬁcation of SysML as the tool to support the whole process.},
+	language = {en},
+	number = {7},
+	urldate = {2023-05-10},
+	journal = {Mechatronics},
+	author = {Barbieri, Giacomo and Fantuzzi, Cesare and Borsari, Roberto},
+	month = oct,
+	year = {2014},
+	pages = {833--843},
+	file = {Barbieri et al. - 2014 - A model-based design methodology for the developme.pdf:/home/grolle/Zotero/storage/6NAWC3KZ/Barbieri et al. - 2014 - A model-based design methodology for the developme.pdf:application/pdf},
+}
+
+@article{couturier_tracking_2014,
+	title = {Tracking the consequences of design decisions in mechatronic {Systems} {Engineering}},
+	volume = {24},
+	issn = {09574158},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0957415814000609},
+	doi = {10.1016/j.mechatronics.2014.03.004},
+	abstract = {The design of mechatronic systems involves several technical and scientiﬁc disciplines. It is often difﬁcult to anticipate, at the outset, the consequences of design decisions on the ultimate effectiveness of such complex systems, in which case the evaluation process is required to support the designers each time engineering choices must be made or justiﬁed. Since designers may belong to different technical and scientiﬁc cultures however, their understanding of both the design stakes and the evaluation process is too often biased. Moreover, design choices take place in an uncertain context and according to multiple criteria, some of which may be contradictory. In order to track the consequences of design decisions, we are proposing a conceptual data model to perform evaluations within the MBSE framework of Systems Engineering. We then proceed by relying on the relationships demonstrated by such a model to identify the potential impacts of design choices on future product performance. Since data available during the conceptual phase of the design are typically uncertain or imprecise, an original research protocol is extended to a qualitative impact analysis for the purpose of highlighting the most promising alternative system design solutions (ASDS). An example in the mechatronics ﬁeld serves to illustrate our proposals. Ó 2014 Elsevier Ltd. All rights reserved.},
+	language = {en},
+	number = {7},
+	urldate = {2023-05-10},
+	journal = {Mechatronics},
+	author = {Couturier, Pierre and Lô, Mambaye and Imoussaten, Abdelhak and Chapurlat, Vincent and Montmain, Jacky},
+	month = oct,
+	year = {2014},
+	pages = {763--774},
+	file = {Couturier et al. - 2014 - Tracking the consequences of design decisions in m.pdf:/home/grolle/Zotero/storage/XR929PSM/Couturier et al. - 2014 - Tracking the consequences of design decisions in m.pdf:application/pdf},
+}
+
+@article{vitolo_mobile_2022,
+	title = {Mobile {Robots} and {Cobots} {Integration}: {A} {Preliminary} {Design} of a {Mechatronic} {Interface} by {Using} {MBSE} {Approach}},
+	volume = {12},
+	issn = {2076-3417},
+	shorttitle = {Mobile {Robots} and {Cobots} {Integration}},
+	url = {https://www.mdpi.com/2076-3417/12/1/419},
+	doi = {10.3390/app12010419},
+	abstract = {Enabling technologies that drive Industry 4.0 and smart factories are pushing in new equipment and system development also to prevent human workers from repetitive and non-ergonomic tasks inside manufacturing plants. One of these tasks is the order-picking which consists in collecting parts from the warehouse and distributing them among the workstations and vice-versa. That task can be completely performed by a Mobile Manipulator that is composed by an industrial manipulator assembled on a Mobile Robot. Although the Mobile Manipulators implementation brings advantages to industrial applications, they are still not widely used due to the lack of dedicated standards on control and safety. Furthermore, there are few integrated solutions and no speciﬁc or reference point allowing the safe integration of mobile robots and cobots (already owned by company). This work faces the integration of a generic mobile robot and collaborative robot selected from an identiﬁed set of both systems. The paper presents a safe and ﬂexible mechatronic interface developed by using MBSE principles, multi-domain modeling, and adopting preliminary assumptions on the hardware and software synchronization level of both involved systems. The interface enables the re-using of owned robot systems differently from their native tasks. Furthermore, it provides an additional and redundant safety level by enabling power and force limiting both during cobot positioning and control system faulting.},
+	language = {en},
+	number = {1},
+	urldate = {2023-07-20},
+	journal = {Applied Sciences},
+	author = {Vitolo, Ferdinando and Rega, Andrea and Di Marino, Castrese and Pasquariello, Agnese and Zanella, Alessandro and Patalano, Stanislao},
+	month = jan,
+	year = {2022},
+	pages = {419},
+	annote = {28/08/23: Estudiarlo detenidamente
+
+Mail Sergio 17/07/23:
+Las secciones 5.2 Systems Development, “Better Tools and Processes for Better Systems”, y en particular la 5.3 Human Robot Interaction, “Better Interaction”, me parecen muy ricas para nosotros.
+
+Guille, sugiero que te concentres en ellas.
+},
+	file = {2022_Vitolo Mobile Robots and Cobots Integration - Seminario SJJ - Sept2023.pdf:/home/grolle/Zotero/storage/JXJGXNTA/2022_Vitolo Mobile Robots and Cobots Integration - Seminario SJJ - Sept2023.pdf:application/pdf;2022_Vitolo Mobile Robots and Cobots Integration - Seminario SJJ - Sept2023.pptx:/home/grolle/Zotero/storage/VG77S6A7/2022_Vitolo Mobile Robots and Cobots Integration - Seminario SJJ - Sept2023.pptx:application/vnd.openxmlformats-officedocument.presentationml.presentation;Seminario GR - 2022_Vitolo Mobile Robots and Cobots Integration.odp:/home/grolle/Zotero/storage/YJIH37FT/Seminario GR - 2022_Vitolo Mobile Robots and Cobots Integration.odp:application/vnd.oasis.opendocument.presentation;Vitolo et al. - 2022 - Mobile Robots and Cobots Integration A Preliminar.pdf:/home/grolle/Zotero/storage/IRG5RWYQ/Vitolo et al. - 2022 - Mobile Robots and Cobots Integration A Preliminar.pdf:application/pdf},
+}
+
+@article{mhenni_sysml-based_2014,
+	title = {A {SysML}-based methodology for mechatronic systems architectural design},
+	volume = {28},
+	issn = {14740346},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1474034614000342},
+	doi = {10.1016/j.aei.2014.03.006},
+	abstract = {Mechatronic systems are characterized by the synergic interaction between their components from different technological domains. These interactions enable the system to achieve more functionalities than the sum of the functionalities of its components considered independently. Traditional design approaches are no longer adequate and there is a need for new synergic and multidisciplinary design approaches with close cooperation between specialists from different disciplines.},
+	language = {en},
+	number = {3},
+	urldate = {2023-09-18},
+	journal = {Advanced Engineering Informatics},
+	author = {Mhenni, Faïda and Choley, Jean-Yves and Penas, Olivia and Plateaux, Régis and Hammadi, Moncef},
+	month = aug,
+	year = {2014},
+	pages = {218--231},
+	file = {Mhenni et al. - 2014 - A SysML-based methodology for mechatronic systems .pdf:/home/grolle/Zotero/storage/878CHTEG/Mhenni et al. - 2014 - A SysML-based methodology for mechatronic systems .pdf:application/pdf},
+}
+
+@book{noauthor_h2020_nodate,
+	title = {H2020 {Multi}-{Annual} {Roadmap}},
+	file = {H2020_Robotics_Multi-Annual_Roadmap_ICT-2017B.pdf:/home/grolle/Zotero/storage/RUIDXZRH/H2020_Robotics_Multi-Annual_Roadmap_ICT-2017B.pdf:application/pdf},
+}
+
+@article{sharifi_mechatronic_2016,
+	title = {Mechatronic design and development of a non-holonomic omnidirectional mobile robot for automation of primary production},
+	volume = {3},
+	issn = {2331-1916},
+	url = {https://www.tandfonline.com/doi/full/10.1080/23311916.2016.1250431},
+	doi = {10.1080/23311916.2016.1250431},
+	abstract = {This paper presents the mechatronic system design and development of a four-wheel drive/steer (4WD4S) mobile robot as a non-holonomic omnidirectional robot, MARIO—Mobile Autonomous Robot for Intelligent Operations. An innovative integrated application of CAD/CAM/CAE and RP has been employed for rapid development of the robot chassis and other mechanical parts by using different software tools. Most of the parts were designed by 3D CAD software which allows further CAE analysis including structural and motion analysis. To reduce the manufacturing time and cost, CAM and RP have been used to manufacture the main parts. These master parts are manufactured by workshop machining and 3D printing. Robot Operating System (ROS) alongside Gazebo simulator have been utilized for modelling, simulation, software development and visualization which enabled to develop the optimum embedded system to control the robot. With this integrated approach, a prototype of MARIO has been developed with a reasonably low manufacturing cost and time.},
+	language = {en},
+	number = {1},
+	urldate = {2024-03-15},
+	journal = {Cogent Engineering},
+	author = {Sharifi, Mostafa and Young, Matthew Samuel and Chen, XiaoQi and Clucas, Don and Pretty, Christopher},
+	editor = {Meng, Wei},
+	month = dec,
+	year = {2016},
+	pages = {1250431},
+	file = {Sharifi et al. - 2016 - Mechatronic design and development of a non-holono.pdf:/home/grolle/Zotero/storage/F2YZZKFT/Sharifi et al. - 2016 - Mechatronic design and development of a non-holono.pdf:application/pdf},
+}
+
+@article{mahfouz_mechatronics_2013,
+	title = {Mechatronics {Design} of a {Mobile} {Robot} {System}},
+	volume = {5},
+	issn = {2074904X, 20749058},
+	url = {http://www.mecs-press.org/ijisa/ijisa-v5-n3/v5n3-3.html},
+	doi = {10.5815/ijisa.2013.03.03},
+	abstract = {Mobile robot motion control is simplified to a DC motor motion control that may include gear system. The simplest and widespread approach to control the mobile robot motion is the differential drive style, it consists of two in-lines with each a DC motor. Both DC motors are independently powered so the desired movements will rely on how these two DC motors are commanded. Thedevelop design, model and control of Mechatronics mobile robotic system is presented in this paper. The developed robotic system is intended for research purposes as well as for educational process. The model of proposed mobile robot was created and verified using MATLABSimulink software.},
+	language = {en},
+	number = {3},
+	urldate = {2024-03-15},
+	journal = {International Journal of Intelligent Systems and Applications},
+	author = {Mahfouz, Ahmad A. and A. Aly, Ayman and A. Salem, Farhan},
+	month = feb,
+	year = {2013},
+	pages = {23--36},
+	file = {Mahfouz et al. - 2013 - Mechatronics Design of a Mobile Robot System.pdf:/home/grolle/Zotero/storage/HKNDXUS3/Mahfouz et al. - 2013 - Mechatronics Design of a Mobile Robot System.pdf:application/pdf},
+}
+
+@article{umeda_supporting_1996,
+	title = {Supporting conceptual design based on the function-behavior-state modeler},
+	volume = {10},
+	issn = {0890-0604, 1469-1760},
+	url = {https://www.cambridge.org/core/product/identifier/S0890060400001621/type/journal_article},
+	doi = {10.1017/S0890060400001621},
+	abstract = {The relative significance of conceptual design to basic design or detail design is widely recognized, due to its influential roles in determining the product's fundamental features and development costs. Although there are some general methodologies dealing with functions in design, virtually no commercial CAD systems can support functional design, in particular so-called synthetic phase of design. Supporting the synthetic phase of conceptual design is one of the crucial issues of CAD systems with function modeling capabilities. In this paper, we propose a computer tool called a Function-Behavior-State (FBS) Modeler to support functional design not only in the analytical phase but also in the synthetic phase. To do so, the functional decomposition knowledge and physical features in the knowledge base of the modeler, and a subsystem Qualitative Process Abduction System (QPAS) play crucial roles. Modeling scheme of function in relation with behavior and structure and design process for conceptual design in the FBS Modeler are described. The advantages of the FBS Modeler are demonstrated by presenting two examples; namely, an experiment in which designers used this tool and the design of functionally redundant machines, which is a new design methodology for highly reliable machines, as its application.},
+	language = {en},
+	number = {4},
+	urldate = {2024-03-21},
+	journal = {Artificial Intelligence for Engineering Design, Analysis and Manufacturing},
+	author = {Umeda, Yasushi and Ishii, Masaki and Yoshioka, Masaharu and Shimomura, Yoshiki and Tomiyama, Tetsuo},
+	month = sep,
+	year = {1996},
+	pages = {275--288},
+	file = {Umeda et al. - 1996 - Supporting conceptual design based on the function.pdf:/home/grolle/Zotero/storage/LH65YMJS/Umeda et al. - 1996 - Supporting conceptual design based on the function.pdf:application/pdf},
+}
+
+@article{de_weck_investigating_2012,
+	title = {Investigating {Relationships} and {Semantic} {Sets} amongst {System} {Lifecycle} {Properties} ({Ilities})},
+	abstract = {The ilities are properties of engineering systems that often manifest and determine value after a system is put into initial use (e.g. resilience, interoperability, flexibility). Rather than being primary functional requirements, these properties concern wider system impacts with respect to time and stakeholders. Over the past decade there has been increasing attention to ilities in industry, government and academia. Our research suggests that investigating ilities in sets may be more meaningful than study of single ilities in isolation. Some ilities are closely related and do in fact form semantic sets. Here, we use two methods to investigate over twenty ilities in terms of their prevalence and their interrelationships. We look for trends related to ilities of interest in relation to system type and an understanding of their collective use. First, we conducted a prevalence analysis of 22 ilities using both the internet as well as the Compendex/Inspec database as a source. We found over 1,275,000 scientific articles published between 1884 and 2010 and over 1.9 billion hits on the internet, exposing a clear prevalence-based ranking of ilities. Two questions we seek to address are: why and how are the ilities related to one another, and what can we do with this information. Initial steps to answer the first question include a 2-tupel-correlation matrix analysis that exposes the strongest relationships amongst ilities based on concurrent usage. Moreover, we conducted some preliminary experiments that indicate that a hierarchy of ilities with a few major groupings may be most useful. The overall objective for this research is to develop a formal framework and prescriptive guidance for effectively incorporating sets of ilities into the design of complex engineering systems.},
+	language = {en},
+	author = {de Weck, Olivier L and Ross, Adam M and Rhodes, Donna H},
+	month = mar,
+	year = {2012},
+	file = {de Weck et al. - Investigating Relationships and Semantic Sets amon.pdf:/home/grolle/Zotero/storage/RUFQZ5VY/de Weck et al. - Investigating Relationships and Semantic Sets amon.pdf:application/pdf},
+}
+
+@inproceedings{lo_needs_2012,
+	address = {Nantes, France},
+	title = {Needs for {Tracing} the {Consequences} of {Decisions} in {Mechatronics} {Design}},
+	isbn = {978-0-7918-4485-4},
+	url = {https://asmedigitalcollection.asme.org/ESDA/proceedings/ESDA2012/44854/311/230796},
+	doi = {10.1115/ESDA2012-82230},
+	abstract = {As the design of mechatronic systems relies on different technical and scientific disciplines, it is often difficult to anticipate, at the earliest, the consequences of design choices on the final product. The role of the evaluation process is to support designers each time engineering choices must be made or justified. Being able to estimate the impact of design decisions on key technical performance indicators is one objective of our research. After having presented the activities of the evaluation process, we propose a meta-model of the data required by evaluation in the context of the Systems Engineering framework. Then we investigate how the top down and bottom up tracing of technical requirements through Block Systems and between systems engineering layers of the ‘onion model’ may help designers analyze the consequences of design decisions on the final product. The research is illustrated through the development of a wheelchair with electrical assistance so as to allow reduced mobility people to move and work outside with less tiredness.},
+	language = {en},
+	urldate = {2024-03-20},
+	booktitle = {Volume 2: {Applied} {Fluid} {Mechanics}; {Electromechanical} {Systems} and {Mechatronics}; {Advanced} {Energy} {Systems}; {Thermal} {Engineering}; {Human} {Factors} and {Cognitive} {Engineering}},
+	publisher = {American Society of Mechanical Engineers},
+	author = {Lo, Mambaye and Couturier, Pierre},
+	month = jul,
+	year = {2012},
+	pages = {311--321},
+	file = {Lo y Couturier - 2012 - Needs for Tracing the Consequences of Decisions in.pdf:/home/grolle/Zotero/storage/PFFSYR3Z/Lo y Couturier - 2012 - Needs for Tracing the Consequences of Decisions in.pdf:application/pdf},
+}
+
+@article{saaty_invalidity_2007,
+	title = {On the invalidity of fuzzifying numerical judgments in the {Analytic} {Hierarchy} {Process}},
+	volume = {46},
+	issn = {08957177},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0895717707000787},
+	doi = {10.1016/j.mcm.2007.03.022},
+	abstract = {Fuzzy set theory has serious difﬁculties in producing valid answers in decision-making by fuzzifying judgments. No theorems are available about its workability when it is applied indiscriminately as a number crunching approach to numerical measurements that represent judgments. When judgments are allowed to vary in choice over the values of a fundamental scale, as in the Analytic Hierarchy Process, these judgments are themselves already fuzzy. To make them fuzzier can make the validity of the outcome, when the actual outcome is known, worse, as shown by several examples in this paper. Also, improving the consistency of a judgment matrix does not necessarily improve the validity of the outcome. Validity is the goal in decision-making, not consistency, which can be successively improved by manipulating the judgments as the answer gets farther and farther from reality. An example of this is included.},
+	language = {en},
+	number = {7-8},
+	urldate = {2024-03-20},
+	journal = {Mathematical and Computer Modelling},
+	author = {Saaty, Thomas L. and Tran, Liem T.},
+	month = oct,
+	year = {2007},
+	pages = {962--975},
+	file = {Saaty y Tran - 2007 - On the invalidity of fuzzifying numerical judgment.pdf:/home/grolle/Zotero/storage/HIERI5UK/Saaty y Tran - 2007 - On the invalidity of fuzzifying numerical judgment.pdf:application/pdf},
+}
+
+@article{fulop_introduction_nodate,
+	title = {Introduction to {Decision} {Making} {Methods}},
+	language = {en},
+	author = {Fülöp, János},
+	file = {Fülöp - Introduction to Decision Making Methods.pdf:/home/grolle/Zotero/storage/PHVG9TJD/Fülöp - Introduction to Decision Making Methods.pdf:application/pdf},
+}
+
+@book{maier_art_2009,
+	address = {Boca Raton},
+	edition = {3rd ed},
+	title = {The art of systems architecting},
+	isbn = {978-1-4200-7913-5},
+	language = {en},
+	publisher = {CRC Press},
+	author = {Maier, Mark W. and Rechtin, Eberhardt},
+	year = {2009},
+	note = {OCLC: 226357386},
+	keywords = {Systems engineering, System design},
+	file = {Maier y Rechtin - 2009 - The art of systems architecting.pdf:/home/grolle/Zotero/storage/R5DB3B5G/Maier y Rechtin - 2009 - The art of systems architecting.pdf:application/pdf},
+}
+
+@article{blanchard_systems_nodate,
+	title = {Systems engineering and analysis},
+	language = {en},
+	author = {Blanchard, Benjamin S},
+	file = {Blanchard - Systems engineering and analysis.pdf:/home/grolle/Zotero/storage/IJ4QCNPU/Blanchard - Systems engineering and analysis.pdf:application/pdf},
+}
+
+@book{brezina_mechatronics_2014,
+	address = {Cham},
+	title = {Mechatronics 2013: {Recent} {Technological} and {Scientific} {Advances}},
+	copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining},
+	isbn = {978-3-319-02293-2 978-3-319-02294-9},
+	shorttitle = {Mechatronics 2013},
+	url = {https://link.springer.com/10.1007/978-3-319-02294-9},
+	language = {en},
+	urldate = {2024-04-03},
+	publisher = {Springer International Publishing},
+	editor = {Březina, Tomáš and Jabloński, Ryszard},
+	year = {2014},
+	doi = {10.1007/978-3-319-02294-9},
+	file = {Březina y Jabloński - 2014 - Mechatronics 2013 Recent Technological and Scient.pdf:/home/grolle/Zotero/storage/95QNAMLL/Březina y Jabloński - 2014 - Mechatronics 2013 Recent Technological and Scient.pdf:application/pdf},
+}
+
+@article{nattermann_approach_2010,
+	title = {{APPROACH} {FOR} {A} {DATA}-{MANAGEMENT}-{SYSTEM} {AND} {A} {PROCEEDING}-{MODEL} {FOR} {THE} {DEVELOPMENT} {OF} {ADAPTRONIC} {SYSTEMS}},
+	language = {en},
+	author = {Nattermann, Roland and Anderl, Reiner},
+	year = {2010},
+	file = {Nattermann y Anderl - 2010 - APPROACH FOR A DATA-MANAGEMENT-SYSTEM AND A PROCEE.pdf:/home/grolle/Zotero/storage/RHB4RMGW/Nattermann y Anderl - 2010 - APPROACH FOR A DATA-MANAGEMENT-SYSTEM AND A PROCEE.pdf:application/pdf},
+}
+
+@book{voirin_model-based_2018,
+	title = {Model-{Based} {System} and {Architecture} {Engineering} with the {Arcadia} {Method}},
+	isbn = {978-1-78548-169-7},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/C20160008628},
+	language = {en},
+	urldate = {2024-05-14},
+	publisher = {Elsevier},
+	author = {Voirin, Jean-Luc},
+	year = {2018},
+	doi = {10.1016/C2016-0-00862-8},
+	file = {Voirin - 2018 - Model-Based System and Architecture Engineering wi.pdf:/home/grolle/Zotero/storage/PA5GWE6B/Voirin - 2018 - Model-Based System and Architecture Engineering wi.pdf:application/pdf},
+}
+
+@article{gausemeier_vdi_2002,
+	title = {{VDI} 2206- {A} {New} {Guideline} for the {Design} of {Mechatronic} {Systems}},
+	volume = {35},
+	copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+	issn = {14746670},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1474667017340351},
+	doi = {10.1016/S1474-6670(17)34035-1},
+	language = {en},
+	number = {2},
+	urldate = {2024-10-24},
+	journal = {IFAC Proceedings Volumes},
+	author = {Gausemeier, J. and Moehringer, S.},
+	month = dec,
+	year = {2002},
+	keywords = {V Methodology},
+	pages = {785--790},
+	annote = {Define Metodología en V
+},
+	file = {PDF:/home/grolle/Zotero/storage/43FFBA7S/Gausemeier and Moehringer - 2002 - VDI 2206- A New Guideline for the Design of Mechatronic Systems.pdf:application/pdf},
+}
+
+@article{firesmith_common_2007,
+	title = {Common {Requirements} {Problems}, {Their} {Negative} {Consequences}, and the {Industry} {Best} {Practices} to {Help} {Solve} {Them}.},
+	volume = {6},
+	issn = {1660-1769},
+	url = {http://www.jot.fm/contents/issue_2007_01/column2.html},
+	doi = {10.5381/jot.2007.6.1.c2},
+	abstract = {In this column, I summarize the 12 worst of the most common requirements engineering problems I have observed over many years working on and with real projects as a requirements engineer, consultant, trainer, and evaluator. I also list the negative consequences of these problems, and most importantly suggest some industry best practices that can help you avoid these problems, or at least fix them once they have raised their ugly heads. Although there is nothing really new here, these problems are well worth revisiting because they are still far too common, probably because the associated industry best practices are still far from being widely put into practice.},
+	language = {en},
+	number = {1},
+	urldate = {2025-02-24},
+	journal = {The Journal of Object Technology},
+	author = {Firesmith, Donald},
+	year = {2007},
+	pages = {17},
+	file = {PDF:/home/grolle/Zotero/storage/FHLSB89X/Firesmith - 2007 - Common Requirements Problems, Their Negative Consequences, and the Industry Best Practices to Help S.pdf:application/pdf},
+}
+
+@misc{castro_mbse_nodate,
+	title = {{MBSE} with {Arcadia} method step-by-step},
+	url = {https://www.slideshare.net/slideshow/mbse-with-arcadia-methodpdf-256664096/256664096},
+	author = {Castro, Hélder},
+	file = {PDF:/home/guillermo/Zotero/storage/87UMEBDR/Castro - MBSE with Arcadia method step-by-step.pdf:application/pdf},
+}
+
+@book{siciliano_robotics_2010,
+	address = {London},
+	series = {Advanced {Textbooks} in {Control} and {Signal} {Processing}},
+	title = {Robotics: {Modelling}, {Planning} and {Control}},
+	isbn = {978-1-84628-641-4 978-1-84628-642-1},
+	shorttitle = {Robotics},
+	language = {eng},
+	publisher = {Springer London, Limited},
+	author = {Siciliano, Bruno},
+	collaborator = {Oriolo, Giuseppe and Sciavicco, Lorenzo and Villani, Luigi},
+	year = {2010},
+	annote = {Robotics provides the know-how on the foundations of robotics: modelling, planning and control. It covers mobile robots, visual control and motion planning. A variety of problems are worked through, and the tools to find engineering solutions are explained Intro -- Series Editors' Foreword -- Preface -- Contents -- 1 Introduction -- 1.1 Robotics -- 1.2 Robot Mechanical Structure -- 1.2.1 Robot Manipulators -- 1.2.2 Mobile Robots -- 1.3 Industrial Robotics -- 1.4 Advanced Robotics -- 1.4.1 Field Robots -- 1.4.2 Service Robots -- 1.5 Robot Modelling, Planning and Control -- 1.5.1 Modelling -- 1.5.2 Planning -- 1.5.3 Control -- Bibliography -- Basic textbooks -- Specialized books -- Edited collections on the state of the art of research -- Scientific journals -- Series of international scientific conferences -- 2 Kinematics -- 2.1 Pose of a Rigid Body -- 2.2 Rotation Matrix -- 2.2.1 Elementary Rotations -- 2.2.2 Representation of a Vector -- 2.2.3 Rotation of a Vector -- 2.3 Composition of Rotation Matrices -- 2.4 Euler Angles -- 2.4.1 ZYZ Angles -- 2.4.2 RPY Angles -- 2.5 Angle and Axis -- 2.6 Unit Quaternion -- 2.7 Homogeneous Transformations -- 2.8 Direct Kinematics -- 2.8.1 Open Chain -- 2.8.2 Denavit-Hartenberg Convention -- 2.8.3 Closed Chain -- 2.9 Kinematics of Typical Manipulator Structures -- 2.9.1 Three-link Planar Arm -- 2.9.2 Parallelogram Arm -- 2.9.3 Spherical Arm -- 2.9.4 Anthropomorphic Arm -- 2.9.5 Spherical Wrist -- 2.9.6 Stanford Manipulator -- 2.9.7 Anthropomorphic Arm with Spherical Wrist -- 2.9.8 DLR Manipulator -- 2.9.9 Humanoid Manipulator -- 2.10 Joint Space and Operational Space -- 2.10.1 Workspace -- 2.10.2 Kinematic Redundancy -- 2.11 Kinematic Calibration -- 2.12 Inverse Kinematics Problem -- 2.12.1 Solution of Three-link Planar Arm -- 2.12.2 Solution of Manipulators with Spherical Wrist -- 2.12.3 Solution of Spherical Arm -- 2.12.4 Solution of Anthropomorphic Arm -- 2.12.5 Solution of Spherical Wrist -- Bibliography -- Problems -- 3 Differential Kinematics and Statics -- 3.1 Geometric Jacobian -- 3.1.1 Derivative of a Rotation Matrix -- 3.1.2 Link Velocities},
+	file = {PDF:/home/guillermo/Zotero/storage/HXMPV4NB/Siciliano - 2010 - Robotics Modelling, Planning and Control.pdf:application/pdf},
+}
+
+
+@book{siegwart_introduction_2011,
+	address = {Cambridge, Mass},
+	edition = {2nd ed},
+	series = {Intelligent robotics and autonomous agents},
+	title = {Introduction to autonomous mobile robots},
+	isbn = {978-0-262-01535-6},
+	language = {en},
+	publisher = {MIT Press},
+	author = {Siegwart, Roland and Nourbakhsh, Illah Reza and Scaramuzza, Davide},
+	year = {2011},
+	note = {OCLC: ocn649700153},
+	keywords = {Autonomous robots, Mobile robots},
+	file = {PDF:/home/guillermo/Zotero/storage/MKUQVRQ9/Siegwart et al. - 2011 - Introduction to autonomous mobile robots.pdf:application/pdf},
+}

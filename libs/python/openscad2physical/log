@@ -1,0 +1,29 @@
+ECHO: "*"
+ECHO: ["fixed:", "mobilebase/fj_chassis", "[0, 0, 130]", "[0, 0, 0]"]
+ECHO: ["fixed:", "mobilebase/fj_diffmodule", "[-310, 0, 60]", "[0, 0, 0]"]
+ECHO: ["revolute:", "mobilebase/diffmodule/jr0", "[0, -280, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
+ECHO: ["revolute:", "mobilebase/diffmodule/jr1", "[0, 280, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
+ECHO: ["fixed:", "mobilebase/fj_castor0", "[350, 250, 130]", "[0, 0, 0]"]
+ECHO: ["revolute:", "mobilebase/castor/rj_castor_dir", "[0, 0, -10]", "[0, 0, 0]", "[0, 0, 1]"]
+ECHO: ["revolute:", "mobilebase/castor/rj_castor_roll", "[40, 0, -60]", "[90, 0, 0]", "[0, 0, 1]"]
+ECHO: ["fixed:", "mobilebase/fj_castor1", "[350, -250, 130]", "[0, 0, 0]"]
+ECHO: ["revolute:", "mobilebase/castor/rj_castor_dir", "[0, 0, -10]", "[0, 0, 0]", "[0, 0, 1]"]
+ECHO: ["revolute:", "mobilebase/castor/rj_castor_roll", "[40, 0, -60]", "[90, 0, 0]", "[0, 0, 1]"]
+ECHO: ["prismatic:", "mobilebase/pj_control", "[0, 0, 170]", "[0, 0, 0]", "[1, 0, 0]", "[0, 500]"]
+ECHO: ["prismatic:", "pj_forklift", "[350, 0, 130]", "[0, 0, 0]", "[-1, 0, 0]", "[0, 700]"]
+ECHO: ["prismatic:", "manipulator/pj_horquilla", "[0, 0, 0]", "[0, 0, 0]", "[0, 0, 1]", "[100, 1770]"]
+ECHO: ["prismatic:", "manipulator/pj_unna1", "[50, 50, -50]", "[0, 0, 0]", "[0, 1, 0]", "[225, 0]"]
+ECHO: ["prismatic:", "manipulator/pj_unna0", "[50, -50, -50]", "[0, 0, 0]", "[0, -1, 0]", "[225, 0]"]
+Geometries in cache: 89
+Geometry cache size in bytes: 175088
+CGAL Polyhedrons in cache: 72
+CGAL cache size in bytes: 18736128
+Total rendering time: 0:00:03.670
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:     1536
+   Halfedges:    4664
+   Edges:        2332
+   Halffacets:   1592
+   Facets:        796
+   Volumes:         7

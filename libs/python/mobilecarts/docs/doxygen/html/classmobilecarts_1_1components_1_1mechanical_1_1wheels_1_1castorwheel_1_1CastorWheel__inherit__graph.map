@@ -1,0 +1,7 @@
+<map id="mobilecarts.components.mechanical.wheels.castorwheel.CastorWheel" name="mobilecarts.components.mechanical.wheels.castorwheel.CastorWheel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,167,404,207"/>
+<area shape="rect" id="Node000002" href="$classmobilecarts_1_1components_1_1mechanical_1_1wheels_1_1wheel_1_1Wheel.html" title=" " alt="" coords="25,79,384,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,133,207,166,202,166,202,133"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="180,5,229,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="207,44,207,79,202,79,202,44"/>
+</map>

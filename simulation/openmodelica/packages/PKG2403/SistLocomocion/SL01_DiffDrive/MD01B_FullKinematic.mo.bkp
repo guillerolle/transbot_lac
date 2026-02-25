@@ -1,0 +1,155 @@
+within PKG2403.SistLocomocion.SL01_DiffDrive;
+
+model MD01B_FullKinematic
+  parameter Real a = 0.5 "distancia en x entre cm y ruedas", b = 0.2 "distancia en y entre cm y rueda", r = 0.12 "wheel radius";
+  Componentes.Chasis chasis annotation(
+    Placement(transformation(origin = {140, 0}, extent = {{-40, -40}, {40, 40}})));
+  Componentes.FixedWheel w1f(r = r) annotation(
+    Placement(transformation(origin = {-160, 120}, extent = {{20, -20}, {-20, 20}})));
+  SistLocomocion.Componentes.FixedWheel w0f(r = r) annotation(
+    Placement(transformation(origin = {-160, -120}, extent = {{20, -20}, {-20, 20}})));
+  DSFLib.BondGraph.Components.Basic.Sf sf(F = 0) annotation(
+    Placement(transformation(origin = {-204, 136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Sf sf1(F = 0) annotation(
+    Placement(transformation(origin = {-204, 104}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Sf sf3(F = 0) annotation(
+    Placement(transformation(origin = {-202, -104}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Se se(E = 0) annotation(
+    Placement(transformation(origin = {-210, -136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Se se1(E = 0) annotation(
+    Placement(transformation(origin = {212, 80}, extent = {{10, -10}, {-10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Se se11(E = 0) annotation(
+    Placement(transformation(origin = {210, -80}, extent = {{10, -10}, {-10, 10}})));
+  Componentes.PointRigidBody2D pointRigidBody2D(x = -a, y = b) annotation(
+    Placement(transformation(origin = {-60, 120}, extent = {{20, -20}, {-20, 20}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond annotation(
+    Placement(transformation(origin = {-110, 136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond1 annotation(
+    Placement(transformation(origin = {-108, 104}, extent = {{-10, -10}, {10, 10}})));
+  SistLocomocion.Componentes.PointRigidBody2D pointRigidBody2D1(x = -a, y = -b) annotation(
+    Placement(transformation(origin = {-60, -120}, extent = {{20, -20}, {-20, 20}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond2 annotation(
+    Placement(transformation(origin = {-110, -104}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond3 annotation(
+    Placement(transformation(origin = {-110, -136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.J1 j1 annotation(
+    Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  DSFLib.BondGraph.Components.Basic.Bond bond4 annotation(
+    Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond5 annotation(
+    Placement(transformation(origin = {-20, 120}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond6 annotation(
+    Placement(transformation(origin = {-20, -120}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond7 annotation(
+    Placement(transformation(origin = {-20, 136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.J1 j11 annotation(
+    Placement(transformation(origin = {40, 32}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  DSFLib.BondGraph.Components.Basic.Bond bond8 annotation(
+    Placement(transformation(origin = {70, 32}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond9 annotation(
+    Placement(transformation(origin = {-20, -104}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond10 annotation(
+    Placement(transformation(origin = {-20, 104}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.Bond bond101 annotation(
+    Placement(transformation(origin = {-20, -136}, extent = {{-10, -10}, {10, 10}})));
+  DSFLib.BondGraph.Components.Basic.J1 j12 annotation(
+    Placement(transformation(origin = {20, -32}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  DSFLib.BondGraph.Components.Basic.Bond bond81 annotation(
+    Placement(transformation(origin = {70, -32}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Interfaces.RealInput w1f_phid annotation(
+    Placement(transformation(origin = {-303, 143}, extent = {{-9, -9}, {9, 9}}), iconTransformation(origin = {-100, 60}, extent = {{-11, -11}, {11, 11}})));
+  DSFLib.BondGraph.Components.Modulated.MSf mSf_phi1 annotation(
+    Placement(transformation(origin = {-244.385, 122.35}, extent = {{-15.6154, -10.15}, {15.6154, 10.15}})));
+  DSFLib.BondGraph.Components.Modulated.MSf mSf_phi0 annotation(
+    Placement(transformation(origin = {-247, -117.25}, extent = {{-15, -9.75}, {15, 9.75}})));
+  Modelica.Blocks.Interfaces.RealInput w0f_phid annotation(
+    Placement(transformation(origin = {-301, -81}, extent = {{-9, -9}, {9, 9}}), iconTransformation(origin = {-100, -60}, extent = {{-11, -11}, {11, 11}})));
+  Modelica.Blocks.Interfaces.RealOutput z[3] annotation(
+    Placement(transformation(origin = {224, 16}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {100, 60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Interfaces.RealOutput zdot[3] annotation(
+    Placement(transformation(origin = {224, -8}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {100, -60}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(sf.bondCon, w1f.p_cpvx) annotation(
+    Line(points = {{-188, 136}, {-180, 136}}));
+  connect(sf1.bondCon, w1f.p_cpvy) annotation(
+    Line(points = {{-188, 104}, {-180, 104}}));
+  connect(sf3.bondCon, w0f.p_cpvx) annotation(
+    Line(points = {{-186, -104}, {-180, -104}}));
+  connect(se.bondCon, w0f.p_cpvy) annotation(
+    Line(points = {{-194, -136}, {-180, -136}}));
+  connect(se1.bondCon, chasis.p_vxglobal) annotation(
+    Line(points = {{197, 80}, {187.8, 80}, {187.8, 30}, {180.8, 30}}));
+  connect(se11.bondCon, chasis.p_vyglobal) annotation(
+    Line(points = {{195, -80}, {187.8, -80}, {187.8, -30}, {180.8, -30}}));
+  connect(w1f.p_ppvx, bond.bondCon1) annotation(
+    Line(points = {{-140, 136}, {-118, 136}}));
+  connect(bond.bondCon2, pointRigidBody2D.p_vxpoint) annotation(
+    Line(points = {{-100, 136}, {-80, 136}}));
+  connect(w1f.p_ppvy, bond1.bondCon1) annotation(
+    Line(points = {{-140, 104}, {-116, 104}}));
+  connect(bond1.bondCon2, pointRigidBody2D.p_vypoint) annotation(
+    Line(points = {{-98, 104}, {-80, 104}}));
+  connect(w0f.p_ppvx, bond2.bondCon1) annotation(
+    Line(points = {{-140, -104}, {-118, -104}}));
+  connect(bond2.bondCon2, pointRigidBody2D1.p_vxpoint) annotation(
+    Line(points = {{-100, -104}, {-80, -104}}));
+  connect(w0f.p_ppvy, bond3.bondCon1) annotation(
+    Line(points = {{-140, -136}, {-118, -136}}));
+  connect(bond3.bondCon2, pointRigidBody2D1.p_vypoint) annotation(
+    Line(points = {{-100, -136}, {-80, -136}}));
+  connect(j1.bondConJ3, bond4.bondCon1) annotation(
+    Line(points = {{9.8, 0}, {41.8, 0}}));
+  connect(bond4.bondCon2, chasis.p_omega) annotation(
+    Line(points = {{59, 0}, {100, 0}}));
+  connect(pointRigidBody2D.p_omegabody, bond5.bondCon1) annotation(
+    Line(points = {{-40, 120}, {-29, 120}}));
+  connect(bond5.bondCon2, j1.bondConJ1) annotation(
+    Line(points = {{-11, 120}, {0, 120}, {0, 10}}));
+  connect(pointRigidBody2D1.p_omegabody, bond6.bondCon1) annotation(
+    Line(points = {{-40, -120}, {-29, -120}}));
+  connect(bond6.bondCon2, j1.bondConJ2) annotation(
+    Line(points = {{-11, -120}, {0, -120}, {0, -10}}));
+  connect(pointRigidBody2D.p_vxbody, bond7.bondCon1) annotation(
+    Line(points = {{-40, 136}, {-28, 136}}));
+  connect(bond8.bondCon2, chasis.p_vxlocal) annotation(
+    Line(points = {{80, 32}, {100, 32}}));
+  connect(bond8.bondCon1, j11.bondConJ3) annotation(
+    Line(points = {{62, 32}, {50, 32}}));
+  connect(bond7.bondCon2, j11.bondConJ1) annotation(
+    Line(points = {{-10, 136}, {40, 136}, {40, 42}}));
+  connect(pointRigidBody2D1.p_vxbody, bond9.bondCon1) annotation(
+    Line(points = {{-40, -104}, {-29, -104}}));
+  connect(bond9.bondCon2, j11.bondConJ2) annotation(
+    Line(points = {{-10, -104}, {40, -104}, {40, 22}}));
+  connect(pointRigidBody2D.p_vybody, bond10.bondCon1) annotation(
+    Line(points = {{-40, 104}, {-28, 104}}));
+  connect(pointRigidBody2D1.p_vybody, bond101.bondCon1) annotation(
+    Line(points = {{-40, -136}, {-28, -136}}));
+  connect(bond81.bondCon2, chasis.p_vylocal) annotation(
+    Line(points = {{79, -32}, {100, -32}}));
+  connect(j12.bondConJ3, bond81.bondCon1) annotation(
+    Line(points = {{30, -32}, {62, -32}}));
+  connect(bond10.bondCon2, j12.bondConJ1) annotation(
+    Line(points = {{-10, 104}, {20, 104}, {20, -22}}));
+  connect(bond101.bondCon2, j12.bondConJ2) annotation(
+    Line(points = {{-10, -136}, {20, -136}, {20, -42}}));
+  connect(mSf_phi1.bondCon, w1f.p_phid) annotation(
+    Line(points = {{-221, 120}, {-180, 120}}));
+  connect(w1f_phid, mSf_phi1.u) annotation(
+    Line(points = {{-302, 144}, {-260, 144}, {-260, 130}}, color = {0, 0, 127}));
+  connect(mSf_phi0.bondCon, w0f.p_phid) annotation(
+    Line(points = {{-224, -120}, {-180, -120}}));
+  connect(w0f_phid, mSf_phi0.u) annotation(
+    Line(points = {{-300, -80}, {-262, -80}, {-262, -108}}, color = {0, 0, 127}));
+  connect(chasis.xi[:], z[:]) annotation(
+    Line(points = {{180, 16}, {224, 16}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(chasis.xidot[:], zdot[:]) annotation(
+    Line(points = {{180, -8}, {224, -8}}, color = {0, 0, 127}, thickness = 0.5));
+  annotation(
+    Diagram(coordinateSystem(extent = {{-400, -200}, {200, 200}})),
+    experiment(StartTime = 0, StopTime = 15, Tolerance = 1e-06, Interval = 0.03),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
+  Icon(graphics = {Rectangle(fillColor = {255, 255, 255}, extent = {{-100, 100}, {100, -100}}), Text(origin = {-2, 2}, extent = {{-88, 50}, {88, -50}}, textString = "SL01: DD
+MD01B: FK"), Text(origin = {-105, 83}, extent = {{-21, 17}, {21, -17}}, textString = "phi1d"), Text(origin = {-103, -81}, extent = {{-21, 17}, {21, -17}}, textString = "phi0d"), Text(origin = {95, 85}, extent = {{-21, 17}, {21, -17}}, textString = "z"), Text(origin = {97, -83}, extent = {{-21, 17}, {21, -17}}, textString = "zdot"), Text(origin = {-4, -64}, textColor = {0, 85, 255}, extent = {{-86, 28}, {86, -28}}, textString = "%name")}, coordinateSystem(extent = {{-100, -100}, {100, 100}})));
+end MD01B_FullKinematic;

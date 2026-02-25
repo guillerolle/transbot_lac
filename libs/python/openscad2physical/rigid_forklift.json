@@ -1,0 +1,24 @@
+{
+    "name": "rigid_forklift",
+    "scad": "models/logical/MMR/Forklift.scad",
+    "density": 7850,
+    "components": [
+        "*",
+        "_",
+        "mobilebase/*",
+        "mobilebase/_",
+        "mobilebase/chassis",
+        "mobilebase/diff/*",
+        "mobilebase/diff/_",
+        "mobilebase/diff/wheel",
+        "mobilebase/control",
+        "mobilebase/castor/*",
+        "mobilebase/castor/_",
+        "mobilebase/castor/arm",
+        "mobilebase/castor/wheel",
+        "manipulator/*",
+        "manipulator/portico",
+        "manipulator/horquilla",
+        "manipulator/unna"
+    ]
+}

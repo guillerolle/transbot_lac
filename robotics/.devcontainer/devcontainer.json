@@ -1,0 +1,56 @@
+{
+    "name": "TRANSBOT ROS2 Dev Container",
+    // "build": {
+    //     "dockerfile": "../docker/Dockerfile",
+    //     "context": "..",
+    //     "args": {
+    //         "USERNAME": "transbot",
+    //         "USER_UID": "1000",
+    //         "USER_GID": "1000",
+    //         "ROSDISTRO": "jazzy"
+    //     }
+    // },
+    "image": "roslac:jazzy",
+    "mounts": [
+       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+       "source=${env:XAUTHORITY},target=${env:XAUTHORITY},type=bind,consistency=cached",
+       "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+       "source=/etc/localtime,target=/etc/localtime,type=bind,consistency=cached,ro",
+       "source=${localWorkspaceFolder}/..,target=/home/roslac/project,type=bind,consistency=cached"
+    ],
+    // "remoteUser" : "transbot",
+    "workspaceFolder": "/home/roslac/transbot",
+    "workspaceMount": "source=${localWorkspaceFolder}/transbot-ros2ws,target=/home/roslac/transbot,type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ranch-hand-robotics.rde-ros-2",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-vscode.cmake-tools",
+                "ms-azuretools.vscode-docker",
+                "Ranch-Hand-Robotics.urdf-editor",
+                "smilerobotics.urdf",
+                "KevinRose.vsc-python-indent"
+            ]
+        }
+    },
+    "containerEnv": {
+        "DISPLAY": "unix:0"
+        // "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+        // "ROS_DOMAIN_ID": "42"
+    },
+    "runArgs": [
+        "--net=host",
+        "--pid=host",
+        "--ipc=host",
+        "-e", "DISPLAY=${env:DISPLAY}",
+        "-e", "XAUTHORITY=${env:XAUTHORITY}",
+        "-e", "WORKSPACEDIR=transbot"
+    ]
+}

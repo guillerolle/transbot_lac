@@ -1,0 +1,33 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "DebugPy with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        },
+        {
+            "name": "Assembly Fixed json Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "oscad_tree.py",
+            "console": "integratedTerminal",
+            "args": "--json assy_mobilebase.json"
+        },
+        {
+            "name": "OpenSCAD to Physical Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "openscad2physical.py",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        }
+    ]
+}

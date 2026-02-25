@@ -1,0 +1,56 @@
+within MobileRobots.MultiBodyExtension.Parts;
+
+model GenericBody
+  import MobileRobotsMB.Types.InertialModel;
+  import Modelica.Units.SI;
+  import C=Modelica.Constants;
+  
+  parameter Boolean animation = true "= true, if animation of wheel shall be enabled";
+  parameter Boolean showLabels=true "= true, if labels shall be shown"
+    annotation (Dialog(tab="Visualization", group="if animation = true", enable=animation));
+  input SI.Distance length=0.5 "Length of axes arrows"
+    annotation (Dialog(tab="Visualization", group="if animation = true", enable=animation));
+  
+  parameter InertialModel inertialModel = MobileRobotsMB.Types.InertialModel.NoInertia "Type of Inertial Model" annotation(
+    Dialog(tab = "Inertial", group = "Inertial Model"));
+  parameter SI.Mass m(start=0) "Mass of Body" annotation(
+    Dialog(tab = "Inertial", group = "Inertial Model", enable = (inertialModel > InertialModel.NoInertia)));
+  parameter SI.Position r_CM[3](start={0,0,0}) "Vector from frame_a to center of mass, resolved in frame_a"  annotation(
+    Dialog(tab = "Inertial", group = "Inertial Model", enable = (inertialModel > InertialModel.NoInertia)));
+  parameter SI.Inertia I_11(min = 0, start=0) "Element (1,1) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  parameter SI.Inertia I_22(min = 0, start=0) "Element (2,2) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  parameter SI.Inertia I_33(min = 0, start=0) "Element (3,3) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  parameter SI.Inertia I_21(min = -C.inf, start=0) "Element (2,1) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  parameter SI.Inertia I_31(min = -C.inf, start=0) "Element (3,1) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  parameter SI.Inertia I_32(min = -C.inf, start=0) "Element (3,2) of inertia tensor" annotation(
+    Dialog(tab = "Inertial", group = "Inertia tensor (resolved in center of mass, parallel to frame_a)", enable = (inertialModel == InertialModel.Body)));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation(
+    Placement(transformation(origin = {-100, 0}, extent = {{-16, -16}, {16, 16}}), iconTransformation(origin = {-100, 0}, extent = {{-16, -16}, {16, 16}})));
+  Modelica.Mechanics.MultiBody.Parts.Body body(animation = animation, r_CM = r_CM, m = m, I_11 = I_11, I_22 = I_22, I_33 = I_33, I_21 = I_21, I_31 = I_31, I_32 = I_32) if (inertialModel == InertialModel.Body) annotation(
+    Placement(transformation(origin = {40, 26}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(animation = animation, m = m) if (inertialModel == InertialModel.PointMass) annotation(
+    Placement(transformation(origin = {64, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation masscenter_traslation(r = r_CM) if (inertialModel == InertialModel.PointMass) annotation(
+    Placement(transformation(origin = {30, 0}, extent = {{-10, -10}, {10, 10}})));
+  MultiBodyExtension.Visualizers.RGBFrame referenceFrame(animation = animation, showLabels = showLabels, length = length) annotation(
+    Placement(transformation(origin = {40, -38}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(frame_a, body.frame_a) annotation(
+    Line(points = {{0, 0}, {14, 0}, {14, 26}, {30, 26}}));
+  connect(masscenter_traslation.frame_a, frame_a) annotation(
+    Line(points = {{20, 0}, {0, 0}}, color = {95, 95, 95}));
+  connect(masscenter_traslation.frame_b, pointMass.frame_a) annotation(
+    Line(points = {{40, 0}, {64, 0}}, color = {95, 95, 95}));
+  connect(referenceFrame.frame_a, frame_a) annotation(
+    Line(points = {{30, -38}, {0, -38}, {0, 0}}, color = {95, 95, 95}));
+  connect(frame_a, referenceFrame.frame_a) annotation(
+    Line(points = {{-100, 0}, {0, 0}, {0, -38}, {30, -38}}));
+  annotation(
+    Diagram(graphics),
+    Icon(graphics = {Rectangle(lineColor = {0, 24, 48}, fillColor = if (inertialModel >= MobileRobotsMB.Types.InertialModel.Body) then {0, 127, 255} else {255, 255, 255}, fillPattern = FillPattern.HorizontalCylinder, extent = {{-100, 30}, {-3, -30}}, radius = 10), Text(extent = {{150, -100}, {-150, -70}}, textString = "m=%m"), Text(textColor = {0, 0, 255}, extent = {{-150, 110}, {150, 70}}, textString = "%name"), Ellipse(visible = (inertialModel >= MobileRobotsMB.Types.InertialModel.PointMass), lineColor = {0, 24, 48}, fillColor = {0, 127, 255}, fillPattern = FillPattern.Sphere, extent = {{-20, 60}, {100, -60}})}));
+end GenericBody;

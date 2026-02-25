@@ -1,0 +1,135 @@
+\doxysection{mobilecarts.\+configs.\+diffdrives.\+Diff\+Drive\+\_\+4\+Wheels Class Reference}
+\hypertarget{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels}{}\label{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels}\index{mobilecarts.configs.diffdrives.DiffDrive\_4Wheels@{mobilecarts.configs.diffdrives.DiffDrive\_4Wheels}}
+
+
+Elementary Differential Drive with 2 fixed wheels and 2 castor wheels.  
+
+
+
+
+Inheritance diagram for mobilecarts.\+configs.\+diffdrives.\+Diff\+Drive\+\_\+4\+Wheels\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for mobilecarts.\+configs.\+diffdrives.\+Diff\+Drive\+\_\+4\+Wheels\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels_a9ed78b04a2dac26dd5aa4305649c4aef}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, name=None, mathname="{}dd"{}, params=\{\}, compute\+\_\+canudas=True, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmobilecarts_1_1mobilecarts_1_1MobileCart}{mobilecarts.\+mobilecarts.\+Mobile\+Cart}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries parse\+\_\+params} (self, dict params)
+\item 
+{\bfseries print\+\_\+dict} (self, dd, prefix="{}"{})
+\item 
+{\bfseries compute\+\_\+feedback\+\_\+linearization} (self)
+\item 
+{\bfseries set\+\_\+parent\+\_\+frame} (self, \mbox{\hyperlink{classmobilecarts_1_1components_1_1basic_1_1frame_1_1Frame}{Frame}} parent\+\_\+frame)
+\item 
+{\bfseries add\+\_\+wheel} (self, dict wheelparams=None)
+\item 
+{\bfseries get\+\_\+wheel\+\_\+contactpoint\+\_\+pos\+\_\+global} (self, int wheel\+\_\+id)
+\item 
+{\bfseries get\+\_\+wheel\+\_\+contactpoint\+\_\+vel\+\_\+chassis} (self, int wheel\+\_\+id)
+\item 
+{\bfseries get\+\_\+wheel\+\_\+contactpoint\+\_\+vel\+\_\+global\+\_\+atwheelframe} (self, \mbox{\hyperlink{classmobilecarts_1_1components_1_1mechanical_1_1wheels_1_1wheel_1_1Wheel}{Wheel}} w)
+\item 
+{\bfseries get\+\_\+wheel\+\_\+contactpoint\+\_\+vel\+\_\+global\+\_\+atwheelcontactframe} (self, \mbox{\hyperlink{classmobilecarts_1_1components_1_1mechanical_1_1wheels_1_1wheel_1_1Wheel}{Wheel}} w)
+\item 
+\mbox{\hyperlink{classmobilecarts_1_1mobilecarts_1_1MobileCart_a12294010afb5c1e6be1ae049722d22d4}{compute\+\_\+canudas\+\_\+constraint\+\_\+matrices}} (self)
+\item 
+\mbox{\hyperlink{classmobilecarts_1_1mobilecarts_1_1MobileCart_a1de60df68e12f5dda656d468a34ff137}{compute\+\_\+nullspace}} (self, dict subdict=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmobilecarts_1_1mobilecarts_1_1MobileCart}{mobilecarts.\+mobilecarts.\+Mobile\+Cart}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Nf}
+\item 
+{\bfseries Ns}
+\item 
+{\bfseries Nc}
+\item 
+{\bfseries N}
+\item 
+{\bfseries name}
+\item 
+{\bfseries mathname}
+\item 
+{\bfseries outputdir}
+\item 
+{\bfseries info}
+\item 
+{\bfseries x}
+\item 
+{\bfseries y}
+\item 
+{\bfseries theta}
+\item 
+{\bfseries vx}
+\item 
+{\bfseries vy}
+\item 
+{\bfseries omega}
+\item 
+{\bfseries vxlocal}
+\item 
+{\bfseries vylocal}
+\item 
+{\bfseries h}
+\item 
+{\bfseries chassis}
+\item 
+{\bfseries parent\+Frame}
+\item 
+{\bfseries wheels\+\_\+by\+\_\+type}
+\item 
+{\bfseries params}
+\item 
+{\bfseries notation}
+\item 
+{\bfseries parent\+\_\+frame}
+\item 
+{\bfseries Nm}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Elementary Differential Drive with 2 fixed wheels and 2 castor wheels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels_a9ed78b04a2dac26dd5aa4305649c4aef}\label{classmobilecarts_1_1configs_1_1diffdrives_1_1DiffDrive__4Wheels_a9ed78b04a2dac26dd5aa4305649c4aef} 
+\index{mobilecarts.configs.diffdrives.DiffDrive\_4Wheels@{mobilecarts.configs.diffdrives.DiffDrive\_4Wheels}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!mobilecarts.configs.diffdrives.DiffDrive\_4Wheels@{mobilecarts.configs.diffdrives.DiffDrive\_4Wheels}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily mobilecarts.\+configs.\+diffdrives.\+Diff\+Drive\+\_\+4\+Wheels.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{name = {\ttfamily None},  }\item[{}]{mathname = {\ttfamily "{}dd"{}},  }\item[{}]{params = {\ttfamily \{\}},  }\item[{}]{compute\+\_\+canudas = {\ttfamily True},  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Allowed parameters\+: a (x distance), b (y distance), r (wheel radius), d (castor distance) \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classmobilecarts_1_1mobilecarts_1_1MobileCart}{mobilecarts.\+mobilecarts.\+Mobile\+Cart}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+configs/diffdrives.\+py\end{DoxyCompactItemize}

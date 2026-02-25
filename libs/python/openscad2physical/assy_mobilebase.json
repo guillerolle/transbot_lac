@@ -1,0 +1,41 @@
+{
+    "name": "assy_mobilebase",
+    "components": [
+        {
+            "name": "wheel_axle",
+            "assy": "wheel_axle.json"
+        },
+        {
+            "name": "castor_wheel",
+            "assy": "wheel_castor.json"
+        }
+    ],
+    "joints": [
+        {
+            "name": "joint_wheel_axle",
+            "parent": {
+                "position": [0, 0, 60],
+                "orientation": [0, 0, 0]
+            },
+            "child": {
+                "name": "wheel_axle",
+                "position": [0, 0, 0],
+                "orientation": [0, 0, 0]
+            },
+            "type": "fixed"
+        },
+        {
+            "name": "joint_castor_wheel",
+            "parent": {
+                "position": [600, 0, 130],
+                "orientation": [0, 0, 0]
+            },
+            "child": {
+                "name": "castor_wheel",
+                "position": [0, 0, 0],
+                "orientation": [0, 0, 0]
+            },
+            "type": "fixed"
+        }
+    ]
+}

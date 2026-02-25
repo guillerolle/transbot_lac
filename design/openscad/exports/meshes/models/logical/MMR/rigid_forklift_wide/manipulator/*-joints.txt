@@ -1,0 +1,6 @@
+ECHO: ["joint", "prismatic", "manipulator/pj_horquilla", "[0, 0, 0]", "[0, 0, 0]", "[0, 0, 1]", "[100, 1770]"]
+ECHO: ["joint", "prismatic", "manipulator/pj_unna1", "[50, 50, -50]", "[0, 0, 0]", "[0, 1, 0]", "[325, 0]"]
+ECHO: ["joint", "prismatic", "manipulator/pj_unna0", "[50, -50, -50]", "[0, 0, 0]", "[0, -1, 0]", "[325, 0]"]
+ECHO: ["joint", "prismatic", "manipulator/pj_horquilla", "[0, 0, 0]", "[0, 0, 0]", "[0, 0, 1]", "[100, 1770]"]
+ECHO: ["joint", "prismatic", "manipulator/pj_unna1", "[50, 50, -50]", "[0, 0, 0]", "[0, 1, 0]", "[325, 0]"]
+ECHO: ["joint", "prismatic", "manipulator/pj_unna0", "[50, -50, -50]", "[0, 0, 0]", "[0, -1, 0]", "[325, 0]"]

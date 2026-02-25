@@ -1,0 +1,12 @@
+within MobileRobots.ActiveCarts.Type20;
+
+partial model Partial_T20_Active
+  extends Carts.Icons.Type20.DD2W_Icon;
+  import MobileRobotsMB.Navigation.MotionControl.StaticStateFeedback.RobotType;
+  extends PartialActiveCart(final robotType=RobotType._20, 
+   redeclare replaceable Carts.Assemblies.Type20.DifferentialDrives.DD2W_Planar cart, 
+   Nm = 2
+  );
+equation
+
+end Partial_T20_Active;

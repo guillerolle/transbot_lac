@@ -1,0 +1,47 @@
+within MobileRobots.Carts.Assemblies.Type30.OmniWheels;
+
+model OW3W_Planar
+  extends PartialCart;
+  MultiBodyExtension.Parts.FixedRotation struct_w1o(r = {omni_radius, 0, 0}, n = {0, 0, 1}, angle = -90)  annotation(
+    Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
+  parameter Real omni_radius(start = 0.5) "Radius for positioning the wheels with respect to the center reference frame";
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel w1o(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = false, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {60, -20}, extent = {{-10, 10}, {10, -10}}, rotation = 180)));
+  
+  import Modelica.Constants.D2R;
+  import Modelica.Math.cos;
+  import Modelica.Math.sin;
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedRotation struct_w2o(angle = 120-90, n = {0, 0, 1}, r = {cos(D2R*120)*omni_radius, sin(D2R*120)*omni_radius, 0}) annotation(
+    Placement(transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+  MobileRobotsMB.MultiBodyExtension.Parts.FixedRotation struct_w3o(angle = -120 -90, n = {0, 0, 1}, r = {cos(-D2R*120)*omni_radius, sin(-D2R*120)*omni_radius, 0}) annotation(
+    Placement(transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel w2o(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = false, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {-60, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 180)));
+  MobileRobotsMB.Carts.Components.Wheels.FixedWheel w3o(I_axis = wheels_I_axis, I_long = wheels_I_long, inertialModel = wheels_inertial_model, lateralSlidingConstraint = false, m = wheels_mass, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {-60, -40}, extent = {{-10, 10}, {10, -10}}, rotation = 180)));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w1o_flange annotation(
+    Placement(transformation(origin = {100, -20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w2o_flange annotation(
+    Placement(transformation(origin = {-80, 20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-50, 50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a w3o_flange annotation(
+    Placement(transformation(origin = {-80, -40}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-50, -50}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(f_cart, struct_w1o.frame_a) annotation(
+    Line(points = {{0, 0}, {40, 0}}));
+  connect(struct_w1o.frame_b, w1o.frame_a) annotation(
+    Line(points = {{60, 0}, {60, -10}}, color = {95, 95, 95}));
+  connect(f_cart, struct_w2o.frame_a) annotation(
+    Line(points = {{0, 0}, {-12, 0}, {-12, 30}, {-20, 30}}));
+  connect(f_cart, struct_w3o.frame_a) annotation(
+    Line(points = {{0, 0}, {-12, 0}, {-12, -30}, {-20, -30}}));
+  connect(struct_w2o.frame_b, w2o.frame_a) annotation(
+    Line(points = {{-40, 30}, {-60, 30}}, color = {95, 95, 95}));
+  connect(struct_w3o.frame_b, w3o.frame_a) annotation(
+    Line(points = {{-40, -30}, {-60, -30}}, color = {95, 95, 95}));
+  connect(w1o.flange_rotationaxle, w1o_flange) annotation(
+    Line(points = {{60, -20}, {100, -20}}));
+  connect(w2o.flange_rotationaxle, w2o_flange) annotation(
+    Line(points = {{-60, 20}, {-80, 20}}));
+  connect(w3o_flange, w3o.flange_rotationaxle) annotation(
+    Line(points = {{-80, -40}, {-60, -40}}));
+end OW3W_Planar;

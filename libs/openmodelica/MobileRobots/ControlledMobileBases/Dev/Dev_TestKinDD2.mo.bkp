@@ -1,0 +1,20 @@
+within MobileRobots.ControlledMobileBases.Dev;
+
+model Dev_TestKinDD2
+  replaceable MobileRobotsMB.ActiveCarts.Type20.DD2W_Velocity_Direct mobilebase annotation(
+    Placement(transformation(origin = {60, 0}, extent = {{-20, -20}, {20, 20}})));
+  replaceable MobileRobotsMB.Navigation.MotionControl.ActuatorConfiguration.T20_WAC_DD2W waconf(r = 0.1, track = 0.5) annotation(
+    Placement(transformation(extent = {{-20, -20}, {20, 20}})));
+  Modelica.Blocks.Interfaces.RealInput d[3] annotation(
+    Placement(transformation(origin = {-110, 20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-112, -31}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(waconf.actuation, mobilebase.actuators_input) annotation(
+    Line(points = {{22, 0}, {38, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(d, waconf.zp_local) annotation(
+    Line(points = {{-110, 20}, {-80, 20}, {-80, 0}, {-22, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  annotation(
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_INIT_V,LOG_NLS_V,LOG_STATS", s = "dassl", variableFilter = ".*"),
+  Diagram);
+end Dev_TestKinDD2;

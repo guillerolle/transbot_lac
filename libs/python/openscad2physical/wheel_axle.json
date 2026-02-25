@@ -1,0 +1,73 @@
+{
+    "name": "assy_wheel_axle",
+    "components": [        
+        {
+            "name": "axle",
+            "scad": "Axle.scad",
+            "module": "Axle",
+            "params": {
+                "length": 500,
+                "diameter": 20
+            }
+        },
+        {
+            "name": "wheel_1",
+            "scad": "Wheel.scad",
+            "module": "Wheel",
+            "params": {
+                "diameter": 140,
+                "width": 50,
+                "hole": 20
+            }
+        },
+        {
+            "name": "wheel_2",
+            "scad": "Wheel.scad",
+            "module": "Wheel",
+            "params": {
+                "diameter": 120,
+                "width": 30,
+                "hole": 20
+            }
+        }
+    ],
+    "joints": [
+        {
+            "name": "main_joint",
+            "parent": {
+                "position": [0, 0, 0],
+                "orientation": [0, 90, 90]
+            },
+            "child": {
+                "name": "axle"
+            },
+            "type": "fixed"
+        }, 
+        {
+            "name": "joint_wheel1",
+            "parent": {
+                "name": "axle",
+                "position": [0, 0, 250],
+                "orientation": [0, 0, 0]
+            },
+            "child": {
+                    "name": "wheel_1"
+            },
+            "type": "continuous",
+            "axis": [1, 0, 0]
+        }, 
+        {
+            "name": "joint_wheel2",
+            "parent": {
+                "name": "axle",
+                "position": [0, 0, -250],
+                "orientation": [0, 0, 0]
+            },
+            "child": {
+                "name": "wheel_2"
+            },
+            "type": "continuous",
+            "axis": [0, 0, 1]
+        }
+    ]
+}

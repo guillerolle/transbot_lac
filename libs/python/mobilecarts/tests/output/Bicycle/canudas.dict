@@ -1,0 +1,270 @@
+'wheel_parent_restrictions': {
+	'bi.w_{0f}': [Eq(bi.w_{0f}.ppvx(t), bi.v_x^{local}(t)), Eq(bi.w_{0f}.ppvy(t), xf*bi.\omega(t) + bi.v_y^{local}(t)), Eq(bi.w_{0f}.ppvz(t), 0)],
+	'bi.w_{1s}': [Eq(bi.w_{1s}.ppvx(t), bi.v_x^{local}(t)), Eq(bi.w_{1s}.ppvy(t), xs*bi.\omega(t) + bi.v_y^{local}(t)), Eq(bi.w_{1s}.ppvz(t), 0)],
+}
+'wheel_cpoint_restrictions': {
+	'bi.w_{0f}': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.w_{0f}.ppvx(t)], [bi.w_{0f}.ppvy(t)], [0]]),
+	'bi.w_{1s}': Matrix([[-r*bi.w_{1s}.\dot{\phi}(t) + bi.w_{1s}.ppvx(t)*cos(bi.w_{1}.\delta(t)) + bi.w_{1s}.ppvy(t)*sin(bi.w_{1}.\delta(t))], [-bi.w_{1s}.ppvx(t)*sin(bi.w_{1}.\delta(t)) + bi.w_{1s}.ppvy(t)*cos(bi.w_{1}.\delta(t))], [0]]),
+}
+'canudas': {
+	'posture_coords': {
+		'symbol': xi(t),
+		'value': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)]]),
+}
+	'posture_speeds': {
+		'symbol': \dot{xi}(t),
+		'value': Matrix([[bi.vx(t)], [bi.vy(t)], [bi.\omega(t)]]),
+}
+	'orientation_coords': {
+		'symbol': beta(t),
+		'value': Matrix([[bi.w_{1s}.\beta(t)]]),
+		'betas': Matrix([[bi.w_{1s}.\beta(t)]]),
+		'betac': Matrix(0, 1, []),
+}
+	'rotation_coords': {
+		'symbol': phi(t),
+		'value': Matrix([[bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+}
+	'configuration_coords': {
+		'value': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)], [bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+}
+	'restrictions': {
+		'equations': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.v_x^{local}(t)], [xf*bi.\omega(t) + bi.v_y^{local}(t)], [-r*bi.w_{1s}.\dot{\phi}(t) - xs*bi.\omega(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*sin(bi.w_{1s}.\beta(t)) - bi.v_y^{local}(t)*cos(bi.w_{1s}.\beta(t))], [xs*bi.\omega(t)*sin(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_y^{local}(t)*sin(bi.w_{1s}.\beta(t))]]),
+		'J1': Matrix([[1, 0, 0], [sin(bi.w_{1s}.\beta(t)), -cos(bi.w_{1s}.\beta(t)), -xs*cos(bi.w_{1s}.\beta(t))]]),
+		'J1f': Matrix([[1, 0, 0]]),
+		'J1s': Matrix([[sin(bi.w_{1s}.\beta(t)), -cos(bi.w_{1s}.\beta(t)), -xs*cos(bi.w_{1s}.\beta(t))]]),
+		'J1c': Matrix(0, 3, []),
+		'J1sw': Matrix(0, 3, []),
+		'J2': Matrix([[-r, 0], [0, -r]]),
+		'C1': Matrix([[0, 1, xf], [cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+		'C1f': Matrix([[0, 1, xf]]),
+		'C1s': Matrix([[cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+		'C1c': Matrix(0, 3, []),
+		'C2': Matrix(0, 1, []),
+		'C2c': Matrix(0, 0, []),
+		'equations.T': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.v_x^{local}(t), xf*bi.\omega(t) + bi.v_y^{local}(t), -r*bi.w_{1s}.\dot{\phi}(t) - xs*bi.\omega(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*sin(bi.w_{1s}.\beta(t)) - bi.v_y^{local}(t)*cos(bi.w_{1s}.\beta(t)), xs*bi.\omega(t)*sin(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_y^{local}(t)*sin(bi.w_{1s}.\beta(t))]]),
+		'C1*': Matrix([[0, 1, xf], [cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+}
+	'sigma': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))], [-xf*cos(bi.w_{1s}.\beta(t))], [cos(bi.w_{1s}.\beta(t))]]),
+	'nullspace_base': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t)), -xf*cos(bi.w_{1s}.\beta(t)), cos(bi.w_{1s}.\beta(t))]]),
+	'pinv(sigma)_left': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2), -xf*cos(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2), cos(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2)]]),
+	'delta_m': 1,
+	'delta_s': 1,
+	'robot_type': (1,1),
+	'eta': Matrix([[eta_0(t)]]),
+	'zeta': Matrix([[zeta_0(t)]]),
+	'z': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)]]),
+	'B': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t)), 0], [-xf*cos(bi.w_{1s}.\beta(t)), 0], [cos(bi.w_{1s}.\beta(t)), 0], [0, 1]]),
+	'u': Matrix([[eta_0(t)], [zeta_0(t)]]),
+	'zdot_local': Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])*Matrix([
+[ Matrix([[eta_0(t)]])],
+[Matrix([[zeta_0(t)]])]]),
+	'R': Matrix([[cos(bi.\theta(t)), sin(bi.\theta(t))], [-sin(bi.\theta(t)), cos(bi.\theta(t))]]),
+	'RR': Matrix([[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0], [sin(bi.\theta(t)), cos(bi.\theta(t)), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]),
+	'zdot': Matrix([
+[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0],
+[sin(bi.\theta(t)),  cos(bi.\theta(t)), 0, 0],
+[                0,                  0, 1, 0],
+[                0,                  0, 0, 1]])*Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])*Matrix([
+[ Matrix([[eta_0(t)]])],
+[Matrix([[zeta_0(t)]])]]),
+	'D': Matrix(0, 3, []),
+	'E': Matrix([[1/r, 0, 0], [sin(bi.w_{1s}.\beta(t))/r, -cos(bi.w_{1s}.\beta(t))/r, -xs*cos(bi.w_{1s}.\beta(t))/r]]),
+	'q': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)], [bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+	'S': Matrix([
+[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0, 0, 0],
+[sin(bi.\theta(t)),  cos(bi.\theta(t)), 0, 0, 0, 0],
+[                0,                  0, 1, 0, 0, 0],
+[                0,                  0, 0, 1, 0, 0],
+[                0,                  0, 0, 0, 1, 0],
+[                0,                  0, 0, 0, 0, 1]])*Matrix([
+[Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])],
+[                                                                                                                                                                                                                                                                       Matrix([[Matrix(0, 1, []), Matrix(0, 1, [])]])],
+[                                               Matrix([[Matrix([
+[                                                                       (xf - xs)*sin(bi.w_{1s}.\beta(t))/r],
+[xf*cos(bi.w_{1s}.\beta(t))**2/r - xs*cos(bi.w_{1s}.\beta(t))**2/r + (xf - xs)*sin(bi.w_{1s}.\beta(t))**2/r]]), Matrix([
+[0],
+[0]])]])]]),
+	'actuators': {
+		'phi_actuated': [0, 1],
+		'B': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))/r, xf*cos(bi.w_{1s}.\beta(t))**2/r - xs*cos(bi.w_{1s}.\beta(t))**2/r + (xf - xs)*sin(bi.w_{1s}.\beta(t))**2/r]]),
+		'P': Matrix([[1, 0], [0, 1]]),
+}
+	'sfl': {
+		'P': {
+			'symbol': bi.P,
+}
+		'P'': {
+			'symbol': bi.P',
+			'pos_from_chassis': Matrix([[bi.e*sin(bi.w_{1s}.\beta(t)) + xs], [-bi.e*cos(bi.w_{1s}.\beta(t))], [0]]),
+			'pos_from_global': Matrix([[bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)) + bi.x(t)], [-bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*sin(bi.\theta(t)) + bi.y(t)], [bi.h]]),
+}
+		'h': Matrix([[bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)) + bi.x(t)], [-bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*sin(bi.\theta(t)) + bi.y(t)]]),
+		'dhdxi': Matrix([[1, 0, bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t))], [0, 1, bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t))]]),
+		'dhdbetas': Matrix([[bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))], [bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))]]),
+		'dhdt': Matrix([[bi.e*(bi.\omega(t) + bi.w_{1s}.\betad(t))*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*bi.\omega(t)*sin(bi.\theta(t)) + bi.vx(t)], [bi.e*(bi.\omega(t) + bi.w_{1s}.\betad(t))*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*bi.\omega(t)*cos(bi.\theta(t)) + bi.vy(t)]]),
+		'K': Matrix([[xf*sin(bi.\theta(t))*cos(bi.w_{1s}.\beta(t)) + (xf - xs)*sin(bi.w_{1s}.\beta(t))*cos(bi.\theta(t)) + (bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t)))*cos(bi.w_{1s}.\beta(t)), bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))], [-xf*cos(bi.\theta(t))*cos(bi.w_{1s}.\beta(t)) + (xf - xs)*sin(bi.\theta(t))*sin(bi.w_{1s}.\beta(t)) + (bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)))*cos(bi.w_{1s}.\beta(t)), bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))]]),
+		'K^-1': Matrix([[sin(bi.\theta(t) + bi.w_{1s}.\beta(t))/(xf - xs), -cos(bi.\theta(t) + bi.w_{1s}.\beta(t))/(xf - xs)], [(-bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))*cos(bi.w_{1s}.\beta(t)) + xf*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)))/(bi.e*(xf - xs)), (bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))*cos(bi.w_{1s}.\beta(t)) + xf*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)))/(bi.e*(xf - xs))]]),
+}
+}
+}
+
+'wheel_parent_restrictions': {
+	'bi.w_{0f}': [Eq(bi.w_{0f}.ppvx(t), bi.v_x^{local}(t)), Eq(bi.w_{0f}.ppvy(t), xf*bi.\omega(t) + bi.v_y^{local}(t)), Eq(bi.w_{0f}.ppvz(t), 0)],
+	'bi.w_{1s}': [Eq(bi.w_{1s}.ppvx(t), bi.v_x^{local}(t)), Eq(bi.w_{1s}.ppvy(t), xs*bi.\omega(t) + bi.v_y^{local}(t)), Eq(bi.w_{1s}.ppvz(t), 0)],
+}
+'wheel_cpoint_restrictions': {
+	'bi.w_{0f}': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.w_{0f}.ppvx(t)], [bi.w_{0f}.ppvy(t)], [0]]),
+	'bi.w_{1s}': Matrix([[-r*bi.w_{1s}.\dot{\phi}(t) + bi.w_{1s}.ppvx(t)*cos(bi.w_{1}.\delta(t)) + bi.w_{1s}.ppvy(t)*sin(bi.w_{1}.\delta(t))], [-bi.w_{1s}.ppvx(t)*sin(bi.w_{1}.\delta(t)) + bi.w_{1s}.ppvy(t)*cos(bi.w_{1}.\delta(t))], [0]]),
+}
+'canudas': {
+	'posture_coords': {
+		'symbol': xi(t),
+		'value': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)]]),
+}
+	'posture_speeds': {
+		'symbol': \dot{xi}(t),
+		'value': Matrix([[bi.vx(t)], [bi.vy(t)], [bi.\omega(t)]]),
+}
+	'orientation_coords': {
+		'symbol': beta(t),
+		'value': Matrix([[bi.w_{1s}.\beta(t)]]),
+		'betas': Matrix([[bi.w_{1s}.\beta(t)]]),
+		'betac': Matrix(0, 1, []),
+}
+	'rotation_coords': {
+		'symbol': phi(t),
+		'value': Matrix([[bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+}
+	'configuration_coords': {
+		'value': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)], [bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+}
+	'restrictions': {
+		'equations': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.v_x^{local}(t)], [xf*bi.\omega(t) + bi.v_y^{local}(t)], [-r*bi.w_{1s}.\dot{\phi}(t) - xs*bi.\omega(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*sin(bi.w_{1s}.\beta(t)) - bi.v_y^{local}(t)*cos(bi.w_{1s}.\beta(t))], [xs*bi.\omega(t)*sin(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_y^{local}(t)*sin(bi.w_{1s}.\beta(t))]]),
+		'J1': Matrix([[1, 0, 0], [sin(bi.w_{1s}.\beta(t)), -cos(bi.w_{1s}.\beta(t)), -xs*cos(bi.w_{1s}.\beta(t))]]),
+		'J1f': Matrix([[1, 0, 0]]),
+		'J1s': Matrix([[sin(bi.w_{1s}.\beta(t)), -cos(bi.w_{1s}.\beta(t)), -xs*cos(bi.w_{1s}.\beta(t))]]),
+		'J1c': Matrix(0, 3, []),
+		'J1sw': Matrix(0, 3, []),
+		'J2': Matrix([[-r, 0], [0, -r]]),
+		'C1': Matrix([[0, 1, xf], [cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+		'C1f': Matrix([[0, 1, xf]]),
+		'C1s': Matrix([[cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+		'C1c': Matrix(0, 3, []),
+		'C2': Matrix(0, 1, []),
+		'C2c': Matrix(0, 0, []),
+		'equations.T': Matrix([[-r*bi.w_{0f}.\dot{\phi}(t) + bi.v_x^{local}(t), xf*bi.\omega(t) + bi.v_y^{local}(t), -r*bi.w_{1s}.\dot{\phi}(t) - xs*bi.\omega(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*sin(bi.w_{1s}.\beta(t)) - bi.v_y^{local}(t)*cos(bi.w_{1s}.\beta(t)), xs*bi.\omega(t)*sin(bi.w_{1s}.\beta(t)) + bi.v_x^{local}(t)*cos(bi.w_{1s}.\beta(t)) + bi.v_y^{local}(t)*sin(bi.w_{1s}.\beta(t))]]),
+		'C1*': Matrix([[0, 1, xf], [cos(bi.w_{1s}.\beta(t)), sin(bi.w_{1s}.\beta(t)), xs*sin(bi.w_{1s}.\beta(t))]]),
+}
+	'sigma': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))], [-xf*cos(bi.w_{1s}.\beta(t))], [cos(bi.w_{1s}.\beta(t))]]),
+	'nullspace_base': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t)), -xf*cos(bi.w_{1s}.\beta(t)), cos(bi.w_{1s}.\beta(t))]]),
+	'pinv(sigma)_left': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2), -xf*cos(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2), cos(bi.w_{1s}.\beta(t))/(xf**2*sin(bi.w_{1s}.\beta(t))**2 + xf**2*cos(bi.w_{1s}.\beta(t))**2 - 2*xf*xs*sin(bi.w_{1s}.\beta(t))**2 + xs**2*sin(bi.w_{1s}.\beta(t))**2 + cos(bi.w_{1s}.\beta(t))**2)]]),
+	'delta_m': 1,
+	'delta_s': 1,
+	'robot_type': (1,1),
+	'eta': Matrix([[eta_0(t)]]),
+	'zeta': Matrix([[zeta_0(t)]]),
+	'z': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)]]),
+	'B': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t)), 0], [-xf*cos(bi.w_{1s}.\beta(t)), 0], [cos(bi.w_{1s}.\beta(t)), 0], [0, 1]]),
+	'u': Matrix([[eta_0(t)], [zeta_0(t)]]),
+	'zdot_local': Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])*Matrix([
+[ Matrix([[eta_0(t)]])],
+[Matrix([[zeta_0(t)]])]]),
+	'R': Matrix([[cos(bi.\theta(t)), sin(bi.\theta(t))], [-sin(bi.\theta(t)), cos(bi.\theta(t))]]),
+	'RR': Matrix([[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0], [sin(bi.\theta(t)), cos(bi.\theta(t)), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]),
+	'zdot': Matrix([
+[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0],
+[sin(bi.\theta(t)),  cos(bi.\theta(t)), 0, 0],
+[                0,                  0, 1, 0],
+[                0,                  0, 0, 1]])*Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])*Matrix([
+[ Matrix([[eta_0(t)]])],
+[Matrix([[zeta_0(t)]])]]),
+	'D': Matrix(0, 3, []),
+	'E': Matrix([[1/r, 0, 0], [sin(bi.w_{1s}.\beta(t))/r, -cos(bi.w_{1s}.\beta(t))/r, -xs*cos(bi.w_{1s}.\beta(t))/r]]),
+	'q': Matrix([[bi.x(t)], [bi.y(t)], [bi.\theta(t)], [bi.w_{1s}.\beta(t)], [bi.w_{0f}.\phi(t)], [bi.w_{1s}.\phi(t)]]),
+	'S': Matrix([
+[cos(bi.\theta(t)), -sin(bi.\theta(t)), 0, 0, 0, 0],
+[sin(bi.\theta(t)),  cos(bi.\theta(t)), 0, 0, 0, 0],
+[                0,                  0, 1, 0, 0, 0],
+[                0,                  0, 0, 1, 0, 0],
+[                0,                  0, 0, 0, 1, 0],
+[                0,                  0, 0, 0, 0, 1]])*Matrix([
+[Matrix([
+[Matrix([
+[(xf - xs)*sin(bi.w_{1s}.\beta(t))],
+[      -xf*cos(bi.w_{1s}.\beta(t))],
+[          cos(bi.w_{1s}.\beta(t))]]), Matrix([
+[0],
+[0],
+[0]])],
+[                                                                                                           Matrix([[0]]),            Matrix([[1]])]])],
+[                                                                                                                                                                                                                                                                       Matrix([[Matrix(0, 1, []), Matrix(0, 1, [])]])],
+[                                               Matrix([[Matrix([
+[                                                                       (xf - xs)*sin(bi.w_{1s}.\beta(t))/r],
+[xf*cos(bi.w_{1s}.\beta(t))**2/r - xs*cos(bi.w_{1s}.\beta(t))**2/r + (xf - xs)*sin(bi.w_{1s}.\beta(t))**2/r]]), Matrix([
+[0],
+[0]])]])]]),
+	'actuators': {
+		'phi_actuated': [0, 1],
+		'B': Matrix([[(xf - xs)*sin(bi.w_{1s}.\beta(t))/r, xf*cos(bi.w_{1s}.\beta(t))**2/r - xs*cos(bi.w_{1s}.\beta(t))**2/r + (xf - xs)*sin(bi.w_{1s}.\beta(t))**2/r]]),
+		'P': Matrix([[1, 0], [0, 1]]),
+}
+	'sfl': {
+		'P': {
+			'symbol': bi.P,
+}
+		'P'': {
+			'symbol': bi.P',
+			'pos_from_chassis': Matrix([[bi.e*sin(bi.w_{1s}.\beta(t)) + xs], [-bi.e*cos(bi.w_{1s}.\beta(t))], [0]]),
+			'pos_from_global': Matrix([[bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)) + bi.x(t)], [-bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*sin(bi.\theta(t)) + bi.y(t)], [bi.h]]),
+}
+		'h': Matrix([[bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)) + bi.x(t)], [-bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*sin(bi.\theta(t)) + bi.y(t)]]),
+		'dhdxi': Matrix([[1, 0, bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t))], [0, 1, bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t))]]),
+		'dhdbetas': Matrix([[bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))], [bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))]]),
+		'dhdt': Matrix([[bi.e*(bi.\omega(t) + bi.w_{1s}.\betad(t))*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*bi.\omega(t)*sin(bi.\theta(t)) + bi.vx(t)], [bi.e*(bi.\omega(t) + bi.w_{1s}.\betad(t))*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*bi.\omega(t)*cos(bi.\theta(t)) + bi.vy(t)]]),
+		'K': Matrix([[xf*sin(bi.\theta(t))*cos(bi.w_{1s}.\beta(t)) + (xf - xs)*sin(bi.w_{1s}.\beta(t))*cos(bi.\theta(t)) + (bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t)))*cos(bi.w_{1s}.\beta(t)), bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))], [-xf*cos(bi.\theta(t))*cos(bi.w_{1s}.\beta(t)) + (xf - xs)*sin(bi.\theta(t))*sin(bi.w_{1s}.\beta(t)) + (bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) + xs*cos(bi.\theta(t)))*cos(bi.w_{1s}.\beta(t)), bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))]]),
+		'K^-1': Matrix([[sin(bi.\theta(t) + bi.w_{1s}.\beta(t))/(xf - xs), -cos(bi.\theta(t) + bi.w_{1s}.\beta(t))/(xf - xs)], [(-bi.e*sin(bi.\theta(t) + bi.w_{1s}.\beta(t))*cos(bi.w_{1s}.\beta(t)) + xf*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*cos(bi.\theta(t) + bi.w_{1s}.\beta(t)))/(bi.e*(xf - xs)), (bi.e*cos(bi.\theta(t) + bi.w_{1s}.\beta(t))*cos(bi.w_{1s}.\beta(t)) + xf*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)) - xs*sin(bi.\theta(t) + bi.w_{1s}.\beta(t)))/(bi.e*(xf - xs))]]),
+}
+}
+}
+

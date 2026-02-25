@@ -1,0 +1,57 @@
+within MobileRobots.Carts.Assemblies.Type20.DifferentialDrives.Sandbox;
+
+model S_CartTrain
+  replaceable MobileRobotsMB.Carts.Assemblies.Type20.DifferentialDrives.DD4W_Planar cart(diffdrive_axle_position = {-0.4, 0, 0}, diffdrive_track = 0.6, wheels_radius = 0.1, w3c_location = {0.3, 0.3, 0}, w4c_location = {0.3, -0.3, 0}) annotation(
+    Placement(transformation(origin = {99, 0}, extent = {{-20, -20}, {20, 20}})));
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w1f(exact = true) annotation(
+    Placement(transformation(origin = {79, 30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w2f(exact = true) annotation(
+    Placement(transformation(origin = {79, -30}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+  Modelica.Blocks.Sources.Sine sine(amplitude = 4, f = 0.2) annotation(
+    Placement(transformation(origin = {49, 50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Sine sine1(f = 0.3, amplitude = 2) annotation(
+    Placement(transformation(origin = {49, -50}, extent = {{-10, -10}, {10, 10}})));
+ MultiBodyExtension.Parts.FixedTranslation fixedTranslation(r = {-0.5, 0, 0}) annotation(
+    Placement(transformation(origin = {41, 1}, extent = {{10, -10}, {-10, 10}})));
+  inner Modelica.Mechanics.MultiBody.World world(gravityType = Modelica.Mechanics.MultiBody.Types.GravityTypes.NoGravity, enableAnimation = true, n = {0, 0, -1}) annotation(
+    Placement(transformation(origin = {-90, 89}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute annotation(
+    Placement(transformation(origin = {14, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
+ Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(m = 1) annotation(
+    Placement(transformation(origin = {-18, 40}, extent = {{-10, -10}, {10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation fixedTranslation1(r = {-0.5, 0, 0}) annotation(
+    Placement(transformation(origin = {-10, 0}, extent = {{10, -10}, {-10, 10}})));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute1 annotation(
+    Placement(transformation(origin = {-35, 0}, extent = {{10, -10}, {-10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation fixedTranslation2(r = {-0.5, 0, 0}) annotation(
+    Placement(transformation(origin = {-65, 0}, extent = {{10, -10}, {-10, 10}})));
+  replaceable MobileRobotsMB.Carts.Assemblies.Type20.DifferentialDrives.DD4W_Planar cart1(diffdrive_axle_position = {-0.4, 0, 0}, diffdrive_track = 0.6, wheels_radius = 0.1, usePlanarConstraint = false, w3c_location = {0.3, 0.3, 0}, w4c_location = {0.3, -0.3, 0}) annotation(
+    Placement(transformation(origin = {-117, 0}, extent = {{-20, -20}, {20, 20}})));
+equation
+  connect(sf_w1f.flange, cart.w1f_flange) annotation(
+    Line(points = {{79, 20}, {79, 12}}));
+  connect(sf_w2f.flange, cart.w2f_flange) annotation(
+    Line(points = {{79, -20}, {79, -12}}));
+  connect(sine.y, sf_w1f.w_ref) annotation(
+    Line(points = {{60, 50}, {79, 50}, {79, 42}}, color = {0, 0, 127}));
+  connect(sine1.y, sf_w2f.w_ref) annotation(
+    Line(points = {{60, -50}, {78, -50}, {78, -42}}, color = {0, 0, 127}));
+  connect(cart.f_cart, fixedTranslation.frame_a) annotation(
+    Line(points = {{100, 0}, {80, 0}, {80, 1}, {51, 1}}, color = {95, 95, 95}));
+  connect(revolute.frame_a, fixedTranslation.frame_b) annotation(
+    Line(points = {{24, 0}, {30, 0}, {30, 1}, {31, 1}}, color = {95, 95, 95}));
+  connect(revolute.frame_b, fixedTranslation1.frame_a) annotation(
+    Line(points = {{4, 0}, {0, 0}}, color = {95, 95, 95}));
+  connect(fixedTranslation1.frame_b, pointMass.frame_a) annotation(
+    Line(points = {{-20, 0}, {-20, 16}, {-18, 16}, {-18, 40}}, color = {95, 95, 95}));
+  connect(fixedTranslation1.frame_b, revolute1.frame_a) annotation(
+    Line(points = {{-20, 0}, {-25, 0}}, color = {95, 95, 95}));
+  connect(revolute1.frame_b, fixedTranslation2.frame_a) annotation(
+    Line(points = {{-44, 0}, {-54, 0}}, color = {95, 95, 95}));
+  connect(cart1.f_cart, fixedTranslation2.frame_b) annotation(
+    Line(points = {{-116, 0}, {-74, 0}}, color = {95, 95, 95}));
+  annotation(
+    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.002),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end S_CartTrain;

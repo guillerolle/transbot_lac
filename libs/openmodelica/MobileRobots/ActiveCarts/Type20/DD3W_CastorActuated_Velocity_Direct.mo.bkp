@@ -1,0 +1,60 @@
+within MobileRobots.ActiveCarts.Type20;
+
+model DD3W_CastorActuated_Velocity_Direct
+  extends Carts.Icons.Type20.DD3W_Icon;
+  extends Partial_T20_Active(Nc = 1, redeclare Carts.Assemblies.Type20.DifferentialDrives.DD3W_Planar cart(diffdrive_axle_position = {ddaxle, 0, 0}, diffdrive_track = ddtrack, wheels_radius = ddrad, w3c_location = {caxle, 0, 0}, chassis_inertial_model = MobileRobotsMB.Types.InertialModel.Body, wheels_inertial_model = MobileRobotsMB.Types.InertialModel.Body
+  )  //,each actuators_input.stateSelect = StateSelect.prefer
+  );
+  parameter Real ddaxle = -0.5, ddtrack = 0.5, ddrad = 0.1;
+  parameter Real caxle = 0.25 "Castor virtual axle offset";
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w3c_r(exact = true, phi(fixed = true)) annotation(
+    Placement(transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w3c_s(exact = true, phi(fixed = true)) annotation(
+    Placement(transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Sensors.AngleSensor angSens_w3cs annotation(
+    Placement(transformation(origin = {106, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Sensors.SpeedSensor spdSens_w3cs annotation(
+    Placement(transformation(origin = {74, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Sensors.PowerSensor sf_w3c_r_pow annotation(
+    Placement(transformation(origin = {26, 20}, extent = {{-10, -10}, {10, 10}})));
+protected
+  final parameter Real a = ddaxle, b = ddtrack/2, r = ddrad;
+  final parameter Real initMatrix[3, 2] = [r/2, r/2; a*r/(2*b), -a*r/(2*b); r/(2*b), -r/(2*b)];
+  Modelica.Mechanics.Rotational.Sensors.PowerSensor sf_w3c_s_pow annotation(
+    Placement(transformation(origin = {32, -20}, extent = {{-10, -10}, {10, 10}})));
+  /*initial equation
+                                      {cart_initial_vx, cart_initial_vy, cart_initial_w} = initMatrix*actuators_input;//*/
+initial equation
+/*cart.w1f.wheeljoint.w = cart_initial_vx/0.1;
+  cart.w2f.wheeljoint.w = cart_initial_vx/0.1;//*/
+  cart.w1f.wheeljoint.phi = 0;
+  cart.w2f.wheeljoint.phi = 0;
+  cart.planar.phi = cart_initial_phi;
+equation
+  connect(actuation[1], sf_w3c_r.w_ref) annotation(
+    Line(points = {{-110, 0}, {-64, 0}, {-64, 20}, {-12, 20}}, color = {0, 0, 127}));
+  connect(actuation[2], sf_w3c_s.w_ref) annotation(
+    Line(points = {{-110, 0}, {-64, 0}, {-64, -20}, {-12, -20}}, color = {0, 0, 127}));
+  connect(cart.w3c_steeringflange, angSens_w3cs.flange) annotation(
+    Line(points = {{100, 0}, {106, 0}, {106, 24}}));
+  connect(angSens_w3cs.phi, configurationSensor.deltac[1]) annotation(
+    Line(points = {{106, 46}, {86, 46}, {86, 58}}, color = {0, 0, 127}));
+  connect(cart.w3c_steeringflange, spdSens_w3cs.flange) annotation(
+    Line(points = {{100, 0}, {100, 22}, {74, 22}, {74, 26}}));
+  connect(spdSens_w3cs.w, configurationSensor.deltacdot[1]) annotation(
+    Line(points = {{74, 48}, {74, 58}}, color = {0, 0, 127}));
+  connect(sf_w3c_r_pow.flange_a, sf_w3c_r.flange) annotation(
+    Line(points = {{16, 20}, {10, 20}}));
+  connect(sf_w3c_s_pow.flange_a, sf_w3c_s.flange) annotation(
+    Line(points = {{22, -20}, {10, -20}}));
+  connect(sf_w3c_r_pow.flange_b, cart.w3c_rollingflange) annotation(
+    Line(points = {{36, 20}, {50, 20}, {50, -4}, {100, -4}}));
+  connect(sf_w3c_s_pow.flange_b, cart.w3c_steeringflange) annotation(
+    Line(points = {{42, -20}, {110, -20}, {110, 0}, {100, 0}}));
+  annotation(
+    Icon(graphics = {Text(origin = {-40, 50}, extent = {{-38, 20}, {38, -20}}, textString = "Velocity"), Text(origin = {50, 50}, extent = {{-32, 21}, {32, -21}}, textString = "Direct")}),
+    Diagram(graphics),
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end DD3W_CastorActuated_Velocity_Direct;

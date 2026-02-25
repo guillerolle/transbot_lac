@@ -1,0 +1,11 @@
+within MobileRobots.Carts.Assemblies.Tests.T01_BasicMotion.T01A_SpeedSource;
+
+model T01A_DD4WP
+  extends T01A_DD2WP(redeclare Type20.DifferentialDrives.DD4W_Planar cart(w3c_location = {0.3, 0.3, 0}, w4c_location = {0.3, -0.3, 0}, chassis_mass = 10, chassis_rCM = {0, 0, 0}, chassis_I_11 = 10, chassis_I_22 = 10, chassis_I_33 = 10, chassis_I_21 = 0, chassis_I_31 = 0, chassis_I_32 = 0, chassis_inertial_model = MobileRobotsMB.Types.InertialModel.NoInertia));
+equation
+
+  annotation(
+    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.02),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end T01A_DD4WP;

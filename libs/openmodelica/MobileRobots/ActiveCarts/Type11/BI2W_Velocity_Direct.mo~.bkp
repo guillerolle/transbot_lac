@@ -1,0 +1,50 @@
+within MobileRobots.ActiveCarts.Type11;
+
+model BI2W_Velocity_Direct
+  extends Carts.Icons.Type11.BI2W_Icon;
+  import Navigation.MotionControl.StaticStateFeedback.RobotType;
+  
+  extends PartialActiveCart(final robotType=RobotType._11, 
+     redeclare final replaceable Carts.Assemblies.Type11.Bicycles.BI2W_Planar cart(
+      wheels_radius = r, 
+      fxw_axle_position = {xf, 0, 0}, 
+      stw_axle_position = {xs, 0, 0}
+      ), 
+     final Nm = 2,
+     final Nc = 0
+    );
+  Modelica.Mechanics.Rotational.Sensors.AngleSensor angSens_w2ss annotation(
+    Placement(transformation(origin = {98, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Sensors.SpeedSensor spdSens_w2ss annotation(
+    Placement(transformation(origin = {70, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w1f(exact = true, phi(fixed = true)) annotation(
+    Placement(transformation(origin = {0, 12}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.Rotational.Sources.Speed sf_w2s_s(exact = true, phi(fixed = true)) annotation(
+    Placement(transformation(origin = {2, -30}, extent = {{-10, -10}, {10, 10}})));
+
+  parameter Real xs(start=0) "location of steering wheel along cart 'x' axis";
+  parameter Real xf(start=-1) "location of fixed wheel along cart 'x' axis";
+  parameter Real r(start = 0.1) "Wheel radius";
+
+initial equation
+  cart.planar.phi = cart_initial_phi;
+  cart.w2s.wheeljoint.phi = 0;
+
+equation
+  connect(cart.w2s_flange, angSens_w2ss.flange) annotation(
+    Line(points = {{100, 0}, {100, 26}, {98, 26}}));
+  connect(angSens_w2ss.flange, spdSens_w2ss.flange) annotation(
+    Line(points = {{98, 26}, {70, 26}, {70, 28}}));
+  connect(spdSens_w2ss.w, configurationSensor.deltasdot[1]) annotation(
+    Line(points = {{70, 50}, {66, 50}, {66, 58}}, color = {0, 0, 127}));
+  connect(angSens_w2ss.phi, configurationSensor.deltas[1]) annotation(
+    Line(points = {{98, 48}, {94, 48}, {94, 58}}, color = {0, 0, 127}));
+  connect(sf_w1f.flange, cart.w1f_flange) annotation(
+    Line(points = {{10, 12}, {60, 12}, {60, 0}}));
+  connect(sf_w2s_s.flange, cart.w2s_flange) annotation(
+    Line(points = {{12, -30}, {114, -30}, {114, 0}, {100, 0}}));
+  connect(actuation[1], sf_w2s_s.w_ref) annotation(
+    Line(points = {{-110, 0}, {-64, 0}, {-64, -30}, {-10, -30}}, color = {0, 0, 127}));
+  connect(actuation[2], sf_w1f.w_ref) annotation(
+    Line(points = {{-110, 0}, {-64, 0}, {-64, 12}, {-12, 12}}, color = {0, 0, 127}));
+end BI2W_Velocity_Direct;

@@ -1,0 +1,81 @@
+within MobileRobots.Carts.Assemblies;
+
+partial model PartialCart
+  import Modelica.Units.SI;
+  import C=Modelica.Constants;
+  import MobileRobotsMB.Types.InertialModel;
+  
+  
+  // STANDARD CHASSIS PARAMETERS //
+  parameter InertialModel chassis_inertial_model = InertialModel.NoInertia "Inertial Model for the chassis (NoInertia, PointMass, Body" annotation(Dialog(tab="Chassis", group="Inertial"));
+  parameter SI.Mass chassis_mass(min=0, start=1) "Mass of chassis" annotation(
+  Dialog(tab="Chassis", group="Inertial", enable = (chassis_inertial_model >= InertialModel.PointMass)));
+  parameter SI.Position chassis_rCM[3](start={0,0,0}) "Position vector from cart's frame to chassis center of mass, resolved in cart's frame"  annotation(
+    Dialog(tab = "Chassis", group = "Inertial", enable = (chassis_inertial_model >= InertialModel.PointMass)));
+  parameter SI.Inertia chassis_I_11(min = 0, start=1) "Element (1,1) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  parameter SI.Inertia chassis_I_22(min = 0, start=1) "Element (2,2) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  parameter SI.Inertia chassis_I_33(min = 0, start=1) "Element (3,3) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  parameter SI.Inertia chassis_I_21(min = -C.inf, start=0) "Element (2,1) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  parameter SI.Inertia chassis_I_31(min = -C.inf, start=0) "Element (3,1) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  parameter SI.Inertia chassis_I_32(min = -C.inf, start=0) "Element (3,2) of inertia tensor" annotation(
+    Dialog(tab = "Chassis", group = "Inertia tensor (resolved in center of mass, parallel to Cart's Frame)", enable = (chassis_inertial_model == InertialModel.Body)));
+  
+  // STANDARD WHEELS PARAMETERS //
+  parameter SI.Radius wheels_radius(start = 0.1) "Wheels radius" annotation(Dialog(tab="Default Wheels", group="Basic"));
+  parameter InertialModel wheels_inertial_model = InertialModel.NoInertia "Inertial Model for the wheels (NoInertia, PointMass, Body" annotation(Dialog(tab="Default Wheels", group="Inertial"));
+  parameter SI.Mass wheels_mass(min=0, start=1) "Mass of wheels" annotation(
+  Dialog(tab="Default Wheels", group="Inertial", enable = (wheels_inertial_model >= InertialModel.PointMass)));
+  parameter SI.Inertia wheels_I_axis(min=0, start=1) "Inertia along the wheel axis" annotation(Dialog(tab="Default Wheels", group="Inertial", enable=(wheels_inertial_model == InertialModel.Body)));
+  parameter Modelica.Units.SI.Inertia wheels_I_long(min=0, start=1) "Inertia perpendicular to the wheel axis" annotation(Dialog(tab="Default Wheels", group="Inertial", enable=(wheels_inertial_model == InertialModel.Body)));  
+//
+
+  // PLANAR CONSTRAINT
+  parameter Boolean usePlanarConstraint = true "if true, contrain movement to a horizontal plane" annotation(
+  Dialog(tab="Planar Constraint"));
+  parameter SI.Length planar_cart_height = wheels_radius "Cart's plane height (Only for visualization)" annotation(
+  Dialog(tab="Planar Constraint", enable = usePlanarConstraint));
+  parameter SI.Length cart_initial_x(start=0) "Cart's initial x coord." annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+  parameter SI.Length cart_initial_y(start=0) "Cart's initial y coord." annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+  parameter SI.Angle cart_initial_phi(start=0) "Cart's initial angular coordinate" annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+  parameter SI.Velocity cart_initial_vx(start=0) "Cart's initial x velocity" annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+  parameter SI.Velocity cart_initial_vy(start=0) "Cart's initial y velocity" annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+  parameter SI.AngularVelocity cart_initial_w(start=0) "Cart's initial angular velocity" annotation(
+  Dialog(tab="Planar Constraint", Group="Initial", enable = usePlanarConstraint));
+
+  /* END PLANAR CONSTRAINT */
+
+  MultiBodyExtension.Parts.GenericBody chassis_body(inertialModel = chassis_inertial_model, m = chassis_mass, r_CM = chassis_rCM, I_11 = chassis_I_11, I_22 = chassis_I_22, I_33 = chassis_I_33, I_21 = chassis_I_21, I_31 = chassis_I_31, I_32 = chassis_I_32) annotation(
+    Placement(transformation(origin = {20, 0}, extent = {{-6, 6}, {6, -6}})));
+  inner Modelica.Mechanics.MultiBody.World world(enableAnimation = true, gravityType = Modelica.Mechanics.MultiBody.Types.GravityTypes.UniformGravity, n = {0, 0, -1}) annotation(
+    Placement(transformation(origin = {-90, 90}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a f_cart annotation(
+    Placement(transformation(extent = {{-14, 14}, {14, -14}}), iconTransformation(extent = {{-14, 14}, {14, -14}})));
+  Modelica.Mechanics.MultiBody.Visualizers.FixedFrame viz_cartframe(color_x = {255, 0, 0}, color_y = {0, 255, 0}, color_z = {0, 0, 255}) annotation(
+    Placement(transformation(origin = {15, 25}, extent = {{-6, -6}, {6, 6}})));
+  Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation = false, r = {0, 0, planar_cart_height}) if usePlanarConstraint annotation(
+    Placement(transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  MultiBodyExtension.Joints.PlanarExtended planar(animation = false, phi(fixed = false, start = cart_initial_phi), s_x(fixed = false, start = cart_initial_x), s_y(fixed = false, start = cart_initial_y), stateSelect_coords = StateSelect.always, stateSelect_vels = StateSelect.avoid, v_x(start=cart_initial_vx, fixed = false), v_y(start=cart_initial_vy, fixed = false), w(start=cart_initial_w, fixed = false)) if usePlanarConstraint annotation(
+    Placement(transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+equation
+  connect(f_cart, chassis_body.frame_a) annotation(
+    Line(points = {{0, 0}, {14, 0}}));
+  connect(f_cart, viz_cartframe.frame_a) annotation(
+    Line(points = {{0, 0}, {6, 0}, {6, 26}, {10, 26}}));
+  connect(fixed.frame_b, planar.frame_a) annotation(
+    Line(points = {{0, -50}, {0, -40}}, color = {95, 95, 95}));
+  connect(planar.frame_b, f_cart) annotation(
+    Line(points = {{0, -20}, {0, 0}}, color = {95, 95, 95}));
+  annotation(
+    Diagram(graphics),
+  Icon(graphics = {Rectangle(fillColor = {255, 170, 255}, fillPattern = FillPattern.Sphere, extent = {{-30, 20}, {30, -20}}, radius = 5), Text(origin = {0, -90}, textColor = {0, 85, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name")}));
+end PartialCart;

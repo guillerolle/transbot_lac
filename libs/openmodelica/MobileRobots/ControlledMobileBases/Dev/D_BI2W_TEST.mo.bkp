@@ -1,0 +1,43 @@
+within MobileRobots.ControlledMobileBases.Dev;
+
+model D_BI2W_TEST
+  ActiveCarts.Type11.BI2W_Velocity_Direct bI2W_Velocity_Direct(xs = xs, xf = xf, r = r)  annotation(
+    Placement(transformation(origin = {100, 0}, extent = {{-20, -20}, {20, 20}})));
+  Navigation.MotionControl.StaticStateFeedback.VelocityControl.T11_VelCont t11_VelCont(e = e, xs = xs, xf = xf)  annotation(
+    Placement(transformation(origin = {-80, 0}, extent = {{-20, -20}, {20, 20}})));
+  Navigation.MotionControl.ActuatorConfiguration.ActuatorConfiguration actuatorConfiguration(robotType = MobileRobotsMB.Navigation.MotionControl.StaticStateFeedback.RobotType._11, N = 2, Nc = 0, Nm = 1, Pr = [ 1;0])  annotation(
+    Placement(transformation(origin = {40, 0}, extent = {{-20, -20}, {20, 20}})));
+  Navigation.MotionControl.WheelConfiguration.Type11.WC_BI2W wc_bi2w(r = r, xs = xs)  annotation(
+    Placement(transformation(origin = {-20, 0}, extent = {{-20, -20}, {20, 20}})));
+  Modelica.Blocks.Interfaces.RealInput d[2](each start = 0) annotation(
+    Placement(transformation(origin = {-146, 11}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-163, -2}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Interfaces.RealInput ddot[2](each start = 0) annotation(
+    Placement(transformation(origin = {-146, -10}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {-158, -87}, extent = {{-10, -10}, {10, 10}})));
+
+  parameter Real e(start = 0.1) "virtual point distance from wheel. e<>0 is required";
+  parameter Real xs(start=0) "location of steering wheel along cart 'x' axis";
+  parameter Real xf(start=-1) "location of fixed wheel along cart 'x' axis";
+  parameter Real r(start = 0.1) "Wheel radius";
+
+equation
+  connect(t11_VelCont.zp_local, wc_bi2w.zp_local) annotation(
+    Line(points = {{-58, 0}, {-42, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(wc_bi2w.wp, actuatorConfiguration.wp) annotation(
+    Line(points = {{2, 0}, {18, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(actuatorConfiguration.actuation, bI2W_Velocity_Direct.actuation) annotation(
+    Line(points = {{62, 0}, {78, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(bI2W_Velocity_Direct.delta, wc_bi2w.delta) annotation(
+    Line(points = {{90, 22}, {90, 32}, {-20, 32}, {-20, 22}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(bI2W_Velocity_Direct.z, t11_VelCont.z_fb) annotation(
+    Line(points = {{122, 8}, {130, 8}, {130, 40}, {-88, 40}, {-88, 22}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(bI2W_Velocity_Direct.zdot, t11_VelCont.zp_fb) annotation(
+    Line(points = {{122, -8}, {140, -8}, {140, 50}, {-72, 50}, {-72, 22}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(ddot, t11_VelCont.z1dp) annotation(
+    Line(points = {{-146, -10}, {-102, -10}, {-102, -12}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(d, t11_VelCont.z1d) annotation(
+    Line(points = {{-146, 12}, {-102, 12}}, color = {0, 0, 127}, thickness = 0.5));
+annotation(
+    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.02),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end D_BI2W_TEST;

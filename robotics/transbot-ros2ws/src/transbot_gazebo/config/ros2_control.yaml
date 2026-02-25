@@ -1,0 +1,50 @@
+/**/controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController 
+
+    manipulator_pid_controller:
+      type: pid_controller/PidController
+
+    manipulator_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+/**/manipulator_velocity_controller:
+  ros__parameters:
+    use_sim_time: true 
+    joints: 
+      - pj_forklift
+      - manipulator/pj_horquilla
+
+/**/manipulator_pid_controller:
+  ros__parameters:
+    use_sim_time: true
+    dof_names:
+      - pj_forklift 
+      - manipulator/pj_horquilla
+    
+    command_interface: velocity 
+
+    reference_and_state_interfaces: ["position", "velocity"]
+
+    gains:
+      pj_forklift: {p: 1.0}
+      manipulator/pj_horquilla: {p: 1.0}
+
+/**/diff_drive_controller:
+  ros__parameters:
+    # use_sim_time: true
+    left_wheel_names: ["mobilebase/diff/cj0"]
+    right_wheel_names: ["mobilebase/diff/cj1"]
+    wheel_separation: 0.56
+    wheel_radius: 0.120
+    use_stamped_vel: true
+    odom_frame_id: odom 
+    base_frame_id: _
+    enable_odom_tf: true

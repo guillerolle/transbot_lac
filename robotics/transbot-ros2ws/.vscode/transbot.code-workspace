@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../project"
+		}
+	],
+	"settings": {
+		"ROS2.distro": "jazzy",
+		"python.autoComplete.extraPaths": [
+			"/home/roslac/transbot/build/transbot_description",
+			"/home/roslac/transbot/install/transbot_description/lib/python3.12/site-packages",
+			"/opt/ros/jazzy/lib/python3.12/site-packages"
+		],
+		"python.analysis.extraPaths": [
+			"/home/roslac/transbot/build/transbot_description",
+			"/home/roslac/transbot/install/transbot_description/lib/python3.12/site-packages",
+			"/opt/ros/jazzy/lib/python3.12/site-packages"
+		],
+		"git.ignoreLimitWarning": true
+	}
+}

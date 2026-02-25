@@ -1,0 +1,50 @@
+{
+    "name": "assy_castor_wheel",
+    "components": [        
+        {
+            "name": "arm",
+            "scad": "castorwheel.scad",
+            "module": "CastorArm",
+            "params": {
+            }
+        },
+        {
+            "name": "wheel",
+            "scad": "Wheel.scad",
+            "module": "Wheel",
+            "params": {
+                "diameter": 120,
+                "width": 30,
+                "hole": 20
+            }
+        }
+    ],
+    "joints": [
+        {
+            "name": "main_joint",
+            "parent": {
+                "position": [0, 0, 0],
+                "orientation": [0, 0, 0]
+            },
+            "child": {
+                "name": "arm",
+                "position": [-40, 0, -70],
+                "orientation": [0, 0, 0]
+            },
+            "type": "continuous",
+            "axis": [0, 0, 1]
+        }, 
+        {
+            "name": "joint_wheel",
+            "parent": {
+                "name": "arm",
+                "orientation": [-90, 0, 0]
+            },
+            "child": {
+                    "name": "wheel"
+            },
+            "type": "continuous",
+            "axis": [0, 0, 1]
+        }
+    ]
+}

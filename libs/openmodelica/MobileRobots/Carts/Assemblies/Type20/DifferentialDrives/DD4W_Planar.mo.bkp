@@ -1,0 +1,37 @@
+within MobileRobots.Carts.Assemblies.Type20.DifferentialDrives;
+
+model DD4W_Planar
+  extends DD2W_Planar;
+  import Modelica.Units.SI;
+  
+  parameter SI.Position w3c_location[3] = {0.5, 0.5, 0} annotation(
+    Dialog(tab = "Castor Wheels", group = "Mounts")); 
+  parameter SI.Position w4c_location[3] = {0.5, -0.5, 0} annotation(
+    Dialog(tab = "Castor Wheels", group = "Mounts")); 
+  
+  parameter SI.Distance castor_distance = wheels_radius annotation(
+    Dialog(tab = "Castor Wheels"));
+  Components.Wheels.CastorWheel w3c(radius = wheels_radius, castor_vector = {castor_distance, 0, 0})  annotation(
+    Placement(transformation(origin = {70, 60}, extent = {{-10, -10}, {10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation struct_w3cmnt(r = w3c_location) annotation(
+    Placement(transformation(origin = {50, 80}, extent = {{10, -10}, {-10, 10}}, rotation = 180)));
+  MobileRobotsMB.Carts.Components.Wheels.CastorWheel w4c(castor_vector = {castor_distance, 0, 0}, radius = wheels_radius) annotation(
+    Placement(transformation(origin = {70, -60}, extent = {{-10, -10}, {10, 10}})));
+  MultiBodyExtension.Parts.FixedTranslation struct_w4cmnt(r = w4c_location) annotation(
+    Placement(transformation(origin = {50, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 180)));
+equation
+  connect(struct_w3cmnt.frame_b, w3c.frame_a) annotation(
+    Line(points = {{60, 80}, {68, 80}, {68, 70}}, color = {95, 95, 95}));
+  connect(struct_w3cmnt.frame_a, f_cart) annotation(
+    Line(points = {{40, 80}, {0, 80}, {0, 0}}, color = {95, 95, 95}));
+  connect(struct_w4cmnt.frame_b, w4c.frame_a) annotation(
+    Line(points = {{60, -40}, {68, -40}, {68, -50}}, color = {95, 95, 95}));
+  connect(struct_w4cmnt.frame_a, f_cart) annotation(
+    Line(points = {{40, -40}, {34, -40}, {34, 14}, {0, 14}, {0, 0}}, color = {95, 95, 95}));
+  annotation(
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+    __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"),
+  Diagram(graphics),
+  Icon(graphics = {Rectangle(origin = {80, 50}, rotation = 30, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}}), Line(origin = {80.82, 50.18}, rotation = 30, points = {{-0.8201, -10.1799}, {-0.8201, -20.1799}, {19.1799, -20.1799}, {19.1799, 19.8201}, {-0.8201, 19.8201}, {-0.8201, 9.8201}}, thickness = 5), Ellipse(origin = {100, 60}, fillColor = {255, 170, 127}, fillPattern = FillPattern.Solid, extent = {{-5, 5}, {5, -5}}), Line(origin = {60, 0}, points = {{40, 60}, {-30, 0}}, thickness = 5), Rectangle(origin = {80, -70}, rotation = 30, fillColor = {255, 255, 255}, fillPattern = FillPattern.Sphere, extent = {{-24, 10}, {24, -10}}), Line(origin = {80.82, -70.82}, rotation = 30, points = {{-0.8201, -10.1799}, {-0.8201, -20.1799}, {19.1799, -20.1799}, {19.1799, 19.8201}, {-0.8201, 19.8201}, {-0.8201, 9.8201}}, thickness = 5), Ellipse(origin = {100, -60}, fillColor = {255, 170, 127}, fillPattern = FillPattern.Solid, extent = {{-5, 5}, {5, -5}}), Line(origin = {60, 0}, points = {{40, -60}, {-30, 0}}, thickness = 5)}));
+end DD4W_Planar;
