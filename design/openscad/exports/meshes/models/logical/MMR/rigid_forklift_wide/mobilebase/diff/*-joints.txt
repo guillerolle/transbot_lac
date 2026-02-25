@@ -1,4 +1,0 @@
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj0", "[0, -380, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj1", "[0, 380, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj0", "[0, -380, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj1", "[0, 380, 0]", "[-90, 0, 0]", "[0, 0, 1]"]

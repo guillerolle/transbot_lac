@@ -1,6 +1,0 @@
-ECHO: ["joint", "differential_axle_suspension", "RR"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj0", "[0, -250, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj1", "[0, 250, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "differential_axle_suspension", "RR"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj0", "[0, -250, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
-ECHO: ["joint", "continuous", "mobilebase/diffmodule/cj1", "[0, 250, 0]", "[-90, 0, 0]", "[0, 0, 1]"]
