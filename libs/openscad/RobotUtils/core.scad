@@ -26,14 +26,14 @@ module align_vectors(v1, v2){
 }
 
 module FixedJoint(p_translate=[0,0,0], p_rotate=[0,0,0], name="joint_fixed", prefix=""){
-    echo(["joint", "fixed", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str(p_translate), str(p_rotate)])
+    echo(["joint", "fixed", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str_join(["xyz: ", str(p_translate)]), str_join(["rpy: ", str(p_rotate)])])
     translate(p_translate)
     rotate(p_rotate)
     children();
 }
 
 module ContinuousJoint(p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], angle=$t*360, name="joint_continuous", prefix=""){
-    echo(["joint", "continuous", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str(p_translate), str(p_rotate), str(axis)])
+    echo(["joint", "continuous", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str_join(["xyz: ", str(p_translate)]), str_join(["rpy: ", str(p_rotate)]), str_join(["axis: ", str(axis)])])
     translate(p_translate)
     rotate(p_rotate)
     rotate(angle, axis)
@@ -45,7 +45,7 @@ module PrismaticJoint(p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], unitp
     assert((unitpos>=0) && (unitpos<=1), "position must be in range [0,1]");
     _abspos = _extension*unitpos+limits[0];
     
-    echo(["joint", "prismatic", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str(p_translate), str(p_rotate), str(axis), str(limits)]);
+    echo(["joint", "prismatic", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str_join(["xyz: ", str(p_translate)]), str_join(["rpy: ", str(p_rotate)]), str_join(["axis: ", str(axis)]), str_join(["limits: ", str(limits)])]);
     _uaxis = axis/norm(axis);
     
     translate(p_translate)
