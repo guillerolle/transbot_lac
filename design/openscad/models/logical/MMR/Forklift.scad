@@ -16,7 +16,7 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
         }
         
         
-        // AÑADIR FIXED JOINT SI NO ES PARTE DE LA PIEZA RAIZ _
+        FixedJoint(name="fj_mobilebase", prefix=prefix)
         _mobilebase();
         
         
