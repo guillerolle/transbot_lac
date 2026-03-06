@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:arg name="ros2_control_namespace" default="/transbot"></xacro:arg>
+	<xacro:arg name="ros2_control_dict" default="rigid_forklift_wide//ros2_control.yaml"></xacro:arg>
+	<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_wide/__all__.urdf.xacro"></xacro:include>
+	<gazebo>
+		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+			<parameters>$(find transbot_gazebo)/config/$(arg ros2_control_dict)</parameters>
+			<ros>
+				<namespace>$(arg ros2_control_namespace)</namespace>
+			</ros>
+		</plugin>
+	</gazebo>
+	<ros2_control name="GazeboSimSystem" type="system">
+		<hardware>
+			<plugin>gz_ros2_control/GazeboSimSystem</plugin>
+		</hardware>
+		<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift_wide/mobilebase.urdf.xacro"></xacro:include>
+		<xacro:mobilebase-ros2_control_gazebo prefix="" name=""></xacro:mobilebase-ros2_control_gazebo>
+	</ros2_control>
+</robot>

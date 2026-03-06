@@ -1,0 +1,2 @@
+ECHO: ["joint", "continuous", "mobilebase/diff/wheel0", "xyz: [0, -380, 0]", "rpy: [-90, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "continuous", "mobilebase/diff/wheel1", "xyz: [0, 380, 0]", "rpy: [-90, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]

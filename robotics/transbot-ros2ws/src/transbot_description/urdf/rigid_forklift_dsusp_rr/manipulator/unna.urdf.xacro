@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="unna">
+	<xacro:macro name="unna" params="prefix='' name='unna' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.31713588379419205 -3.2682716149784016e-10 0.0016358343282475052" rpy="0 0 0"></origin>
+				<mass value="0.2319000195711851"></mass>
+				<inertia ixx="0.00014810430585443694" ixy="-2.4036117171074392e-11" ixz="0.0002657068439596089" iyy="0.011016142898947569" iyz="-1.2398188787661524e-13" izz="0.011085444903884207"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_dsusp_rr/manipulator/unna.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.2 0.7 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_dsusp_rr/manipulator/unna.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

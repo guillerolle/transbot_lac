@@ -4,8 +4,8 @@ use <RobotUtils/core.scad>
 
 module Portico(width=500, height=1500, thickness=2, side=100){
     for (y=[1, -1]) {
-        translate([0, y*(width/2-thickness/2), height/2])
-        cube([side, thickness, height], center=true);
+        translate([0, y*(width/2-thickness/2), height/2-side/2])
+        cube([side, thickness, height+side], center=true);
     }
     
     translate([0, 0, height])
@@ -13,12 +13,12 @@ module Portico(width=500, height=1500, thickness=2, side=100){
 }
 
 module Horquilla(width=500, side=100, thickness=2){
-    translate([side/2, 0, 0])
+    translate([side/2+25, 0, 0])
     cube([thickness, width, side], center=true);
     
     for (y=[1, -1]) {
-        translate([0, y*(width/2+thickness/2), 0])
-        cube([side, thickness, side], center=true);
+        translate([+12.5, y*(width/2+thickness/2), 0])
+        cube([side+25, thickness, side], center=true);
     }
 }
 
@@ -39,17 +39,22 @@ module MForklift(display="*", prefix="", width=500, height=1500, length=400, thi
     _s = _xdisp[1];
     
     if (_d=="*"){
+        FixedJoint(name="portico", prefix=prefix)
         _portico();
         
-        joint_z_lims=[100, height-100];
-        PrismaticJoint(name="pj_horquilla", prefix=prefix, axis=[0,0,1], limits=joint_z_lims){
+        joint_z_lims=[-50, height-100];
+        PrismaticJoint(name="horquilla", prefix=str_join([prefix,"/portico"]), axis=[0,0,1], limits=joint_z_lims, command_interfaces=["velocity", "effort"]){
             _horquilla();
-
-            for (y=[1,-1]){
-                PrismaticJoint(name=str_join(["pj_unna", (y+1)/2]), prefix=prefix, axis=[0,y,0], p_translate=[50, y*side/2, -side/2], limits=[ width/2-side, 0])
-                //translate([50, y*(side/2 + joint_y*(width-2*side)/2),-side/2])
+            //ReferenceFrame(factor=100);
+            
+            PrismaticJoint(name="unna0", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,-1,0], p_translate=[side/2+25, -1*side/2, -side/2], limits=[ width/2-side, 0], command_interfaces=["velocity", "effort"]){
                 _unna();
             }
+            
+            PrismaticJoint(name="unna1", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,1,0], p_translate=[side/2+25, 1*side/2, -side/2], limits=[ width/2-side, 0], mimic=["unna0"]){
+                _unna();
+            }
+
         }
     } else if(_d=="portico"){
         _portico();

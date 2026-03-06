@@ -18,7 +18,9 @@
        "source=/etc/localtime,target=/etc/localtime,type=bind,consistency=cached,ro",
        "source=${localWorkspaceFolder}/..,target=/home/roslac/project,type=bind,consistency=cached"
     ],
-    // "remoteUser" : "transbot",
+    "privileged": true,
+    // "remoteUser" : "transb 
+    // ot",
     "workspaceFolder": "/home/roslac/transbot",
     "workspaceMount": "source=${localWorkspaceFolder}/transbot-ros2ws,target=/home/roslac/transbot,type=bind",
     "customizations": {
@@ -51,6 +53,7 @@
         "--ipc=host",
         "-e", "DISPLAY=${env:DISPLAY}",
         "-e", "XAUTHORITY=${env:XAUTHORITY}",
-        "-e", "WORKSPACEDIR=transbot"
+        "-e", "WORKSPACEDIR=transbot",
+        "-v", "/dev/input:/dev/input"
     ]
 }

@@ -19,7 +19,7 @@ def generate_launch_description():
         FindPackageShare(LaunchConfiguration('robot_pkg')),
         'urdf',
         robot_model,
-        PythonExpression(['"', robot_basemodel, '.urdf.xacro','"']), 
+        PythonExpression(['"__all__.urdf.xacro','"']), 
     ])
     
     return LaunchDescription([

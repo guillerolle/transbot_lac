@@ -4,7 +4,7 @@
 
         <xacro:unless value="${use__all__}">
             <!-- ROOT LINK -->
-            <link name="${prefix}_${suffix}">
+            <link name="${prefix}_">
                 <inertial>
                     <origin xyz="1.2249181909870052e-11 1.8496264683903782e-09 -1.6256482632337307e-11" rpy="0.0 0.0 0.0"></origin>
                     <mass value="1.5178593195741996"></mass>

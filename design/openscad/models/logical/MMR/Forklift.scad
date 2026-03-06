@@ -16,11 +16,11 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
         }
         
         
-        FixedJoint(name="fj_mobilebase", prefix=prefix)
+        FixedJoint(name="mobilebase", prefix=prefix, p_rotate=[0,0,180])
         _mobilebase();
         
         
-        PrismaticJoint(name="pj_manipulator", prefix=prefix, p_translate=[+bbox[0]/2-50, 0, cwheel_h], axis=[-1,0,0], limits=[0, bbox[0]-100])
+        PrismaticJoint(name="manipulator", prefix=prefix, p_translate=[+bbox[0]/2-50, 0, cwheel_h], axis=[-1,0,0], limits=[0, bbox[0]-100], command_interfaces=["velocity", "effort"])
         _manipulator();
         
     } else if(_d=="mobilebase"){
@@ -32,7 +32,7 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
     } 
     
     module _mobilebase(){
-        mirror([1,0,0])
+        // mirror([1,0,0])
         DD4W_Rigid(display=_s, prefix=get_full_prefix(prefix, "mobilebase"), bbox=[bbox[0], bbox[1], 450], cwheel_h=cwheel_h, force_internal_castor=false, differential_suspension=differential_axle_suspension);
     }
     

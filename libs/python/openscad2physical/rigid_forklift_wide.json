@@ -1,28 +1,78 @@
 {
-    "name": "rigid_forklift_wide",
-    "scad": "models/logical/MMR/Forklift.scad",
+    "scad": "logical/MMR/Forklift.scad",
+    "density": 7850,
+    "ros_pkg_description": "transbot_description",
+    "ros_pkg_gazebo": "transbot_gazebo",
     "params":{
         "extra_wide": true,
-        "another_param": 1.0
+        "differential_axle_suspension": ""
     },
-    "density": 7850,
     "components": [
-        "*",
-        "_",
-        "mobilebase/*",
-        "mobilebase/_",
-        "mobilebase/chassis",
-        "mobilebase/diff/*",
-        "mobilebase/diff/_",
-        "mobilebase/diff/wheel",
-        "mobilebase/control",
-        "mobilebase/castor/*",
-        "mobilebase/castor/_",
-        "mobilebase/castor/arm",
-        "mobilebase/castor/wheel",
-        "manipulator/*",
-        "manipulator/portico",
-        "manipulator/horquilla",
-        "manipulator/unna"
+        {
+            "name": "mobilebase",
+            "type": "assembly",
+            "components": [
+                {
+                    "name": "chassis",
+                    "type": "part",
+                    "density": 7850
+                },
+                {
+                    "name": "control",
+                    "type": "part"
+                },
+                {
+                    "name": "diff",
+                    "type": "assembly",
+                    "components": [
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "density": 2500,
+                            "replica": ["0", "1"]
+                        }
+                    ]
+                },
+                {
+                    "name": "castor",
+                    "type": "assembly",
+                    "replica": ["0", "1"],
+                    "components": [
+                        {
+                            "name": "arm",
+                            "type": "part",
+                            "density": 7850
+                        },
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "density": 2500
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "manipulator",
+            "type": "assembly",
+            "components": [
+                {
+                    "name": "portico",
+                    "type": "part",
+                    "density": 7850
+                },
+                {
+                    "name": "horquilla",
+                    "type": "part",
+                    "density": 7850
+                },
+                {
+                    "name": "unna",
+                    "type": "part",
+                    "density": 7850,
+                    "replica": ["0", "1"]
+                }
+            ]
+        }
     ]
 }

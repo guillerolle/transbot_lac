@@ -12,7 +12,7 @@ module DifferentialModule(display="*", prefix="", track=600, wheel_diam=120, whe
         
         // WHEELS 
         for (w=[-1, 1]) {
-            ContinuousJoint(name=str_join(["cj", (w+1)/2]), prefix=prefix, p_translate=w*[0, track/2-wheel_width/2, 0], p_rotate=[-90, 0, 0], axis=[0,0,1])
+            ContinuousJoint(name=str_join(["wheel", (w+1)/2]), prefix=prefix, p_translate=w*[0, track/2-wheel_width/2, 0], p_rotate=[-90, 0, 0], axis=[0,0,1], command_interfaces=["velocity", "effort"])
             _wheel();
         }
     } else
@@ -22,7 +22,7 @@ module DifferentialModule(display="*", prefix="", track=600, wheel_diam=120, whe
     if (_d=="wheel"){
         _wheel();
     } else {
-        echo(str_join(["Unknown component: <", _d, ">"]));
+        echo(str_join(["DD Unknown component: <", _d, ">"]));
     } 
     
     

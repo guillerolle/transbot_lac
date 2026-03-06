@@ -15,7 +15,7 @@ def generate_launch_description():
         package='controller_manager',
         executable='spawner',
         namespace=LaunchConfiguration('robot_name'),
-        arguments=['joint_state_broadcaster', 'diff_drive_controller', 'manipulator_pid_controller']
+        arguments=['joint_state_broadcaster', 'diff_drive_controller']
     )
     
     return LaunchDescription([

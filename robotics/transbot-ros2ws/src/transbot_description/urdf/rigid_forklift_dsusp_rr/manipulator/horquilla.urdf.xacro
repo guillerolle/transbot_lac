@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="horquilla">
+	<xacro:macro name="horquilla" params="prefix='' name='horquilla' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.057638987997583734 -2.1558386794539518e-07 -8.421244841616999e-10" rpy="0 0 0"></origin>
+				<mass value="0.3600001024703185"></mass>
+				<inertia ixx="0.020147213854199073" ixy="-4.473374225011696e-09" ixz="2.136888482176688e-11" iyy="0.0007126710695344969" iyz="6.535746189468383e-17" izz="0.020259884417447218"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_dsusp_rr/manipulator/horquilla.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.7 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_dsusp_rr/manipulator/horquilla.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

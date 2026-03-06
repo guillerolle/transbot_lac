@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis">
+	<xacro:macro name="chassis" params="prefix='' name='chassis' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="1.430045601294134e-07 0.0 0.12651649185789235" rpy="0 0 0"></origin>
+				<mass value="1.085422933101654"></mass>
+				<inertia ixx="0.11996343473625881" ixy="7.761021455128988e-09" ixz="3.515998706499306e-08" iyy="0.11004720866710413" iyz="-6.20881716410319e-08" izz="0.19016054769354823"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/chassis.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/chassis.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

@@ -31,14 +31,14 @@ module CastorWheel(display="*", prefix="", wd=120, ww=40, wh=0, cd=40, ch=130, c
     
     if (_d=="*"){
         _baselink();
-        ContinuousJoint(name="cj_castor_dir", prefix=prefix, p_translate=[0, 0, -(ch-wd)], axis=[0,0,1]){
+        ContinuousJoint(name="arm", prefix=prefix, p_translate=[0, 0, -(ch-wd)], axis=[0,0,1]){
             _castorarm();
             // CASTOR JOINT
             translate([0, 0, +(ch-wd)/2])
             color([1,0,0])
             cylinder(h=ch-wd, d=10, center=true);
                 
-            ContinuousJoint(name="cj_castor_roll", prefix=prefix,,p_translate=[cd, 0, -wd/2], p_rotate=[90,0,0], axis=[0,0,1]){
+            ContinuousJoint(name="wheel", prefix=str_join([prefix, "/arm"]),p_translate=[cd, 0, -wd/2], p_rotate=[90,0,0], axis=[0,0,1]){
                 _wheel();
 
             }

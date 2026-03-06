@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rigid_forklift_wide">
+	<xacro:macro name="rigid_forklift_wide-ros2_control_gazebo" params="prefix='' name='rigid_forklift_wide' suffix=''">
+		<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift_wide/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift_wide/manipulator/manipulator.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}manipulator/_">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+		<xacro:mobilebase-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-ros2_control_gazebo>
+		<xacro:manipulator-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:manipulator-ros2_control_gazebo>
+	</xacro:macro>
+</robot>

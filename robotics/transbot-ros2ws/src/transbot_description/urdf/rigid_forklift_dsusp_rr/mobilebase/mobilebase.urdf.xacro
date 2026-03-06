@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:macro name="mobilebase" params="prefix='' name='mobilebase' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr/mobilebase/chassis.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr/mobilebase/control.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr/mobilebase/doublebar/doublebar.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr/mobilebase/castor/castor.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}chassis" type="fixed">
+			<origin xyz="0.0 0.0 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}chassis"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}doublebar/_" type="continuous">
+			<origin xyz="-0.21 0.0 0.06" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}doublebar/_"></child>
+			<dynamics damping="10" friction="10"></dynamics>
+			<axis xyz="0 1 0"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">
+			<origin xyz="0.35000000000000003 0.25 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor1/_" type="fixed">
+			<origin xyz="0.35000000000000003 -0.25 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor1/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}control" type="prismatic">
+			<origin xyz="0.0 0.0 0.17" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}control"></child>
+			<dynamics damping="10" friction="10"></dynamics>
+			<axis xyz="1 0 0"></axis>
+			<limit lower="0.0" upper="0.5" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>
+		<xacro:control prefix="${prefix}${name}${suffix}" suffix=""></xacro:control>
+		<xacro:doublebar prefix="${prefix}${name}${suffix}" suffix="/"></xacro:doublebar>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor>
+	</xacro:macro>
+</robot>

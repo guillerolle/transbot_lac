@@ -1,0 +1,35 @@
+#!/bin/env python3
+# coding: utf-8
+
+import os
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, PythonExpression
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
+
+
+def generate_launch_description():
+    diff_drive_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        namespace=LaunchConfiguration('robot_name'),
+        arguments=['diff_drive_controller']
+    )
+    
+    teleop_joy_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare('teleop_twist_joy'), 'launch', 'teleop-launch.py']),
+        ),
+        launch_arguments={
+            'joy_vel': PythonExpression(['"/', LaunchConfiguration('robot_name'), '/diff_drive_controller/cmd_vel"']),
+            'publish_stamped_twist': 'true'
+        }.items()
+    )
+    
+    return LaunchDescription([
+        DeclareLaunchArgument('robot_name', default_value='transbot'),
+        diff_drive_controller,
+        teleop_joy_launch
+    ])

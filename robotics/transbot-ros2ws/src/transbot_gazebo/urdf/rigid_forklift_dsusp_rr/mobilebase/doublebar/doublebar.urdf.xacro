@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="doublebar">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift_dsusp_rr/mobilebase/doublebar/diff/diff.urdf.xacro"></xacro:include>
+	<xacro:macro name="doublebar-ros2_control_gazebo" params="prefix='' name='doublebar' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}diff/_">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+		</joint>
+		<xacro:diff-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="doublebar-gz_reference" params="prefix='' name='doublebar' suffix=''">
+		<gazebo reference="j/${prefix}${name}${suffix}diff/_">
+			<implicitSpringDamper>true</implicitSpringDamper>
+			<springStiffness>200</springStiffness>
+			<springReference>0.0</springReference>
+		</gazebo>
+		<xacro:diff-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-gz_reference>
+	</xacro:macro>
+</robot>

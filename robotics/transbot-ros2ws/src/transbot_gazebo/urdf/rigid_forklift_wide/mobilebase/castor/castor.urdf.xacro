@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:macro name="castor-ros2_control_gazebo" params="prefix='' name='castor' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}arm">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+		</joint>
+	</xacro:macro>
+</robot>

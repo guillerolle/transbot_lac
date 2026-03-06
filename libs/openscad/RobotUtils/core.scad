@@ -32,20 +32,49 @@ module FixedJoint(p_translate=[0,0,0], p_rotate=[0,0,0], name="joint_fixed", pre
     children();
 }
 
-module ContinuousJoint(p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], angle=$t*360, name="joint_continuous", prefix=""){
-    echo(["joint", "continuous", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str_join(["xyz: ", str(p_translate)]), str_join(["rpy: ", str(p_rotate)]), str_join(["axis: ", str(axis)])])
+module ContinuousJoint(
+    p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], angle=$t*360, 
+    name="joint_continuous", prefix="", 
+    command_interfaces=[], mimic=[], spring=[], damping=[], friction=[]){
+    echo(["joint", "continuous", 
+        (len(prefix) == 0) ? name:str_join([prefix, "/", name]), 
+        str_join(["xyz: ", str(p_translate)]), 
+        str_join(["rpy: ", str(p_rotate)]), 
+        str_join(["axis: ", str(axis)]), 
+        str_replace_char(str_join(["command_interfaces: ", command_interfaces]), "\"", "\\\""), 
+        str_replace_char(str_join(["mimic: ", mimic]), "\"", "\\\""),
+        str_join(["spring: ", str(spring)]), 
+        str_join(["damping: ", str(damping)]), 
+        str_join(["friction: ", str(damping)])
+    ])
     translate(p_translate)
     rotate(p_rotate)
     rotate(angle, axis)
     children();
 }
 
-module PrismaticJoint(p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], unitpos=(-cos($t*360)+1)/2, name="joint_prismatic", prefix="", limits=[-100, 100]){
+module PrismaticJoint(
+    p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], 
+    unitpos=(-cos($t*360)+1)/2, name="joint_prismatic", prefix="", 
+    limits=[-100, 100], command_interfaces=[], mimic=[],
+    spring=[], damping=[], friction=[]
+    ){
     _extension = limits[1]-limits[0];
     assert((unitpos>=0) && (unitpos<=1), "position must be in range [0,1]");
     _abspos = _extension*unitpos+limits[0];
     
-    echo(["joint", "prismatic", (len(prefix) == 0) ? name:str_join([prefix, "/", name]), str_join(["xyz: ", str(p_translate)]), str_join(["rpy: ", str(p_rotate)]), str_join(["axis: ", str(axis)]), str_join(["limits: ", str(limits)])]);
+    echo(["joint", "prismatic", 
+        (len(prefix) == 0) ? name:str_join([prefix, "/", name]),
+        str_join(["xyz: ", str(p_translate)]),
+        str_join(["rpy: ", str(p_rotate)]),
+        str_join(["axis: ", str(axis)]), 
+        str_join(["limits: ", str(limits)]), 
+        str_replace_char(str_join(["command_interfaces: ", command_interfaces]), "\"", "\\\""), 
+        str_replace_char(str_join(["mimic: ", mimic]), "\"", "\\\""), 
+        str_join(["spring: ", str(spring)]), 
+        str_join(["damping: ", str(damping)]), 
+        str_join(["friction: ", str(damping)])
+    ]);
     _uaxis = axis/norm(axis);
     
     translate(p_translate)
