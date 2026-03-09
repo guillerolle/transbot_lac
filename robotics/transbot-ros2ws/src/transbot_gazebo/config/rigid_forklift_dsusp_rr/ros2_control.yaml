@@ -43,9 +43,9 @@
     reference_and_state_interfaces: ["velocity"]
 
     gains:
-      j/manipulator/_ : {p: 1.0}
-      j/manipulator/horquilla: {p: 1.0}
-      j/manipulator/unna0 : {p: 1.0}
+      j/manipulator/_ : {p: 0.5}
+      j/manipulator/horquilla: {p: 0.5}
+      j/manipulator/unna0 : {p: 0.5}
 
 /**/diff_drive_controller:
   ros__parameters:

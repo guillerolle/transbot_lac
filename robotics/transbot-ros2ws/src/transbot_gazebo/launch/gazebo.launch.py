@@ -47,15 +47,6 @@ def generate_launch_description():
         arguments=['joint_state_broadcaster']
     )
     
-    # controllers_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'controllers.launch.py']),
-    #     ),
-    #     launch_arguments={
-    #         'robot_name': robot_name,
-    #     }.items()
-    # )
-    
     controllers_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),

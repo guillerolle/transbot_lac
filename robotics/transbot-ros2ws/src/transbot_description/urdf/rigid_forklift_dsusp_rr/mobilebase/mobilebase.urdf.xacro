@@ -15,7 +15,7 @@
 			<origin xyz="-0.21 0.0 0.06" rpy="0.0 0.0 0.0"></origin>
 			<parent link="${prefix}${name}${suffix}_"></parent>
 			<child link="${prefix}${name}${suffix}doublebar/_"></child>
-			<dynamics damping="10" friction="10"></dynamics>
+			<dynamics damping="1" friction="0"></dynamics>
 			<axis xyz="0 1 0"></axis>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">

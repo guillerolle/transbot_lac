@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "joint_teleop_joy defaults",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "joint_teleop_joy.py",
+            "console": "integratedTerminal",
+            "args": "--ros-args --params-file ../config/joint_teleop.yaml --log-level info",
+            "cwd": "${workspaceFolder}/src/transbot_teleop/transbot_teleop"
+        },
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+joint_teleop_joy:
+  ros__parameters:
+    joy_topic: joy
+    command_topic: /transbot/manipulator_pid_velocity_controller/reference
+    enable_button: 2               # Button index (e.g., 2 = X on many gamepads)
+    deadzone: 0.05
+    dof_names:
+      - j/manipulator/_
+      - j/manipulator/horquilla 
+      - j/manipulator/unna0
+
+    j/manipulator/_: 
+      axis: 0
+      scale: 1.0
+
+    j/manipulator/horquilla: 
+      axis: 1
+      inver: true
+
+    j/manipulator/unna0: 
+      axis: 3
+    

@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     lsb-release \
     htop \
+    joystick \
     && rm -rf /var/lib/apt/lists/*
 
 ENV SHELL=/bin/bash
