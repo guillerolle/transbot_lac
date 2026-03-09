@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import os
+from ament_index_python import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -15,7 +16,7 @@ def generate_launch_description():
     declare_gz_args = DeclareLaunchArgument('gz_args', default_value='',
                               description='Arguments to be passed to Gazebo Sim')
     
-    declare_world = DeclareLaunchArgument('world', default_value='',description='Gazebo world to load')
+    declare_world = DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf',description='Gazebo world to load')
     
     gz_args = PythonExpression([
         '"', LaunchConfiguration('gz_args'), ' ', LaunchConfiguration('world'), '"'
@@ -43,7 +44,7 @@ def generate_launch_description():
         parameters=[{'use_sim_time': True}],
         output='screen'
     )
-    
+            
     return LaunchDescription([
         declare_gz_args,
         declare_world,

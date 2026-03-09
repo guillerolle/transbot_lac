@@ -22,7 +22,8 @@ def generate_launch_description():
         ),
         launch_arguments={
             # 'gz_args': '-r empty.sdf --physics-engine gz-physics-bullet-featherstone-plugin'
-            'gz_args': '-r empty.sdf'
+            'gz_args': '-r',
+            'world': LaunchConfiguration('world')
             # 'robot_name': robot_name,
             # 'robot_model': robot_model,
             # 'robot_pkg': robot_pkg,
@@ -60,6 +61,7 @@ def generate_launch_description():
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
         DeclareLaunchArgument('robot_name', default_value='transbot'),
+        DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf'),
         world_launch,
         spawn_launch,
         joint_state_publisher_spawner,

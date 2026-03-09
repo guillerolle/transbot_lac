@@ -15,6 +15,9 @@ module Canasto(length = 470, width = 330, height=220, thickness=5){
             }
         }
     }
+    translate([-(length-250)/2, -(width-0)/2, -50])
+    cube([(length-250), width, 50
+], center=false);
 }
 
 

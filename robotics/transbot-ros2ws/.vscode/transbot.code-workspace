@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../project"
+		},
+		{
+			"path": "../../../../opt/ros/jazzy/share"
 		}
 	],
 	"settings": {
@@ -19,6 +22,7 @@
 			"/home/roslac/transbot/install/transbot_description/lib/python3.12/site-packages",
 			"/opt/ros/jazzy/lib/python3.12/site-packages"
 		],
-		"git.ignoreLimitWarning": true
+		"git.ignoreLimitWarning": true,
+		"github.copilot.chat.codeGeneration.useInstructionFiles": true
 	}
 }

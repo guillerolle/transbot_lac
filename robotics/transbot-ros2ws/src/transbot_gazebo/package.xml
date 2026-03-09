@@ -14,7 +14,10 @@
 
   <export>
     <build_type>ament_python</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/../"></gazebo_ros>
   </export>
+
+
 
   <depend>gazebo_ros_pkgs</depend>
   <depend>robot_state_publisher</depend>
