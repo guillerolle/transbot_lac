@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="manipulator">
+	<xacro:macro name="manipulator" params="prefix='' name='manipulator' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr_inner/manipulator/portico.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr_inner/manipulator/horquilla.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift_dsusp_rr_inner/manipulator/unna.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}portico" type="fixed">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}portico"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}horquilla" type="prismatic">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}portico"></parent>
+			<child link="${prefix}${name}${suffix}horquilla"></child>
+			<axis xyz="0 0 1"></axis>
+			<limit lower="0.0" upper="1.27" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}unna0" type="prismatic">
+			<origin xyz="0.075 -0.05 -0.1" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}horquilla"></parent>
+			<child link="${prefix}${name}${suffix}unna0"></child>
+			<axis xyz="0 -1 0"></axis>
+			<limit lower="0.225" upper="0.0" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}unna1" type="prismatic">
+			<origin xyz="0.075 0.05 -0.1" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}horquilla"></parent>
+			<child link="${prefix}${name}${suffix}unna1"></child>
+			<mimic joint="j/${prefix}${name}${suffix}unna0" multiplier="1" offset="0"></mimic>
+			<axis xyz="0 1 0"></axis>
+			<limit lower="0.225" upper="0.0" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:portico prefix="${prefix}${name}${suffix}" suffix=""></xacro:portico>
+		<xacro:horquilla prefix="${prefix}${name}${suffix}" suffix=""></xacro:horquilla>
+		<xacro:unna prefix="${prefix}${name}${suffix}" suffix="0"></xacro:unna>
+		<xacro:unna prefix="${prefix}${name}${suffix}" suffix="1"></xacro:unna>
+	</xacro:macro>
+</robot>

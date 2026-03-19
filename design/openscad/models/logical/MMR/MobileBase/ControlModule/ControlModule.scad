@@ -11,7 +11,7 @@ module ControlModule(lod=0){
         translate([0,0,13/2]){
             // battery
             color([1, 0, 0])
-            translate([-120, -150, 225/2])
+            translate([0, -150, 225/2])
             cube([230, 175, 225], center=true); 
             
             

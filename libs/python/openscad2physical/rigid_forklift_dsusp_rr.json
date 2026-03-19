@@ -5,7 +5,8 @@
     "ros_pkg_gazebo": "transbot_gazebo",
     "params":{
         "extra_wide": false,
-        "differential_axle_suspension": "RR"
+        "differential_axle_suspension": "RR",
+        "force_internal_castor": false
     },
     "components": [
         {
@@ -22,7 +23,8 @@
                 {
                     "name": "control",
                     "type": "part",
-                    "rgba": "1 0 0 1"
+                    "rgba": "1 0 0 1",
+                    "density": 13800
                 },
                 {
                     "name": "doublebar",

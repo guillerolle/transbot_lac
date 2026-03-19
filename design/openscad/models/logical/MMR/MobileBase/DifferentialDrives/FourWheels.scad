@@ -50,7 +50,7 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
         FixedJoint(name="castor1", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180])
         _castor();
         
-        PrismaticJoint(name="control", prefix=prefix, p_translate=[0,0,floor_clearance+40], axis=[1,0,0], limits=[0, 500], command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
+        PrismaticJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0, 0, +90], axis=[0,-1,0], limits=[0, 500], command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
         _controlmodule();
         
     } else if (_d=="_") {
@@ -116,13 +116,13 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
     }
     
     module _controlmodule(){
-        rotate([0,0,-90])
+        //rotate([0,0,-90])
         ControlModule();
     }
 }
 
 
-/*
+
 DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false);
 
 translate([0,1000,0])

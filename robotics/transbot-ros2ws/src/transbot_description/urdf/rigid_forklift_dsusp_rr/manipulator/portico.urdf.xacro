@@ -3,9 +3,9 @@
 	<xacro:macro name="portico" params="prefix='' name='portico' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="7850">
-				<origin xyz="1.6526583292160544e-10 3.3846442582344794e-07 1.02374387178426" rpy="0 0 0"></origin>
-				<mass value="1.834407603989045"></mass>
-				<inertia ixx="0.8985282082372781" ixy="-1.2126585762585642e-10" ixz="3.1036320912009606e-10" iyy="0.7266451146659652" iyz="3.872711657138292e-07" izz="0.1749404398043246"></inertia>
+				<origin xyz="0.0 0.0 0.7915687128154306" rpy="0 0 0"></origin>
+				<mass value="1.3944067371388276"></mass>
+				<inertia ixx="0.4245243160703809" ixy="-1.2126596023639044e-10" ixz="-0.0" iyy="0.29817981721229225" iyz="1.241763432820638e-07" izz="0.12866851005431576"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
