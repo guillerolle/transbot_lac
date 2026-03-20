@@ -12,28 +12,41 @@ def generate_launch_description():
     
     # Paths to config files
     # base_config = os.path.join(pkg_share, 'config', 'base_teleop.yaml')
-    joint_config = PathJoinSubstitution([pkg_share, 'config', 'joint_teleop.yaml'])
+    joint_config = PathJoinSubstitution([pkg_share, 'config', LaunchConfiguration('robot_model'), 'teleop.yaml'])
     
     joint_teleop_node = Node(
         package='transbot_teleop',
         executable='joint_teleop_joy',
         name='joint_teleop_joy',
+        namespace=LaunchConfiguration('robot_name'),
         parameters=[joint_config],
         output='screen'
     )
     
-    twist_teleop_joy_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('teleop_twist_joy'), 'launch', 'teleop-launch.py']),
-        ),
-        launch_arguments={
-            'joy_vel': PythonExpression(['"/', LaunchConfiguration('robot_name'), '/diff_drive_controller/cmd_vel"']),
-            'publish_stamped_twist': 'true'
-        }.items()
+    twist_joy_node = Node(
+        package='teleop_twist_joy', executable='teleop_node', name='teleop_twist_joy_node',
+        namespace=LaunchConfiguration('robot_name'),
+        parameters=[joint_config],
+        remappings={('cmd_vel', PythonExpression(['"/', LaunchConfiguration('robot_name'), '/diff_drive_controller/cmd_vel"']))},
     )
     
+    joy_node = Node(
+        package='joy', executable='joy_node', name='joy_node',
+        namespace=LaunchConfiguration('robot_name'),
+        parameters=[{
+            'device_id': LaunchConfiguration('joy_dev'),
+            'deadzone': LaunchConfiguration('joy_deadzone'),
+            'autorepeat_rate': LaunchConfiguration('joy_autorepeat_rate'),
+        }]
+    )
+
     return LaunchDescription([
-        DeclareLaunchArgument('robot_name', default_value='transbot'),    
-        twist_teleop_joy_launch,
+        DeclareLaunchArgument('robot_name', default_value='transbot'), 
+        DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
+        DeclareLaunchArgument('joy_dev', default_value='0'),
+        DeclareLaunchArgument('joy_deadzone', default_value='0.0'),
+        DeclareLaunchArgument('joy_autorepeat_rate', default_value='20.0'),
+        joy_node,
+        twist_joy_node,
         joint_teleop_node,
     ])

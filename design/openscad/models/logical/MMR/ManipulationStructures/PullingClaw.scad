@@ -7,8 +7,9 @@ use <RobotUtils/profiles.scad>
 
 module Assy_PullingClaw(display="*", prefix="", 
         base_diameter=300, base_height=50, base_thickness=3,
-        j_table_limit_high=200, table_size=[500, 500, 3], 
-        slider_claw_axis_z=50){
+        j_table_limit_high=1500, table_size=[800, 600, 3], 
+        slider_claw_axis_z=100, claw_height = 600){
+            
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
     _s = _xdisp[1];
@@ -16,23 +17,23 @@ module Assy_PullingClaw(display="*", prefix="",
     if (_d=="*"){
         part_baseplate();
         
-        PrismaticJoint(name="table", prefix=prefix, limits=[base_height, j_table_limit_high],
+        PrismaticJoint(name="table", prefix=prefix, p_translate=[0, 0, base_height], limits=[0, j_table_limit_high, 1e9, 1],
             command_interfaces=["velocity", "effort"]){
             part_table();
             
-            PrismaticJoint(name="slider", prefix=prefix, 
-                limits=[-table_size[0]/2, +table_size[0]/2],axis=[1,0,0],
+            PrismaticJoint(name="table/slider", prefix=prefix, axis=[1,0,0],
+                limits=[-table_size[0]/2, +table_size[0]/2, 1e9, 1],
                 command_interfaces=["velocity", "effort"]){
                     
                     part_slider();
                     //ReferenceFrame(factor=100);
                     
-                    ContinuousJoint(name="claw", prefix=prefix, 
+                    ContinuousJoint(name="table/slider/claw", prefix=prefix, 
                         p_translate=[0,0,slider_claw_axis_z], p_rotate=[-90,0,0], axis=[0,0,1],
                         command_interfaces=["velocity", "effort"]){
                             //ReferenceFrame(factor=100);
                             part_claw();
-            }
+                }
             }
         }
         
@@ -71,8 +72,9 @@ module Assy_PullingClaw(display="*", prefix="",
         module _table(size){
             translate([0, 0, -base_height])
             cylinder(h=base_height, d=base_diameter*0.1-base_thickness, center=false);
-            
-            cube(size, center=true);
+            //ReferenceFrame(factor=100);
+            translate(-size/2)
+            cube([size[0]+100, size[1], size[2]], center=false);
             for (y=[-1, 1]){
                 translate([0, y*size[1]/2, 0])
                 cube([size[0], size[2], 50], center=true);
@@ -101,7 +103,7 @@ module Assy_PullingClaw(display="*", prefix="",
     
     module part_claw(){
         //ReferenceFrame(factor=100);
-        size=[50, 3, 400];
+        size=[50, 3, claw_height];
         claw_length=50;
         rotate([90, 0, 0]){
             //ReferenceFrame(factor=100);

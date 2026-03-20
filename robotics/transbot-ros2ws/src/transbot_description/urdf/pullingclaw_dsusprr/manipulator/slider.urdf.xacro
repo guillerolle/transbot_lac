@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="slider">
+	<xacro:macro name="slider" params="prefix='' name='slider' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="-0.01773810728383593 0.0 0.042736804901036755" rpy="0 0 0"></origin>
+				<mass value="0.10325992479920387"></mass>
+				<inertia ixx="0.005132606658529401" ixy="-0.0" ixz="1.3303519309719553e-05" iyy="6.767992225242123e-05" iyz="2.3874235921539366e-10" izz="0.005104145650842156"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/manipulator/slider.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.7 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/manipulator/slider.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

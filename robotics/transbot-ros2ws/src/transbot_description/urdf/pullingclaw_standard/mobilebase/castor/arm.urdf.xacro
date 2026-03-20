@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+	<xacro:macro name="arm" params="prefix='' name='arm' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.023216223476559487 -5.499152560757377e-09 -0.023419604856066874" rpy="0 0 0"></origin>
+				<mass value="0.006568149425826657"></mass>
+				<inertia ixx="7.06487723744569e-06" ixy="-7.469593134069236e-13" ixz="1.2443357829905416e-06" iyy="4.505877976838242e-06" iyz="-2.7216179554656136e-12" izz="6.2024474186650775e-06"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

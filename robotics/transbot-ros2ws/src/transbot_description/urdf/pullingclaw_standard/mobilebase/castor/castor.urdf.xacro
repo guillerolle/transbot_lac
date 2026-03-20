@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:macro name="castor" params="prefix='' name='castor' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+				<mass value="0.010000000960038355"></mass>
+				<inertia ixx="8.334167593144114e-06" ixy="-0.0" ixz="-0.0" iyy="8.334167593144114e-06" iyz="-0.0" izz="1.666666851936801e-05"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_standard/mobilebase/castor/arm.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_standard/mobilebase/castor/wheel.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}arm" type="continuous">
+			<origin xyz="0.0 0.0 -0.01" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}arm"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel" type="continuous">
+			<origin xyz="0.04 0.0 -0.06" rpy="1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}arm"></parent>
+			<child link="${prefix}${name}${suffix}wheel"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:arm prefix="${prefix}${name}${suffix}" suffix=""></xacro:arm>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix=""></xacro:wheel>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:arg name="ros2_control_namespace" default="/transbot"></xacro:arg>
+	<xacro:arg name="ros2_control_dict" default="pullingclaw_standard//ros2_control.yaml"></xacro:arg>
+	<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_standard/__all__.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/pullingclaw_standard/mobilebase.urdf.xacro"></xacro:include>
+	<gazebo>
+		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+			<parameters>$(find transbot_gazebo)/config/$(arg ros2_control_dict)</parameters>
+			<ros>
+				<namespace>$(arg ros2_control_namespace)</namespace>
+			</ros>
+		</plugin>
+	</gazebo>
+	<xacro:mobilebase-gz_reference prefix="" name=""></xacro:mobilebase-gz_reference>
+	<ros2_control name="GazeboSimSystem" type="system">
+		<hardware>
+			<plugin>gz_ros2_control/GazeboSimSystem</plugin>
+		</hardware>
+		<xacro:mobilebase-ros2_control_gazebo prefix="" name=""></xacro:mobilebase-ros2_control_gazebo>
+	</ros2_control>
+</robot>

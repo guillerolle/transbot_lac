@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
 OPENSCAD_DIR = os.path.join(WORKSPACE_DIR, "design", "openscad")
+ROSSRC_DIR = os.path.join(WORKSPACE_DIR, "robotics", "transbot-ros2ws", "src")
 
 @dataclass
 class Joint():
@@ -694,8 +695,11 @@ def process_export_dict(data):
     scad_fullpath = os.path.join(OPENSCAD_DIR, "models", data['scad']) 
     scad_path = os.path.dirname(data['scad'])
     logger.debug("SCAD path: %s", scad_path)
+    
+    ros_pkg_description = data['ros_pkg_description']
+    ros_pkg_gazebo = data['ros_pkg_gazebo']
 
-    EXPORT_DIR = os.path.join(OPENSCAD_DIR, "exports", "meshes", scad_path, data['name'])
+    EXPORT_DIR = os.path.join(ROSSRC_DIR, ros_pkg_description, "meshes", data['name'])
     shutil.rmtree(EXPORT_DIR, True) # clear the export directory before exporting new files
     os.makedirs(EXPORT_DIR, exist_ok=True)
     logger.info(f"Meshes export dir is: {EXPORT_DIR}")
@@ -715,77 +719,16 @@ def process_export_dict(data):
     for c in component_root.iterate_tree():
         c.export_stl(scad_file=scad_fullpath, EXPORT_DIR=EXPORT_DIR, oscad_params=oscad_params)
 
-    EXPORT_DIR = os.path.join(OPENSCAD_DIR, "exports", "urdf", scad_path, data['name'])
+    EXPORT_DIR = os.path.join(ROSSRC_DIR, ros_pkg_description, "urdf", data['name'])
     shutil.rmtree(EXPORT_DIR, True) # clear the export directory before exporting new files
     os.makedirs(EXPORT_DIR, exist_ok=True)
 
-    EXPORT_DIR_GZ = os.path.join(OPENSCAD_DIR, "exports", "urdf-gazebo", scad_path, data['name'])
+    EXPORT_DIR_GZ = os.path.join(ROSSRC_DIR, ros_pkg_gazebo, "urdf", data['name'])
     shutil.rmtree(EXPORT_DIR_GZ, True) # clear the export directory before exporting new files
     os.makedirs(EXPORT_DIR_GZ, exist_ok=True)
     for c in component_root.iterate_tree():
         c.compute_inertial()
         c.urdf_save(EXPORT_DIR, EXPORT_DIR_GZ)
-        
-    # for c in component_root.iterate_tree():
-        
-    # scad_display_paths = ['*', '_']
-    # for c in component_root.iterate_tree(skip_self=True):
-    #     # logger.debug(f"Component tree: {c}")
-    #     scad_display_paths.extend(c.get_scad_display_path())
-        
-    # logger.info(f"SCAD display paths to export: {scad_display_paths}")
-    # for c in scad_display_paths:
-    #     c.export_scad(scad_file=scad_fullpath, display=c, EXPORT_DIR=EXPORT_DIR, oscad_params=oscad_params)
-        
-        # Component(c)
-        # density = data.get("density", 1000) # default density in kg/m^3
-        # if type(c) is dict: 
-        #     density = c.get("density", density)
-        #     c = c["name"]
-        
-        # logger.debug("Processing component: %s", c)
-
-        
-        # command_oscad_png = ["openscad", "-o", f"\"{os.path.join(_export_dir, f'{end}.png')}\"", "--viewall", "-D", f"display=\\\"{c}\\\"", f"\"{scad_fullpath}\"", "2>/dev/null"]
-        # os.system(' '.join(command_oscad_png))
-        
-
-        
-        # mesh = stl.mesh.Mesh.from_file(stl_path) 
-        # mesh.vectors *= 1e-3 # from mm to m 
-        # volume, mass, com, inertia = mesh.get_mass_properties_with_density(density)
-        # inertial_dict = {
-        #     'inertial_computation': {
-        #         #"density": density,
-        #         "volume": volume,
-        #         "inertial": {
-        #             "origin": {
-        #                 "@xyz": " ".join(map(str, com)),
-        #                 "@rpy": "0.0 0.0 0.0",
-        #             },
-        #             "mass": {
-        #                 "@value": mass
-        #             },
-        #             "inertia": {
-        #                 "@ixx": inertia[0][0],
-        #                 "@ixy": inertia[0][1],
-        #                 "@ixz": inertia[0][2],
-        #                 "@iyy": inertia[1][1],
-        #                 "@iyz": inertia[1][2],
-        #                 "@izz": inertia[2][2]
-        #             },
-        #         },
-        #         "inertia_tensor": {
-        #             "@matrix": inertia.tolist()
-        #         }
-        #     }                
-        # }
-        # with open(os.path.join(_export_dir, f"{end}-inertial.json"), "w") as f:
-        #     json.dump(inertial_dict, f, indent=4)
-
-        # with open(os.path.join(_export_dir, f"{end}-inertial.xml"), "w") as f:
-        #     xmltodict.unparse(inertial_dict, f, pretty=True)
-
     pass
 
 def main():

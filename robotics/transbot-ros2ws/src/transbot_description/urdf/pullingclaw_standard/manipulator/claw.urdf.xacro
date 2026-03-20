@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="claw">
+	<xacro:macro name="claw" params="prefix='' name='claw' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.0012800861110023813 -0.38965344171964184 3.363311637261926e-07" rpy="0 0 0"></origin>
+				<mass value="0.2929511247202754"></mass>
+				<inertia ixx="0.03516292077679785" ixy="7.888054286737099e-05" ixz="1.5889549402878322e-09" iyy="0.021794283660218114" iyz="-5.7794558888079205e-08" izz="0.013528231918389824"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/manipulator/claw.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.2 0.7 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/manipulator/claw.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

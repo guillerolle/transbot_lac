@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="manipulator">
+	<xacro:macro name="manipulator" params="prefix='' name='manipulator' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.0010051538509848756 0.0010066030995850806 0.0029140943916349245" rpy="0 0 0"></origin>
+				<mass value="0.22740004351362586"></mass>
+				<inertia ixx="0.0012109305576536793" ixy="2.070066544743644e-07" ixz="-7.702209198248881e-07" iyy="0.0012108952046564901" iyz="-7.69462702632083e-07" izz="0.0024028658832771937"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/manipulator/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/manipulator/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_dsusprr/manipulator/table.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_dsusprr/manipulator/slider.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_dsusprr/manipulator/claw.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}table" type="prismatic">
+			<origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}table"></child>
+			<axis xyz="0 0 1"></axis>
+			<limit lower="0.0" upper="1.5" effort="1000000000.0" velocity="1"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}slider" type="prismatic">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}table"></parent>
+			<child link="${prefix}${name}${suffix}slider"></child>
+			<axis xyz="1 0 0"></axis>
+			<limit lower="-0.4" upper="0.4" effort="1000000000.0" velocity="1"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}claw" type="continuous">
+			<origin xyz="0.0 0.0 0.1" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}slider"></parent>
+			<child link="${prefix}${name}${suffix}claw"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:table prefix="${prefix}${name}${suffix}" suffix=""></xacro:table>
+		<xacro:slider prefix="${prefix}${name}${suffix}" suffix=""></xacro:slider>
+		<xacro:claw prefix="${prefix}${name}${suffix}" suffix=""></xacro:claw>
+	</xacro:macro>
+</robot>

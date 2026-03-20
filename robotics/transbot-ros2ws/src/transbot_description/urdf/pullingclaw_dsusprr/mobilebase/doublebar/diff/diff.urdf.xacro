@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff">
+	<xacro:macro name="diff" params="prefix='' name='diff' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="-4.068478350109102e-11 -1.8579384465498233e-09 1.9870914441743804e-10" rpy="0 0 0"></origin>
+				<mass value="0.17464581954603395"></mass>
+				<inertia ixx="0.004568412068787589" ixy="1.320144666685382e-20" ixz="7.517120943432255e-16" iyy="8.668682956643647e-06" iyz="-2.0724169574074076e-13" izz="0.00456841207257715"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/mobilebase/doublebar/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_dsusprr/mobilebase/doublebar/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/pullingclaw_dsusprr/mobilebase/doublebar/diff/wheel.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}wheel0" type="continuous">
+			<origin xyz="0.0 -0.25 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel0"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel1" type="continuous">
+			<origin xyz="0.0 0.25 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel1"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="0"></xacro:wheel>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="1"></xacro:wheel>
+	</xacro:macro>
+</robot>

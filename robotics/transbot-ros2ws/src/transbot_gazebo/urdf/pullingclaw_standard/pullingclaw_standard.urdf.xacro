@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pullingclaw_standard">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/pullingclaw_standard/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/pullingclaw_standard/manipulator/manipulator.urdf.xacro"></xacro:include>
+	<xacro:macro name="pullingclaw_standard-ros2_control_gazebo" params="prefix='' name='pullingclaw_standard' suffix=''">
+		<xacro:mobilebase-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-ros2_control_gazebo>
+		<xacro:manipulator-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:manipulator-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="pullingclaw_standard-gz_reference" params="prefix='' name='pullingclaw_standard' suffix=''">
+		<xacro:mobilebase-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-gz_reference>
+		<xacro:manipulator-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:manipulator-gz_reference>
+	</xacro:macro>
+</robot>

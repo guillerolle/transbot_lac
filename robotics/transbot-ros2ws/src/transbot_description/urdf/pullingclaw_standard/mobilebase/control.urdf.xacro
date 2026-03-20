@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="control">
+	<xacro:macro name="control" params="prefix='' name='control' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="13800">
+				<origin xyz="0.002084133424969194 -0.1180087385611795 0.10163798440735253" rpy="0 0 0"></origin>
+				<mass value="11.36414830883344"></mass>
+				<inertia ixx="0.1792783214037889" ixy="-0.005400248580619397" ixz="0.0018980197654414812" iyy="0.17123017326450496" iyz="0.033806977088390505" izz="0.2231786465435561"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 0 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

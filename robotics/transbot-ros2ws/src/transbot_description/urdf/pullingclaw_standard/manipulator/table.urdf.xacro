@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table">
+	<xacro:macro name="table" params="prefix='' name='table' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.04307667979866561 0.0 -0.0003774974616513299" rpy="0 0 0"></origin>
+				<mass value="1.8803674417237441"></mass>
+				<inertia ixx="0.06963142816339718" ixy="-0.0" ixz="-3.057728911427048e-05" iyy="0.12240276250127126" iyz="-0.0" izz="0.19188494308559484"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/manipulator/table.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.7 0.2 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/pullingclaw_standard/manipulator/table.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>
