@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:ProrToolExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://eclipse.org/rmf/pror/toolextensions/1.0" xmlns:headline="http://pror.org/presentation/headline" xmlns:id="http://pror.org/presentation/id" xmlns:reqif="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd">
+  <specViewConfigurations>
+    <specification href="transbot.reqif#_Bxjsiz2oEfGVlv5kDXHFsA"/>
+    <columns label="ID" width="106"/>
+    <columns label="ReqIF.Text" width="205"/>
+    <columns label="ReqIF.Description" width="519"/>
+    <columns label="ReqIF.ForeignID" width="93"/>
+    <columns label="Status" width="92"/>
+    <columns label="Priority" width="100"/>
+    <columns label="VerMethod" width="117"/>
+    <columns label="VerStatus" width="100"/>
+    <columns label="VerPhase" width="100"/>
+    <leftHeaderColumn label="Lead Header Column" width="77"/>
+  </specViewConfigurations>
+  <specViewConfigurations>
+    <specification href="transbot.reqif#_XmK1AD24EfG6CZuh5Z-X1A"/>
+    <columns label="ID" width="93"/>
+    <columns label="ReqIF.ForeignID" width="5"/>
+    <columns label="ReqIF.Text" width="204"/>
+    <columns label="ReqIF.Description" width="424"/>
+    <columns label="Status" width="81"/>
+    <columns label="Priority" width="89"/>
+    <columns label="VerMethod" width="89"/>
+    <columns label="VerStatus" width="89"/>
+    <columns label="VerPhase" width="89"/>
+    <leftHeaderColumn label="Lead Header Column" width="30"/>
+  </specViewConfigurations>
+  <generalConfiguration>
+    <labelConfiguration>
+      <defaultLabel>ReqIF.Text</defaultLabel>
+      <defaultLabel>ReqIF.Description</defaultLabel>
+      <defaultLabel>ID</defaultLabel>
+    </labelConfiguration>
+  </generalConfiguration>
+  <presentationConfigurations>
+    <presentationConfigurations xsi:type="headline:HeadlineConfiguration" size="14">
+      <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_SPvnED2xEfG6CZuh5Z-X1A"/>
+    </presentationConfigurations>
+    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="REQ-" count="30">
+      <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_BxjsdD2oEfGVlv5kDXHFsA"/>
+    </presentationConfigurations>
+    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="LNK-" count="10">
+      <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_BxjseT2oEfGVlv5kDXHFsA"/>
+    </presentationConfigurations>
+    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="SEC-" count="20">
+      <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_SPvnED2xEfG6CZuh5Z-X1A"/>
+    </presentationConfigurations>
+  </presentationConfigurations>
+</configuration:ProrToolExtension>

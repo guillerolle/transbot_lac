@@ -1,0 +1,134 @@
+{
+  "id": "transbot-blank",
+  "description": "transbot",
+  "documents": [
+    {
+      "id": "transbot",
+      "guid": "83ec6cbf-a9a1-445b-a070-3cebf988500a",
+      "name": "transbot-blank",
+      "lastId": 2,
+      "createdOn": "2026-04-20T19:09:05.789Z",
+      "createdBy": {
+        "name": "Guillermo",
+        "email": "grolle@fceia.unr.edu.ar",
+        "company": "FCEIA"
+      },
+      "lastChangedOn": "2026-04-20T19:09:34.611Z",
+      "lastChangedBy": {
+        "name": "Guillermo",
+        "email": "grolle@fceia.unr.edu.ar",
+        "company": "FCEIA"
+      },
+      "data": [
+        {
+          "id": "1",
+          "guid": "40cb1c2b-343f-4ead-9ae3-aa2fd47f0178",
+          "heading": "Introduction",
+          "history": [
+            {
+              "affectedNodeId": "#",
+              "changedBy": {
+                "company": "FCEIA",
+                "email": "grolle@fceia.unr.edu.ar",
+                "name": "Guillermo"
+              },
+              "changedOn": "2026-04-20T19:09:19.197Z",
+              "docId": "transbot",
+              "structureAction": "Create"
+            },
+            {
+              "attributesChanged": {
+                "heading": null
+              },
+              "changedBy": {
+                "company": "FCEIA",
+                "email": "grolle@fceia.unr.edu.ar",
+                "name": "Guillermo"
+              },
+              "changedOn": "2026-04-20T19:09:19.197Z"
+            },
+            {
+              "attributesChanged": {
+                "heading": "1 Introduction"
+              },
+              "changedBy": {
+                "company": "FCEIA",
+                "email": "grolle@fceia.unr.edu.ar",
+                "name": "Guillermo"
+              },
+              "changedOn": "2026-04-20T19:09:23.155Z"
+            }
+          ],
+          "children": [
+            {
+              "id": "2",
+              "guid": "3d3ef680-5d28-4b3e-9542-bf6ed074afa8",
+              "heading": "Productivity",
+              "text": "<p>ASD</p>",
+              "history": [
+                {
+                  "affectedNodeId": "1",
+                  "changedBy": {
+                    "company": "FCEIA",
+                    "email": "grolle@fceia.unr.edu.ar",
+                    "name": "Guillermo"
+                  },
+                  "changedOn": "2026-04-20T19:09:34.611Z",
+                  "docId": "transbot",
+                  "structureAction": "Create"
+                },
+                {
+                  "attributesChanged": {
+                    "heading": null,
+                    "text": null
+                  },
+                  "changedBy": {
+                    "company": "FCEIA",
+                    "email": "grolle@fceia.unr.edu.ar",
+                    "name": "Guillermo"
+                  },
+                  "changedOn": "2026-04-20T19:09:34.611Z"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "attributes": {
+      },
+      "templateColumns": {
+      },
+      "views": {
+        "Primary": {
+          "columns": [
+            {
+              "columnId": "id",
+              "width": 65
+            },
+            {
+              "columnId": "description",
+              "width": 500
+            }
+          ],
+          "default": true
+        }
+      },
+      "metadata": {
+        "format": "2.22"
+      }
+    }
+  ],
+  "attachments": {
+  },
+  "traceability": {
+    "reference": {
+      "name": "Reference",
+      "source": "References",
+      "target": "Referenced by"
+    }
+  },
+  "metadata": {
+    "format": "2.22",
+    "saveHistory": true
+  }
+}
