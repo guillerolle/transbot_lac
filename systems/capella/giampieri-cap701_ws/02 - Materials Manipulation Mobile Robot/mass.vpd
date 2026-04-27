@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<vpd:VpdRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vpd="http://www.thalesgroup.com/vpd" id="_8VkLwFXiEfCc1I9MsvIl6w" name="mass" version="1.0.0">
+  <enumerations id="_wqnLEFXjEfCc1I9MsvIl6w" name="MassType">
+    <literals id="_x-z94FXjEfCc1I9MsvIl6w" name="Device"/>
+    <literals id="_0cI78FXjEfCc1I9MsvIl6w" name="Organic"/>
+  </enumerations>
+  <groups id="_9pRPUFXiEfCc1I9MsvIl6w" name="MassExtension">
+    <scope>
+      <rules xsi:type="vpd:EClassRule">
+        <classifier href="http://www.polarsys.org/capella/core/cs/7.0.0#//Component"/>
+      </rules>
+      <architectures>PHYSICAL</architectures>
+    </scope>
+    <properties xsi:type="vpd:FloatProperty" id="_A_ngEFXjEfCc1I9MsvIl6w" name="mass" unit="kg"/>
+  </groups>
+  <groups id="_t-TV0FXjEfCc1I9MsvIl6w" name="HeavyExtension">
+    <scope>
+      <rules xsi:type="vpd:EClassRule">
+        <classifier href="http://www.polarsys.org/capella/core/cs/7.0.0#//Component"/>
+      </rules>
+      <rules xsi:type="vpd:PropertyRule" value="40" property="_A_ngEFXjEfCc1I9MsvIl6w" comparator=">="/>
+      <architectures>PHYSICAL</architectures>
+    </scope>
+    <properties xsi:type="vpd:EnumerationProperty" id="_AjcsAFXkEfCc1I9MsvIl6w" name="Type" type="_wqnLEFXjEfCc1I9MsvIl6w" defaultValue="_x-z94FXjEfCc1I9MsvIl6w"/>
+  </groups>
+</vpd:VpdRoot>

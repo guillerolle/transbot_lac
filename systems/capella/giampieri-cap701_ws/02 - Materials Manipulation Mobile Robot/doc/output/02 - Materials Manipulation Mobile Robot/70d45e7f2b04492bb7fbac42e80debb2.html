@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta name="copyright" content="Copyright &copy; 2014 The Eclipse Foundation. All Rights Reserved." />
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+
+		<title>Capella - 02 - Materials Manipulation Mobile Robot - LogicalFunction compute actuator commands</title>
+		<link rel="stylesheet" href="../../scripts/jquery-treeview/jquery.treeview.css" />
+  		<script src="../../scripts/jquery-treeview/lib/jquery-1.11.1.js" type="text/javascript"></script>
+  		<script src="../../scripts/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/simpletree.css" />		
+		<link title="default" rel="stylesheet" type="text/css" media="screen, projection" href="../../css/content.css"></link>
+		<script type="text/javascript">
+			if(parent.location.href == self.location.href) {
+				window.location.href = 'index.html?70d45e7f2b04492bb7fbac42e80debb2' + '#' + self.location.href.substring(self.location.href.lastIndexOf("#")+1);
+			}
+		</script>
+		
+		<style>
+			body {
+				background: white;
+				font-family: Arial;
+			}
+			.treeview {
+				background-color: white ;
+			}
+	
+			.treeview ul{ /*CSS for Simple Tree Menu*/
+				background-color: white;
+				font-size: 12px;
+			}
+	
+			.treeview li{ /*Style for LI elements in general (excludes an LI that contains sub lists)*/
+				background-color: white;
+			}
+		</style>
+		
+	</head>
+	
+	<body>	<div id="content">
+<img src="../icon/LogicalFunction.png" alt="LogicalFunction" style="float:left; margin-right:10px" /><h1><a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html">compute actuator commands</a></h1>
+<p style="margin-top:3px; margin-bottom:3px"><span class="elementMetaClass">LogicalFunction</span></p>
+<em class="elementPath"><a href="../02 - Materials Manipulation Mobile Robot/cb87d1e666c0425e88b27c4ba6b61409.html">02 &#045; Materials Manipulation Mobile Robot</a> > <a href="../02 - Materials Manipulation Mobile Robot/9b7ad48d6e4c497280919ab07eaf5378.html">02 &#045; Materials Manipulation Mobile Robot</a> > <a href="../02 - Materials Manipulation Mobile Robot/223b9bfff9f645fbbdd9d55df9a3839c.html">Logical Architecture</a> > <a href="../02 - Materials Manipulation Mobile Robot/4c18c5c646154763ab92380df87ec81c.html">Logical Functions</a> > <a href="../02 - Materials Manipulation Mobile Robot/c67b928848264f86a55224ca209f0944.html">Root Logical Function</a> > <a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html">compute actuator commands</a></em>
+
+<p>
+No description.
+</p>
+
+
+
+
+
+
+
+
+    <h2>Incoming Internal Functional Exchanges</h2>
+    
+    
+   <table>
+	<tr>
+		<th>Exchange</th>
+		<th>Involving functional chains</th>
+		<th>Allocating component Exchanges</th>
+		<th>Distant Port</th>
+		<th>Source</th>
+		<th>Target</th>
+		<th>Description</th>
+		<th>Allocated Exchange Items</th>
+		<th>Realized Functional Exchange</th>
+		<th>Realizing Functional Exchange</th>
+	</tr>
+	<tr><td id="id01550719-71b6-47b4-bde3-aa19124f5504"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/0155071971b647b4bde3aa19124f5504.html">referencias</a></td><td></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/2733a535be204640b995f73ac2e2641b.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/d8ae233e53c74c6e92c9aa0b8ee08d65.html">transmitir comandos&#047;intenciones del operario al sistema</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/194b33e05329449eb296ca188807c6e3.html">calcular referencias en espacio nulo &#040;eta&#041;</a></td><td></td><td></td><td></td><td></td></tr>
+	<tr><td id="idc1b5b1f7-3520-455c-ad10-938d06f7d512"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/c1b5b1f73520455cad10938d06f7d512.html">referencias de twist</a></td><td></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/423aedbb78dc4a818865fdb3ad247921.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/73ceaef1eced43f99ca02eddf5cf87e3.html">crear referencias de velocidad &#040;twist&#041;</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/194b33e05329449eb296ca188807c6e3.html">calcular referencias en espacio nulo &#040;eta&#041;</a></td><td></td><td></td><td></td><td></td></tr>
+	<tr><td id="id38c1fda5-4ec4-4d1f-bc05-aaf9b1e46f6b"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/38c1fda54ec44d1fbc05aaf9b1e46f6b.html">desired trajectory</a></td><td><ul class="generatedList"><li><img src="../icon/FunctionalChain.png" alt="FunctionalChain" /> <a href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html">Point Tracking Control</a></li></ul></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/3084526679244542bb990abd43691102.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/ab530025e6274ed7879b3168d0969e72.html">Generate desired trajectory</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html">dinámica del error</a></td><td></td><td></td><td></td><td></td></tr>
+	<tr><td id="id7a650e97-9f02-4d9b-8a4d-ad6b453d0e80"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/7a650e979f024d9b8a4dad6b453d0e80.html">pose y velocidad</a></td><td><ul class="generatedList"><li><img src="../icon/FunctionalChain.png" alt="FunctionalChain" /> <a href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html">Point Tracking Control</a></li></ul></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/b735b63f5b8f4761ac786a68ef377099.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/8d6040b8ff4647cebe476470256d9f82.html">compute self&#045;localisation</a></td><td><img src="../icon/FunctionKind_Duplicate.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html">Duplicate 5</a></td><td></td><td></td><td></td><td></td></tr>
+</table>
+ <h2>Outgoing Internal Functional Exchanges</h2>
+
+    <table>
+	<tr>
+		<th>Exchange</th>
+		<th>Involving functional chains</th>
+		<th>Allocating component Exchanges</th>
+		<th>Distant Port</th>
+		<th>Source</th>
+		<th>Target</th>
+		<th>Description</th>
+		<th>Allocated Exchange Items</th>
+		<th>Realized Functional Exchange</th>
+		<th>Realizing Functional Exchange</th>
+	</tr>
+	<tr><td id="ida8cd07a0-ce66-4d6c-8476-21553941730b"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/a8cd07a0ce664d6c847621553941730b.html">comandos de velocidad
+angular de las ruedas</a></td><td></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/d36b2655c42a494a9f8d129aa15129d9.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/8312f56b1e5f442fbebcda86a1e83e93.html">calcular referencias de velocidad de rotación de las ruedas actuadas</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/f0513ef44d4747d48053fa90133fad55.html">convert power to mechanical power</a></td><td></td><td></td><td></td><td></td></tr>
+	<tr><td id="id22bcc097-7fa3-4ea1-938e-641244d75ade"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/22bcc0977fa34ea1938e641244d75ade.html">errores</a></td><td></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/1940cec1f3b94043833048e7c82a1e93.html">FOP 2</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html">dinámica del error</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/3c241f54d604461baeb08a39a2c6e8fa.html">verificar destino alcanzado</a></td><td></td><td></td><td></td><td></td></tr>
+	<tr><td id="idd64f3407-fa9f-4e84-baa3-e037f8b20993"><img src="../icon/FunctionalExchange.png" alt="FunctionalExchange" /> <a href="../02 - Materials Manipulation Mobile Robot/d64f3407fa9f4e84baa3e037f8b20993.html">commands</a></td><td><ul class="generatedList"><li><img src="../icon/FunctionalChain.png" alt="FunctionalChain" /> <a href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html">Point Tracking Control</a></li></ul></td><td></td><td><img src="../icon/FunctionOutputPort.png" alt="FunctionOutputPort" /> <a href="../02 - Materials Manipulation Mobile Robot/c09d26dd2c574349a9149365e7d9eb19.html">FOP 1</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html">cálculo comando actuadores</a></td><td><img src="../icon/LogicalFunction.png" alt="LogicalFunction" /> <a href="../02 - Materials Manipulation Mobile Robot/f0513ef44d4747d48053fa90133fad55.html">convert power to mechanical power</a></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+
+
+
+
+
+
+
+<h2>Owned diagrams</h2>
+	<div>
+	<p class="diagram-name" id="_oNLrYJJJEe-Yl4q-4VMXfA">LFBD computar las seales de control del sist de locom</p>
+	<p class="diagram">
+		<img src="70d45e7f2b04492bb7fbac42e80debb2/_oNLrYJJJEeYl4q4VMXfA.jpg" alt="LFBD computar las seales de control del sist de locom" usemap="#LFBD computar las seales de control del sist de locom__oNLrYJJJEeYl4q4VMXfA_PositionMap" />
+		
+		<br/>
+		<br/>
+		<map name="LFBD computar las seales de control del sist de locom__oNLrYJJJEeYl4q4VMXfA_PositionMap">
+			<area shape="rect" group="3c241f54d604461baeb08a39a2c6e8fa" coords="672,301,688,317" href="../02 - Materials Manipulation Mobile Robot/3c241f54d604461baeb08a39a2c6e8fa.html#id3c241f54-d604-461b-aeb0-8a39a2c6e8fa" alt="3c241f54d604461baeb08a39a2c6e8fa" />
+			<area shape="rect" group="ab530025e6274ed7879b3168d0969e72" coords="679,248,695,264" href="../02 - Materials Manipulation Mobile Robot/ab530025e6274ed7879b3168d0969e72.html#idab530025-e627-4ed7-879b-3168d0969e72" alt="ab530025e6274ed7879b3168d0969e72" />
+			<area shape="rect" group="878a7f2e37e54afe95b5975f66a6682e" coords="659,695,675,711" href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html#id878a7f2e-37e5-4afe-95b5-975f66a6682e" alt="878a7f2e37e54afe95b5975f66a6682e" />
+			<area shape="rect" group="b1b5e33107cd47a3b3f61e55d627a3d1" coords="668,649,684,665" href="../02 - Materials Manipulation Mobile Robot/b1b5e33107cd47a3b3f61e55d627a3d1.html#idb1b5e331-07cd-47a3-b3f6-1e55d627a3d1" alt="b1b5e33107cd47a3b3f61e55d627a3d1" />
+			<area shape="rect" group="4d3173fbc87d40adb25d223682de2e0b" coords="672,602,688,618" href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html#id4d3173fb-c87d-40ad-b25d-223682de2e0b" alt="4d3173fbc87d40adb25d223682de2e0b" />
+			<area shape="rect" group="fb1eb69d82be43f39fff34b068c1727e" coords="673,552,689,568" href="../02 - Materials Manipulation Mobile Robot/fb1eb69d82be43f39fff34b068c1727e.html#idfb1eb69d-82be-43f3-9fff-34b068c1727e" alt="fb1eb69d82be43f39fff34b068c1727e" />
+			<area shape="rect" group="9656bab55ff04533b02ebf90021a0b80" coords="685,499,701,515" href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html#id9656bab5-5ff0-4533-b02e-bf90021a0b80" alt="9656bab55ff04533b02ebf90021a0b80" />
+			<area shape="rect" group="21c1cb6d6d544648be5e675c3392e8cf" coords="552,98,568,114" href="../02 - Materials Manipulation Mobile Robot/21c1cb6d6d544648be5e675c3392e8cf.html#id21c1cb6d-6d54-4648-be5e-675c3392e8cf" alt="21c1cb6d6d544648be5e675c3392e8cf" />
+			<area shape="rect" group="8312f56b1e5f442fbebcda86a1e83e93" coords="508,98,524,114" href="../02 - Materials Manipulation Mobile Robot/8312f56b1e5f442fbebcda86a1e83e93.html#id8312f56b-1e5f-442f-bebc-da86a1e83e93" alt="8312f56b1e5f442fbebcda86a1e83e93" />
+			<area shape="rect" group="194b33e05329449eb296ca188807c6e3" coords="452,98,468,114" href="../02 - Materials Manipulation Mobile Robot/194b33e05329449eb296ca188807c6e3.html#id194b33e0-5329-449e-b296-ca188807c6e3" alt="194b33e05329449eb296ca188807c6e3" />
+			<area shape="rect" group="3c241f54d604461baeb08a39a2c6e8fa" coords="630,1131,750,1201" href="../02 - Materials Manipulation Mobile Robot/3c241f54d604461baeb08a39a2c6e8fa.html#id3c241f54-d604-461b-aeb0-8a39a2c6e8fa" alt="3c241f54d604461baeb08a39a2c6e8fa" />
+			<area shape="rect" group="ab530025e6274ed7879b3168d0969e72" coords="630,1031,764,1101" href="../02 - Materials Manipulation Mobile Robot/ab530025e6274ed7879b3168d0969e72.html#idab530025-e627-4ed7-879b-3168d0969e72" alt="ab530025e6274ed7879b3168d0969e72" />
+			<area shape="rect" group="878a7f2e37e54afe95b5975f66a6682e" coords="630,931,725,1001" href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html#id878a7f2e-37e5-4afe-95b5-975f66a6682e" alt="878a7f2e37e54afe95b5975f66a6682e" />
+			<area shape="rect" group="b1b5e33107cd47a3b3f61e55d627a3d1" coords="630,831,742,901" href="../02 - Materials Manipulation Mobile Robot/b1b5e33107cd47a3b3f61e55d627a3d1.html#idb1b5e331-07cd-47a3-b3f6-1e55d627a3d1" alt="b1b5e33107cd47a3b3f61e55d627a3d1" />
+			<area shape="rect" group="4d3173fbc87d40adb25d223682de2e0b" coords="630,731,751,801" href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html#id4d3173fb-c87d-40ad-b25d-223682de2e0b" alt="4d3173fbc87d40adb25d223682de2e0b" />
+			<area shape="rect" group="fb1eb69d82be43f39fff34b068c1727e" coords="630,631,752,701" href="../02 - Materials Manipulation Mobile Robot/fb1eb69d82be43f39fff34b068c1727e.html#idfb1eb69d-82be-43f3-9fff-34b068c1727e" alt="fb1eb69d82be43f39fff34b068c1727e" />
+			<area shape="rect" group="9656bab55ff04533b02ebf90021a0b80" coords="630,531,732,601" href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html#id9656bab5-5ff0-4533-b02e-bf90021a0b80" alt="9656bab55ff04533b02ebf90021a0b80" />
+			<area shape="rect" group="21c1cb6d6d544648be5e675c3392e8cf" coords="630,431,779,501" href="../02 - Materials Manipulation Mobile Robot/21c1cb6d6d544648be5e675c3392e8cf.html#id21c1cb6d-6d54-4648-be5e-675c3392e8cf" alt="21c1cb6d6d544648be5e675c3392e8cf" />
+			<area shape="rect" group="8312f56b1e5f442fbebcda86a1e83e93" coords="630,330,802,401" href="../02 - Materials Manipulation Mobile Robot/8312f56b1e5f442fbebcda86a1e83e93.html#id8312f56b-1e5f-442f-bebc-da86a1e83e93" alt="8312f56b1e5f442fbebcda86a1e83e93" />
+			<area shape="rect" group="194b33e05329449eb296ca188807c6e3" coords="630,230,779,300" href="../02 - Materials Manipulation Mobile Robot/194b33e05329449eb296ca188807c6e3.html#id194b33e0-5329-449e-b296-ca188807c6e3" alt="194b33e05329449eb296ca188807c6e3" />
+			<area shape="rect" group="70d45e7f2b04492bb7fbac42e80debb2" coords="10,10,184,80" href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#id70d45e7f-2b04-492b-b7fb-ac42e80debb2" alt="70d45e7f2b04492bb7fbac42e80debb2" />		
+		</map>
+	</p>
+	<p class="diagram-description"></p>
+	</div>
+	<div>
+	<p class="diagram-name" id="_pZtv8JJJEe-Yl4q-4VMXfA">LDFB computar las seales de control del sist de locom</p>
+	<p class="diagram">
+		<img src="70d45e7f2b04492bb7fbac42e80debb2/_pZtv8JJJEeYl4q4VMXfA.jpg" alt="LDFB computar las seales de control del sist de locom" usemap="#LDFB computar las seales de control del sist de locom__pZtv8JJJEeYl4q4VMXfA_PositionMap" />
+		
+		<br/>
+		<br/>
+		<map name="LDFB computar las seales de control del sist de locom__pZtv8JJJEeYl4q4VMXfA_PositionMap">
+			<area shape="rect" group="22bcc0977fa34ea1938e641244d75ade" coords="209,369,263,385" href="../02 - Materials Manipulation Mobile Robot/22bcc0977fa34ea1938e641244d75ade.html#id22bcc097-7fa3-4ea1-938e-641244d75ade" alt="22bcc0977fa34ea1938e641244d75ade" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="553,449,553,449" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="693,395,693,395" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="528,394,528,394" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="416,451,416,451" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="540,463,540,463" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="690,458,690,458" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="813186ebf6704bfd853eaaf583c7c498" coords="543,412,639,428" href="../02 - Materials Manipulation Mobile Robot/813186ebf6704bfd853eaaf583c7c498.html#id813186eb-f670-4bfd-853e-aaf583c7c498" alt="813186ebf6704bfd853eaaf583c7c498" />
+			<area shape="rect" group="557451e074514b05aa75d4fb60daf71a" coords="577,396,673,412" href="../02 - Materials Manipulation Mobile Robot/557451e074514b05aa75d4fb60daf71a.html#id557451e0-7451-4b05-aa75-d4fb60daf71a" alt="557451e074514b05aa75d4fb60daf71a" />
+			<area shape="rect" group="9b0316ad62894f1bb495cb3d601eeec6" coords="344,397,461,413" href="../02 - Materials Manipulation Mobile Robot/9b0316ad62894f1bb495cb3d601eeec6.html#id9b0316ad-6289-4f1b-b495-cb3d601eeec6" alt="9b0316ad62894f1bb495cb3d601eeec6" />
+			<area shape="rect" group="7a650e979f024d9b8a4dad6b453d0e80" coords="720,375,816,391" href="../02 - Materials Manipulation Mobile Robot/7a650e979f024d9b8a4dad6b453d0e80.html#id7a650e97-9f02-4d9b-8a4d-ad6b453d0e80" alt="7a650e979f024d9b8a4dad6b453d0e80" />
+			<area shape="rect" group="d64f3407fa9f4e84baa3e037f8b20993" coords="764,340,880,356" href="../02 - Materials Manipulation Mobile Robot/d64f3407fa9f4e84baa3e037f8b20993.html#idd64f3407-fa9f-4e84-baa3-e037f8b20993" alt="d64f3407fa9f4e84baa3e037f8b20993" />
+			<area shape="rect" group="37964840a2624553b43f562db5f35883" coords="569,429,647,455" href="../02 - Materials Manipulation Mobile Robot/37964840a2624553b43f562db5f35883.html#id37964840-a262-4553-b43f-562db5f35883" alt="37964840a2624553b43f562db5f35883" />
+			<area shape="rect" group="58b9981b7042464ca40f2e6fb8b34c9d" coords="395,447,518,463" href="../02 - Materials Manipulation Mobile Robot/58b9981b7042464ca40f2e6fb8b34c9d.html#id58b9981b-7042-464c-a40f-2e6fb8b34c9d" alt="58b9981b7042464ca40f2e6fb8b34c9d" />
+			<area shape="rect" group="38c1fda54ec44d1fbc05aaf9b1e46f6b" coords="224,459,305,475" href="../02 - Materials Manipulation Mobile Robot/38c1fda54ec44d1fbc05aaf9b1e46f6b.html#id38c1fda5-4ec4-4d1f-bc05-aaf9b1e46f6b" alt="38c1fda54ec44d1fbc05aaf9b1e46f6b" />
+			<area shape="rect" group="448e6deb90ad4bfa8da70e513348aeb4" coords="260,500,337,516" href="../02 - Materials Manipulation Mobile Robot/448e6deb90ad4bfa8da70e513348aeb4.html#id448e6deb-90ad-4bfa-8da7-0e513348aeb4" alt="448e6deb90ad4bfa8da70e513348aeb4" />
+			<area shape="rect" group="c92b3bc818464a8da1e727b956eb3835" coords="101,399,171,425" href="../02 - Materials Manipulation Mobile Robot/c92b3bc818464a8da1e727b956eb3835.html#idc92b3bc8-1846-4a8d-a1e7-27b956eb3835" alt="c92b3bc818464a8da1e727b956eb3835" />
+			<area shape="rect" group="a8cd07a0ce664d6c847621553941730b" coords="951,219,1079,245" href="../02 - Materials Manipulation Mobile Robot/a8cd07a0ce664d6c847621553941730b.html#ida8cd07a0-ce66-4d6c-8476-21553941730b" alt="a8cd07a0ce664d6c847621553941730b" />
+			<area shape="rect" group="de35b6930c6c47999c6c4cd73b1577b1" coords="514,224,553,240" href="../02 - Materials Manipulation Mobile Robot/de35b6930c6c47999c6c4cd73b1577b1.html#idde35b693-0c6c-4799-9c6c-4cd73b1577b1" alt="de35b6930c6c47999c6c4cd73b1577b1" />
+			<area shape="rect" group="c1b5b1f73520455cad10938d06f7d512" coords="134,237,247,253" href="../02 - Materials Manipulation Mobile Robot/c1b5b1f73520455cad10938d06f7d512.html#idc1b5b1f7-3520-455c-ad10-938d06f7d512" alt="c1b5b1f73520455cad10938d06f7d512" />
+			<area shape="rect" group="43e5f62feb1241fe805cfd343205c00f" coords="185,364,195,374" href="../02 - Materials Manipulation Mobile Robot/43e5f62feb1241fe805cfd343205c00f.html#id43e5f62f-eb12-41fe-805c-fd343205c00f" alt="43e5f62feb1241fe805cfd343205c00f" />
+			<area shape="rect" group="9f39e15d599d446fab8457403a10053f" coords="67,364,77,374" href="../02 - Materials Manipulation Mobile Robot/9f39e15d599d446fab8457403a10053f.html#id9f39e15d-599d-446f-ab84-57403a10053f" alt="9f39e15d599d446fab8457403a10053f" />
+			<area shape="rect" group="ae7848ffd27140669b8d44f2f34e3ece" coords="130,384,140,394" href="../02 - Materials Manipulation Mobile Robot/ae7848ffd27140669b8d44f2f34e3ece.html#idae7848ff-d271-4066-9b8d-44f2f34e3ece" alt="ae7848ffd27140669b8d44f2f34e3ece" />
+			<area shape="rect" group="3c241f54d604461baeb08a39a2c6e8fa" coords="69,344,195,394" href="../02 - Materials Manipulation Mobile Robot/3c241f54d604461baeb08a39a2c6e8fa.html#id3c241f54-d604-461b-aeb0-8a39a2c6e8fa" alt="3c241f54d604461baeb08a39a2c6e8fa" />
+			<area shape="rect" group="c582e449a9c644c0a8d6355db978717c" coords="78,430,88,440" href="../02 - Materials Manipulation Mobile Robot/c582e449a9c644c0a8d6355db978717c.html#idc582e449-a9c6-44c0-a8d6-355db978717c" alt="c582e449a9c644c0a8d6355db978717c" />
+			<area shape="rect" group="7b6f41cae35941d2bf3af0fa7af2277d" coords="130,428,140,438" href="../02 - Materials Manipulation Mobile Robot/7b6f41cae35941d2bf3af0fa7af2277d.html#id7b6f41ca-e359-41d2-bf3a-f0fa7af2277d" alt="7b6f41cae35941d2bf3af0fa7af2277d" />
+			<area shape="rect" group="d6ff2107a9c74457b1ec4ad2f86783fb" coords="78,460,88,470" href="../02 - Materials Manipulation Mobile Robot/d6ff2107a9c74457b1ec4ad2f86783fb.html#idd6ff2107-a9c7-4457-b1ec-4ad2f86783fb" alt="d6ff2107a9c74457b1ec4ad2f86783fb" />
+			<area shape="rect" group="3084526679244542bb990abd43691102" coords="173,470,183,480" href="../02 - Materials Manipulation Mobile Robot/3084526679244542bb990abd43691102.html#id30845266-7924-4542-bb99-0abd43691102" alt="3084526679244542bb990abd43691102" />
+			<area shape="rect" group="ab530025e6274ed7879b3168d0969e72" coords="80,430,183,503" href="../02 - Materials Manipulation Mobile Robot/ab530025e6274ed7879b3168d0969e72.html#idab530025-e627-4ed7-879b-3168d0969e72" alt="ab530025e6274ed7879b3168d0969e72" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="660,524,680,544" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="b735b63f5b8f4761ac786a68ef377099" coords="798,390,808,400" href="../02 - Materials Manipulation Mobile Robot/b735b63f5b8f4761ac786a68ef377099.html#idb735b63f-5b8f-4761-ac78-6a68ef377099" alt="b735b63f5b8f4761ac786a68ef377099" />
+			<area shape="rect" group="8d6040b8ff4647cebe476470256d9f82" coords="800,380,942,433" href="../02 - Materials Manipulation Mobile Robot/8d6040b8ff4647cebe476470256d9f82.html#id8d6040b8-ff46-47ce-be47-6470256d9f82" alt="8d6040b8ff4647cebe476470256d9f82" />
+			<area shape="rect" group="ad21e4caea104e90a6d831f8cc078db1" coords="1283,280,1293,290" href="../02 - Materials Manipulation Mobile Robot/ad21e4caea104e90a6d831f8cc078db1.html#idad21e4ca-ea10-4e90-a6d8-31f8cc078db1" alt="ad21e4caea104e90a6d831f8cc078db1" />
+			<area shape="rect" group="3f38e10e389d44b9bc3139b8029cdcfc" coords="1283,251,1293,261" href="../02 - Materials Manipulation Mobile Robot/3f38e10e389d44b9bc3139b8029cdcfc.html#id3f38e10e-389d-44b9-bc31-39b8029cdcfc" alt="3f38e10e389d44b9bc3139b8029cdcfc" />
+			<area shape="rect" group="e3a571df604a42a0aedee497f3cc146b" coords="1178,248,1188,258" href="../02 - Materials Manipulation Mobile Robot/e3a571df604a42a0aedee497f3cc146b.html#ide3a571df-604a-42a0-aede-e497f3cc146b" alt="e3a571df604a42a0aedee497f3cc146b" />
+			<area shape="rect" group="0c2afa682e1d4d67aab851375a062dc6" coords="1220,228,1230,238" href="../02 - Materials Manipulation Mobile Robot/0c2afa682e1d4d67aab851375a062dc6.html#id0c2afa68-2e1d-4d67-aab8-51375a062dc6" alt="0c2afa682e1d4d67aab851375a062dc6" />
+			<area shape="rect" group="f0513ef44d4747d48053fa90133fad55" coords="1180,230,1293,300" href="../02 - Materials Manipulation Mobile Robot/f0513ef44d4747d48053fa90133fad55.html#idf0513ef4-4d47-47d4-8053-fa90133fad55" alt="f0513ef44d4747d48053fa90133fad55" />
+			<area shape="rect" group="423aedbb78dc4a818865fdb3ad247921" coords="123,250,133,260" href="../02 - Materials Manipulation Mobile Robot/423aedbb78dc4a818865fdb3ad247921.html#id423aedbb-78dc-4a81-8865-fdb3ad247921" alt="423aedbb78dc4a818865fdb3ad247921" />
+			<area shape="rect" group="73ceaef1eced43f99ca02eddf5cf87e3" coords="10,220,133,293" href="../02 - Materials Manipulation Mobile Robot/73ceaef1eced43f99ca02eddf5cf87e3.html#id73ceaef1-eced-43f9-9ca0-2eddf5cf87e3" alt="73ceaef1eced43f99ca02eddf5cf87e3" />
+			<area shape="rect" group="b472f23f11a34375ae44402b9a8b79fa" coords="668,390,678,400" href="../02 - Materials Manipulation Mobile Robot/b472f23f11a34375ae44402b9a8b79fa.html#idb472f23f-11a3-4375-ae44-402b9a8b79fa" alt="b472f23f11a34375ae44402b9a8b79fa" />
+			<area shape="rect" group="b54fe47c3d5441418d05c20dbc264266" coords="703,390,713,400" href="../02 - Materials Manipulation Mobile Robot/b54fe47c3d5441418d05c20dbc264266.html#idb54fe47c-3d54-4141-8d05-c20dbc264266" alt="b54fe47c3d5441418d05c20dbc264266" />
+			<area shape="rect" group="878a7f2e37e54afe95b5975f66a6682e" coords="670,370,711,411" href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html#id878a7f2e-37e5-4afe-95b5-975f66a6682e" alt="878a7f2e37e54afe95b5975f66a6682e" />
+			<area shape="rect" group="30243b8fc92e4f9ba233ca6d6458b559" coords="581,390,591,400" href="../02 - Materials Manipulation Mobile Robot/30243b8fc92e4f9ba233ca6d6458b559.html#id30243b8f-c92e-4f9b-a233-ca6d6458b559" alt="30243b8fc92e4f9ba233ca6d6458b559" />
+			<area shape="rect" group="1ee3813ee7c840ffad8a1735b4cdfd37" coords="480,390,490,400" href="../02 - Materials Manipulation Mobile Robot/1ee3813ee7c840ffad8a1735b4cdfd37.html#id1ee3813e-e7c8-40ff-ad8a-1735b4cdfd37" alt="1ee3813ee7c840ffad8a1735b4cdfd37" />
+			<area shape="rect" group="b1b5e33107cd47a3b3f61e55d627a3d1" coords="482,380,591,422" href="../02 - Materials Manipulation Mobile Robot/b1b5e33107cd47a3b3f61e55d627a3d1.html#idb1b5e331-07cd-47a3-b3f6-1e55d627a3d1" alt="b1b5e33107cd47a3b3f61e55d627a3d1" />
+			<area shape="rect" group="c09d26dd2c574349a9149365e7d9eb19" coords="733,451,743,461" href="../02 - Materials Manipulation Mobile Robot/c09d26dd2c574349a9149365e7d9eb19.html#idc09d26dd-2c57-4349-a914-9365e7d9eb19" alt="c09d26dd2c574349a9149365e7d9eb19" />
+			<area shape="rect" group="2f2c49826f93441c86a65b790cc0ccc3" coords="628,460,638,470" href="../02 - Materials Manipulation Mobile Robot/2f2c49826f93441c86a65b790cc0ccc3.html#id2f2c4982-6f93-441c-86a6-5b790cc0ccc3" alt="2f2c49826f93441c86a65b790cc0ccc3" />
+			<area shape="rect" group="4d3173fbc87d40adb25d223682de2e0b" coords="630,441,743,501" href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html#id4d3173fb-c87d-40ad-b25d-223682de2e0b" alt="4d3173fbc87d40adb25d223682de2e0b" />
+			<area shape="rect" group="23b08609a3c2469ca5ef6bec73d20817" coords="530,438,540,448" href="../02 - Materials Manipulation Mobile Robot/23b08609a3c2469ca5ef6bec73d20817.html#id23b08609-a3c2-469c-a5ef-6bec73d20817" alt="23b08609a3c2469ca5ef6bec73d20817" />
+			<area shape="rect" group="27e7d21f4ee84ba3a8706062689ba5a8" coords="583,460,593,470" href="../02 - Materials Manipulation Mobile Robot/27e7d21f4ee84ba3a8706062689ba5a8.html#id27e7d21f-4ee8-4ba3-a870-6062689ba5a8" alt="27e7d21f4ee84ba3a8706062689ba5a8" />
+			<area shape="rect" group="3e9385a71327462eb874e94680d04b01" coords="478,460,488,470" href="../02 - Materials Manipulation Mobile Robot/3e9385a71327462eb874e94680d04b01.html#id3e9385a7-1327-462e-b874-e94680d04b01" alt="3e9385a71327462eb874e94680d04b01" />
+			<area shape="rect" group="fb1eb69d82be43f39fff34b068c1727e" coords="480,440,593,502" href="../02 - Materials Manipulation Mobile Robot/fb1eb69d82be43f39fff34b068c1727e.html#idfb1eb69d-82be-43f3-9fff-34b068c1727e" alt="fb1eb69d82be43f39fff34b068c1727e" />
+			<area shape="rect" group="1940cec1f3b94043833048e7c82a1e93" coords="338,450,348,460" href="../02 - Materials Manipulation Mobile Robot/1940cec1f3b94043833048e7c82a1e93.html#id1940cec1-f3b9-4043-8330-48e7c82a1e93" alt="1940cec1f3b94043833048e7c82a1e93" />
+			<area shape="rect" group="782e62842be84c439959badf33c1c754" coords="380,438,390,448" href="../02 - Materials Manipulation Mobile Robot/782e62842be84c439959badf33c1c754.html#id782e6284-2be8-4c43-9959-badf33c1c754" alt="782e62842be84c439959badf33c1c754" />
+			<area shape="rect" group="861c405b905749e185672f9996f50f72" coords="432,460,442,470" href="../02 - Materials Manipulation Mobile Robot/861c405b905749e185672f9996f50f72.html#id861c405b-9057-49e1-8567-2f9996f50f72" alt="861c405b905749e185672f9996f50f72" />
+			<area shape="rect" group="72df057155f04023bfe1adc5683fa893" coords="338,470,348,480" href="../02 - Materials Manipulation Mobile Robot/72df057155f04023bfe1adc5683fa893.html#id72df0571-55f0-4023-bfe1-adc5683fa893" alt="72df057155f04023bfe1adc5683fa893" />
+			<area shape="rect" group="9656bab55ff04533b02ebf90021a0b80" coords="340,440,442,502" href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html#id9656bab5-5ff0-4533-b02e-bf90021a0b80" alt="9656bab55ff04533b02ebf90021a0b80" />
+			<area shape="rect" group="21c1cb6d6d544648be5e675c3392e8cf" coords="330,350,752,511" href="../02 - Materials Manipulation Mobile Robot/21c1cb6d6d544648be5e675c3392e8cf.html#id21c1cb6d-6d54-4648-be5e-675c3392e8cf" alt="21c1cb6d6d544648be5e675c3392e8cf" />
+			<area shape="rect" group="d36b2655c42a494a9f8d129aa15129d9" coords="733,243,743,253" href="../02 - Materials Manipulation Mobile Robot/d36b2655c42a494a9f8d129aa15129d9.html#idd36b2655-c42a-494a-9f8d-129aa15129d9" alt="d36b2655c42a494a9f8d129aa15129d9" />
+			<area shape="rect" group="870a66b9dd7a404a89ff7d8fc631bb82" coords="568,237,578,247" href="../02 - Materials Manipulation Mobile Robot/870a66b9dd7a404a89ff7d8fc631bb82.html#id870a66b9-dd7a-404a-89ff-7d8fc631bb82" alt="870a66b9dd7a404a89ff7d8fc631bb82" />
+			<area shape="rect" group="8312f56b1e5f442fbebcda86a1e83e93" coords="570,210,743,330" href="../02 - Materials Manipulation Mobile Robot/8312f56b1e5f442fbebcda86a1e83e93.html#id8312f56b-1e5f-442f-bebc-da86a1e83e93" alt="8312f56b1e5f442fbebcda86a1e83e93" />
+			<area shape="rect" group="b93a263ebc9341c9a3992af47e939df8" coords="493,240,503,250" href="../02 - Materials Manipulation Mobile Robot/b93a263ebc9341c9a3992af47e939df8.html#idb93a263e-bc93-41c9-a399-2af47e939df8" alt="b93a263ebc9341c9a3992af47e939df8" />
+			<area shape="rect" group="dbc29cabe4cc46dea7a895712f127841" coords="288,250,298,260" href="../02 - Materials Manipulation Mobile Robot/dbc29cabe4cc46dea7a895712f127841.html#iddbc29cab-e4cc-46de-a7a8-95712f127841" alt="dbc29cabe4cc46dea7a895712f127841" />
+			<area shape="rect" group="194b33e05329449eb296ca188807c6e3" coords="290,210,503,293" href="../02 - Materials Manipulation Mobile Robot/194b33e05329449eb296ca188807c6e3.html#id194b33e0-5329-449e-b296-ca188807c6e3" alt="194b33e05329449eb296ca188807c6e3" />
+			<area shape="rect" group="70d45e7f2b04492bb7fbac42e80debb2" coords="260,130,933,527" href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#id70d45e7f-2b04-492b-b7fb-ac42e80debb2" alt="70d45e7f2b04492bb7fbac42e80debb2" />		
+		</map>
+	</p>
+	<p class="diagram-description"></p>
+	</div>
+	<div>
+	<p class="diagram-name" id="_RkkwMAPeEfCBVuLcVNVsBQ">LDFB Static State Feedback Linearization  Point Tracking</p>
+	<p class="diagram">
+		<img src="70d45e7f2b04492bb7fbac42e80debb2/_RkkwMAPeEfCBVuLcVNVsBQ.jpg" alt="LDFB Static State Feedback Linearization  Point Tracking" usemap="#LDFB Static State Feedback Linearization  Point Tracking__RkkwMAPeEfCBVuLcVNVsBQ_PositionMap" />
+		
+		<br/>
+		<br/>
+		<map name="LDFB Static State Feedback Linearization  Point Tracking__RkkwMAPeEfCBVuLcVNVsBQ_PositionMap">
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="265,194,265,194" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="273,177,273,177" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="449,202,449,202" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="599,202,599,202" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="660,118,660,118" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="455,113,455,113" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="d64f3407fa9f4e84baa3e037f8b20993" coords="666,205,782,221" href="../02 - Materials Manipulation Mobile Robot/d64f3407fa9f4e84baa3e037f8b20993.html#idd64f3407-fa9f-4e84-baa3-e037f8b20993" alt="d64f3407fa9f4e84baa3e037f8b20993" />
+			<area shape="rect" group="38c1fda54ec44d1fbc05aaf9b1e46f6b" coords="129,197,210,213" href="../02 - Materials Manipulation Mobile Robot/38c1fda54ec44d1fbc05aaf9b1e46f6b.html#id38c1fda5-4ec4-4d1f-bc05-aaf9b1e46f6b" alt="38c1fda54ec44d1fbc05aaf9b1e46f6b" />
+			<area shape="rect" group="7a650e979f024d9b8a4dad6b453d0e80" coords="676,125,772,141" href="../02 - Materials Manipulation Mobile Robot/7a650e979f024d9b8a4dad6b453d0e80.html#id7a650e97-9f02-4d9b-8a4d-ad6b453d0e80" alt="7a650e979f024d9b8a4dad6b453d0e80" />
+			<area shape="rect" group="813186ebf6704bfd853eaaf583c7c498" coords="472,140,568,156" href="../02 - Materials Manipulation Mobile Robot/813186ebf6704bfd853eaaf583c7c498.html#id813186eb-f670-4bfd-853e-aaf583c7c498" alt="813186ebf6704bfd853eaaf583c7c498" />
+			<area shape="rect" group="557451e074514b05aa75d4fb60daf71a" coords="522,94,618,110" href="../02 - Materials Manipulation Mobile Robot/557451e074514b05aa75d4fb60daf71a.html#id557451e0-7451-4b05-aa75-d4fb60daf71a" alt="557451e074514b05aa75d4fb60daf71a" />
+			<area shape="rect" group="9b0316ad62894f1bb495cb3d601eeec6" coords="224,115,341,131" href="../02 - Materials Manipulation Mobile Robot/9b0316ad62894f1bb495cb3d601eeec6.html#id9b0316ad-6289-4f1b-b495-cb3d601eeec6" alt="9b0316ad62894f1bb495cb3d601eeec6" />
+			<area shape="rect" group="37964840a2624553b43f562db5f35883" coords="484,210,562,236" href="../02 - Materials Manipulation Mobile Robot/37964840a2624553b43f562db5f35883.html#id37964840-a262-4553-b43f-562db5f35883" alt="37964840a2624553b43f562db5f35883" />
+			<area shape="rect" group="58b9981b7042464ca40f2e6fb8b34c9d" coords="284,177,407,193" href="../02 - Materials Manipulation Mobile Robot/58b9981b7042464ca40f2e6fb8b34c9d.html#id58b9981b-7042-464c-a40f-2e6fb8b34c9d" alt="58b9981b7042464ca40f2e6fb8b34c9d" />
+			<area shape="rect" group="b472f23f11a34375ae44402b9a8b79fa" coords="630,110,640,120" href="../02 - Materials Manipulation Mobile Robot/b472f23f11a34375ae44402b9a8b79fa.html#idb472f23f-11a3-4375-ae44-402b9a8b79fa" alt="b472f23f11a34375ae44402b9a8b79fa" />
+			<area shape="rect" group="b54fe47c3d5441418d05c20dbc264266" coords="664,110,674,120" href="../02 - Materials Manipulation Mobile Robot/b54fe47c3d5441418d05c20dbc264266.html#idb54fe47c-3d54-4141-8d05-c20dbc264266" alt="b54fe47c3d5441418d05c20dbc264266" />
+			<area shape="rect" group="878a7f2e37e54afe95b5975f66a6682e" coords="632,94,672,134" href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html#id878a7f2e-37e5-4afe-95b5-975f66a6682e" alt="878a7f2e37e54afe95b5975f66a6682e" />
+			<area shape="rect" group="1ee3813ee7c840ffad8a1735b4cdfd37" coords="385,108,395,118" href="../02 - Materials Manipulation Mobile Robot/1ee3813ee7c840ffad8a1735b4cdfd37.html#id1ee3813e-e7c8-40ff-ad8a-1735b4cdfd37" alt="1ee3813ee7c840ffad8a1735b4cdfd37" />
+			<area shape="rect" group="30243b8fc92e4f9ba233ca6d6458b559" coords="487,108,497,118" href="../02 - Materials Manipulation Mobile Robot/30243b8fc92e4f9ba233ca6d6458b559.html#id30243b8f-c92e-4f9b-a233-ca6d6458b559" alt="30243b8fc92e4f9ba233ca6d6458b559" />
+			<area shape="rect" group="b1b5e33107cd47a3b3f61e55d627a3d1" coords="387,80,497,136" href="../02 - Materials Manipulation Mobile Robot/b1b5e33107cd47a3b3f61e55d627a3d1.html#idb1b5e331-07cd-47a3-b3f6-1e55d627a3d1" alt="b1b5e33107cd47a3b3f61e55d627a3d1" />
+			<area shape="rect" group="2f2c49826f93441c86a65b790cc0ccc3" coords="565,197,575,207" href="../02 - Materials Manipulation Mobile Robot/2f2c49826f93441c86a65b790cc0ccc3.html#id2f2c4982-6f93-441c-86a6-5b790cc0ccc3" alt="2f2c49826f93441c86a65b790cc0ccc3" />
+			<area shape="rect" group="c09d26dd2c574349a9149365e7d9eb19" coords="655,197,665,207" href="../02 - Materials Manipulation Mobile Robot/c09d26dd2c574349a9149365e7d9eb19.html#idc09d26dd-2c57-4349-a914-9365e7d9eb19" alt="c09d26dd2c574349a9149365e7d9eb19" />
+			<area shape="rect" group="4d3173fbc87d40adb25d223682de2e0b" coords="567,164,665,238" href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html#id4d3173fb-c87d-40ad-b25d-223682de2e0b" alt="4d3173fbc87d40adb25d223682de2e0b" />
+			<area shape="rect" group="27e7d21f4ee84ba3a8706062689ba5a8" coords="477,200,487,210" href="../02 - Materials Manipulation Mobile Robot/27e7d21f4ee84ba3a8706062689ba5a8.html#id27e7d21f-4ee8-4ba3-a870-6062689ba5a8" alt="27e7d21f4ee84ba3a8706062689ba5a8" />
+			<area shape="rect" group="23b08609a3c2469ca5ef6bec73d20817" coords="432,166,442,176" href="../02 - Materials Manipulation Mobile Robot/23b08609a3c2469ca5ef6bec73d20817.html#id23b08609-a3c2-469c-a5ef-6bec73d20817" alt="23b08609a3c2469ca5ef6bec73d20817" />
+			<area shape="rect" group="3e9385a71327462eb874e94680d04b01" coords="375,190,385,200" href="../02 - Materials Manipulation Mobile Robot/3e9385a71327462eb874e94680d04b01.html#id3e9385a7-1327-462e-b874-e94680d04b01" alt="3e9385a71327462eb874e94680d04b01" />
+			<area shape="rect" group="fb1eb69d82be43f39fff34b068c1727e" coords="377,168,487,238" href="../02 - Materials Manipulation Mobile Robot/fb1eb69d82be43f39fff34b068c1727e.html#idfb1eb69d-82be-43f3-9fff-34b068c1727e" alt="fb1eb69d82be43f39fff34b068c1727e" />
+			<area shape="rect" group="861c405b905749e185672f9996f50f72" coords="307,190,317,200" href="../02 - Materials Manipulation Mobile Robot/861c405b905749e185672f9996f50f72.html#id861c405b-9057-49e1-8567-2f9996f50f72" alt="861c405b905749e185672f9996f50f72" />
+			<area shape="rect" group="782e62842be84c439959badf33c1c754" coords="252,166,262,176" href="../02 - Materials Manipulation Mobile Robot/782e62842be84c439959badf33c1c754.html#id782e6284-2be8-4c43-9959-badf33c1c754" alt="782e62842be84c439959badf33c1c754" />
+			<area shape="rect" group="1940cec1f3b94043833048e7c82a1e93" coords="215,190,225,200" href="../02 - Materials Manipulation Mobile Robot/1940cec1f3b94043833048e7c82a1e93.html#id1940cec1-f3b9-4043-8330-48e7c82a1e93" alt="1940cec1f3b94043833048e7c82a1e93" />
+			<area shape="rect" group="72df057155f04023bfe1adc5683fa893" coords="215,210,225,220" href="../02 - Materials Manipulation Mobile Robot/72df057155f04023bfe1adc5683fa893.html#id72df0571-55f0-4023-bfe1-adc5683fa893" alt="72df057155f04023bfe1adc5683fa893" />
+			<area shape="rect" group="9656bab55ff04533b02ebf90021a0b80" coords="217,168,317,238" href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html#id9656bab5-5ff0-4533-b02e-bf90021a0b80" alt="9656bab55ff04533b02ebf90021a0b80" />
+			<area shape="rect" group="21c1cb6d6d544648be5e675c3392e8cf" coords="207,36,720,249" href="../02 - Materials Manipulation Mobile Robot/21c1cb6d6d544648be5e675c3392e8cf.html#id21c1cb6d-6d54-4648-be5e-675c3392e8cf" alt="21c1cb6d6d544648be5e675c3392e8cf" />
+			<area shape="rect" group="70d45e7f2b04492bb7fbac42e80debb2" coords="182,10,728,257" href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#id70d45e7f-2b04-492b-b7fb-ac42e80debb2" alt="70d45e7f2b04492bb7fbac42e80debb2" />
+			<area shape="rect" group="5977e85410624ca4a2a4c034aaa2e5a3" coords="22,120,42,140" href="../02 - Materials Manipulation Mobile Robot/5977e85410624ca4a2a4c034aaa2e5a3.html#id5977e854-1062-4ca4-a2a4-c034aaa2e5a3" alt="5977e85410624ca4a2a4c034aaa2e5a3" />
+			<area shape="rect" group="ad21e4caea104e90a6d831f8cc078db1" coords="817,230,827,240" href="../02 - Materials Manipulation Mobile Robot/ad21e4caea104e90a6d831f8cc078db1.html#idad21e4ca-ea10-4e90-a6d8-31f8cc078db1" alt="ad21e4caea104e90a6d831f8cc078db1" />
+			<area shape="rect" group="3f38e10e389d44b9bc3139b8029cdcfc" coords="867,230,877,240" href="../02 - Materials Manipulation Mobile Robot/3f38e10e389d44b9bc3139b8029cdcfc.html#id3f38e10e-389d-44b9-bc31-39b8029cdcfc" alt="3f38e10e389d44b9bc3139b8029cdcfc" />
+			<area shape="rect" group="0c2afa682e1d4d67aab851375a062dc6" coords="827,168,837,178" href="../02 - Materials Manipulation Mobile Robot/0c2afa682e1d4d67aab851375a062dc6.html#id0c2afa68-2e1d-4d67-aab8-51375a062dc6" alt="0c2afa682e1d4d67aab851375a062dc6" />
+			<area shape="rect" group="e3a571df604a42a0aedee497f3cc146b" coords="760,200,770,210" href="../02 - Materials Manipulation Mobile Robot/e3a571df604a42a0aedee497f3cc146b.html#ide3a571df-604a-42a0-aede-e497f3cc146b" alt="e3a571df604a42a0aedee497f3cc146b" />
+			<area shape="rect" group="f0513ef44d4747d48053fa90133fad55" coords="762,170,905,240" href="../02 - Materials Manipulation Mobile Robot/f0513ef44d4747d48053fa90133fad55.html#idf0513ef4-4d47-47d4-8053-fa90133fad55" alt="f0513ef44d4747d48053fa90133fad55" />
+			<area shape="rect" group="7b6f41cae35941d2bf3af0fa7af2277d" coords="22,240,32,250" href="../02 - Materials Manipulation Mobile Robot/7b6f41cae35941d2bf3af0fa7af2277d.html#id7b6f41ca-e359-41d2-bf3a-f0fa7af2277d" alt="7b6f41cae35941d2bf3af0fa7af2277d" />
+			<area shape="rect" group="c582e449a9c644c0a8d6355db978717c" coords="92,178,102,188" href="../02 - Materials Manipulation Mobile Robot/c582e449a9c644c0a8d6355db978717c.html#idc582e449-a9c6-44c0-a8d6-355db978717c" alt="c582e449a9c644c0a8d6355db978717c" />
+			<area shape="rect" group="d6ff2107a9c74457b1ec4ad2f86783fb" coords="10,200,20,210" href="../02 - Materials Manipulation Mobile Robot/d6ff2107a9c74457b1ec4ad2f86783fb.html#idd6ff2107-a9c7-4457-b1ec-4ad2f86783fb" alt="d6ff2107a9c74457b1ec4ad2f86783fb" />
+			<area shape="rect" group="3084526679244542bb990abd43691102" coords="115,210,125,220" href="../02 - Materials Manipulation Mobile Robot/3084526679244542bb990abd43691102.html#id30845266-7924-4542-bb99-0abd43691102" alt="3084526679244542bb990abd43691102" />
+			<area shape="rect" group="ab530025e6274ed7879b3168d0969e72" coords="12,180,125,250" href="../02 - Materials Manipulation Mobile Robot/ab530025e6274ed7879b3168d0969e72.html#idab530025-e627-4ed7-879b-3168d0969e72" alt="ab530025e6274ed7879b3168d0969e72" />
+			<area shape="rect" group="b735b63f5b8f4761ac786a68ef377099" coords="775,102,785,112" href="../02 - Materials Manipulation Mobile Robot/b735b63f5b8f4761ac786a68ef377099.html#idb735b63f-5b8f-4761-ac78-6a68ef377099" alt="b735b63f5b8f4761ac786a68ef377099" />
+			<area shape="rect" group="8d6040b8ff4647cebe476470256d9f82" coords="777,72,890,142" href="../02 - Materials Manipulation Mobile Robot/8d6040b8ff4647cebe476470256d9f82.html#id8d6040b8-ff46-47ce-be47-6470256d9f82" alt="8d6040b8ff4647cebe476470256d9f82" />		
+		</map>
+	</p>
+	<p class="diagram-description"></p>
+	</div>
+	<div>
+	<p class="diagram-name" id="_OnKYUDctEfCPXPCEj3OEhQ">LDFB ley de control  SSPFLPTRK</p>
+	<p class="diagram">
+		<img src="70d45e7f2b04492bb7fbac42e80debb2/_OnKYUDctEfCPXPCEj3OEhQ.jpg" alt="LDFB ley de control  SSPFLPTRK" usemap="#LDFB ley de control  SSPFLPTRK__OnKYUDctEfCPXPCEj3OEhQ_PositionMap" />
+		
+		<br/>
+		<br/>
+		<map name="LDFB ley de control  SSPFLPTRK__OnKYUDctEfCPXPCEj3OEhQ_PositionMap">
+			<area shape="rect" group="813186ebf6704bfd853eaaf583c7c498" coords="283,267,379,283" href="../02 - Materials Manipulation Mobile Robot/813186ebf6704bfd853eaaf583c7c498.html#id813186eb-f670-4bfd-853e-aaf583c7c498" alt="813186ebf6704bfd853eaaf583c7c498" />
+			<area shape="rect" group="557451e074514b05aa75d4fb60daf71a" coords="260,201,356,217" href="../02 - Materials Manipulation Mobile Robot/557451e074514b05aa75d4fb60daf71a.html#id557451e0-7451-4b05-aa75-d4fb60daf71a" alt="557451e074514b05aa75d4fb60daf71a" />
+			<area shape="rect" group="9b0316ad62894f1bb495cb3d601eeec6" coords="106,186,223,202" href="../02 - Materials Manipulation Mobile Robot/9b0316ad62894f1bb495cb3d601eeec6.html#id9b0316ad-6289-4f1b-b495-cb3d601eeec6" alt="9b0316ad62894f1bb495cb3d601eeec6" />
+			<area shape="rect" group="37964840a2624553b43f562db5f35883" coords="299,186,377,212" href="../02 - Materials Manipulation Mobile Robot/37964840a2624553b43f562db5f35883.html#id37964840-a262-4553-b43f-562db5f35883" alt="37964840a2624553b43f562db5f35883" />
+			<area shape="rect" group="58b9981b7042464ca40f2e6fb8b34c9d" coords="80,274,203,290" href="../02 - Materials Manipulation Mobile Robot/58b9981b7042464ca40f2e6fb8b34c9d.html#id58b9981b-7042-464c-a40f-2e6fb8b34c9d" alt="58b9981b7042464ca40f2e6fb8b34c9d" />
+			<area shape="rect" group="b472f23f11a34375ae44402b9a8b79fa" coords="416,237,426,247" href="../02 - Materials Manipulation Mobile Robot/b472f23f11a34375ae44402b9a8b79fa.html#idb472f23f-11a3-4375-ae44-402b9a8b79fa" alt="b472f23f11a34375ae44402b9a8b79fa" />
+			<area shape="rect" group="b54fe47c3d5441418d05c20dbc264266" coords="416,217,426,227" href="../02 - Materials Manipulation Mobile Robot/b54fe47c3d5441418d05c20dbc264266.html#idb54fe47c-3d54-4141-8d05-c20dbc264266" alt="b54fe47c3d5441418d05c20dbc264266" />
+			<area shape="rect" group="878a7f2e37e54afe95b5975f66a6682e" coords="418,209,458,249" href="../02 - Materials Manipulation Mobile Robot/878a7f2e37e54afe95b5975f66a6682e.html#id878a7f2e-37e5-4afe-95b5-975f66a6682e" alt="878a7f2e37e54afe95b5975f66a6682e" />
+			<area shape="rect" group="1ee3813ee7c840ffad8a1735b4cdfd37" coords="212,118,222,128" href="../02 - Materials Manipulation Mobile Robot/1ee3813ee7c840ffad8a1735b4cdfd37.html#id1ee3813e-e7c8-40ff-ad8a-1735b4cdfd37" alt="1ee3813ee7c840ffad8a1735b4cdfd37" />
+			<area shape="rect" group="30243b8fc92e4f9ba233ca6d6458b559" coords="212,180,222,190" href="../02 - Materials Manipulation Mobile Robot/30243b8fc92e4f9ba233ca6d6458b559.html#id30243b8f-c92e-4f9b-a233-ca6d6458b559" alt="30243b8fc92e4f9ba233ca6d6458b559" />
+			<area shape="rect" group="b1b5e33107cd47a3b3f61e55d627a3d1" coords="202,120,352,190" href="../02 - Materials Manipulation Mobile Robot/b1b5e33107cd47a3b3f61e55d627a3d1.html#idb1b5e331-07cd-47a3-b3f6-1e55d627a3d1" alt="b1b5e33107cd47a3b3f61e55d627a3d1" />
+			<area shape="rect" group="c09d26dd2c574349a9149365e7d9eb19" coords="340,168,350,178" href="../02 - Materials Manipulation Mobile Robot/c09d26dd2c574349a9149365e7d9eb19.html#idc09d26dd-2c57-4349-a914-9365e7d9eb19" alt="c09d26dd2c574349a9149365e7d9eb19" />
+			<area shape="rect" group="2f2c49826f93441c86a65b790cc0ccc3" coords="352,138,362,148" href="../02 - Materials Manipulation Mobile Robot/2f2c49826f93441c86a65b790cc0ccc3.html#id2f2c4982-6f93-441c-86a6-5b790cc0ccc3" alt="2f2c49826f93441c86a65b790cc0ccc3" />
+			<area shape="rect" group="4d3173fbc87d40adb25d223682de2e0b" coords="342,140,497,210" href="../02 - Materials Manipulation Mobile Robot/4d3173fbc87d40adb25d223682de2e0b.html#id4d3173fb-c87d-40ad-b25d-223682de2e0b" alt="4d3173fbc87d40adb25d223682de2e0b" />
+			<area shape="rect" group="27e7d21f4ee84ba3a8706062689ba5a8" coords="302,300,312,310" href="../02 - Materials Manipulation Mobile Robot/27e7d21f4ee84ba3a8706062689ba5a8.html#id27e7d21f-4ee8-4ba3-a870-6062689ba5a8" alt="27e7d21f4ee84ba3a8706062689ba5a8" />
+			<area shape="rect" group="23b08609a3c2469ca5ef6bec73d20817" coords="242,300,252,310" href="../02 - Materials Manipulation Mobile Robot/23b08609a3c2469ca5ef6bec73d20817.html#id23b08609-a3c2-469c-a5ef-6bec73d20817" alt="23b08609a3c2469ca5ef6bec73d20817" />
+			<area shape="rect" group="3e9385a71327462eb874e94680d04b01" coords="242,238,252,248" href="../02 - Materials Manipulation Mobile Robot/3e9385a71327462eb874e94680d04b01.html#id3e9385a7-1327-462e-b874-e94680d04b01" alt="3e9385a71327462eb874e94680d04b01" />
+			<area shape="rect" group="fb1eb69d82be43f39fff34b068c1727e" coords="232,240,382,310" href="../02 - Materials Manipulation Mobile Robot/fb1eb69d82be43f39fff34b068c1727e.html#idfb1eb69d-82be-43f3-9fff-34b068c1727e" alt="fb1eb69d82be43f39fff34b068c1727e" />
+			<area shape="rect" group="1940cec1f3b94043833048e7c82a1e93" coords="52,308,62,318" href="../02 - Materials Manipulation Mobile Robot/1940cec1f3b94043833048e7c82a1e93.html#id1940cec1-f3b9-4043-8330-48e7c82a1e93" alt="1940cec1f3b94043833048e7c82a1e93" />
+			<area shape="rect" group="861c405b905749e185672f9996f50f72" coords="62,308,72,318" href="../02 - Materials Manipulation Mobile Robot/861c405b905749e185672f9996f50f72.html#id861c405b-9057-49e1-8567-2f9996f50f72" alt="861c405b905749e185672f9996f50f72" />
+			<area shape="rect" group="782e62842be84c439959badf33c1c754" coords="112,308,122,318" href="../02 - Materials Manipulation Mobile Robot/782e62842be84c439959badf33c1c754.html#id782e6284-2be8-4c43-9959-badf33c1c754" alt="782e62842be84c439959badf33c1c754" />
+			<area shape="rect" group="72df057155f04023bfe1adc5683fa893" coords="40,256,50,266" href="../02 - Materials Manipulation Mobile Robot/72df057155f04023bfe1adc5683fa893.html#id72df0571-55f0-4023-bfe1-adc5683fa893" alt="72df057155f04023bfe1adc5683fa893" />
+			<area shape="rect" group="9656bab55ff04533b02ebf90021a0b80" coords="42,248,192,318" href="../02 - Materials Manipulation Mobile Robot/9656bab55ff04533b02ebf90021a0b80.html#id9656bab5-5ff0-4533-b02e-bf90021a0b80" alt="9656bab55ff04533b02ebf90021a0b80" />
+			<area shape="rect" group="21c1cb6d6d544648be5e675c3392e8cf" coords="22,90,528,360" href="../02 - Materials Manipulation Mobile Robot/21c1cb6d6d544648be5e675c3392e8cf.html#id21c1cb6d-6d54-4648-be5e-675c3392e8cf" alt="21c1cb6d6d544648be5e675c3392e8cf" />
+			<area shape="rect" group="d36b2655c42a494a9f8d129aa15129d9" coords="10,80,20,90" href="../02 - Materials Manipulation Mobile Robot/d36b2655c42a494a9f8d129aa15129d9.html#idd36b2655-c42a-494a-9f8d-129aa15129d9" alt="d36b2655c42a494a9f8d129aa15129d9" />
+			<area shape="rect" group="dbc29cabe4cc46dea7a895712f127841" coords="10,60,20,70" href="../02 - Materials Manipulation Mobile Robot/dbc29cabe4cc46dea7a895712f127841.html#iddbc29cab-e4cc-46de-a7a8-95712f127841" alt="dbc29cabe4cc46dea7a895712f127841" />
+			<area shape="rect" group="70d45e7f2b04492bb7fbac42e80debb2" coords="12,10,536,568" href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#id70d45e7f-2b04-492b-b7fb-ac42e80debb2" alt="70d45e7f2b04492bb7fbac42e80debb2" />		
+		</map>
+	</p>
+	<p class="diagram-description"></p>
+	</div>
+
+<h2>Diagrams displaying "compute actuator commands"</h2>
+<ul>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/4570713874d94b6da28c07f2116bbb38.html#_XZlrMIkGEfCCT4-d7AHuCA">&#091;LAB&#093; 02 &#045; Mobile Base &#045; v2 &#045; navigation</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_St-y0JF5EfCUmNhb2oyrJg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;01</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_w7D1d5F5EfCUmNhb2oyrJg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;02</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_r-VAIJMCEfC6sKY0J4bwQg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03 &#045; IM</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_KgSttpMDEfC6sKY0J4bwQg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03 &#045; MCI</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_GiwhEJMDEfC6sKY0J4bwQg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03 &#045; MC</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_9EIqhJMCEfC6sKY0J4bwQg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03 &#045; NM</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_B7fbFpMDEfC6sKY0J4bwQg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03 &#045; PM</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/7fe4c8e2be9c4983bc7e297158d5e1e8.html#_uXYiZpF6EfCUmNhb2oyrJg">&#091;LAB&#093; Mobile Base &#045; v2 &#045; CAIM&#095;03</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/4570713874d94b6da28c07f2116bbb38.html#_R-ADIDpgEfCRGoUOxIyc4Q">&#091;LAB&#093; Mobile Base &#045; v2</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#_RkkwMAPeEfCBVuLcVNVsBQ">&#091;LDFB&#093; Static State Feedback Linearization &#045; Point Tracking</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#_pZtv8JJJEe-Yl4q-4VMXfA">&#091;LDFB&#093; computar las señales de control del sist&#046; de locom</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#_OnKYUDctEfCPXPCEj3OEhQ">&#091;LDFB&#093; ley de control &#047; SSPFL&#045;PTRK</a> 
+</li>
+<li>
+<a href="../02 - Materials Manipulation Mobile Robot/70d45e7f2b04492bb7fbac42e80debb2.html#_oNLrYJJJEe-Yl4q-4VMXfA">&#091;LFBD&#093; computar las señales de control del sist&#046; de locom</a> 
+</li>
+</ul>
+
+
+
+
+
+ </div>	</body>
+</html>
