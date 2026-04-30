@@ -1039,41 +1039,6 @@
             <SPEC-OBJECT-TYPE-REF>_Bxjsej2oEfGVlv5kDXHFsA</SPEC-OBJECT-TYPE-REF>
           </TYPE>
         </SPEC-OBJECT>
-        <SPEC-OBJECT IDENTIFIER="_M3vcsES5EfGMlp65WDn17w" LAST-CHANGE="2026-04-30T14:24:42.671-03:00">
-          <VALUES>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="REQ-31">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_RJvTMD2vEfG6CZuh5Z-X1A</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-INTEGER THE-VALUE="31">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-INTEGER-REF>_F_iv0D2oEfGVlv5kDXHFsA</ATTRIBUTE-DEFINITION-INTEGER-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-INTEGER>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="Material Integrity under Transport Dynamics">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_bhSaAD2oEfGVlv5kDXHFsA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-STRING THE-VALUE="The system shall transport the material such that the materials remains within its designated payload zone and suffers no physical damage during maneuvers">
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-STRING-REF>_t_wgcD2oEfGVlv5kDXHFsA</ATTRIBUTE-DEFINITION-STRING-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-STRING>
-            <ATTRIBUTE-VALUE-ENUMERATION>
-              <VALUES>
-                <ENUM-VALUE-REF>_IhuM4D5REfGzP6_8eNePfA</ENUM-VALUE-REF>
-              </VALUES>
-              <DEFINITION>
-                <ATTRIBUTE-DEFINITION-ENUMERATION-REF>_MS4U4D5SEfGzP6_8eNePfA</ATTRIBUTE-DEFINITION-ENUMERATION-REF>
-              </DEFINITION>
-            </ATTRIBUTE-VALUE-ENUMERATION>
-          </VALUES>
-          <TYPE>
-            <SPEC-OBJECT-TYPE-REF>_Bxjsej2oEfGVlv5kDXHFsA</SPEC-OBJECT-TYPE-REF>
-          </TYPE>
-        </SPEC-OBJECT>
       </SPEC-OBJECTS>
       <SPEC-RELATIONS>
         <SPEC-RELATION IDENTIFIER="_iEFVYD5oEfGu7McAJhruAQ" LAST-CHANGE="2026-04-22T13:30:06.002-03:00">
@@ -1356,11 +1321,6 @@
                         <SPEC-OBJECT-REF>_87_L8D5oEfGu7McAJhruAQ</SPEC-OBJECT-REF>
                       </OBJECT>
                     </SPEC-HIERARCHY>
-                    <SPEC-HIERARCHY IDENTIFIER="_M4j8EES5EfGMlp65WDn17w" LAST-CHANGE="2026-04-30T14:22:41.970-03:00">
-                      <OBJECT>
-                        <SPEC-OBJECT-REF>_M3vcsES5EfGMlp65WDn17w</SPEC-OBJECT-REF>
-                      </OBJECT>
-                    </SPEC-HIERARCHY>
                   </CHILDREN>
                 </SPEC-HIERARCHY>
                 <SPEC-HIERARCHY IDENTIFIER="_Z4QnoD5hEfGu7McAJhruAQ" LAST-CHANGE="2026-04-22T12:39:07.616-03:00">
@@ -1438,7 +1398,7 @@
           <configuration:ProrPresentationConfigurations>
             <configuration:presentationConfigurations>
               <headline:HeadlineConfiguration datatype="_SPvnED2xEfG6CZuh5Z-X1A" size="14"/>
-              <id:IdConfiguration datatype="_BxjsdD2oEfGVlv5kDXHFsA" prefix="REQ-" count="31"/>
+              <id:IdConfiguration datatype="_BxjsdD2oEfGVlv5kDXHFsA" prefix="REQ-" count="30"/>
               <id:IdConfiguration datatype="_BxjseT2oEfGVlv5kDXHFsA" prefix="LNK-" count="10"/>
               <id:IdConfiguration datatype="_SPvnED2xEfG6CZuh5Z-X1A" prefix="SEC-" count="20"/>
             </configuration:presentationConfigurations>

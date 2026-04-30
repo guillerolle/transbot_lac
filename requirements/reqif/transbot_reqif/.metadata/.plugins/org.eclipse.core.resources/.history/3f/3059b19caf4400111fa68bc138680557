@@ -5,12 +5,12 @@
     <columns label="ID" width="106"/>
     <columns label="ReqIF.ForeignID" width="38"/>
     <columns label="ReqIF.Text" width="205"/>
-    <columns label="ReqIF.Description" width="463"/>
-    <columns label="Status" width="50"/>
-    <columns label="Priority" width="55"/>
-    <columns label="VerMethod" width="81"/>
-    <columns label="VerStatus" width="77"/>
-    <columns label="VerPhase" width="67"/>
+    <columns label="ReqIF.Description" width="519"/>
+    <columns label="Status" width="92"/>
+    <columns label="Priority" width="100"/>
+    <columns label="VerMethod" width="117"/>
+    <columns label="VerStatus" width="100"/>
+    <columns label="VerPhase" width="100"/>
     <leftHeaderColumn label="Lead Header Column" width="77"/>
   </specViewConfigurations>
   <specViewConfigurations>
@@ -24,7 +24,7 @@
     <columns label="VerMethod" width="89"/>
     <columns label="VerStatus" width="89"/>
     <columns label="VerPhase" width="89"/>
-    <leftHeaderColumn label="Lead Header Column" width="58"/>
+    <leftHeaderColumn label="Lead Header Column" width="30"/>
   </specViewConfigurations>
   <generalConfiguration>
     <labelConfiguration>
@@ -37,7 +37,7 @@
     <presentationConfigurations xsi:type="headline:HeadlineConfiguration" size="14">
       <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_SPvnED2xEfG6CZuh5Z-X1A"/>
     </presentationConfigurations>
-    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="REQ-" count="31">
+    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="REQ-" count="30">
       <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_BxjsdD2oEfGVlv5kDXHFsA"/>
     </presentationConfigurations>
     <presentationConfigurations xsi:type="id:IdConfiguration" prefix="LNK-" count="10">

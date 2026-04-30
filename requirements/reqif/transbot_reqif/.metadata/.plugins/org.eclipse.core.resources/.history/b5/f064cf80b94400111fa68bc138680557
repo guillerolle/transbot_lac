@@ -37,7 +37,7 @@
     <presentationConfigurations xsi:type="headline:HeadlineConfiguration" size="14">
       <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_SPvnED2xEfG6CZuh5Z-X1A"/>
     </presentationConfigurations>
-    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="REQ-" count="31">
+    <presentationConfigurations xsi:type="id:IdConfiguration" prefix="REQ-" count="30">
       <datatype xsi:type="reqif:DatatypeDefinitionString" href="transbot.reqif#_BxjsdD2oEfGVlv5kDXHFsA"/>
     </presentationConfigurations>
     <presentationConfigurations xsi:type="id:IdConfiguration" prefix="LNK-" count="10">
