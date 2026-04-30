@@ -14,8 +14,8 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 # from ..mobilecarts import MobileCart
-from ..configs.diffdrives import *
-from ..configs.carlikes import *
+from ..mobilecarts.configs.diffdrives import *
+from ..mobilecarts.configs.carlikes import *
 
 def test_differentialdrive_twowheels():
     """
