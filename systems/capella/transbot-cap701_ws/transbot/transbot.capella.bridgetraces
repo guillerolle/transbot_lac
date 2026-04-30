@@ -66,4 +66,6 @@
   <targetToCause key="8b325331-ba41-40a0-a5b2-a06915968e2d" value="Source[_Z34NID5hEfGu7McAJhruAQ]_Rule[Folder]|_Z34NID5hEfGu7McAJhruAQ"/>
   <targetToCause key="1fcfb221-b926-4c9e-903b-c2fbb8f19e2e" value="Source[_4OmS8D5sEfGu7McAJhruAQ]_Rule[Requirement]|_4OmS8D5sEfGu7McAJhruAQ"/>
   <targetToCause key="bf20fa8a-78db-432b-ac5c-f0d9526e3a15" value="Source[_-a21YD2yEfG6CZuh5Z-X1A]_Rule[Requirement]|_-a21YD2yEfG6CZuh5Z-X1A"/>
+  <targetToCause key="355e062d-8e0a-4c5d-a1c9-81843c2bee82" value="Source[_M3vcsES5EfGMlp65WDn17w]_Rule[Requirement]|_M3vcsES5EfGMlp65WDn17w"/>
+  <targetToCause key="8f7650c6-65cf-4a1c-8e8c-d44856af8673" value="Source[_4OmS8D5sEfGu7McAJhruAQ]_Rule[Requirement]|_4OmS8D5sEfGu7McAJhruAQ"/>
 </org.eclipse.emf.diffmerge.bridge.traces.gen:Trace>
