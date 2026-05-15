@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rigid_forklift">
+	<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/rigid_forklift.urdf.xacro"></xacro:include>
+	<xacro:rigid_forklift prefix="" name=""></xacro:rigid_forklift>
+</robot>

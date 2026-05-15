@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_arm_double">
+	<xacro:macro name="robot_arm_double" params="prefix='' name='robot_arm_double' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_double/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_double/arm/arm.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}mobilebase/_" type="fixed">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}mobilebase/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}arm0/_" type="fixed">
+			<origin xyz="0.2 0.2 0.3" rpy="-1.5707963267948966 -1.5707963267948966 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}arm0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}arm1/_" type="fixed">
+			<origin xyz="0.2 -0.2 0.3" rpy="1.5707963267948966 -1.5707963267948966 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}arm1/_"></child>
+		</joint>
+		<xacro:mobilebase prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase>
+		<xacro:arm prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:arm>
+		<xacro:arm prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:arm>
+	</xacro:macro>
+</robot>

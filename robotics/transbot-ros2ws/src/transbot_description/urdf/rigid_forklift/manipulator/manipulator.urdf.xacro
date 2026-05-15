@@ -1,144 +1,40 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
-    <xacro:arg name="use__all__" default="false"/>
-
-    <xacro:macro name="manipulator" params="prefix:='' use__all__='false'">
-        <!-- __all__ is used for schematic-rigid complete robot, exported from openscad -->
-        <xacro:if value="${use__all__}">
-            <link name="${prefix}__all__">
-                <inertial>
-                    <origin xyz="0.07183555795608441 -1.2702096819084939e-07 0.7645265523292326" rpy="0.0 0.0 0.0"></origin>
-                    <mass value="19.89746151957661"></mass>
-                    <inertia    ixx="10.88716854673681" ixy="-1.815568175553953e-07" ixz="1.018538429319945" 
-                                                        iyy="9.766769261647461" iyz="-3.0805354098760027e-06" 
-                                                                                izz="2.2744539532368155">
-                    </inertia>
-                </inertial>
-                <visual name="">
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/__all__.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                    <material name="">
-                        <color rgba="1.0 1.0 1.0 1.0"/>
-                        <texture filename=""/>
-                    </material>
-                </visual>
-                <collision>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/__all__.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                </collision>
-            </link>
-        </xacro:if>
-
-        <xacro:unless value="${use__all__}">
-            <link name="${prefix}portico">
-                <inertial>
-                    <origin xyz="0.0 0.0 1.0727023775945608" rpy="0.0 0.0 0.0"></origin>
-                    <mass value="13.772098564853271"></mass>
-                    <inertia ixx="6.230430969247834" ixy="-9.51937787855665e-10" ixz="-0.0" iyy="4.946144501837221" iyz="-3.899137179056804e-06" izz="1.3072399664148786"></inertia>
-                </inertial>
-                <visual name="">
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/portico.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                    <material name="">
-                        <color rgba="1.0 1.0 1.0 1.0"/>
-                        <texture filename=""/>
-                    </material>
-                </visual>
-                <collision>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/portico.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                </collision>
-            </link>
-
-            <link name="${prefix}horquilla">
-                <inertial>
-                    <origin xyz="0.03823525316421023 0.0 -2.2291509544218592e-10" rpy="0.0 0.0 0.0"></origin>
-                    <mass value="2.6690032643576465"></mass>
-                    <inertia ixx="0.14123675539546335" ixy="-0.0" ixz="-4.5059530849891894e-11" iyy="0.003950815117312134" iyz="-0.0" izz="0.1407392337696467"></inertia>
-                </inertial>
-                <visual name="">
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/horquilla.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                    <material name="">
-                        <color rgba="1.0 1.0 1.0 1.0"/>
-                        <texture filename=""/>
-                    </material>
-                </visual>
-                <collision>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/horquilla.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                </collision>
-            </link>
-
-            <xacro:macro name="unna" params="prefix:='' suffix:=''">
-                <link name="${prefix}unna${suffix}">
-                    <inertial>
-                        <origin xyz="0.31713588379419205 -3.2682716149784016e-10 0.0016358343282475052" rpy="0.0 0.0 0.0"></origin>
-                        <mass value="1.8204151536338031"></mass>
-                        <inertia ixx="0.00116261880095733" ixy="-1.8868351979293398e-10" ixz="0.00208579872508293" iyy="0.08647672175673843" iyz="-9.732578198314298e-13" izz="0.08702074249549102"></inertia>
-                    </inertial>
-                    <visual name="">
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/unna.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                        <material name="">
-                            <color rgba="1.0 1.0 1.0 1.0"/>
-                            <texture filename=""/>
-                        </material>
-                    </visual>
-                    <collision>
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/unna.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                    </collision>
-                </link>
-            </xacro:macro>
-
-            <xacro:unna prefix="${prefix}" suffix="0"/>
-            <xacro:unna prefix="${prefix}" suffix="1"/>
-
-            <joint name="${prefix}pj_horquilla" type="prismatic">
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <axis xyz="0.0 0.0 1.0"/>
-                <limit lower="0.100" upper="1.770" effort="-1" velocity="-1"/>
-                <parent link="${prefix}portico"/>
-                <child link="${prefix}horquilla"/>
-            </joint>
-
-            <joint name="${prefix}pj_unna0" type="prismatic">
-                <origin xyz="0.050 0.050 -0.050" rpy="0.0 0.0 0.0"/>
-                <axis xyz="0.0 1.0 0.0"/>
-                <limit lower="0.225" upper="0.0" effort="-1" velocity="-1"/>
-                <parent link="${prefix}horquilla"/>
-                <child link="${prefix}unna0"/>
-            </joint>
-
-            <joint name="${prefix}pj_unna1" type="prismatic">
-                <origin xyz="0.050 -0.050 -0.050" rpy="0.0 0.0 0.0"/>
-                <axis xyz="0.0 -1.0 0.0"/>
-                <limit lower="0.225" upper="0.0" effort="-1" velocity="-1"/>
-                <parent link="${prefix}horquilla"/>
-                <child link="${prefix}unna1"/>
-                <mimic joint="${prefix}pj_unna0"/>
-            </joint>
-
-        </xacro:unless>
-    </xacro:macro> 
-
-    <!--xacro:manipulator prefix="" use__all__="$(arg use__all__)"/-->
-
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="manipulator">
+	<xacro:macro name="manipulator" params="prefix='' name='manipulator' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/manipulator/portico.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/manipulator/horquilla.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/manipulator/unna.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}portico" type="fixed">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}portico"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}horquilla" type="prismatic">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}portico"></parent>
+			<child link="${prefix}${name}${suffix}horquilla"></child>
+			<axis xyz="0 0 1"></axis>
+			<limit lower="0.0" upper="1.27" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}unna0" type="prismatic">
+			<origin xyz="0.075 -0.05 -0.1" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}horquilla"></parent>
+			<child link="${prefix}${name}${suffix}unna0"></child>
+			<axis xyz="0 -1 0"></axis>
+			<limit lower="0.225" upper="0.0" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}unna1" type="prismatic">
+			<origin xyz="0.075 0.05 -0.1" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}horquilla"></parent>
+			<child link="${prefix}${name}${suffix}unna1"></child>
+			<mimic joint="j/${prefix}${name}${suffix}unna0" multiplier="1" offset="0"></mimic>
+			<axis xyz="0 1 0"></axis>
+			<limit lower="0.225" upper="0.0" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:portico prefix="${prefix}${name}${suffix}" suffix=""></xacro:portico>
+		<xacro:horquilla prefix="${prefix}${name}${suffix}" suffix=""></xacro:horquilla>
+		<xacro:unna prefix="${prefix}${name}${suffix}" suffix="0"></xacro:unna>
+		<xacro:unna prefix="${prefix}${name}${suffix}" suffix="1"></xacro:unna>
+	</xacro:macro>
 </robot>

@@ -1,0 +1,60 @@
+/**/controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController 
+
+    manipulator_pid_effort_controller:
+      type: pid_controller/PidController
+
+    manipulator_pid_velocity_controller:
+      type: pid_controller/PidController
+
+/**/manipulator_pid_effort_controller:
+  ros__parameters:
+    use_sim_time: true
+    dof_names:
+      - j/manipulator/_ 
+      - j/manipulator/horquilla
+      - j/manipulator/unna0
+    
+    command_interface: effort 
+    reference_and_state_interfaces: ["position", "velocity"]
+
+    gains:
+      j/manipulator/_ : {p: 40.0, d: 20.0}
+      j/manipulator/horquilla: {p: 20.0, i: 2.0, d: 5.0}
+      j/manipulator/unna0 : {p: 2.0, d: 1.0}
+
+/**/manipulator_pid_velocity_controller:
+  ros__parameters:
+    use_sim_time: true
+    dof_names:
+      - j/manipulator/_ 
+      - j/manipulator/horquilla
+      - j/manipulator/unna0
+    
+    command_interface: velocity 
+    reference_and_state_interfaces: ["position", "velocity"]
+
+    gains:
+      j/manipulator/_ : {p: 1.0}
+      j/manipulator/horquilla: {p: 1.0}
+      j/manipulator/unna0 : {p: 1.0}
+
+/**/diff_drive_controller:
+  ros__parameters:
+    # use_sim_time: true
+    left_wheel_names: ["j/mobilebase/diff/wheel1"]
+    right_wheel_names: ["j/mobilebase/diff/wheel0"]
+    wheel_separation: 0.800
+    wheel_radius: 0.060
+    use_stamped_vel: true
+    odom_frame_id: odom 
+    base_frame_id: _
+    enable_odom_tf: true

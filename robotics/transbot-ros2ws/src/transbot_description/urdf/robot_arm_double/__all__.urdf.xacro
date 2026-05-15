@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_arm_double">
+	<xacro:include filename="$(find transbot_description)/urdf/robot_arm_double/robot_arm_double.urdf.xacro"></xacro:include>
+	<xacro:robot_arm_double prefix="" name=""></xacro:robot_arm_double>
+</robot>

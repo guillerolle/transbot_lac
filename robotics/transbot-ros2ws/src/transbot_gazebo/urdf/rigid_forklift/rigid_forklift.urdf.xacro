@@ -1,156 +1,22 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rigid_forklift">
-    <xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/rigid_forklift.urdf.xacro"/>
-
-    <!-- add transmissions for each actuated joint -->
-    <transmission name="tra/mobilebase/diff/cj0">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="mobilebase/diff/cj0">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="act/mobilebase/diff/cj0">
-            <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </actuator>
-    </transmission>
-
-    <transmission name="tra/mobilebase/diff/cj1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="mobilebase/diff/cj1">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="act/mobilebase/diff/cj1">
-            <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </actuator>
-    </transmission>
-
-    <transmission name="tra/manipulator/pj_horquilla">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="manipulator/pj_horquilla">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="act/manipulator/pj_horquilla">
-            <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </actuator>
-    </transmission>
-
-    <transmission name="tra/manipulator/pj_unna0">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="manipulator/pj_unna0">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="act/manipulator/pj_unna0">
-            <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </actuator>
-    </transmission>
-
-    <transmission name="tra/pj_forklikft">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="pj_forklift">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="act/pj_forklift">
-            <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </actuator>
-    </transmission>
-
-    <!-- gazebo ros2 plugin -->
-    <gazebo>
-        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-            <parameters>$(find transbot_gazebo)/config/ros2_control.yaml</parameters>   
-            <ros>
-                <namespace>/transbot</namespace>
-            </ros>
-        </plugin>
-    </gazebo>
-
-    <!-- ros2_control -->
-    <ros2_control name="GazeboSimSystem" type="system">
-        <hardware>
-            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-        </hardware>
-        <joint name="mobilebase/diff/cj0">
-            <command_interface name="velocity"/>
-            <state_interface name="position"/>
-            <state_interface name="velocity"/>
-        </joint>
-        <joint name="mobilebase/diff/cj1">
-            <command_interface name="velocity"/>
-            <state_interface name="position"/>
-            <state_interface name="velocity"/>
-        </joint>
-        <joint name="pj_forklift">
-            <command_interface name="velocity"/>
-            <state_interface name="position">
-                <param name="initial_value">0.7</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>        
-        <joint name="manipulator/pj_horquilla">
-            <command_interface name="velocity"/>
-            <state_interface name="position">
-                <param name="initial_value">1.5</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>        
-        <joint name="manipulator/pj_unna0">
-            <command_interface name="velocity"/>
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-        <joint name="manipulator/pj_unna1">
-            <!--<command_interface name="velocity"/>-->
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-
-        <!-- PASSIVE JOINTS -->
-        <joint name="mobilebase/pj_control">
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-        <joint name="mobilebase/castor0/cj_dir">
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-        <joint name="mobilebase/castor0/cj_roll">
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-        <joint name="mobilebase/castor1/cj_dir">
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-        <joint name="mobilebase/castor1/cj_roll">
-            <state_interface name="position">
-                <param name="initial_value">0</param>
-            </state_interface>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-        </joint>
-    </ros2_control>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/rigid_forklift/manipulator/manipulator.urdf.xacro"></xacro:include>
+	<xacro:macro name="rigid_forklift-ros2_control_gazebo" params="prefix='' name='rigid_forklift' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}manipulator/_">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+		<xacro:mobilebase-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-ros2_control_gazebo>
+		<xacro:manipulator-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:manipulator-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="rigid_forklift-gz_reference" params="prefix='' name='rigid_forklift' suffix=''">
+		<xacro:mobilebase-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-gz_reference>
+		<xacro:manipulator-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:manipulator-gz_reference>
+	</xacro:macro>
 </robot>

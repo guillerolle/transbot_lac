@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="portico">
+	<xacro:macro name="portico" params="prefix='' name='portico' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.0 0.0 0.7915687128154306" rpy="0 0 0"></origin>
+				<mass value="1.3944067371388276"></mass>
+				<inertia ixx="0.4245243160703809" ixy="-1.2126596023639044e-10" ixz="-0.0" iyy="0.29817981721229225" iyz="1.241763432820638e-07" izz="0.12866851005431576"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/portico.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/portico.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+	<xacro:macro name="arm" params="prefix='' name='arm' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.023216224918960162 -5.499152560757377e-09 -0.023419614952871575" rpy="0 0 0"></origin>
+				<mass value="0.006568149425826657"></mass>
+				<inertia ixx="7.064874131194068e-06" ixy="-7.441838079437996e-13" ixz="1.2443340214776094e-06" iyy="4.505874430690099e-06" iyz="-2.7216175907765425e-12" izz="6.202446978768557e-06"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

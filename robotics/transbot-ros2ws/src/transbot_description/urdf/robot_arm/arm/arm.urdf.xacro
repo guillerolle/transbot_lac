@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+	<xacro:macro name="arm" params="prefix='' name='arm' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm/arm/link0.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm/arm/link1.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm/arm/link2.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm/arm/link3.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}link0" type="fixed">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}link0"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}link1" type="continuous">
+			<origin xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}link0"></parent>
+			<child link="${prefix}${name}${suffix}link1"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}link2" type="continuous">
+			<origin xyz="0.1 -0.06 0.2" rpy="1.5707963267948966 0.0 1.5707963267948966"></origin>
+			<parent link="${prefix}${name}${suffix}link1"></parent>
+			<child link="${prefix}${name}${suffix}link2"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}link3" type="continuous">
+			<origin xyz="0.1 -0.06 0.2" rpy="1.5707963267948966 0.0 1.5707963267948966"></origin>
+			<parent link="${prefix}${name}${suffix}link2"></parent>
+			<child link="${prefix}${name}${suffix}link3"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:link0 prefix="${prefix}${name}${suffix}" suffix=""></xacro:link0>
+		<xacro:link1 prefix="${prefix}${name}${suffix}" suffix=""></xacro:link1>
+		<xacro:link2 prefix="${prefix}${name}${suffix}" suffix=""></xacro:link2>
+		<xacro:link3 prefix="${prefix}${name}${suffix}" suffix=""></xacro:link3>
+	</xacro:macro>
+</robot>

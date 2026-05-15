@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:include filename="$(find transbot_description)/urdf/robot_arm/mobilebase/castor.urdf.xacro"></xacro:include>
+	<xacro:castor prefix="" name=""></xacro:castor>
+</robot>

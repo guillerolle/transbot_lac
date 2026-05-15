@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="portico">
+	<xacro:macro name="portico-ros2_control_gazebo" params="prefix='' name='portico' suffix=''"></xacro:macro>
+	<xacro:macro name="portico-gz_reference" params="prefix='' name='portico' suffix=''"></xacro:macro>
+</robot>

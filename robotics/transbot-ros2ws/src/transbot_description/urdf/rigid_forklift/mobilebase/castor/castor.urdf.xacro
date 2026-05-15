@@ -1,105 +1,41 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
-    <xacro:macro name="castor" params="prefix:='' use__all__='false'">
-
-        <xacro:unless value="${use__all__}">
-            <!-- ROOT LINK -->
-            <link name="${prefix}_">
-                <inertial>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
-                    <mass value="0.07850000753630108"></mass>
-                    <inertia ixx="6.542321560618129e-05" ixy="-0.0" ixz="-0.0" iyy="6.542321560618129e-05" iyz="-0.0" izz="0.00013083334787703887"></inertia>
-                </inertial>
-                <visual name="">
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                    <material name="">
-                        <color rgba="1.0 1.0 1.0 1.0"/>
-                        <texture filename=""/>
-                    </material>
-                </visual>
-                <collision>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                    <geometry>
-                        <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"/>
-                    </geometry>
-                </collision>
-            </link>
-            <!-- ROOT LINK -->
-            
-            <!-- ARM -->
-            <xacro:macro name="arm" params="prefix:='' suffix:=''">
-                <link name="${prefix}arm${suffix}">
-                    <inertial>
-                        <origin xyz="0.023216224918960162 -8.969929176973099e-09 -0.023419614952871575" rpy="0.0 0.0 0.0"></origin>
-                        <mass value="0.051559972992739254"></mass>
-                        <inertia ixx="5.545925449285687e-05" ixy="-1.1492577484385438e-11" ixz="9.768022068599235e-06" iyy="3.537111428091728e-05" iyz="1.883664039156799e-12" izz="4.868920134631662e-05"></inertia>
-                    </inertial>
-                    <visual name="">
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                        <material name="">
-                            <color rgba="1.0 1.0 1.0 1.0"/>
-                            <texture filename=""/>
-                        </material>
-                    </visual>
-                    <collision>
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/arm.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                    </collision>
-                </link>
-            </xacro:macro> 
-
-            <xacro:arm prefix="${prefix}"/>
-            <joint name="${prefix}cj_dir" type="continuous">
-                <origin xyz="0.0 0.0 -0.010" rpy="0.0 0.0 0.0"/>
-                <axis xyz="0.0 0.0 1.0"/>
-                <parent link="${prefix}_"/>
-                <child link="${prefix}arm"/>
-            </joint>
-            <!-- END ARM -->
-
-            <!-- WHEEL -->
-            <xacro:macro name="wheel" params="prefix:='' suffix:=''">
-                <link name="${prefix}wheel${suffix}">
-                    <inertial>
-                        <origin xyz="-9.060470524424798e-10 4.3399144291654343e-10 -1.3427359559848857e-10" rpy="0.0 0.0 0.0"></origin>
-                        <mass value="3.877091213750343"></mass>
-                        <inertia ixx="0.0042340201468959995" ixy="3.5314920758240293e-11" ixz="-1.0225893733800853e-11" iyy="0.004234021098833785" iyz="9.278108427825793e-13" izz="0.007159524102462451"></inertia>
-                    </inertial>
-                    <visual name="">
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/wheel.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                        <material name="">
-                            <color rgba="1.0 1.0 1.0 1.0"/>
-                            <texture filename=""/>
-                        </material>
-                    </visual>
-                    <collision>
-                        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                        <geometry>
-                            <mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/wheel.stl" scale="1e-3 1e-3 1e-3"/>
-                        </geometry>
-                    </collision>
-                </link>
-            </xacro:macro> 
-
-            <xacro:wheel prefix="${prefix}"/>
-            <joint name="${prefix}cj_roll" type="continuous">
-                <origin xyz="0.040 0.0 -0.060" rpy="1.57 0.0 0.0"/>
-                <axis xyz="0.0 0.0 1.0"/>
-                <parent link="${prefix}arm"/>
-                <child link="${prefix}wheel"/>
-            </joint>
-            <!-- END WHEEL -->
-        </xacro:unless>
-    </xacro:macro>
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:macro name="castor" params="prefix='' name='castor' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+				<mass value="0.010000000960038355"></mass>
+				<inertia ixx="8.334167593144114e-06" ixy="-0.0" ixz="-0.0" iyy="8.334167593144114e-06" iyz="-0.0" izz="1.666666851936801e-05"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/mobilebase/castor/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/mobilebase/castor/arm.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/rigid_forklift/mobilebase/castor/wheel.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}arm" type="continuous">
+			<origin xyz="0.0 0.0 -0.01" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}arm"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel" type="continuous">
+			<origin xyz="0.04 0.0 -0.06" rpy="1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}arm"></parent>
+			<child link="${prefix}${name}${suffix}wheel"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:arm prefix="${prefix}${name}${suffix}" suffix=""></xacro:arm>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix=""></xacro:wheel>
+	</xacro:macro>
 </robot>

@@ -30,6 +30,9 @@ module Cubierta(lod=0, length=800, width=600, height=400, tube_profile=20){
             cube([tube_profile, width, tube_profile], center=true);
         }
         
+        // CHAPA TECHO
+        translate([0,0,height])
+        cube([length, width, 2], center=true);
     }
 }
 
@@ -55,6 +58,10 @@ module Cubierta02(length=800, width=600, height=400, tube_profile=20){
         extrude_along([0,1,0],length=width-2*tube_profile, center=true)
         RectangularProfileHollow(tube_profile,1.2);
     }
+    
+    // CHAPA TECHO
+    translate([0,0,height])
+    cube([length, width, 2], center=true);
 }
 
 Cubierta();

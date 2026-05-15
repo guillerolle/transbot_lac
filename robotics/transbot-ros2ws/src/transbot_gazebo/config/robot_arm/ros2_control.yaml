@@ -1,0 +1,72 @@
+/**/controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController 
+
+    manipulator_pid_effort_controller:
+      type: pid_controller/PidController
+
+    manipulator_pid_velocity_controller:
+      type: pid_controller/PidController
+
+    arm_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+/**/arm_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - j/arm/link1
+      - j/arm/link2
+      - j/arm/link3
+    
+    interface_name: velocity
+
+/**/manipulator_pid_effort_controller:
+  ros__parameters:
+    use_sim_time: true
+    dof_names:
+      - j/manipulator/table
+      - j/manipulator/slider
+      - j/manipulator/claw
+    
+    command_interface: effort 
+    reference_and_state_interfaces: ["velocity"]
+
+    gains:
+      j/manipulator/table : {p: 10.0, i: 5.0, d: 0.5}
+      j/manipulator/slider: {p: 1.0, i: 2.0, d: 0.01}
+      j/manipulator/claw : {p: 1.0, i: 5.0, d: 0.01}
+
+/**/manipulator_pid_velocity_controller:
+  ros__parameters:
+    use_sim_time: true
+    dof_names:
+      - j/manipulator/table
+      - j/manipulator/slider
+      - j/manipulator/claw
+    
+    command_interface: velocity 
+    reference_and_state_interfaces: ["velocity"]
+
+    gains:
+      j/manipulator/table : {p: 0.75}
+      j/manipulator/slider: {p: 0.5}
+      j/manipulator/claw : {p: 0.5}
+
+/**/diff_drive_controller:
+  ros__parameters:
+    # use_sim_time: true
+    left_wheel_names: ["j/mobilebase/diff/wheel1"]
+    right_wheel_names: ["j/mobilebase/diff/wheel0"]
+    wheel_separation: 0.800
+    wheel_radius: 0.060
+    use_stamped_vel: true
+    odom_frame_id: odom 
+    base_frame_id: _
+    enable_odom_tf: true

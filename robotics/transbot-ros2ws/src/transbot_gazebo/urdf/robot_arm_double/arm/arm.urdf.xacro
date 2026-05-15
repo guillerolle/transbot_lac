@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+	<xacro:macro name="arm-ros2_control_gazebo" params="prefix='' name='arm' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}link1">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="position"></command_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}link2">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="position"></command_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}link3">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="position"></command_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+	</xacro:macro>
+	<xacro:macro name="arm-gz_reference" params="prefix='' name='arm' suffix=''"></xacro:macro>
+</robot>

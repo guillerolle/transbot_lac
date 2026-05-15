@@ -1,0 +1,4 @@
+ECHO: ["joint", "fixed", "arm/link0", "xyz: [0, 0, 0]", "rpy: [0, 0, 0]"]
+ECHO: ["joint", "continuous", "armlink0/link1", "xyz: [0, 0, 200]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: [\"position\", \"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "continuous", "armlink0/link1/link2", "xyz: [100, -60, 200]", "rpy: [90, 0, 90]", "axis: [0, 0, 1]", "command_interfaces: [\"position\", \"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "continuous", "armlink0/link1/link2/link3", "xyz: [100, -60, 200]", "rpy: [90, 0, 90]", "axis: [0, 0, 1]", "command_interfaces: [\"position\", \"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]

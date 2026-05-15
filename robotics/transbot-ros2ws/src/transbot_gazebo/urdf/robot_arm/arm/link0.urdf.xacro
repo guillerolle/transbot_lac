@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link0">
+	<xacro:macro name="link0-ros2_control_gazebo" params="prefix='' name='link0' suffix=''"></xacro:macro>
+	<xacro:macro name="link0-gz_reference" params="prefix='' name='link0' suffix=''"></xacro:macro>
+</robot>

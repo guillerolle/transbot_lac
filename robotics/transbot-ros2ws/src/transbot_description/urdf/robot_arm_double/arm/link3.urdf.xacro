@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link3">
+	<xacro:macro name="link3" params="prefix='' name='link3' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.016085114423966776 -0.011948101405762374 0.13738517657730603" rpy="0 0 0"></origin>
+				<mass value="0.6979861451933781"></mass>
+				<inertia ixx="0.004538999902300521" ixy="0.0005394872637374724" ixz="-0.0007029890598718655" iyy="0.005286004371198586" iyz="0.0005221831601388927" izz="0.002307015224623977"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/arm/link3.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/arm/link3.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

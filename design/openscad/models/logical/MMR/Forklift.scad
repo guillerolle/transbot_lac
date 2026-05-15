@@ -43,6 +43,6 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
 
 display="*";
 extra_wide=false;
-differential_axle_suspension = "";
+differential_axle_suspension = "RR";
 force_internal_castor = false;
 Forklift(display=display, bbox=[800, extra_wide? 800:600, 1500], display_bbox=false, differential_axle_suspension=differential_axle_suspension, force_internal_castor=force_internal_castor);
