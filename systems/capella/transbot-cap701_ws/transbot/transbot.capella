@@ -875,7 +875,8 @@
                 target="#f97cb8d3-e7a2-43c9-b721-c01ce4f72756" source="#8310379d-02d8-4cad-add1-fb0b38ae8d23"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="002150b5-2795-4115-88e5-e6675e7a4808" name="secure materials">
+              id="002150b5-2795-4115-88e5-e6675e7a4808" name="secure materials during transport"
+              description="&lt;p>The core idea is that the system shall safely transport materials from one place to another.&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;p>However, it&amp;#39;s possible that only having a suspension system that mitigates vibrations and smoothens accelerations is enough for this use case, and no active sensoring or control is required.&lt;/p>&#xA;">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="ebac351d-b90e-4e5f-8da9-2ed37ec275f1" name="FIP 1"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
@@ -897,7 +898,7 @@
               id="070ba93d-a813-4af0-8f83-116a83dce609" name="mitigate dynamic transitions">
             <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
                 id="7c4f5928-b66a-4119-9e76-c86abc75ca23" name="preferable passive due low cost requirement"
-                constrainedElements="#070ba93d-a813-4af0-8f83-116a83dce609">
+                constrainedElements="#4264d8b1-02ab-4018-b935-ee783959bc5c">
               <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
                   id="dd2c1c75-33fa-41a4-ae0c-506817d305bb">
                 <bodies></bodies>
@@ -1018,7 +1019,99 @@
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="9ba4f465-d149-4338-b23e-beaadc1d6976" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
-          id="658792e5-8a30-4a67-a90c-72c8d9c40881" name="Data"/>
+          id="658792e5-8a30-4a67-a90c-72c8d9c40881" name="Data">
+        <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
+            id="9e28b196-94b3-45ef-9c25-e7c1b9b31e4c" name="EA - Materials Transport">
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="f0c208ec-c5b8-471c-9339-1ddd0dceeee4" name="Material Handling" description="&lt;p>Evaluation of alternatives for Materials Transportation methods:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>&lt;b>Criteria of categorization:&amp;nbsp;&lt;/b>Type and size of unit interacting elements&#xA;&#xA;&#x9;&lt;ul>&#xA;&#x9;&lt;/ul>&#xA;&#x9;&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;div>&amp;nbsp;&lt;/div>&#xA;"/>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="47b25bb2-c0b8-4771-8aa8-17a187683ede" name="Lifters" description="&lt;p>Forklifts use two forks&amp;nbsp;in front that can move up/down and enlarge/reduce its spacing to lift containerized objects.&lt;/p>&#xA;&#xA;&lt;p>Requirements:&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Safety concerns in regards forks at front of the vehicle&lt;/li>&#xA;&#x9;&lt;li>Counterweight / heavy chassis for compensating load weight far from support points.&lt;/li>&#xA;&lt;/ul>&#xA;&#xA;&lt;div>&amp;nbsp;&lt;/div>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="12ea4579-3697-40a7-9a34-13822c38b7bb" super="#672d065c-5c12-43bd-8ac1-525ed26de48c"
+                sub="#47b25bb2-c0b8-4771-8aa8-17a187683ede"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="d55432de-6802-4e10-a0ef-40913c79a4d6" name="Robot Arms" description="&lt;p>Classis robot arms of any type. They work better at manipulating &lt;strong>precisely small items,&amp;nbsp;&lt;/strong>instead of moving large amounts without requiring full precision.&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="98d84193-a674-4732-b017-3254237aaf18" super="#61578281-be31-4cea-b79d-1bf925cfa921"
+                sub="#d55432de-6802-4e10-a0ef-40913c79a4d6"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="dbfafc7e-1ff6-41dc-9843-2e885cdc607a" name="Push/Pull Carts" description="&lt;p>Push or pull entire shelves, moving large amounts of materials at once.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>System is not required to lift the transported weight, only to push/pull it.&lt;/li>&#xA;&#x9;&lt;li>Shelves could have wheels and suspension&amp;nbsp;to aid movement.&lt;/li>&#xA;&lt;/ul>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="321d20f9-c7a1-4958-b050-d2a80ef9407c" super="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"
+                sub="#dbfafc7e-1ff6-41dc-9843-2e885cdc607a"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="48623dc6-b609-4c8f-9f41-109d053ab8df" name="Sliders" description="&lt;p>Sliders shall&amp;nbsp;collect materials from the shelves by making them slide towards and out&amp;nbsp;the system instead of lifting.&amp;nbsp;&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>Shelves could have rollers to aid the sliding motion, as well as the system&amp;#39;s supporting tables.&lt;/li>&#xA;&lt;/ul>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="f48d4e94-f669-4129-b445-47865c615bd4" super="#672d065c-5c12-43bd-8ac1-525ed26de48c"
+                sub="#48623dc6-b609-4c8f-9f41-109d053ab8df"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="672d065c-5c12-43bd-8ac1-525ed26de48c" name="Structured Containers"
+              description="&lt;p>Materials come in structured containers (&lt;b>boxes, baskets, etc.&lt;/b>) with many elements or parts.&lt;/p>&#xA;&#xA;&lt;p>The&amp;nbsp;containers are structured or rigid. It&amp;#39;s relatively easy to find grasp points in comparison to non-structured.&lt;/p>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="54bb976f-f181-4280-92d7-ffc724806dcc" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
+                sub="#672d065c-5c12-43bd-8ac1-525ed26de48c"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="307d7cc9-3d28-4571-b442-5fca96045256" name="Non-structured containers"
+              description="&lt;p>Non-uniform containers of many parts or components like &lt;strong>bags&amp;nbsp;&lt;/strong>(default type in the factory).&amp;nbsp;&lt;br />&#xA;Materials come in non-rigid or structurized containers with&amp;nbsp;many (100+) parts (like springs, knuts, bolts, etc)&lt;/p>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="4d22231b-8526-4c57-8595-98b3cc487b67" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
+                sub="#307d7cc9-3d28-4571-b442-5fca96045256"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="61578281-be31-4cea-b79d-1bf925cfa921" name="Individual Parts" summary=""
+              description="&lt;p>Small and light parts and/or objects. May come organised or not, but the system shall grab one by one or small quantities&lt;/p>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="ff8935f3-7bf6-4ec8-9b36-f7b8b19e6032" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
+                sub="#61578281-be31-4cea-b79d-1bf925cfa921"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="dee1b3f5-701d-4679-a0c6-75ec63a6bd0b" name="Full shelves" description="&lt;p>Instead of moving individuals/groups of materials from one shelve to another, the system shall move entire shelves, plenty of materials&lt;/p>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="0d8315e4-c819-4e85-bae8-d5e7560855b0" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
+                sub="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="ae2d6c72-0866-4d41-8f42-f7023d5f8d91" name="Double Robot Arms">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="d0fd5d25-320e-4162-a2c3-acbc12d066c8" super="#672d065c-5c12-43bd-8ac1-525ed26de48c"
+                sub="#ae2d6c72-0866-4d41-8f42-f7023d5f8d91"/>
+          </ownedClasses>
+        </ownedDataPkgs>
+        <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
+            id="b5ee531d-a6da-481a-b037-bae077bc3645" name="EA - Suspension System">
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="dc34c245-b0a2-40f1-a506-9ef4ffd3435f" name="Suspension System"/>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="4e03adc4-0871-4194-88c5-1a8f9320aa2d" name="Full Rigid (No suspension)">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="0d01b261-f2e3-4bbd-bd83-36a46b4720c4" super="#dc34c245-b0a2-40f1-a506-9ef4ffd3435f"
+                sub="#4e03adc4-0871-4194-88c5-1a8f9320aa2d"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="de6cf08b-f949-4d19-8ca6-d127f8ef96da" name="Semi Rigid (Single Axle Susp.)">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="2ef78b8f-153e-459f-8e8e-d9e0f8b192bb" super="#dc34c245-b0a2-40f1-a506-9ef4ffd3435f"
+                sub="#de6cf08b-f949-4d19-8ca6-d127f8ef96da"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="2a4b2f2f-8211-495e-af07-9ef7a7dd1b81" name="Independent Axle Suspension">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="2d96310f-ed75-4db1-bad1-fb1e2804bcaa" super="#dc34c245-b0a2-40f1-a506-9ef4ffd3435f"
+                sub="#2a4b2f2f-8211-495e-af07-9ef7a7dd1b81"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="702ad128-3db2-46d5-a081-a547de2880c3" name="Independent Wheel Suspension">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="423dd41c-063d-486b-be0f-abc668703640" super="#dc34c245-b0a2-40f1-a506-9ef4ffd3435f"
+                sub="#702ad128-3db2-46d5-a081-a547de2880c3"/>
+          </ownedClasses>
+        </ownedDataPkgs>
+      </ownedDataPkg>
       <ownedLogicalComponentPkg xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
           id="e8e27ae6-ef55-4efb-b4a6-b304f8827d11" name="Structure">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
@@ -1041,7 +1134,7 @@
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="e25641fc-35d9-4b33-87ce-fbdcee1d4130"
               name="Mobile Base" abstractType="#f21a327d-666c-4351-bd0d-a72a75b45bfc"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a4519cc7-000e-4eb4-8f9f-5db12c4c768e"
-              name="Operation Structure" abstractType="#b916e3f0-97ae-4c1e-97d4-6e1888faa31b"/>
+              name="Material Handling System" abstractType="#b916e3f0-97ae-4c1e-97d4-6e1888faa31b"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="d13d3224-1bdb-46e5-a57c-f027b31ce6cd"
               name="Requests Processor" abstractType="#a0fd3489-1a22-4912-8ac7-4fe6c91e1dbc"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
@@ -1078,7 +1171,7 @@
             </ownedLogicalComponents>
           </ownedLogicalComponents>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="b916e3f0-97ae-4c1e-97d4-6e1888faa31b" name="Operation Structure">
+              id="b916e3f0-97ae-4c1e-97d4-6e1888faa31b" name="Material Handling System">
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="377a1a23-b7c8-4a82-bbda-3ae63a45abf4" targetElement="#218d7846-497a-4d23-aef8-2aa6743ed837"
                 sourceElement="#b916e3f0-97ae-4c1e-97d4-6e1888faa31b"/>
