@@ -1147,7 +1147,7 @@
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="0002ea82-a52c-4f75-83e9-47350fd8d702"
                 name="Locomotion System" abstractType="#ffa51001-10d7-41ae-bd86-19369930ad0f"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="902ac9f0-17d2-4faf-ae94-af81d7b22c95"
-                name="Payload Handling Subsystem" abstractType="#d7d868d2-506e-4661-b9c6-d9a53190cd8a"/>
+                name="Payload Securing Subsystem" abstractType="#d7d868d2-506e-4661-b9c6-d9a53190cd8a"/>
             <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
                 id="c2587b29-44b2-4f4b-898f-5cc1b77624eb" name="Suspension system">
               <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
@@ -1164,7 +1164,7 @@
                   sourceElement="#ffa51001-10d7-41ae-bd86-19369930ad0f"/>
             </ownedLogicalComponents>
             <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-                id="d7d868d2-506e-4661-b9c6-d9a53190cd8a" name="Payload Handling Subsystem">
+                id="d7d868d2-506e-4661-b9c6-d9a53190cd8a" name="Payload Securing Subsystem">
               <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                   id="b45fa4d5-e63b-446c-8dae-db39cb9bbba1" targetElement="#002150b5-2795-4115-88e5-e6675e7a4808"
                   sourceElement="#d7d868d2-506e-4661-b9c6-d9a53190cd8a"/>
