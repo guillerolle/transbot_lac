@@ -1,5 +1,6 @@
 include <BOSL2/std.scad>
 include <BOSL2/strings.scad>
+include <beam.scad>
 
 function extract_assembly_parts(display) = 
     (display=="*") ? ["*", "*"]: let(
@@ -57,7 +58,7 @@ module PrismaticJoint(
     p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], 
     unitpos=(-cos($t*360)+1)/2, name="joint_prismatic", prefix="", 
     limits=[-100, 100], command_interfaces=[], mimic=[],
-    spring=[], damping=[], friction=[]
+    spring=[], damping=[], friction=[], draw=false
     ){
     _extension = limits[1]-limits[0];
     assert((unitpos>=0) && (unitpos<=1), "position must be in range [0,1]");
@@ -78,9 +79,15 @@ module PrismaticJoint(
     _uaxis = axis/norm(axis);
     
     translate(p_translate)
-    rotate(p_rotate)
-    translate(_uaxis*_abspos)
-    children();
+    rotate(p_rotate){
+        if (draw){
+            color([0.7, 0.3, 0])
+            extrude_along(axis, _extension)
+            square(size=_extension*.4, center=true);
+        }
+        translate(_uaxis*_abspos)
+        children();
+    }
 }
 
 module Arrow3D(to, from=[0,0,0], cyl_d, cone_d, cone_h){
