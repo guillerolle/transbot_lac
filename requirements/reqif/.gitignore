@@ -10,6 +10,8 @@
 setup.py
 .vscode
 
+.metadata
+
 # LIT/FileCheck integration tests' artifacts.
 tests/integration/**/Output/**
 tests/integration/**/output/**

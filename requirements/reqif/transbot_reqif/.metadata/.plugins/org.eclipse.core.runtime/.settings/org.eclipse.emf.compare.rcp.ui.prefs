@@ -1,2 +1,0 @@
-eclipse.preferences.version=1
-org.eclipse.emf.compare.rcp.ui.groups.2way.ranking=org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.KindGroupProvider;org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.DefaultGroupProvider;org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.ByResourceGroupProvider
