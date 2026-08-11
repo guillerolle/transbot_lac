@@ -1,0 +1,352 @@
+{
+  "id": "StRS",
+  "description": "Transbot StRS",
+  "documents": [
+    {
+      "id": "StRS",
+      "guid": "93ade630-335b-4183-9fb2-bd62149d0f65",
+      "name": "Stakeholder Requirements Specification",
+      "lastId": 25,
+      "createdOn": "2026-06-16T19:59:36.743Z",
+      "createdBy": {
+        "name": "Guillermo",
+        "email": "grolle@fceia.unr.edu.ar",
+        "company": "FCEIA"
+      },
+      "lastChangedOn": "2026-06-16T19:59:36.743Z",
+      "lastChangedBy": {
+        "name": "Guillermo",
+        "email": "grolle@fceia.unr.edu.ar",
+        "company": "FCEIA"
+      },
+      "helpRef": "ISO/IEC/IEEE 29148:2018",
+      "data": [
+        {
+          "id": "1",
+          "guid": "4bd72ba0-360a-4e5e-907e-c416e5fc598b",
+          "heading": "Introduction",
+          "helpRef": "8.3.1",
+          "type": "SEC",
+          "children": [
+            {
+              "id": "2",
+              "guid": "9ac342ba-c8fe-4bce-acc5-fefc8a0ff368",
+              "heading": "Stakeholder purpose",
+              "helpRef": "9.4.2",
+              "type": "SEC"
+            },
+            {
+              "id": "3",
+              "guid": "d6d8e812-9381-4bdb-b9de-660ba783b053",
+              "heading": "Stakeholder scope",
+              "helpRef": "9.4.3",
+              "type": "SEC"
+            },
+            {
+              "id": "4",
+              "guid": "77da2484-09f9-4db9-8668-fad1fb78329e",
+              "heading": "Overview",
+              "helpRef": "9.4.4",
+              "type": "SEC"
+            },
+            {
+              "id": "5",
+              "guid": "627286da-cab3-4b11-aa6c-406a2ffe7160",
+              "heading": "Stakeholders",
+              "helpRef": "9.4.5",
+              "type": "SEC"
+            },
+            {
+              "id": "6",
+              "guid": "4897db90-2999-4fba-8c3d-0b511c15ae68",
+              "heading": "Definitions",
+              "helpRef": "9.2.3",
+              "type": "SEC"
+            },
+            {
+              "id": "7",
+              "guid": "1a6f18ba-89d2-4298-a3a8-312c34c84569",
+              "heading": "Acronyms and abbreviations",
+              "helpRef": "9.2.5",
+              "type": "SEC"
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "guid": "63a34f6f-3fa9-4366-9c92-8424c1c660a3",
+          "heading": "Business management requirements",
+          "type": "SEC",
+          "children": [
+            {
+              "id": "9",
+              "guid": "324d611c-2452-469b-b580-aa5b88e88af3",
+              "heading": "Business environment",
+              "helpRef": "9.4.6",
+              "type": "SEC"
+            },
+            {
+              "id": "10",
+              "guid": "620765e5-4cbd-4219-9b13-1302f15f7eef",
+              "heading": "Mission, goals and objectives",
+              "helpRef": "9.4.7",
+              "type": "SEC"
+            },
+            {
+              "id": "11",
+              "guid": "ce8d97c5-b8f3-43f5-9003-3e97c993a97d",
+              "heading": "Business model",
+              "helpRef": "9.4.8",
+              "type": "SEC"
+            },
+            {
+              "id": "12",
+              "guid": "cfbdbdfe-0d15-45fc-8939-2f20b3a2328a",
+              "heading": "Information environment",
+              "helpRef": "9.4.9",
+              "type": "SEC"
+            }
+          ]
+        },
+        {
+          "id": "13",
+          "guid": "d74aca41-4454-4cbf-9496-6333250dc998",
+          "heading": "System operational requirements",
+          "type": "SEC",
+          "children": [
+            {
+              "id": "14",
+              "guid": "60ea9151-417d-419a-b56c-e4a43ea512ea",
+              "heading": "System processes",
+              "helpRef": "9.4.10",
+              "type": "SEC"
+            },
+            {
+              "id": "15",
+              "guid": "40b37fa4-97a0-4266-be15-7783c58ec5c0",
+              "heading": "System operational policies and rules",
+              "helpRef": "9.4.11",
+              "type": "SEC"
+            },
+            {
+              "id": "16",
+              "guid": "f533f241-8e94-40b9-b9df-781b6a21ecda",
+              "heading": "Operational constraints",
+              "helpRef": "9.4.12",
+              "type": "SEC"
+            },
+            {
+              "id": "17",
+              "guid": "23afcb55-d9ac-4536-8486-f3a0b0a21d54",
+              "heading": "System operational modes and states",
+              "helpRef": "9.4.13",
+              "type": "SEC"
+            },
+            {
+              "id": "18",
+              "guid": "6eb5828b-0e6d-49af-acc0-694ab549ca37",
+              "heading": "System operational quality",
+              "helpRef": "9.4.14",
+              "type": "SEC"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "guid": "30854645-f69f-4809-9502-fbe726ac00ab",
+          "heading": "User requirements",
+          "helpRef": "9.4.15",
+          "type": "SEC"
+        },
+        {
+          "id": "20",
+          "guid": "f37c0c31-2947-424a-b302-dd97080e9a38",
+          "heading": "Detailed life-cycle concepts of proposed system",
+          "type": "SEC",
+          "children": [
+            {
+              "id": "21",
+              "guid": "f909daa1-e17e-4ffc-8f02-4ac2ba12fde3",
+              "heading": "Operational concept",
+              "helpRef": "9.4.16",
+              "type": "SEC"
+            },
+            {
+              "id": "22",
+              "guid": "8b79f56b-e4c1-456d-9be0-b76e262027cd",
+              "heading": "Operational scenarios",
+              "helpRef": "9.4.17",
+              "type": "SEC"
+            }
+          ]
+        },
+        {
+          "id": "23",
+          "guid": "ef14b3c6-5e50-4b27-8038-2b006bf0669e",
+          "heading": "Other detailed concepts of proposed system",
+          "helpRef": "9.4.18",
+          "type": "SEC"
+        },
+        {
+          "id": "24",
+          "guid": "f6696661-2cce-4dd7-89fa-8c307e9ab698",
+          "heading": "Project constraints",
+          "helpRef": "9.4.19",
+          "type": "SEC"
+        },
+        {
+          "id": "25",
+          "guid": "3060a340-cbab-4545-ab2f-f87a089f85b2",
+          "heading": "References",
+          "helpRef": "9.2.4",
+          "type": "SEC"
+        }
+      ],
+      "attributes": {
+        "difficulty": {
+          "name": "Difficulty",
+          "type": "enum",
+          "values": [
+            {
+              "key": "E",
+              "label": "Easy"
+            },
+            {
+              "key": "N",
+              "label": "Nominal"
+            },
+            {
+              "key": "D",
+              "label": "Difficult"
+            }
+          ]
+        },
+        "owner": {
+          "name": "Owner",
+          "type": "string"
+        },
+        "priority": {
+          "name": "Priority",
+          "type": "enum",
+          "values": [
+            {
+              "key": "L",
+              "label": "Low"
+            },
+            {
+              "key": "M",
+              "label": "Medium"
+            },
+            {
+              "key": "H",
+              "label": "High"
+            }
+          ]
+        },
+        "rationale": {
+          "name": "Rationale",
+          "type": "xhtml"
+        },
+        "source": {
+          "name": "Source",
+          "type": "string"
+        },
+        "status": {
+          "name": "Status",
+          "type": "enum",
+          "values": [
+            {
+              "key": "Draft"
+            },
+            {
+              "key": "Ready"
+            },
+            {
+              "key": "Reviewed"
+            },
+            {
+              "key": "Approved"
+            },
+            {
+              "key": "Released"
+            }
+          ]
+        },
+        "type": {
+          "name": "Type",
+          "type": "enum",
+          "values": [
+            {
+              "key": "FR",
+              "label": "Functional Requirement"
+            },
+            {
+              "key": "INT",
+              "label": "Interface Requirement"
+            },
+            {
+              "key": "NFR",
+              "label": "Non-func. Requirement"
+            },
+            {
+              "key": "SEC",
+              "label": "Section"
+            },
+            {
+              "key": "INF",
+              "label": "Information"
+            }
+          ]
+        }
+      },
+      "templateColumns": {
+      },
+      "views": {
+        "Primary": {
+          "columns": [
+            {
+              "columnId": "id",
+              "width": 77
+            },
+            {
+              "columnId": "type",
+              "width": 97
+            },
+            {
+              "columnId": "description",
+              "width": 372
+            },
+            {
+              "columnId": "source",
+              "width": 106
+            },
+            {
+              "columnId": "rationale",
+              "width": 150
+            },
+            {
+              "columnId": "priority",
+              "width": 96
+            },
+            {
+              "columnId": "status",
+              "width": 86
+            }
+          ],
+          "default": true
+        }
+      },
+      "metadata": {
+        "format": "2.22"
+      }
+    }
+  ],
+  "attachments": {
+  },
+  "traceability": {
+  },
+  "metadata": {
+    "format": "2.22",
+    "saveHistory": true
+  }
+}
