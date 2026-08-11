@@ -1,0 +1,3 @@
+{
+  "linkTemplate": "{{ firstAuthor.fullName }} - {{ date.year }} - {{ title }}"
+}
