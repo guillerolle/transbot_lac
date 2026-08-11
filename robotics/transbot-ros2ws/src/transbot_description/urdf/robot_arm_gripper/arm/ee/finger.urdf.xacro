@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="finger">
+	<xacro:macro name="finger" params="prefix='' name='finger' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="0.0 0.0 0.025000002273736534" rpy="0 0 0"></origin>
+				<mass value="0.010000000960038355"></mass>
+				<inertia ixx="2.4166668607013235e-06" ixy="-0.0" ixz="-0.0" iyy="2.1666668178117686e-06" iyz="-0.0" izz="4.1666673814925537e-07"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_gripper/arm/ee/finger.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_gripper/arm/ee/finger.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

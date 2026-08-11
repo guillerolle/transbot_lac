@@ -73,7 +73,7 @@ solid OpenSCAD_Model
     outer loop
       vertex -400 400 0
       vertex -400 398.8 38.8
-      vertex -400 400 320
+      vertex -400 400 321
     endloop
   endfacet
   facet normal -1 0 0
@@ -94,13 +94,13 @@ solid OpenSCAD_Model
     outer loop
       vertex -400 398.8 38.8
       vertex -400 380 300
-      vertex -400 400 320
+      vertex -400 400 321
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
       vertex -400 -380 300
-      vertex -400 400 320
+      vertex -400 400 321
       vertex -400 380 300
     endloop
   endfacet
@@ -121,27 +121,27 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex -400 -380 300
-      vertex -400 -400 320
-      vertex -400 400 320
+      vertex -400 -400 321
+      vertex -400 400 321
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
       vertex -400 -398.8 38.8
-      vertex -400 -400 320
+      vertex -400 -400 321
       vertex -400 -380 300
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -400 -400 320
+      vertex -400 -400 321
       vertex -400 -398.8 38.8
       vertex -400 -400 0
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 400 400 320
+      vertex 400 400 321
       vertex 400 398.8 38.8
       vertex 400 400 0
     endloop
@@ -150,7 +150,7 @@ solid OpenSCAD_Model
     outer loop
       vertex 400 380 300
       vertex 400 398.8 38.8
-      vertex 400 400 320
+      vertex 400 400 321
     endloop
   endfacet
   facet normal 1 0 0
@@ -169,7 +169,7 @@ solid OpenSCAD_Model
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 400 400 320
+      vertex 400 400 321
       vertex 400 -380 300
       vertex 400 380 300
     endloop
@@ -192,21 +192,21 @@ solid OpenSCAD_Model
     outer loop
       vertex 400 -400 0
       vertex 400 -398.8 38.8
-      vertex 400 -400 320
+      vertex 400 -400 321
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex 400 -380 300
-      vertex 400 -400 320
+      vertex 400 -400 321
       vertex 400 -398.8 38.8
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex 400 -400 320
+      vertex 400 -400 321
       vertex 400 -380 300
-      vertex 400 400 320
+      vertex 400 400 321
     endloop
   endfacet
   facet normal 1 -0 0
@@ -281,14 +281,14 @@ solid OpenSCAD_Model
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex 400 400 320
+      vertex 400 400 321
       vertex 380 400 300
-      vertex -400 400 320
+      vertex -400 400 321
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex 400 400 320
+      vertex 400 400 321
       vertex 380 400 40
       vertex 380 400 300
     endloop
@@ -304,20 +304,20 @@ solid OpenSCAD_Model
     outer loop
       vertex 400 400 0
       vertex 380 400 40
-      vertex 400 400 320
+      vertex 400 400 321
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex -380 400 300
-      vertex -400 400 320
+      vertex -400 400 321
       vertex 380 400 300
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex -380 400 40
-      vertex -400 400 320
+      vertex -400 400 321
       vertex -380 400 300
     endloop
   endfacet
@@ -325,7 +325,7 @@ solid OpenSCAD_Model
     outer loop
       vertex -380 400 40
       vertex -400 400 0
-      vertex -400 400 320
+      vertex -400 400 321
     endloop
   endfacet
   facet normal 0 1 0
@@ -925,14 +925,14 @@ solid OpenSCAD_Model
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -400 -400 320
+      vertex -400 -400 321
       vertex -380 -400 300
-      vertex 400 -400 320
+      vertex 400 -400 321
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -400 -400 320
+      vertex -400 -400 321
       vertex -380 -400 40
       vertex -380 -400 300
     endloop
@@ -948,20 +948,20 @@ solid OpenSCAD_Model
     outer loop
       vertex -400 -400 0
       vertex -380 -400 40
-      vertex -400 -400 320
+      vertex -400 -400 321
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex 380 -400 300
-      vertex 400 -400 320
+      vertex 400 -400 321
       vertex -380 -400 300
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex 380 -400 40
-      vertex 400 -400 320
+      vertex 400 -400 321
       vertex 380 -400 300
     endloop
   endfacet
@@ -969,7 +969,7 @@ solid OpenSCAD_Model
     outer loop
       vertex 380 -400 40
       vertex 400 -400 0
-      vertex 400 -400 320
+      vertex 400 -400 321
     endloop
   endfacet
   facet normal 0 -1 0
@@ -1343,272 +1343,6 @@ solid OpenSCAD_Model
       vertex -381.2 -380 38.8
     endloop
   endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -398.8 -381.2 320
-      vertex -380 -380 320
-      vertex -398.8 381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -380 -380 320
-      vertex -398.8 -381.2 320
-      vertex -381.2 -381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 380 380 320
-      vertex 398.8 381.2 320
-      vertex 381.2 381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 398.8 381.2 320
-      vertex 380 380 320
-      vertex 398.8 -381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 398.8 381.2 320
-      vertex 400 400 320
-      vertex 398.8 398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 400 400 320
-      vertex 381.2 398.8 320
-      vertex 398.8 398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 380 380 320
-      vertex 381.2 381.2 320
-      vertex 381.2 398.8 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex 380 -380 320
-      vertex 398.8 -381.2 320
-      vertex 380 380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 398.8 -381.2 320
-      vertex 380 -380 320
-      vertex 381.2 -381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 381.2 398.8 320
-      vertex 10 380 320
-      vertex 380 380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 398.8 320
-      vertex 381.2 398.8 320
-      vertex 400 400 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 10 380 320
-      vertex -10 380 320
-      vertex 10 -380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 381.2 398.8 320
-      vertex -10 380 320
-      vertex 10 380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 381.2 398.8 320
-      vertex -381.2 398.8 320
-      vertex -10 380 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex -381.2 381.2 320
-      vertex -380 380 320
-      vertex -381.2 398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -10 380 320
-      vertex -381.2 398.8 320
-      vertex -380 380 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex -400 400 320
-      vertex -381.2 398.8 320
-      vertex 400 400 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -400 400 320
-      vertex -398.8 381.2 320
-      vertex -398.8 398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -398.8 381.2 320
-      vertex -400 400 320
-      vertex -398.8 -381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -400 -400 320
-      vertex -398.8 -381.2 320
-      vertex -400 400 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 398.8 320
-      vertex -400 400 320
-      vertex -398.8 398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 400 400 320
-      vertex 398.8 381.2 320
-      vertex 400 -400 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex 398.8 -381.2 320
-      vertex 400 -400 320
-      vertex 398.8 381.2 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex 398.8 -398.8 320
-      vertex 400 -400 320
-      vertex 398.8 -381.2 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex 381.2 -398.8 320
-      vertex 400 -400 320
-      vertex 398.8 -398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 381.2 -381.2 320
-      vertex 380 -380 320
-      vertex 381.2 -398.8 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex 10 -380 320
-      vertex 381.2 -398.8 320
-      vertex 380 -380 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex -10 -380 320
-      vertex 381.2 -398.8 320
-      vertex 10 -380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -10 -380 320
-      vertex 10 -380 320
-      vertex -10 380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 -398.8 320
-      vertex 381.2 -398.8 320
-      vertex -10 -380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 -398.8 320
-      vertex -10 -380 320
-      vertex -380 -380 320
-    endloop
-  endfacet
-  facet normal -0 0 1
-    outer loop
-      vertex -398.8 381.2 320
-      vertex -380 380 320
-      vertex -381.2 381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -380 380 320
-      vertex -398.8 381.2 320
-      vertex -380 -380 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 -398.8 320
-      vertex -380 -380 320
-      vertex -381.2 -381.2 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex 381.2 -398.8 320
-      vertex -381.2 -398.8 320
-      vertex 400 -400 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -400 -400 320
-      vertex -381.2 -398.8 320
-      vertex -398.8 -398.8 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -381.2 -398.8 320
-      vertex -400 -400 320
-      vertex 400 -400 320
-    endloop
-  endfacet
-  facet normal 0 0 1
-    outer loop
-      vertex -398.8 -381.2 320
-      vertex -400 -400 320
-      vertex -398.8 -398.8 320
-    endloop
-  endfacet
   facet normal 1 -0 0
     outer loop
       vertex -380 380 300
@@ -1668,55 +1402,55 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex -381.2 381.2 40
-      vertex -381.2 398.8 320
+      vertex -381.2 398.8 319
       vertex -381.2 398.8 40
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex -381.2 398.8 320
+      vertex -381.2 398.8 319
       vertex -381.2 381.2 40
-      vertex -381.2 381.2 320
+      vertex -381.2 381.2 319
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex -398.8 398.8 40
-      vertex -381.2 398.8 320
-      vertex -398.8 398.8 320
+      vertex -381.2 398.8 319
+      vertex -398.8 398.8 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex -381.2 398.8 320
+      vertex -381.2 398.8 319
       vertex -398.8 398.8 40
       vertex -381.2 398.8 40
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex -398.8 381.2 320
+      vertex -398.8 381.2 319
       vertex -398.8 398.8 40
-      vertex -398.8 398.8 320
+      vertex -398.8 398.8 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex -398.8 398.8 40
-      vertex -398.8 381.2 320
+      vertex -398.8 381.2 319
       vertex -398.8 381.2 40
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex -381.2 381.2 40
-      vertex -398.8 381.2 320
-      vertex -381.2 381.2 320
+      vertex -398.8 381.2 319
+      vertex -381.2 381.2 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -398.8 381.2 320
+      vertex -398.8 381.2 319
       vertex -381.2 381.2 40
       vertex -398.8 381.2 40
     endloop
@@ -1780,55 +1514,55 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex -381.2 -398.8 40
-      vertex -381.2 -381.2 320
+      vertex -381.2 -381.2 319
       vertex -381.2 -381.2 40
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex -381.2 -381.2 320
+      vertex -381.2 -381.2 319
       vertex -381.2 -398.8 40
-      vertex -381.2 -398.8 320
+      vertex -381.2 -398.8 319
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex -398.8 -381.2 40
-      vertex -381.2 -381.2 320
-      vertex -398.8 -381.2 320
+      vertex -381.2 -381.2 319
+      vertex -398.8 -381.2 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex -381.2 -381.2 320
+      vertex -381.2 -381.2 319
       vertex -398.8 -381.2 40
       vertex -381.2 -381.2 40
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex -398.8 -398.8 320
+      vertex -398.8 -398.8 319
       vertex -398.8 -381.2 40
-      vertex -398.8 -381.2 320
+      vertex -398.8 -381.2 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex -398.8 -381.2 40
-      vertex -398.8 -398.8 320
+      vertex -398.8 -398.8 319
       vertex -398.8 -398.8 40
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex -381.2 -398.8 40
-      vertex -398.8 -398.8 320
-      vertex -381.2 -398.8 320
+      vertex -398.8 -398.8 319
+      vertex -381.2 -398.8 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -398.8 -398.8 320
+      vertex -398.8 -398.8 319
       vertex -381.2 -398.8 40
       vertex -398.8 -398.8 40
     endloop
@@ -1892,55 +1626,55 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex 398.8 -398.8 40
-      vertex 398.8 -381.2 320
+      vertex 398.8 -381.2 319
       vertex 398.8 -381.2 40
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex 398.8 -381.2 320
+      vertex 398.8 -381.2 319
       vertex 398.8 -398.8 40
-      vertex 398.8 -398.8 320
+      vertex 398.8 -398.8 319
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex 381.2 -381.2 40
-      vertex 398.8 -381.2 320
-      vertex 381.2 -381.2 320
+      vertex 398.8 -381.2 319
+      vertex 381.2 -381.2 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex 398.8 -381.2 320
+      vertex 398.8 -381.2 319
       vertex 381.2 -381.2 40
       vertex 398.8 -381.2 40
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex 381.2 -398.8 320
+      vertex 381.2 -398.8 319
       vertex 381.2 -381.2 40
-      vertex 381.2 -381.2 320
+      vertex 381.2 -381.2 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex 381.2 -381.2 40
-      vertex 381.2 -398.8 320
+      vertex 381.2 -398.8 319
       vertex 381.2 -398.8 40
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex 398.8 -398.8 40
-      vertex 381.2 -398.8 320
-      vertex 398.8 -398.8 320
+      vertex 381.2 -398.8 319
+      vertex 398.8 -398.8 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex 381.2 -398.8 320
+      vertex 381.2 -398.8 319
       vertex 398.8 -398.8 40
       vertex 381.2 -398.8 40
     endloop
@@ -2004,85 +1738,85 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex 398.8 381.2 40
-      vertex 398.8 398.8 320
+      vertex 398.8 398.8 319
       vertex 398.8 398.8 40
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex 398.8 398.8 320
+      vertex 398.8 398.8 319
       vertex 398.8 381.2 40
-      vertex 398.8 381.2 320
+      vertex 398.8 381.2 319
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
       vertex 381.2 398.8 40
-      vertex 398.8 398.8 320
-      vertex 381.2 398.8 320
+      vertex 398.8 398.8 319
+      vertex 381.2 398.8 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex 398.8 398.8 320
+      vertex 398.8 398.8 319
       vertex 381.2 398.8 40
       vertex 398.8 398.8 40
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex 381.2 381.2 320
+      vertex 381.2 381.2 319
       vertex 381.2 398.8 40
-      vertex 381.2 398.8 320
+      vertex 381.2 398.8 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex 381.2 398.8 40
-      vertex 381.2 381.2 320
+      vertex 381.2 381.2 319
       vertex 381.2 381.2 40
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
       vertex 398.8 381.2 40
-      vertex 381.2 381.2 320
-      vertex 398.8 381.2 320
+      vertex 381.2 381.2 319
+      vertex 398.8 381.2 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex 381.2 381.2 320
+      vertex 381.2 381.2 319
       vertex 398.8 381.2 40
       vertex 381.2 381.2 40
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -380 380 300
-      vertex -10 380 320
-      vertex -380 380 320
+      vertex 10 380 300
+      vertex 380 380 319
+      vertex 10 380 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex -10 380 320
-      vertex -380 380 300
-      vertex -10 380 300
+      vertex 380 380 319
+      vertex 10 380 300
+      vertex 380 380 300
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex 10 380 300
-      vertex 380 380 320
-      vertex 10 380 320
+      vertex -380 380 300
+      vertex -10 380 319
+      vertex -380 380 319
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex 380 380 320
-      vertex 10 380 300
-      vertex 380 380 300
+      vertex -10 380 319
+      vertex -380 380 300
+      vertex -10 380 300
     endloop
   endfacet
   facet normal 0 -1 0
@@ -2228,13 +1962,13 @@ solid OpenSCAD_Model
   facet normal 0 1 -0
     outer loop
       vertex 380 -380 300
-      vertex 10 -380 320
-      vertex 380 -380 320
+      vertex 10 -380 319
+      vertex 380 -380 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex 10 -380 320
+      vertex 10 -380 319
       vertex 380 -380 300
       vertex 10 -380 300
     endloop
@@ -2242,13 +1976,13 @@ solid OpenSCAD_Model
   facet normal 0 1 -0
     outer loop
       vertex -10 -380 300
-      vertex -380 -380 320
-      vertex -10 -380 320
+      vertex -380 -380 319
+      vertex -10 -380 319
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -380 -380 320
+      vertex -380 -380 319
       vertex -10 -380 300
       vertex -380 -380 300
     endloop
@@ -2339,15 +2073,15 @@ solid OpenSCAD_Model
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex -380 -380 320
+      vertex -380 -380 319
       vertex -380 380 300
-      vertex -380 380 320
+      vertex -380 380 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex -380 380 300
-      vertex -380 -380 320
+      vertex -380 -380 319
       vertex -380 -380 300
     endloop
   endfacet
@@ -2409,30 +2143,30 @@ solid OpenSCAD_Model
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex 10 -380 320
+      vertex 10 -380 319
       vertex 10 380 300
-      vertex 10 380 320
+      vertex 10 380 319
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
       vertex 10 380 300
-      vertex 10 -380 320
+      vertex 10 -380 319
       vertex 10 -380 300
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
       vertex -10 -380 300
-      vertex -10 380 320
+      vertex -10 380 319
       vertex -10 380 300
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex -10 380 320
+      vertex -10 380 319
       vertex -10 -380 300
-      vertex -10 -380 320
+      vertex -10 -380 319
     endloop
   endfacet
   facet normal -1 0 0
@@ -2508,15 +2242,15 @@ solid OpenSCAD_Model
   facet normal -1 0 0
     outer loop
       vertex 380 -380 300
-      vertex 380 380 320
+      vertex 380 380 319
       vertex 380 380 300
     endloop
   endfacet
   facet normal -1 -0 0
     outer loop
-      vertex 380 380 320
+      vertex 380 380 319
       vertex 380 -380 300
-      vertex 380 -380 320
+      vertex 380 -380 319
     endloop
   endfacet
   facet normal -1 0 0
@@ -2573,6 +2307,104 @@ solid OpenSCAD_Model
       vertex 398.8 380 318.8
       vertex 381.2 -380 318.8
       vertex 381.2 380 318.8
+    endloop
+  endfacet
+  facet normal -0 0 1
+    outer loop
+      vertex -400 400 321
+      vertex 400 -400 321
+      vertex 400 400 321
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 400 -400 321
+      vertex -400 400 321
+      vertex -400 -400 321
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 10 -380 319
+      vertex 380 380 319
+      vertex 380 -380 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex 380 380 319
+      vertex 10 -380 319
+      vertex 10 380 319
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex -380 -380 319
+      vertex -10 380 319
+      vertex -10 -380 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex -10 380 319
+      vertex -380 -380 319
+      vertex -380 380 319
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 381.2 -398.8 319
+      vertex 398.8 -381.2 319
+      vertex 398.8 -398.8 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex 398.8 -381.2 319
+      vertex 381.2 -398.8 319
+      vertex 381.2 -381.2 319
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 381.2 381.2 319
+      vertex 398.8 398.8 319
+      vertex 398.8 381.2 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex 398.8 398.8 319
+      vertex 381.2 381.2 319
+      vertex 381.2 398.8 319
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex -398.8 381.2 319
+      vertex -381.2 398.8 319
+      vertex -381.2 381.2 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex -381.2 398.8 319
+      vertex -398.8 381.2 319
+      vertex -398.8 398.8 319
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex -398.8 -398.8 319
+      vertex -381.2 -381.2 319
+      vertex -381.2 -398.8 319
+    endloop
+  endfacet
+  facet normal -0 0 -1
+    outer loop
+      vertex -381.2 -381.2 319
+      vertex -398.8 -398.8 319
+      vertex -398.8 -381.2 319
     endloop
   endfacet
 endsolid OpenSCAD_Model

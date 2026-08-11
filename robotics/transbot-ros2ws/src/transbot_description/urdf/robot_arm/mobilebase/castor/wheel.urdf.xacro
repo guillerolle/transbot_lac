@@ -3,16 +3,16 @@
 	<xacro:macro name="wheel" params="prefix='' name='wheel' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="2500">
-				<origin xyz="-7.088327089071997e-10 -2.809854818606764e-10 -1.3427359559848857e-10" rpy="0 0 0"></origin>
+				<origin xyz="-1.4404439742105716e-09 -9.755815930202686e-11 -1.3427359559848857e-10" rpy="0 0 0"></origin>
 				<mass value="0.49389696990450227"></mass>
-				<inertia ixx="0.0005393656238084077" ixy="-7.086922656820924e-13" ixz="-1.3026616352189632e-12" iyy="0.0005393657450743677" iyz="1.1819251146409114e-13" izz="0.0009120412869378921"></inertia>
+				<inertia ixx="0.0005393656844413878" ixy="-1.6565452019202284e-12" ixz="-1.3026615867004634e-12" iyy="0.000539365805707347" iyz="1.1819249929968234e-13" izz="0.0009120414082038516"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="file:$(find transbot_description)/meshes/robot_arm/mobilebase/castor/wheel.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="0.2 0.2 0.2 1"></color>
 				</material>
 			</visual>
 			<collision>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_arm_gripper">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm_gripper/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm_gripper/arm/arm.urdf.xacro"></xacro:include>
+	<xacro:macro name="robot_arm_gripper-ros2_control_gazebo" params="prefix='' name='robot_arm_gripper' suffix=''">
+		<xacro:mobilebase-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-ros2_control_gazebo>
+		<xacro:arm-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:arm-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="robot_arm_gripper-gz_reference" params="prefix='' name='robot_arm_gripper' suffix=''">
+		<xacro:mobilebase-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-gz_reference>
+		<xacro:arm-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:arm-gz_reference>
+	</xacro:macro>
+</robot>

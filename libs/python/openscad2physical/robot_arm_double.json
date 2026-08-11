@@ -11,24 +11,30 @@
         {
             "name": "mobilebase",
             "type": "assembly",
+            "rgba": "1 1 0 1",
             "components": [
                 {
                     "name": "chassis",
                     "type": "part",
-                    "density": 7850
+                    "density": 7850,
+                    "rgba": "1 1 0 1"
                 },
                 {
                     "name": "control",
-                    "type": "part"
+                    "type": "part",
+                    "rgba": "1 0 0 1",
+                    "density": 13800
                 },
                 {
                     "name": "diff",
                     "type": "assembly",
+                    "rgba": "1 1 0 1",
                     "components": [
                         {
                             "name": "wheel",
                             "type": "part",
                             "density": 2500,
+                            "rgba": "0.2 0.2 0.2 1",
                             "replica": ["0", "1"]
                         }
                     ]
@@ -46,6 +52,7 @@
                         {
                             "name": "wheel",
                             "type": "part",
+                            "rgba": "0.2 0.2 0.2 1",
                             "density": 2500
                         }
                     ]
@@ -59,22 +66,52 @@
                 {
                     "name": "link0",
                     "type": "part",
+                    "rgba": "1 0 0 1",
                     "density": 7850
                 },
                 {
                     "name": "link1",
                     "type": "part",
+                    "rgba": "0 1 0 1",
                     "density": 7850
                 },
                 {
                     "name": "link2",
                     "type": "part",
+                    "rgba": "0 0 1 1",
                     "density": 7850
                 },
                 {
                     "name": "link3",
                     "type": "part",
+                    "rgba": "1 1 0 1",
                     "density": 7850
+                },
+                {
+                    "name": "link4",
+                    "type": "part",
+                    "rgba": "1 0 1 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link5",
+                    "type": "part",
+                    "rgba": "0 1 1 1",
+                    "density": 7850
+                },
+                {
+                    "name": "ee",
+                    "type": "assembly",
+                    "rgba": "1 1 0 1",
+                    "density": 7850,
+                    "components": [
+                        {
+                            "name": "finger",
+                            "type": "part",
+                            "rgba": "1 1 0 1",
+                            "replica": ["0", "1"]
+                        } 
+                    ]
                 }
             ],
             "replica": ["0", "1"]

@@ -5,14 +5,14 @@
 			<inertial density="7850">
 				<origin xyz="0.056450207594748406 -0.03349064602744405 0.1647428397123363" rpy="0 0 0"></origin>
 				<mass value="1.2395891050497692"></mass>
-				<inertia ixx="0.007788682326140758" ixy="0.0018630969785883374" ixz="-0.0024671181075714473" iyy="0.012667418508987761" iyz="0.0014636844340220776" izz="0.009228004761305959"></inertia>
+				<inertia ixx="0.007788686206651491" ixy="0.0018630969785883374" ixz="-0.0024671181075714473" iyy="0.012667422389498487" iyz="0.0014636844340220776" izz="0.009228004761305959"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="file:$(find transbot_description)/meshes/robot_arm/arm/link2.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="0 0 1 1"></color>
 				</material>
 			</visual>
 			<collision>

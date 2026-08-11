@@ -18,18 +18,23 @@ def generate_launch_description():
         arguments=['diff_drive_controller']
     )
     
-    teleop_joy_launch = IncludeLaunchDescription(
+    teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('teleop_twist_joy'), 'launch', 'teleop-launch.py']),
+            PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
         ),
         launch_arguments={
-            'joy_vel': PythonExpression(['"/', LaunchConfiguration('robot_name'), '/diff_drive_controller/cmd_vel"']),
-            'publish_stamped_twist': 'true'
+            'robot_name': LaunchConfiguration('robot_name')
         }.items()
     )
     
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         diff_drive_controller,
-        teleop_joy_launch
+        teleop_launch,
+        Node(
+            package='controller_manager',
+            executable='spawner',
+            namespace=LaunchConfiguration('robot_name'),
+            arguments=['manipulator_pid_velocity_controller']
+        )
     ])

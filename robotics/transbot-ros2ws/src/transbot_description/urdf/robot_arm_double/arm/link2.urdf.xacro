@@ -3,16 +3,16 @@
 	<xacro:macro name="link2" params="prefix='' name='link2' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="7850">
-				<origin xyz="0.056450207594748406 -0.03349065776674958 0.1647428240599289" rpy="0 0 0"></origin>
-				<mass value="1.2395891050497692"></mass>
-				<inertia ixx="0.007788699385829961" ixy="0.0018630961571297015" ixz="-0.002467125023615723" iyy="0.012667436543383218" iyz="0.0014636836566302054" izz="0.009228003786599704"></inertia>
+				<origin xyz="0.056450215042177294 -0.033490648124281125 0.1647428500268251" rpy="0 0 0"></origin>
+				<mass value="1.2395890274395545"></mass>
+				<inertia ixx="0.007788687893755662" ixy="0.0018630966694110087" ixz="-0.002467116586706458" iyy="0.012667423368698215" iyz="0.0014636840058197906" izz="0.009228003879302643"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/arm/link2.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="0 0 1 1"></color>
 				</material>
 			</visual>
 			<collision>

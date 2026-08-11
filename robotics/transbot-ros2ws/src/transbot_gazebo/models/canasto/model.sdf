@@ -27,7 +27,7 @@
       </collision>
       
       <inertial>
-        <mass>1.0</mass>
+        <mass>30.0</mass>
         <inertia>
           <ixx>0.1</ixx>
           <ixy>0.0</ixy>
@@ -40,6 +40,95 @@
     </link>
     
     <!-- Más links (brazos, ruedas, etc.) -->
+    <link name="roller1">
+      <pose>0 0.16 -0.035 0 -1.5708 0</pose> 
+      <!-- <visual name="visual">
+        <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>0.200</length>
+            </cylinder> 
+        </geometry>
+        <material>
+          <diffuse>0.8 0.4 0.4 1.0</diffuse>
+        </material>
+      </visual> -->
+      
+      <collision name="collision">
+        <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>0.200</length>
+            </cylinder> 
+        </geometry>
+      </collision>
+      
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="j_roller1" type="continuous">
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <parent>canasto</parent>
+      <child>roller1</child>
+      <axis>
+        <xyz>1.0 0.0 0.0</xyz>
+      </axis> 
+    </joint>
+
+    <link name="roller2">
+      <pose>0 -0.16 -0.035 0 -1.5708 0</pose> 
+      <!-- <visual name="visual">
+        <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>0.200</length>
+            </cylinder> 
+        </geometry>
+        <material>
+          <diffuse>0.8 0.4 0.4 1.0</diffuse>
+        </material>
+      </visual> -->
+      
+      <collision name="collision">
+        <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>0.200</length>
+            </cylinder> 
+        </geometry>
+      </collision>
+      
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="j_roller2" type="continuous">
+      <pose>0.0 0.0 0 0.0 0.0 0.0</pose>
+      <parent>canasto</parent>
+      <child>roller2</child>
+      <axis>
+        <xyz>1.0 0.0 0.0</xyz>
+      </axis> 
+    </joint>
     
   </model>
 </sdf>

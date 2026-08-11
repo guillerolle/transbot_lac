@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ee">
+	<xacro:macro name="ee-ros2_control_gazebo" params="prefix='' name='ee' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}finger0">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}finger1">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+		</joint>
+	</xacro:macro>
+	<xacro:macro name="ee-gz_reference" params="prefix='' name='ee' suffix=''"></xacro:macro>
+</robot>

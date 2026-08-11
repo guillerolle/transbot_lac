@@ -1,198 +1,198 @@
 solid OpenSCAD_Model
   facet normal 1 0 0
     outer loop
-      vertex 50 425 1872
-      vertex 50 421 1868
-      vertex 50 425 -100
+      vertex 50 425 1372
+      vertex 50 421 1368
+      vertex 50 425 -50
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 50 425 1872
-      vertex 50 -421 1868
-      vertex 50 421 1868
+      vertex 50 425 1372
+      vertex 50 -421 1368
+      vertex 50 421 1368
     endloop
   endfacet
   facet normal 1 -0 0
     outer loop
-      vertex 50 -425 1872
-      vertex 50 -421 1868
-      vertex 50 425 1872
+      vertex 50 -425 1372
+      vertex 50 -421 1368
+      vertex 50 425 1372
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 50 -425 -100
-      vertex 50 -421 1868
-      vertex 50 -425 1872
+      vertex 50 -425 -50
+      vertex 50 -421 1368
+      vertex 50 -425 1372
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 50 -421 1868
-      vertex 50 -425 -100
-      vertex 50 -421 -100
+      vertex 50 -421 1368
+      vertex 50 -425 -50
+      vertex 50 -421 -50
     endloop
   endfacet
   facet normal 1 0 0
     outer loop
-      vertex 50 425 -100
-      vertex 50 421 1868
-      vertex 50 421 -100
+      vertex 50 425 -50
+      vertex 50 421 1368
+      vertex 50 421 -50
     endloop
   endfacet
   facet normal 0 0 -1
     outer loop
-      vertex -50 421 -100
-      vertex 50 425 -100
-      vertex 50 421 -100
+      vertex -50 421 -50
+      vertex 50 425 -50
+      vertex 50 421 -50
     endloop
   endfacet
   facet normal -0 0 -1
     outer loop
-      vertex 50 425 -100
-      vertex -50 421 -100
-      vertex -50 425 -100
+      vertex 50 425 -50
+      vertex -50 421 -50
+      vertex -50 425 -50
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 -421 -100
-      vertex -50 -425 -100
-      vertex -50 -421 1868
+      vertex -50 -421 -50
+      vertex -50 -425 -50
+      vertex -50 -421 1368
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 421 1868
-      vertex -50 425 -100
-      vertex -50 421 -100
+      vertex -50 421 1368
+      vertex -50 425 -50
+      vertex -50 421 -50
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 425 -100
-      vertex -50 421 1868
-      vertex -50 425 1872
+      vertex -50 425 -50
+      vertex -50 421 1368
+      vertex -50 425 1372
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 -421 1868
-      vertex -50 425 1872
-      vertex -50 421 1868
+      vertex -50 -421 1368
+      vertex -50 425 1372
+      vertex -50 421 1368
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 -421 1868
-      vertex -50 -425 1872
-      vertex -50 425 1872
+      vertex -50 -421 1368
+      vertex -50 -425 1372
+      vertex -50 425 1372
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -50 -425 1872
-      vertex -50 -421 1868
-      vertex -50 -425 -100
+      vertex -50 -425 1372
+      vertex -50 -421 1368
+      vertex -50 -425 -50
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
-      vertex 50 425 -100
-      vertex -50 425 1872
-      vertex 50 425 1872
+      vertex 50 425 -50
+      vertex -50 425 1372
+      vertex 50 425 1372
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -50 425 1872
-      vertex 50 425 -100
-      vertex -50 425 -100
+      vertex -50 425 1372
+      vertex 50 425 -50
+      vertex -50 425 -50
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -50 421 -100
-      vertex 50 421 1868
-      vertex -50 421 1868
+      vertex -50 421 -50
+      vertex 50 421 1368
+      vertex -50 421 1368
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex 50 421 1868
-      vertex -50 421 -100
-      vertex 50 421 -100
+      vertex 50 421 1368
+      vertex -50 421 -50
+      vertex 50 421 -50
     endloop
   endfacet
   facet normal 0 0 -1
     outer loop
-      vertex -50 -425 -100
-      vertex 50 -421 -100
-      vertex 50 -425 -100
+      vertex -50 -425 -50
+      vertex 50 -421 -50
+      vertex 50 -425 -50
     endloop
   endfacet
   facet normal -0 0 -1
     outer loop
-      vertex 50 -421 -100
-      vertex -50 -425 -100
-      vertex -50 -421 -100
+      vertex 50 -421 -50
+      vertex -50 -425 -50
+      vertex -50 -421 -50
     endloop
   endfacet
   facet normal 0 1 -0
     outer loop
-      vertex 50 -421 -100
-      vertex -50 -421 1868
-      vertex 50 -421 1868
+      vertex 50 -421 -50
+      vertex -50 -421 1368
+      vertex 50 -421 1368
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -50 -421 1868
-      vertex 50 -421 -100
-      vertex -50 -421 -100
+      vertex -50 -421 1368
+      vertex 50 -421 -50
+      vertex -50 -421 -50
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -50 -425 -100
-      vertex 50 -425 1872
-      vertex -50 -425 1872
+      vertex -50 -425 -50
+      vertex 50 -425 1372
+      vertex -50 -425 1372
     endloop
   endfacet
   facet normal 0 -1 -0
     outer loop
-      vertex 50 -425 1872
-      vertex -50 -425 -100
-      vertex 50 -425 -100
+      vertex 50 -425 1372
+      vertex -50 -425 -50
+      vertex 50 -425 -50
     endloop
   endfacet
   facet normal -0 0 1
     outer loop
-      vertex -50 425 1872
-      vertex 50 -425 1872
-      vertex 50 425 1872
+      vertex -50 425 1372
+      vertex 50 -425 1372
+      vertex 50 425 1372
     endloop
   endfacet
   facet normal 0 0 1
     outer loop
-      vertex 50 -425 1872
-      vertex -50 425 1872
-      vertex -50 -425 1872
+      vertex 50 -425 1372
+      vertex -50 425 1372
+      vertex -50 -425 1372
     endloop
   endfacet
   facet normal 0 0 -1
     outer loop
-      vertex -50 -421 1868
-      vertex 50 421 1868
-      vertex 50 -421 1868
+      vertex -50 -421 1368
+      vertex 50 421 1368
+      vertex 50 -421 1368
     endloop
   endfacet
   facet normal -0 0 -1
     outer loop
-      vertex 50 421 1868
-      vertex -50 -421 1868
-      vertex -50 421 1868
+      vertex 50 421 1368
+      vertex -50 -421 1368
+      vertex -50 421 1368
     endloop
   endfacet
 endsolid OpenSCAD_Model

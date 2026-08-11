@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm_gripper/mobilebase/diff/diff.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm_gripper/mobilebase/castor/castor.urdf.xacro"></xacro:include>
+	<xacro:macro name="mobilebase-ros2_control_gazebo" params="prefix='' name='mobilebase' suffix=''">
+		<xacro:diff-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="mobilebase-gz_reference" params="prefix='' name='mobilebase' suffix=''">
+		<xacro:diff-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-gz_reference>
+	</xacro:macro>
+</robot>

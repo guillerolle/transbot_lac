@@ -1,0 +1,86 @@
+{
+    "scad": "logical/MMR/MM-PullingClaw.scad",
+    "density": 7850,
+    "ros_pkg_description": "transbot_description",
+    "ros_pkg_gazebo": "transbot_gazebo",
+    "params":{
+    },
+    "components": [
+        {
+            "name": "mobilebase",
+            "type": "assembly",
+            "rgba": "1 1 0 1",
+            "components": [
+                {
+                    "name": "chassis",
+                    "type": "part",
+                    "density": 7850,
+                    "rgba": "1 1 0 1"
+                },
+                {
+                    "name": "control",
+                    "type": "part",
+                    "rgba": "1 0 0 1",
+                    "density": 13800
+                },
+                {
+                    "name": "diff",
+                    "type": "assembly",
+                    "rgba": "1 1 0 1",
+                    "components": [
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "density": 2500,
+                            "rgba": "0.2 0.2 0.2 1",
+                            "replica": ["0", "1"]
+                        }
+                    ]
+                },
+                {
+                    "name": "castor",
+                    "type": "assembly",
+                    "replica": ["0", "1"],
+                    "components": [
+                        {
+                            "name": "arm",
+                            "type": "part",
+                            "density": 7850
+                        },
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "rgba": "0.2 0.2 0.2 1",
+                            "density": 2500
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "manipulator",
+            "type": "assembly",
+            "density": 7850,
+            "components": [
+                {
+                    "name": "table",
+                    "type": "part",
+                    "rgba": "0.7 0.2 0.2 1",
+                    "density": 7850
+                },
+                {
+                    "name": "slider",
+                    "type": "part",
+                    "rgba": "0.2 0.7 0.2 1",
+                    "density": 7850
+                },
+                {
+                    "name": "claw",
+                    "type": "part",
+                    "rgba": "0.2 0.2 0.7 1",
+                    "density": 7850
+                }
+            ]
+        }
+    ]
+}

@@ -3,16 +3,16 @@
 	<xacro:macro name="portico" params="prefix='' name='portico' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="7850">
-				<origin xyz="6.334420083334617e-10 0.0 1.0591069298758413" rpy="0 0 0"></origin>
-				<mass value="1.914397192498048"></mass>
-				<inertia ixx="1.0821965894335586" ixy="-2.425319204727809e-10" ixz="1.2843361884440932e-09" iyy="0.7816162398331112" iyz="-9.934107462565105e-07" izz="0.30377101199216366"></inertia>
+				<origin xyz="6.16857676070328e-10 0.0 0.8229599125021437" rpy="0 0 0"></origin>
+				<mass value="1.4743995852768421"></mass>
+				<inertia ixx="0.5457702315565264" ixy="-1.2126596023639044e-10" ixz="7.484776801922124e-10" iyy="0.3235510188676326" iyz="2.483526865641276e-07" izz="0.22467654562206008"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
 					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/manipulator/portico.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="0.7 0.2 0.2 1"></color>
 				</material>
 			</visual>
 			<collision>

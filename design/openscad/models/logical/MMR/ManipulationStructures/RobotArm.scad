@@ -58,7 +58,7 @@ module link3(){
     }
 }
 
-module RobotArm(display="*", prefix=""){
+module RobotArm(display="*", prefix="", joint=[false, false, false, false, false]){
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
     _s = _xdisp[1];
@@ -67,16 +67,39 @@ module RobotArm(display="*", prefix=""){
         FixedJoint(name="link0", prefix=prefix)
         _link0();   
        
-       ContinuousJoint(name="link1", prefix=str_join([prefix,"link0"]), p_translate=[0, 0, 200], axis=[0,0,1], 
+       RevoluteJoint(name="link1", prefix=str_join([prefix,"link0"]), p_translate=[0, 0, 200], axis=[0,0,1], angle=joint[0],
         command_interfaces=["position","velocity","effort"]){
           _link1();
            
-          ContinuousJoint(name="link2", prefix=str_join([prefix,"link0/link1"]), p_translate=[100, -60, 200], p_rotate=[90,0,90],axis=[0,0,1], 
+          RevoluteJoint(name="link2", prefix=str_join([prefix,"link0/link1"]), p_translate=[100, -60, 200], p_rotate=[90,0,90],axis=[0,0,1], angle=joint[1],
            command_interfaces=["position","velocity","effort"]){
           _link2();
-              ContinuousJoint(name="link3", prefix=str_join([prefix,"link0/link1/link2"]), p_translate=[100, -60, 200], p_rotate=[90,0,90],axis=[0,0,1], 
-              command_interfaces=["position","velocity","effort"]){
+               
+              RevoluteJoint(name="link3", prefix=str_join([prefix,"link0/link1/link2"]), p_translate=[100, -60, 200], p_rotate=[90,0,90],axis=[0,0,1], angle=joint[2],
+              command_interfaces=["position","velocity","effort"])
+               {
               _link3();
+              RevoluteJoint(name="link4",
+                   prefix=str_join([prefix,"link0/link1/link2/link3"]),
+                   p_translate=[100, -60, 200], p_rotate=[90,0,90], axis=[0,0,1],                  angle=joint[3],
+                   command_interfaces=["position","velocity","effort"])
+                  {
+                    _link4();
+                    RevoluteJoint(name="link5",
+                       prefix=str_join([prefix,"link0/link1/link2/link3/link4"]),
+                       p_translate=[180, -60, 200], p_rotate=[90,0,90], axis=[0,0,1], angle=joint[4],                  
+                       command_interfaces=["position","velocity","effort"])
+                      {
+                        _link5();
+                        //ReferenceFrame(factor=200);
+                        if ($children > 0) {
+                            FixedJoint(name="ee", prefix=str_join([prefix,"link0/link1/link2/link3/link4/link5"]), p_translate=[0, 0, 5]){   
+                                //ReferenceFrame(factor=200);
+                                children();
+                            }
+                        }
+                      }
+                  }
                }
            }
        } 
@@ -89,6 +112,12 @@ module RobotArm(display="*", prefix=""){
         _link2();
     } else if(_d=="link3"){
         _link3();
+    } else if(_d=="link4"){
+        _link4();
+    } else if(_d=="link5"){
+        _link5();
+    } else if(_d=="ee"){
+        children();
     } else {
         echo(str_join(["Unknown component: <", _d, ">"]));
     } 
@@ -116,8 +145,60 @@ module RobotArm(display="*", prefix=""){
         color([1, 1, 0])
         link3();
     }
+    
+    module _link4(){
+        //ReferenceFrame(factor=200);
+        color([1, 0, 1])
+        link3();
+    }
+    
+    module _link5(){
+        //ReferenceFrame(factor=200);
+        color([0, 1, 1])
+        cylinder(h = 5, d=60);
+    }
 }
 
+module Gripper(display="*", prefix=""){
+    _xdisp = extract_assembly_parts(display);
+    _d = _xdisp[0];
+    _s = _xdisp[1];
+    
+    
+    if (_d=="*"){
+        __dash();
+        PrismaticJoint(name="finger0", prefix=prefix, p_translate=[-40,0,0], limits=[0, 40], axis=[1,0,0])
+            _finger();
+        
+        PrismaticJoint(name="finger1", prefix=prefix, p_translate=[40,0,0], limits=[0, 40], axis=[-1,0,0], mimic=["finger0"])
+            _finger();
+    } else if(_d=="_"){
+        __dash();
+    } else if(_d=="finger"){
+        _finger();
+    } else {
+        echo(str_join(["Unknown component: <", _d, ">"]));
+    } 
+    
+    module __dash(){
+        //ReferenceFrame(factor=100);
+        color([1,1,0])
+        cube(size=[80, 20, 10], center=true);
+    }
+    module _finger(){
+        //ReferenceFrame(factor=100);
+        color([1,1,0])
+        translate([0, 0, 25])
+        cube(size=[10, 20, 50], center=true);
+    }
+    
+}
 
-
-RobotArm(display="*");
+display="*";
+_xdisp = extract_assembly_parts(display);
+_d = _xdisp[0];
+_s = _xdisp[1];
+RobotArm(display=_d){
+    Gripper(display=_s, prefix="link0/link1/link2/link3/link4/link5/ee");
+}
+echo(display, _d, _s);

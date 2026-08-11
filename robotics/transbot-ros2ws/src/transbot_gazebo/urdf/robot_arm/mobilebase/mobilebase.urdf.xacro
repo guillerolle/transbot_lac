@@ -3,24 +3,11 @@
 	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm/mobilebase/diff/diff.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/robot_arm/mobilebase/castor/castor.urdf.xacro"></xacro:include>
 	<xacro:macro name="mobilebase-ros2_control_gazebo" params="prefix='' name='mobilebase' suffix=''">
-		<joint name="j/${prefix}${name}${suffix}control">
-			<state_interface name="position">
-				<param name="initial_value">0.0</param>
-			</state_interface>
-			<state_interface name="velocity"></state_interface>
-			<state_interface name="effort"></state_interface>
-			<command_interface name="position"></command_interface>
-		</joint>
 		<xacro:diff-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-ros2_control_gazebo>
 		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-ros2_control_gazebo>
 		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-ros2_control_gazebo>
 	</xacro:macro>
 	<xacro:macro name="mobilebase-gz_reference" params="prefix='' name='mobilebase' suffix=''">
-		<gazebo reference="j/${prefix}${name}${suffix}control">
-			<implicitSpringDamper>true</implicitSpringDamper>
-			<springStiffness>200</springStiffness>
-			<springReference>0.0</springReference>
-		</gazebo>
 		<xacro:diff-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-gz_reference>
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-gz_reference>
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-gz_reference>

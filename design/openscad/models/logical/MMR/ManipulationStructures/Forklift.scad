@@ -32,7 +32,7 @@ module Unna(length=400, side=75, thickness=2){
     }
 }
 
-module MForklift(display="*", prefix="", width=500, height=1500, length=400, thickness=4, side=100, unna_side=75, joint_z=sin($t*180)^2, joint_y=cos($t*180)^2, joint_z_0 = 0.2){
+module MForklift(display="*", prefix="", width=500, height=1500, length=400, thickness=4, side=100, unna_side=75, joint_z=false, joint_y=false, joint_z_0 = 0.2){
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -43,15 +43,15 @@ module MForklift(display="*", prefix="", width=500, height=1500, length=400, thi
         _portico();
         
         joint_z_lims=[-0, height-100];
-        PrismaticJoint(name="horquilla", prefix=str_join([prefix,"/portico"]), axis=[0,0,1], limits=joint_z_lims, command_interfaces=["velocity", "effort"]){
+        PrismaticJoint(name="horquilla", prefix=str_join([prefix,"/portico"]), axis=[0,0,1], limits=joint_z_lims, command_interfaces=["velocity", "effort"], draw=false, pos=(joint_z==false?joint_z_lims[0]:joint_z)){
             _horquilla();
             //ReferenceFrame(factor=100);
             
-            PrismaticJoint(name="unna0", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,-1,0], p_translate=[side/2+25, -1*side/2, -side], limits=[ width/2-side, 0], command_interfaces=["velocity", "effort"]){
+            PrismaticJoint(name="unna0", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,-1,0], p_translate=[side/2+25, -1*side/2, -side], limits=[ 0, width/2-side], command_interfaces=["velocity", "effort"], draw=false, pos=(joint_y==false?width/2-side:joint_y)){
                 _unna();
             }
             
-            PrismaticJoint(name="unna1", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,1,0], p_translate=[side/2+25, 1*side/2, -side], limits=[ width/2-side, 0], mimic=["unna0"]){
+            PrismaticJoint(name="unna1", prefix=str_join([prefix,"/portico/horquilla"]), axis=[0,1,0], p_translate=[side/2+25, 1*side/2, -side], limits=[ 0, width/2-side], mimic=["unna0"], draw=false, pos=(joint_y==false?width/2-side:joint_y)){
                 _unna();
             }
 

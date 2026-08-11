@@ -7,7 +7,7 @@ use <../Chassis/Chassis02.scad>
 use <../Chassis/Cubierta.scad>
 use <../ControlModule/ControlModule.scad>
 
-module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100){
+module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false){
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -31,13 +31,13 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
         _diffmodule();
         
     } else if (differential_suspension=="P") {
-        PrismaticJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5, 0, fwheel_d/2], axis=[0,0,1], limits=[0,-50]){
+        PrismaticJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5, 0, fwheel_d/2], axis=[0,0,1], limits=[0,-50], draw=true){
         ReferenceFrame(factor=100);
         _diffmodule();
         }
         
     } else if (differential_suspension=="RR") {
-        ContinuousJoint(name="doublebar", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d/2], axis=[0,1,0], spring=[200], damping=[10]){
+        RevoluteJoint(name="doublebar", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d/2], axis=[0,1,0], spring=[200], damping=[10], limits=[-10,10], draw=true){
             _doublebar();
             }
         }
@@ -49,9 +49,13 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
     
         FixedJoint(name="castor1", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180])
         _castor();
-        
-        PrismaticJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0, 0, +90], axis=[0,-1,0], limits=[0, 500], command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
-        _controlmodule();
+        if (fixed_control==false) {
+            PrismaticJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0, 0, +90], axis=[0,-1,0], limits=[0, 500], pos=0, command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
+            _controlmodule();
+        } else {
+            FixedJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0,0,90])
+            _controlmodule();
+        }
         
     } else if (_d=="_") {
         // MAIN LINK 
@@ -83,8 +87,8 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
         
         if (_d=="*"){
             __doublebar();
-            ContinuousJoint(name="diff", prefix=str_join([prefix, "/doublebar"]), p_translate=[-double_bar_offset, 0, 0], axis=[1,0,0],
-            spring=[200], damping=[10]){
+            RevoluteJoint(name="diff", prefix=str_join([prefix, "/doublebar"]), p_translate=[-double_bar_offset, 0, 0], axis=[1,0,0], limits=[-5, 5],
+            spring=[200], damping=[10], draw=true){
                 _diffmodule(display=_s, prefix=str_join([prefix, "/doublebar"]));
             }
         } else if (_d=="_"){
@@ -123,15 +127,15 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
 
 
 
-DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false);
+/*DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false);
 
 translate([0,1000,0])
 DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=true);
-//
+// */
 
-translate([0,2000,0])
+/*translate([0,2000,0])
 DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differential_suspension="P");
 // */
 
 translate([0,3000,0])
-DD4W_Rigid(display="doublebar/diff", display_bbox=false, force_internal_castor=false, differential_suspension="RR");
+DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differential_suspension="RR"); //*/

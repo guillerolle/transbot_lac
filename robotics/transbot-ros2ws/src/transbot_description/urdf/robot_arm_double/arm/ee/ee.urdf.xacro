@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ee">
+	<xacro:macro name="ee" params="prefix='' name='ee' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+				<mass value="0.016000002991252888"></mass>
+				<inertia ixx="6.666668698566506e-07" ixy="-0.0" ixz="-0.0" iyy="8.666669308136457e-06" iyz="-0.0" izz="9.066669430050448e-06"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/arm/ee/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/arm/ee/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_double/arm/ee/finger.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}finger0" type="prismatic">
+			<origin xyz="-0.04 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}finger0"></child>
+			<axis xyz="1 0 0"></axis>
+			<limit lower="0.0" upper="0.04" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}finger1" type="prismatic">
+			<origin xyz="0.04 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}finger1"></child>
+			<mimic joint="j/${prefix}${name}${suffix}finger0" multiplier="1" offset="0"></mimic>
+			<axis xyz="-1 0 0"></axis>
+			<limit lower="0.0" upper="0.04" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:finger prefix="${prefix}${name}${suffix}" suffix="0"></xacro:finger>
+		<xacro:finger prefix="${prefix}${name}${suffix}" suffix="1"></xacro:finger>
+	</xacro:macro>
+</robot>

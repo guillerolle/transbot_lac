@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff">
+	<xacro:macro name="diff" params="prefix='' name='diff' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="-1.2249183139017988e-11 1.8496266539917165e-09 1.1655863330721805e-10" rpy="0 0 0"></origin>
+				<mass value="0.19335785570243993"></mass>
+				<inertia ixx="0.006198695335513092" ixy="2.3684757420590415e-13" ixz="1.8388068569287854e-14" iyy="9.59747363064404e-06" iyz="-1.243449745894164e-12" izz="0.0061986953388289585"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_gripper/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_gripper/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_gripper/mobilebase/diff/wheel.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}wheel0" type="continuous">
+			<origin xyz="0.0 -0.28 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel0"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel1" type="continuous">
+			<origin xyz="0.0 0.28 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel1"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="0"></xacro:wheel>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="1"></xacro:wheel>
+	</xacro:macro>
+</robot>

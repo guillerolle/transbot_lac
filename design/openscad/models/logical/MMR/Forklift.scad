@@ -4,7 +4,8 @@ use <RobotUtils/core.scad>
 use <MobileBase/DifferentialDrives/FourWheels.scad>
 use <ManipulationStructures/Forklift.scad>
 
-module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=false, cwheel_h=130, differential_axle_suspension="", force_internal_castor=false){
+module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=false, cwheel_h=130, differential_axle_suspension="", force_internal_castor=false, 
+    manipulator_joint=[false, false, false]){
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
     _s = _xdisp[1];
@@ -20,7 +21,8 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
         _mobilebase();
         
         
-        PrismaticJoint(name="manipulator", prefix=prefix, p_translate=[+bbox[0]/2-50, 0, cwheel_h], axis=[-1,0,0], limits=[0, bbox[0]-100], command_interfaces=["velocity", "effort"])
+        PrismaticJoint(name="manipulator", prefix=prefix, p_translate=[+bbox[0]/2-50, 0, cwheel_h], axis=[-1,0,0], limits=[0, bbox[0]-100], command_interfaces=["velocity", "effort"], draw=true, 
+        pos=manipulator_joint[0]==false?0:manipulator_joint[0])
         _manipulator();
         
     } else if(_d=="mobilebase"){
@@ -37,12 +39,13 @@ module Forklift(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=fals
     }
     
     module _manipulator(){
-        MForklift(display=_s, prefix=get_full_prefix(prefix, "manipulator"), height=bbox[2]-cwheel_h, width=bbox[1]+50, length=500);
+        MForklift(display=_s, prefix=get_full_prefix(prefix, "manipulator"), height=bbox[2]-cwheel_h, width=bbox[1]+50, length=500, joint_z=manipulator_joint[1], joint_y=manipulator_joint[2]);
     }
 }
 
 display="*";
-extra_wide=false;
-differential_axle_suspension = "RR";
+extra_wide=true;
+differential_axle_suspension = "";
 force_internal_castor = false;
-Forklift(display=display, bbox=[800, extra_wide? 800:600, 1500], display_bbox=false, differential_axle_suspension=differential_axle_suspension, force_internal_castor=force_internal_castor);
+manipulator_joint = [700, 450, 100];
+Forklift(display=display, bbox=[800, extra_wide? 800:600, 1500], display_bbox=false, differential_axle_suspension=differential_axle_suspension, force_internal_castor=force_internal_castor, manipulator_joint=manipulator_joint);

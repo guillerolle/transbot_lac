@@ -1,0 +1,119 @@
+{
+    "scad": "logical/MMR/MM-RobotArm.scad",
+    "density": 7850,
+    "ros_pkg_description": "transbot_description",
+    "ros_pkg_gazebo": "transbot_gazebo",
+    "params":{
+        "extra_wide": false,
+        "differential_axle_suspension": ""
+    },
+    "components": [
+        {
+            "name": "mobilebase",
+            "type": "assembly",
+            "rgba": "1 1 0 1",
+            "components": [
+                {
+                    "name": "chassis",
+                    "type": "part",
+                    "density": 7850,
+                    "rgba": "1 1 0 1"
+                },
+                {
+                    "name": "control",
+                    "type": "part",
+                    "rgba": "1 0 0 1",
+                    "density": 13800
+                },
+                {
+                    "name": "diff",
+                    "type": "assembly",
+                    "rgba": "1 1 0 1",
+                    "components": [
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "density": 2500,
+                            "rgba": "0.2 0.2 0.2 1",
+                            "replica": ["0", "1"]
+                        }
+                    ]
+                },
+                {
+                    "name": "castor",
+                    "type": "assembly",
+                    "replica": ["0", "1"],
+                    "components": [
+                        {
+                            "name": "arm",
+                            "type": "part",
+                            "density": 7850
+                        },
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "rgba": "0.2 0.2 0.2 1",
+                            "density": 2500
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "arm",
+            "type": "assembly",
+            "components": [
+                {
+                    "name": "link0",
+                    "type": "part",
+                    "rgba": "1 0 0 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link1",
+                    "type": "part",
+                    "rgba": "0 1 0 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link2",
+                    "type": "part",
+                    "rgba": "0 0 1 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link3",
+                    "type": "part",
+                    "rgba": "1 1 0 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link4",
+                    "type": "part",
+                    "rgba": "1 0 1 1",
+                    "density": 7850
+                },
+                {
+                    "name": "link5",
+                    "type": "part",
+                    "rgba": "0 1 1 1",
+                    "density": 7850
+                },
+                {
+                    "name": "ee",
+                    "type": "assembly",
+                    "rgba": "1 1 0 1",
+                    "density": 7850,
+                    "components": [
+                        {
+                            "name": "finger",
+                            "type": "part",
+                            "rgba": "1 1 0 1",
+                            "replica": ["0", "1"]
+                        } 
+                    ]
+                }
+            ]
+        }
+    ]
+}

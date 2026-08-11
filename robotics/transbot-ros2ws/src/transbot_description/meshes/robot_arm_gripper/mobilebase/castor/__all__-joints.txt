@@ -1,0 +1,2 @@
+ECHO: ["joint", "continuous", "mobilebase/castor/arm", "xyz: [0, 0, -10]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "continuous", "mobilebase/castor/arm/wheel", "xyz: [40, 0, -60]", "rpy: [90, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]

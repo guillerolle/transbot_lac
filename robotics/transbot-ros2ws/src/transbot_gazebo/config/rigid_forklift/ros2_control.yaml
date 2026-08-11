@@ -15,6 +15,9 @@
     manipulator_pid_velocity_controller:
       type: pid_controller/PidController
 
+    manipulator_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
 /**/manipulator_pid_effort_controller:
   ros__parameters:
     use_sim_time: true
@@ -40,12 +43,21 @@
       - j/manipulator/unna0
     
     command_interface: velocity 
-    reference_and_state_interfaces: ["position", "velocity"]
+    reference_and_state_interfaces: ["velocity"]
 
     gains:
-      j/manipulator/_ : {p: 1.0}
-      j/manipulator/horquilla: {p: 1.0}
-      j/manipulator/unna0 : {p: 1.0}
+      j/manipulator/_ : {p: 0.5}
+      j/manipulator/horquilla: {p: 0.5}
+      j/manipulator/unna0 : {p: 0.5}
+
+/**/manipulator_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - j/manipulator/_
+      - j/manipulator/horquilla
+      - j/manipulator/unna0
+    
+    interface_name: velocity
 
 /**/diff_drive_controller:
   ros__parameters:

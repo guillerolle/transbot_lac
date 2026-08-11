@@ -8,7 +8,7 @@ use <RobotUtils/profiles.scad>
 module Assy_PullingClaw(display="*", prefix="", 
         base_diameter=300, base_height=50, base_thickness=3,
         j_table_limit_high=1500, table_size=[800, 600, 3], 
-        slider_claw_axis_z=100, claw_height = 600){
+        slider_claw_axis_z=100, claw_height = 600, joint = [false, false, false]){
             
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -17,20 +17,20 @@ module Assy_PullingClaw(display="*", prefix="",
     if (_d=="*"){
         part_baseplate();
         
-        PrismaticJoint(name="table", prefix=prefix, p_translate=[0, 0, base_height], limits=[0, j_table_limit_high, 1e9, 1],
-            command_interfaces=["velocity", "effort"]){
+        PrismaticJoint(name="table", prefix=prefix, p_translate=[0, 0, base_height], limits=[0, j_table_limit_high, 1e9, 1], pos=(joint[0]==false?0:joint[0]),
+            command_interfaces=["velocity", "effort"], draw=false){
             part_table();
-            
+            //ReferenceFrame(factor=200);
             PrismaticJoint(name="table/slider", prefix=prefix, axis=[1,0,0],
-                limits=[-table_size[0]/2, +table_size[0]/2, 1e9, 1],
-                command_interfaces=["velocity", "effort"]){
+                limits=[-table_size[0]/2, +table_size[0]/2, 1e9, 1], draw=false,
+                command_interfaces=["velocity", "effort"], pos=(joint[1]==false?-table_size[0]/2:joint[1])){
                     
                     part_slider();
                     //ReferenceFrame(factor=100);
                     
-                    ContinuousJoint(name="table/slider/claw", prefix=prefix, 
+                    RevoluteJoint(name="table/slider/claw", prefix=prefix, 
                         p_translate=[0,0,slider_claw_axis_z], p_rotate=[-90,0,0], axis=[0,0,1],
-                        command_interfaces=["velocity", "effort"]){
+                        command_interfaces=["velocity", "effort"], limits=[-90, 90], angle=joint[2], draw=false){
                             //ReferenceFrame(factor=100);
                             part_claw();
                 }

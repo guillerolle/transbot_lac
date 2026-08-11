@@ -27,10 +27,11 @@
 			<child link="${prefix}${name}${suffix}castor1/_"></child>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}control" type="prismatic">
-			<origin xyz="0.0 0.0 0.17" rpy="0.0 0.0 0.0"></origin>
+			<origin xyz="0.075 0.0 0.17" rpy="0.0 0.0 1.5707963267948966"></origin>
 			<parent link="${prefix}${name}${suffix}_"></parent>
 			<child link="${prefix}${name}${suffix}control"></child>
-			<axis xyz="1 0 0"></axis>
+			<dynamics damping="10" friction="10"></dynamics>
+			<axis xyz="0 -1 0"></axis>
 			<limit lower="0.0" upper="0.5" effort="1000000.0" velocity="1000000.0"></limit>
 		</joint>
 		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>

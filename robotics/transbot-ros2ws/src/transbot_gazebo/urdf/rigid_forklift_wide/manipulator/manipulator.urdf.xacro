@@ -27,4 +27,5 @@
 			<state_interface name="effort"></state_interface>
 		</joint>
 	</xacro:macro>
+	<xacro:macro name="manipulator-gz_reference" params="prefix='' name='manipulator' suffix=''"></xacro:macro>
 </robot>

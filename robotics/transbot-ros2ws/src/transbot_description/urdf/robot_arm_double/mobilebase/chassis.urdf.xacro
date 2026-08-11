@@ -12,7 +12,7 @@
 					<mesh filename="file:$(find transbot_description)/meshes/robot_arm_double/mobilebase/chassis.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="1 1 0 1"></color>
 				</material>
 			</visual>
 			<collision>

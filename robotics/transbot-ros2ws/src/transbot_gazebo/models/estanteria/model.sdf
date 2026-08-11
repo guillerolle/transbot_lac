@@ -22,7 +22,7 @@
               <uri>meshes/estanteria.stl</uri>
               <scale>1e-3 1e-3 1e-3</scale>
             </mesh>
-        </geometry>
+        </geometry>        
       </collision>
       
       <inertial>

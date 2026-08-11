@@ -22,7 +22,7 @@ def generate_launch_description():
         package='controller_manager',
         executable='spawner',
         namespace=LaunchConfiguration('robot_name'),
-        arguments=['manipulator_pid_effort_controller']
+        arguments=['manipulator_pid_velocity_controller']
     )
     
     teleop_launch = IncludeLaunchDescription(

@@ -4,7 +4,7 @@ use <RobotUtils/core.scad>
 use <MobileBase/DifferentialDrives/FourWheels.scad>
 use <ManipulationStructures/PullingClaw.scad>
 
-module MobileManipulator(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=false, cwheel_h=130, differential_axle_suspension="", force_internal_castor=false){
+module MobileManipulator(display="*", prefix="", bbox=[800, 600, 2000], display_bbox=false, cwheel_h=130, differential_axle_suspension="", force_internal_castor=false, manipulator_joints=[false, false, false]){
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
     _s = _xdisp[1];
@@ -37,7 +37,7 @@ module MobileManipulator(display="*", prefix="", bbox=[800, 600, 2000], display_
     }
     
     module _manipulator(){
-        Assy_PullingClaw(display=_s, prefix=get_full_prefix(prefix, "manipulator"));
+        Assy_PullingClaw(display=_s, prefix=get_full_prefix(prefix, "manipulator"), joint=manipulator_joints, j_table_limit_high=1000);
     }
 }
 
@@ -45,4 +45,5 @@ display="*";
 extra_wide=false;
 differential_axle_suspension = "";
 force_internal_castor = false;
-MobileManipulator(display=display, bbox=[800, extra_wide? 800:600, 1500], display_bbox=false, differential_axle_suspension=differential_axle_suspension, force_internal_castor=force_internal_castor);
+manipulator_joints = [500, 250, 90];
+MobileManipulator(display=display, bbox=[800, extra_wide? 800:600, 1500], display_bbox=false, differential_axle_suspension=differential_axle_suspension, force_internal_castor=force_internal_castor, manipulator_joints=manipulator_joints);

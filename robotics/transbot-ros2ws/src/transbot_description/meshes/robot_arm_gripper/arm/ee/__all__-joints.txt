@@ -1,0 +1,2 @@
+ECHO: ["joint", "prismatic", "arm/ee/finger0", "xyz: [-40, 0, 0]", "rpy: [0, 0, 0]", "axis: [1, 0, 0]", "limits: [0, 40]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "prismatic", "arm/ee/finger1", "xyz: [40, 0, 0]", "rpy: [0, 0, 0]", "axis: [-1, 0, 0]", "limits: [0, 40]", "command_interfaces: []", "mimic: [\"finger0\"]", "spring: []", "damping: []", "friction: []"]

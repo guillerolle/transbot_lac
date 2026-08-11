@@ -7,67 +7,34 @@
         "extra_wide": false,
         "differential_axle_suspension": ""
     },
-    "__components__old": [
-        "*",
-        "_",
-        "mobilebase/*",
-        "mobilebase/_",
-        "mobilebase/chassis",
-        "mobilebase/diff/*",
-        "mobilebase/diff/_",
-        "mobilebase/diff/wheel",
-        "mobilebase/control",
-        "mobilebase/castor/*",
-        "mobilebase/castor/_",
-        "mobilebase/castor/arm",
-        "mobilebase/castor/wheel",
-        "manipulator/*",
-        "manipulator/portico",
-        "manipulator/horquilla",
-        "manipulator/unna"
-    ],
-    "_components": [
-        {
-            "mobilebase": [
-                { "chassis": {"density": 7850}},
-                "control",
-                { "diff" : [
-                    { "wheel": {"density": 2500}}
-                ]},
-                { "castor": [
-                    { "arm": {"density": 7850}},
-                    { "wheel": {"density": 2500}}
-                ]}
-            ]
-        },
-        { "manipulator": [
-            { "portico": {"density": 7850}},
-            { "horquilla": {"density": 7850}},
-            { "unna": {"density": 7850}}
-        ]}
-    ],
     "components": [
         {
             "name": "mobilebase",
             "type": "assembly",
+            "rgba": "1 1 0 1",
             "components": [
                 {
                     "name": "chassis",
                     "type": "part",
-                    "density": 7850
+                    "density": 7850,
+                    "rgba": "1 1 0 1"
                 },
                 {
                     "name": "control",
-                    "type": "part"
+                    "type": "part",
+                    "rgba": "1 0 0 1",
+                    "density": 13800
                 },
                 {
                     "name": "diff",
                     "type": "assembly",
+                    "rgba": "1 1 0 1",
                     "components": [
                         {
                             "name": "wheel",
                             "type": "part",
                             "density": 2500,
+                            "rgba": "0.2 0.2 0.2 1",
                             "replica": ["0", "1"]
                         }
                     ]
@@ -85,6 +52,7 @@
                         {
                             "name": "wheel",
                             "type": "part",
+                            "rgba": "0.2 0.2 0.2 1",
                             "density": 2500
                         }
                     ]
@@ -98,17 +66,20 @@
                 {
                     "name": "portico",
                     "type": "part",
+                    "rgba": "0.7 0.2 0.2 1",
                     "density": 7850
                 },
                 {
                     "name": "horquilla",
                     "type": "part",
+                    "rgba": "0.2 0.7 0.2 1",
                     "density": 7850
                 },
                 {
                     "name": "unna",
                     "type": "part",
                     "density": 7850,
+                    "rgba": "0.2 0.2 0.7 1",
                     "replica": ["0", "1"]
                 }
             ]

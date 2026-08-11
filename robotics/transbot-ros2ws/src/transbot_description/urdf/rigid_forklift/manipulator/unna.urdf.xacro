@@ -12,7 +12,7 @@
 					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift/manipulator/unna.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
-					<color rgba="1 1 1 1"></color>
+					<color rgba="0.2 0.2 0.7 1"></color>
 				</material>
 			</visual>
 			<collision>

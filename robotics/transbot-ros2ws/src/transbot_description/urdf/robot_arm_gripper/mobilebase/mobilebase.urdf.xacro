@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:macro name="mobilebase" params="prefix='' name='mobilebase' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_gripper/mobilebase/chassis.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_gripper/mobilebase/control.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_gripper/mobilebase/diff/diff.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/robot_arm_gripper/mobilebase/castor/castor.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}chassis" type="fixed">
+			<origin xyz="0.0 0.0 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}chassis"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}diff/_" type="fixed">
+			<origin xyz="-0.31 0.0 0.06" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}diff/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">
+			<origin xyz="0.35000000000000003 0.25 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor1/_" type="fixed">
+			<origin xyz="0.35000000000000003 -0.25 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor1/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}control" type="fixed">
+			<origin xyz="0.075 0.0 0.17" rpy="0.0 0.0 1.5707963267948966"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}control"></child>
+		</joint>
+		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>
+		<xacro:control prefix="${prefix}${name}${suffix}" suffix=""></xacro:control>
+		<xacro:diff prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor>
+	</xacro:macro>
+</robot>

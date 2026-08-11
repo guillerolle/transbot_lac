@@ -1,4 +1,4 @@
 ECHO: ["joint", "fixed", "manipulator/portico", "xyz: [0, 0, 0]", "rpy: [0, 0, 0]"]
-ECHO: ["joint", "prismatic", "manipulator/portico/horquilla", "xyz: [0, 0, 0]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "limits: [-50, 1770]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
-ECHO: ["joint", "prismatic", "manipulator/portico/horquilla/unna0", "xyz: [75, -50, -50]", "rpy: [0, 0, 0]", "axis: [0, -1, 0]", "limits: [325, 0]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
-ECHO: ["joint", "prismatic", "manipulator/portico/horquilla/unna1", "xyz: [75, 50, -50]", "rpy: [0, 0, 0]", "axis: [0, 1, 0]", "limits: [325, 0]", "command_interfaces: []", "mimic: [\"unna0\"]", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "prismatic", "manipulator/portico/horquilla", "xyz: [0, 0, 0]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "limits: [0, 1270]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "prismatic", "manipulator/portico/horquilla/unna0", "xyz: [75, -50, -100]", "rpy: [0, 0, 0]", "axis: [0, -1, 0]", "limits: [325, 0]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "prismatic", "manipulator/portico/horquilla/unna1", "xyz: [75, 50, -100]", "rpy: [0, 0, 0]", "axis: [0, 1, 0]", "limits: [325, 0]", "command_interfaces: []", "mimic: [\"unna0\"]", "spring: []", "damping: []", "friction: []"]

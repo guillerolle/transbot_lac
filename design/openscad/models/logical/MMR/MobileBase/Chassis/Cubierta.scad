@@ -64,6 +64,6 @@ module Cubierta02(length=800, width=600, height=400, tube_profile=20){
     cube([length, width, 2], center=true);
 }
 
-Cubierta();
+//Cubierta();
 translate([0,1000,0])
 Cubierta02();

@@ -1,7 +1,7 @@
 /**/joint_teleop_joy:
   ros__parameters:
     joy_topic: joy
-    command_topic: /transbot/manipulator_pid_effort_controller/reference
+    command_topic: /transbot/manipulator_pid_velocity_controller/reference
     enable_button: 2               # Button index (e.g., 2 = X on many gamepads)
     deadzone: 0.05
     dof_names:

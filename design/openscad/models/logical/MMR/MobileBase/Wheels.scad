@@ -93,8 +93,6 @@ module CastorWheel(display="*", prefix="", wd=120, ww=40, wh=0, cd=40, ch=130, c
     }
 }
 
-rotate([90, 0, 0])
-FixedWheel(d=120, w=40, h=20);
+rotate([90, 0, 0]) FixedWheel(d=120, w=40, h=20);
 
-translate([0, 100, 150])
-CastorWheel(display="*", wh=20);
+//translate([0, 100, 150]) CastorWheel(display="*", wh=20);

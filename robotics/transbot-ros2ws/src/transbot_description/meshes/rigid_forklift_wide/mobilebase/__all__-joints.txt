@@ -8,4 +8,4 @@ ECHO: ["joint", "continuous", "mobilebase/castor/arm/wheel", "xyz: [40, 0, -60]"
 ECHO: ["joint", "fixed", "mobilebase/castor1", "xyz: [350, -350, 130]", "rpy: [0, 0, 180]"]
 ECHO: ["joint", "continuous", "mobilebase/castor/arm", "xyz: [0, 0, -10]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]
 ECHO: ["joint", "continuous", "mobilebase/castor/arm/wheel", "xyz: [40, 0, -60]", "rpy: [90, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]
-ECHO: ["joint", "prismatic", "mobilebase/control", "xyz: [0, 0, 170]", "rpy: [0, 0, 0]", "axis: [1, 0, 0]", "limits: [0, 500]", "command_interfaces: [\"position\"]", "mimic: []", "spring: [200]", "damping: [10]", "friction: [10]"]
+ECHO: ["joint", "prismatic", "mobilebase/control", "xyz: [75, 0, 170]", "rpy: [0, 0, 90]", "axis: [0, -1, 0]", "limits: [0, 500]", "command_interfaces: [\"position\"]", "mimic: []", "spring: [200]", "damping: [10]", "friction: [10]"]
