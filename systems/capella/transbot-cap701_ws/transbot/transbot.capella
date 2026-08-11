@@ -1037,7 +1037,7 @@
                 sub="#d55432de-6802-4e10-a0ef-40913c79a4d6"/>
           </ownedClasses>
           <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
-              id="dbfafc7e-1ff6-41dc-9843-2e885cdc607a" name="Push/Pull Carts" description="&lt;p>Push or pull entire shelves, moving large amounts of materials at once.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>System is not required to lift the transported weight, only to push/pull it.&lt;/li>&#xA;&#x9;&lt;li>Shelves could have wheels and suspension&amp;nbsp;to aid movement.&lt;/li>&#xA;&lt;/ul>&#xA;">
+              id="dbfafc7e-1ff6-41dc-9843-2e885cdc607a" name="Full Lift" description="&lt;p>Push or pull entire shelves, moving large amounts of materials at once.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>System is not required to lift the transported weight, only to push/pull it.&lt;/li>&#xA;&#x9;&lt;li>Shelves could have wheels and suspension&amp;nbsp;to aid movement.&lt;/li>&#xA;&lt;/ul>&#xA;">
             <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
                 id="321d20f9-c7a1-4958-b050-d2a80ef9407c" super="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"
                 sub="#dbfafc7e-1ff6-41dc-9843-2e885cdc607a"/>
@@ -1056,7 +1056,7 @@
                 sub="#672d065c-5c12-43bd-8ac1-525ed26de48c"/>
           </ownedClasses>
           <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
-              id="307d7cc9-3d28-4571-b442-5fca96045256" name="Non-structured containers"
+              id="307d7cc9-3d28-4571-b442-5fca96045256" name="Non-structured Containers"
               description="&lt;p>Non-uniform containers of many parts or components like &lt;strong>bags&amp;nbsp;&lt;/strong>(default type in the factory).&amp;nbsp;&lt;br />&#xA;Materials come in non-rigid or structurized containers with&amp;nbsp;many (100+) parts (like springs, knuts, bolts, etc)&lt;/p>&#xA;">
             <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
                 id="4d22231b-8526-4c57-8595-98b3cc487b67" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
@@ -1070,7 +1070,8 @@
                 sub="#61578281-be31-4cea-b79d-1bf925cfa921"/>
           </ownedClasses>
           <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
-              id="dee1b3f5-701d-4679-a0c6-75ec63a6bd0b" name="Full shelves" description="&lt;p>Instead of moving individuals/groups of materials from one shelve to another, the system shall move entire shelves, plenty of materials&lt;/p>&#xA;">
+              id="dee1b3f5-701d-4679-a0c6-75ec63a6bd0b" name="Shelves Engagement"
+              description="&lt;p>Instead of moving individuals/groups of materials from one shelve to another, the system shall move entire shelves, plenty of materials&lt;/p>&#xA;">
             <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
                 id="0d8315e4-c819-4e85-bae8-d5e7560855b0" super="#f0c208ec-c5b8-471c-9339-1ddd0dceeee4"
                 sub="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"/>
@@ -1078,8 +1079,20 @@
           <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
               id="ae2d6c72-0866-4d41-8f42-f7023d5f8d91" name="Double Robot Arms">
             <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
-                id="d0fd5d25-320e-4162-a2c3-acbc12d066c8" super="#672d065c-5c12-43bd-8ac1-525ed26de48c"
+                id="d7a37268-492a-4d50-928b-aeb6be9d6fd2" super="#307d7cc9-3d28-4571-b442-5fca96045256"
                 sub="#ae2d6c72-0866-4d41-8f42-f7023d5f8d91"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="9e6e9e94-7672-4ff6-b7dd-261b75dadd52" name="Trailer" description="&lt;p>Push or pull entire shelves, moving large amounts of materials at once.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>System is not required to lift the transported weight, only to push/pull it.&lt;/li>&#xA;&#x9;&lt;li>Shelves could have wheels and suspension&amp;nbsp;to aid movement.&lt;/li>&#xA;&lt;/ul>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="0c509a24-23e5-45a3-bf80-c2756d46c690" super="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"
+                sub="#9e6e9e94-7672-4ff6-b7dd-261b75dadd52"/>
+          </ownedClasses>
+          <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+              id="30b52e10-de54-42c9-a0e8-d48b13186fca" name="Rigid Coupling" description="&lt;p>Push or pull entire shelves, moving large amounts of materials at once.&lt;/p>&#xA;&#xA;&lt;ul>&#xA;&#x9;&lt;li>System is not required to lift the transported weight, only to push/pull it.&lt;/li>&#xA;&#x9;&lt;li>Shelves could have wheels and suspension&amp;nbsp;to aid movement.&lt;/li>&#xA;&lt;/ul>&#xA;">
+            <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+                id="71c2a6e3-269b-4a6d-add1-e43259f9ccd3" super="#dee1b3f5-701d-4679-a0c6-75ec63a6bd0b"
+                sub="#30b52e10-de54-42c9-a0e8-d48b13186fca"/>
           </ownedClasses>
         </ownedDataPkgs>
         <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
