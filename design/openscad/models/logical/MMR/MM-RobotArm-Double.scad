@@ -18,7 +18,7 @@ module MMRobotArmDouble(display="*", prefix="", bbox=[800, 600, 2000], display_b
         
         
         FixedJoint(name="mobilebase", prefix=prefix, p_rotate=[0,0,180])
-        *_mobilebase();
+        _mobilebase();
         
         ReferenceFrame(factor=200);
         FixedJoint(name="arm0", prefix=prefix, p_translate=[+bbox[0]/2-200, bbox[1]/2-100, 300], p_rotate=[-90,-90,0]){

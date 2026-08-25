@@ -11,8 +11,8 @@ module ControlModule(lod=0){
         translate([0,0,13/2]){
             // battery
             color([1, 0, 0])
-            translate([0, -150, 225/2])
-            cube([230, 175, 225], center=true); 
+            translate([0, -150, 45/2])
+            cube([330, 75, 45], center=true); 
             
             
             // raspberry
