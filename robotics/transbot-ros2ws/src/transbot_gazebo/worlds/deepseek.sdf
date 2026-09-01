@@ -107,5 +107,10 @@
       <name>estanteria2</name>
       <pose>5 2 0 0 0 0</pose>
     </include>
+
+    <include>
+      <uri>package://transbot_gazebo/models/floor</uri>
+      <pose>0 -3 0.01 0 0 3.1415</pose>
+    </include>    
   </world>
 </sdf>
