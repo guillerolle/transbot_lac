@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="coupler">
+	<xacro:macro name="coupler" params="prefix='' name='coupler' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="4.0365124548923286e-11 -4.1374252662646367e-10 -0.10794815936892081" rpy="0 0 0"></origin>
+				<mass value="0.9388206526637077"></mass>
+				<inertia ixx="0.002677782713935992" ixy="7.579122499095377e-12" ixz="-1.0196931786052772e-09" iyy="0.002677782835201951" iyz="7.824255344964145e-12" izz="0.0024922239390434697"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_trailer_cyl/coupler.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.7 0.2 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_trailer_cyl/coupler.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

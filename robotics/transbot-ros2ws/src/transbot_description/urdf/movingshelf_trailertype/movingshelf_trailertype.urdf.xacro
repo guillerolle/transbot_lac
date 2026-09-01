@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="movingshelf_trailertype">
+	<xacro:macro name="movingshelf_trailertype" params="prefix='' name='movingshelf_trailertype' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.17841472809303976 0.0005525697572221869 0.42558090124835" rpy="0 0 0"></origin>
+				<mass value="1.689090703924497"></mass>
+				<inertia ixx="0.0462561035291274" ixy="-7.61140432793262e-05" ixz="0.01745311270090666" iyy="0.11417955857507817" iyz="5.1842530445246724e-05" izz="0.1338652384586364"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/movingshelf_trailertype/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/movingshelf_trailertype/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/movingshelf_trailertype/castor/castor.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">
+			<origin xyz="-0.25 0.25 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor1/_" type="fixed">
+			<origin xyz="-0.25 -0.25 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor1/_"></child>
+		</joint>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor>
+	</xacro:macro>
+</robot>

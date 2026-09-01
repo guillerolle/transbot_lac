@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype">
+	<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype/mobilebase_diffdrive_6wheels_ltype.urdf.xacro"></xacro:include>
+	<xacro:mobilebase_diffdrive_6wheels_ltype prefix="" name=""></xacro:mobilebase_diffdrive_6wheels_ltype>
+</robot>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="shelf_trailer_cyl">
+	<xacro:macro name="shelf_trailer_cyl" params="prefix='' name='shelf_trailer_cyl' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/shelf_trailer_cyl/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/shelf_trailer_cyl/coupler.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}mobilebase/_" type="fixed">
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}mobilebase/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}coupler" type="prismatic">
+			<origin xyz="-0.225 0.0 0.3" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}coupler"></child>
+			<axis xyz="0 0 1"></axis>
+			<limit lower="-0.005" upper="0.2" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:mobilebase prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase>
+		<xacro:coupler prefix="${prefix}${name}${suffix}" suffix=""></xacro:coupler>
+	</xacro:macro>
+</robot>

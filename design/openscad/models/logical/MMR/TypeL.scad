@@ -2,6 +2,7 @@ include <BOSL2/std.scad>
 include <BOSL2/strings.scad>
 use <RobotUtils/core.scad>
 use <MobileBase/DifferentialDrives/FourWheels.scad>
+use <MobileBase/DifferentialDrives/SixWheels_L.scad>
 //use <ManipulationStructures/RobotArm.scad>
 
 
@@ -16,7 +17,7 @@ module LType(display="*", prefix="")
     }
     
     module _mobilebase(){
-        DD4W_Rigid(display=_s, prefix=get_full_prefix(prefix, "mobilebase"));
+        DD4W_Rigid(display=_s, prefix=get_full_prefix(prefix, "mobilebase"), bbox=[650, 600, 300], force_internal_castor=false, differential_suspension="RR");
     }
 }
 

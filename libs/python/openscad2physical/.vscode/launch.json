@@ -14,14 +14,6 @@
             "args": "${command:pickArgs}"
         },
         {
-            "name": "OpenSCAD to Physical Debug",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "openscad2physical.py",
-            "console": "integratedTerminal",
-            "args": "${command:pickArgs}"
-        },
-        {
             "name": "export_oscad.py rigid_forklift_wide.json",
             "type": "debugpy",
             "request": "launch",

@@ -93,20 +93,19 @@
     
     <!-- Add more objects here -->
     <include>
-        <uri>package://transbot_gazebo/models/canasto/</uri>
-        <pose>5 0 1.1 0 0 1.57</pose>
+      <uri>package://transbot_gazebo/models/canasto/</uri>
+      <pose>5 0 1.1 0 0 1.57</pose>
     </include>
 
     <!-- Add more objects here -->
     <include>
-        <uri>package://transbot_gazebo/models/estanteria</uri>
-        <pose>5 0 0 0 0 0</pose>
+      <uri>package://transbot_gazebo/models/estanteria</uri>
+      <pose>5 0 0 0 0 0</pose>
     </include>    
     <include>
-        <uri>package://transbot_gazebo/models/estanteria</uri>
-        <name>estanteria2</name>
-        <pose>5 2 0 0 0 0</pose>
+      <uri>package://transbot_gazebo/models/estanteria</uri>
+      <name>estanteria2</name>
+      <pose>5 2 0 0 0 0</pose>
     </include>
-
   </world>
 </sdf>

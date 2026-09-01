@@ -7,7 +7,7 @@ use <../Chassis/Chassis02.scad>
 use <../Chassis/Cubierta.scad>
 use <../ControlModule/ControlModule.scad>
 
-module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false){
+module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false, control_module_x = 75, roof=true){
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -50,10 +50,10 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
         FixedJoint(name="castor1", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180])
         _castor();
         if (fixed_control==false) {
-            PrismaticJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0, 0, +90], axis=[0,-1,0], limits=[0, 500], pos=0, command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
+            PrismaticJoint(name="control", prefix=prefix, p_translate=[control_module_x,0,floor_clearance+40], p_rotate=[0, 0, +90], axis=[0,-1,0], limits=[0, 500], pos=0, command_interfaces=["position"], spring=[200], damping=[10], friction=[10])
             _controlmodule();
         } else {
-            FixedJoint(name="control", prefix=prefix, p_translate=[75,0,floor_clearance+40], p_rotate=[0,0,90])
+            FixedJoint(name="control", prefix=prefix, p_translate=[control_module_x,0,floor_clearance+40], p_rotate=[0,0,90])
             _controlmodule();
         }
         
@@ -116,7 +116,7 @@ module DD4W_Rigid(display="*", prefix="", display_bbox=false, bbox=[800, 600, 45
         Chassis02(length=bbox[0], width=bbox[1], bottom_align=true);
         translate([0, 0, 40])
         mirror([1,0,0])
-        Cubierta02(length=bbox[0], width=bbox[1], height=bbox[2]-floor_clearance-40);
+        Cubierta02(length=bbox[0], width=bbox[1], height=bbox[2]-floor_clearance-40, roof=roof);
     }
     
     module _controlmodule(){
@@ -138,4 +138,4 @@ DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differe
 // */
 
 translate([0,3000,0])
-DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differential_suspension="RR"); //*/
+DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differential_suspension="RR", roof=true); //*/

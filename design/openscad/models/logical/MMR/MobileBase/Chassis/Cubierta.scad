@@ -2,7 +2,7 @@ use <RobotUtils/core.scad>
 use <RobotUtils/beam.scad>
 use <RobotUtils/profiles.scad>
 
-module Cubierta(lod=0, length=800, width=600, height=400, tube_profile=20){
+module Cubierta(lod=0, length=800, width=600, height=400, tube_profile=20, roof=true){
     if (lod==0){
         corner_pos = [length/2 - tube_profile/2, width/2 - tube_profile/2];
         
@@ -31,12 +31,14 @@ module Cubierta(lod=0, length=800, width=600, height=400, tube_profile=20){
         }
         
         // CHAPA TECHO
-        translate([0,0,height])
-        cube([length, width, 2], center=true);
+        if (roof){  
+            translate([0,0,height])
+            cube([length, width, 2], center=true);
+        }
     }
 }
 
-module Cubierta02(length=800, width=600, height=400, tube_profile=20){
+module Cubierta02(length=800, width=600, height=400, tube_profile=20, roof=true){
     corner_xy = [length/2 - tube_profile/2, width/2 - tube_profile/2, 0];
     // POSTES
     for (xy = [[1, 1, 0], [1, -1, 0], [-1, -1, 0], [-1, 1, 0]]){
@@ -60,10 +62,12 @@ module Cubierta02(length=800, width=600, height=400, tube_profile=20){
     }
     
     // CHAPA TECHO
-    translate([0,0,height])
-    cube([length, width, 2], center=true);
+    if (roof){
+        translate([0,0,height])
+        cube([length, width, 2], center=true);
+    }
 }
 
 //Cubierta();
 translate([0,1000,0])
-Cubierta02();
+Cubierta02(roof=false);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lifter">
+	<xacro:macro name="lifter" params="prefix='' name='lifter' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="-5.684040124776048e-09 5.684040124776048e-09 -0.00436379284913648" rpy="0 0 0"></origin>
+				<mass value="0.8533786361416181"></mass>
+				<inertia ixx="0.012302105506841424" ixy="4.850638133743384e-10" ixz="1.762927049979034e-11" iyy="0.031158316218564" iyz="-1.4243314144131961e-10" izz="0.042995113957052376"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/lifter.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.7 0.2 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/lifter.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

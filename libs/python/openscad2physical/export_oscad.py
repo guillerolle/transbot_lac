@@ -247,7 +247,7 @@ class Component():
             - EXPORT_DIR: the directory to export the STL and PNG files to
             - oscad_params: a list of additional parameters to pass to the OpenSCAD command line interface (e.g. -D parameters)
         """
-        logger.debug(f"Exporting SCAD component '{self.name}' from file '{scad_file}' with parameters: {oscad_params}")
+        logger.debug(f"Exporting SCAD component '{self.name}' from file '{scad_file}' with parameters: {oscad_params}, display={self.get_scad_display_path()}")
 
         for display in self.get_scad_display_path():
             root = "/".join(display.split("/")[:-1])
@@ -428,7 +428,7 @@ class Component():
             'visual': {
                 'geometry': {
                     'mesh': {
-                        '@filename': f"file:$(find {root.ros_pkg_description})/meshes/{root.name}/{self.get_scad_display_path()[-1]}.stl",
+                        '@filename': f"package://{root.ros_pkg_description}/meshes/{root.name}/{self.get_scad_display_path()[-1]}.stl",
                         '@scale': f"1e-3 1e-3 1e-3",
                     }
                 },
@@ -450,7 +450,7 @@ class Component():
             'collision': {
                 'geometry': {
                     'mesh': {
-                        '@filename': f"file:$(find {root.ros_pkg_description})/meshes/{root.name}/{self.get_scad_display_path()[-1]}.stl",
+                        '@filename': f"package://{root.ros_pkg_description}/meshes/{root.name}/{self.get_scad_display_path()[-1]}.stl",
                         '@scale': f"1e-3 1e-3 1e-3",
                     }
                 }

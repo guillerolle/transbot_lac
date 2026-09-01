@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="movingshelf_4wheels">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/movingshelf_4wheels/castor/castor.urdf.xacro"></xacro:include>
+	<xacro:macro name="movingshelf_4wheels-ros2_control_gazebo" params="prefix='' name='movingshelf_4wheels' suffix=''">
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="movingshelf_4wheels-gz_reference" params="prefix='' name='movingshelf_4wheels' suffix=''">
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor-gz_reference>
+	</xacro:macro>
+</robot>

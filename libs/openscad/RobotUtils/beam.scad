@@ -20,7 +20,7 @@ rot_z=atan2(N2[1]-N1[1],N2[0]-N1[0]);
 translate(N1)rotate([beta_angle,rot_y,rot_z])rotate([90,0,90])linear_extrude(lenght)children();
 }
 
-module beam3(N1, N2, profile_angle){
+module beam3(N1, N2, profile_angle=0){
     /*
     extrude profile from point N1 to point N2, with profile angle beta_angle
     usage:

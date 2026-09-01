@@ -65,5 +65,5 @@ def generate_launch_description():
         world_launch,
         spawn_launch,
         joint_state_publisher_spawner,
-        controllers_launch
+        controllers_launch,
     ])

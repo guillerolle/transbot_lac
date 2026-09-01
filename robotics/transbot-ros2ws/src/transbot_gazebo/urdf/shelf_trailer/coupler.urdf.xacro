@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="coupler">
+	<xacro:macro name="coupler-ros2_control_gazebo" params="prefix='' name='coupler' suffix=''"></xacro:macro>
+	<xacro:macro name="coupler-gz_reference" params="prefix='' name='coupler' suffix=''"></xacro:macro>
+</robot>

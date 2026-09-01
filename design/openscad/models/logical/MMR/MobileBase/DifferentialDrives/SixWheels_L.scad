@@ -8,7 +8,7 @@ use <../Chassis/Chassis03-L.scad>
 use <../Chassis/Cubierta.scad>
 use <../ControlModule/ControlModule.scad>
 
-module DD4W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false){
+module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false){
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -38,9 +38,10 @@ module DD4W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         }
         
     } else if (differential_suspension=="RR") {
+        //ReferenceFrame(factor=200);
         RevoluteJoint(name="doublebar", prefix=prefix, 
-        p_translate=[-100+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d/2],
-        axis=[0,1,0], spring=[200], damping=[10], limits=[-10,10], draw=true){
+        p_translate=[-100+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d*3/8],
+        axis=[0,1,0], spring=[50], damping=[2], limits=[-10,10], draw=true){
             _doublebar();
             }
         }
@@ -98,14 +99,14 @@ module DD4W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         
         if (_d=="*"){
             __doublebar();
-            RevoluteJoint(name="diff", prefix=str_join([prefix, "/doublebar"]), p_translate=[-double_bar_offset, 0, 0], axis=[1,0,0], limits=[-5, 5],
-            spring=[200], damping=[10], draw=true){
-                _diffmodule(display=_s, prefix=str_join([prefix, "/doublebar"]));
+            RevoluteJoint(name="diff", prefix=str_join([prefix, "doublebar"]), p_translate=[-double_bar_offset, 0, 0], axis=[1,0,0], limits=[-5, 5],
+            spring=[50], damping=[2], draw=true){
+                _diffmodule(display=_s, prefix=str_join([prefix, "doublebar"]));
             }
         } else if (_d=="_"){
             __doublebar();
         } else if (_d=="diff"){
-            _diffmodule(display=_s, prefix=str_join([prefix, "/doublebar"]));
+            _diffmodule(display=_s, prefix=str_join([prefix, "doublebar"]));
         }
         module __doublebar(){
             extrude_along(axis=[0,1,0], length=bbox[1]*.8)
@@ -145,5 +146,6 @@ DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=true);
 DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differential_suspension="P");
 // */
 
+display="*";
 translate([0,0,0])
-DD4W_L(display="*", display_bbox=false, force_internal_castor=true, differential_suspension="RR"); //*/
+DD6W_L(display=display, display_bbox=false, force_internal_castor=false, differential_suspension="RR"); //*/

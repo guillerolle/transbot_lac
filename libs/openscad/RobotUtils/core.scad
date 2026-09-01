@@ -63,7 +63,7 @@ module ContinuousJoint(
 module PrismaticJoint(
     p_translate=[0,0,0], p_rotate=[0,0,0], axis=[0,0,1], 
     unitpos=(-cos($t*360)+1)/2, name="joint_prismatic", prefix="", 
-    limits=[-100, 100], command_interfaces=[], mimic=[],
+    limits=[-100, 100], command_interfaces=["position", "velocity", "effort"], mimic=[],
     spring=[], damping=[], friction=[], draw=false, pos=false, animate=true
     ){
     _extension = abs(limits[1]-limits[0]);

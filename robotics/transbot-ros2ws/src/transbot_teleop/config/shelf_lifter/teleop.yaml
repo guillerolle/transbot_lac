@@ -1,0 +1,34 @@
+/**/teleop_twist_joy_node:
+  ros__parameters:
+    publish_stamped_twist: true
+
+    axis_linear:
+      x: 4
+    scale_linear:
+      x: 0.3
+    scale_linear_turbo:
+      x: 0.7
+
+    axis_angular:
+      yaw: 0
+    scale_angular:
+      yaw: 0.3
+    scale_angular_turbo:
+      yaw: 0.7
+
+    enable_button: 6  # L2 shoulder button
+    enable_turbo_button: 4  # L1 shoulder button
+
+/**/joint_teleop_joy:
+  ros__parameters:
+    joy_topic: joy
+    command_topic: /transbot/lifter_pid_velocity_controller/reference
+    enable_button: 7               # Button index (e.g., 2 = X on many gamepads)
+    deadzone: 0.05
+    dof_names:
+      - j/lifter
+
+    j/lifter: 
+      axis: 1
+      scale: 1.0
+      invert: false

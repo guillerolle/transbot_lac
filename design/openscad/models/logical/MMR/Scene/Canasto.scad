@@ -1,4 +1,4 @@
-module Canasto(length = 470, width = 330, height=220, thickness=5){
+module Canasto(length = 470, width = 330, height=220, thickness=5, use_lower_base=true){
     color([.25,.25,.25])
     translate([0, 0, thickness/2]){
         cube([length, width, thickness], center=true);
@@ -15,9 +15,11 @@ module Canasto(length = 470, width = 330, height=220, thickness=5){
             }
         }
     }
-    translate([-(length-250)/2, -(width-0)/2, -50])
-    cube([(length-250), width, 50
-], center=false);
+    
+    if (use_lower_base){
+        translate([-(length-250)/2, -(width-0)/2, -50])
+        cube([(length-250), width, 50], center=false);
+    }
 }
 
 

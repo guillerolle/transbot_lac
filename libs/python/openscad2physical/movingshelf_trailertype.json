@@ -1,0 +1,30 @@
+{
+    "scad": "logical/MMR/Scene/ShelfTrailerType.scad",
+    "density": 7850,
+    "ros_pkg_description": "transbot_description",
+    "ros_pkg_gazebo": "transbot_gazebo",
+    "params":{
+        "coupler_fn": 4,
+        "coupler_cube_size": 90
+    },
+    "components": [
+        {
+            "name": "castor",
+            "type": "assembly",
+            "replica": ["0", "1"],
+            "components": [
+                {
+                    "name": "arm",
+                    "type": "part",
+                    "density": 7850
+                },
+                {
+                    "name": "wheel",
+                    "type": "part",
+                    "rgba": "0.2 0.2 0.2 1",
+                    "density": 2500
+                }
+            ]
+        }
+    ]
+}

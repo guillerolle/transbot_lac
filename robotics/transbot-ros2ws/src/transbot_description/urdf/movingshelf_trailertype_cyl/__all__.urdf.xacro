@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="movingshelf_trailertype_cyl">
+	<xacro:include filename="$(find transbot_description)/urdf/movingshelf_trailertype_cyl/movingshelf_trailertype_cyl.urdf.xacro"></xacro:include>
+	<xacro:movingshelf_trailertype_cyl prefix="" name=""></xacro:movingshelf_trailertype_cyl>
+</robot>

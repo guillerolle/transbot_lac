@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="shelf_lifter">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/mobilebase.urdf.xacro"></xacro:include>
+	<xacro:macro name="shelf_lifter-ros2_control_gazebo" params="prefix='' name='shelf_lifter' suffix=''">
+		<joint name="j/${prefix}${name}${suffix}lifter">
+			<state_interface name="position">
+				<param name="initial_value">0.0</param>
+			</state_interface>
+			<state_interface name="velocity"></state_interface>
+			<state_interface name="effort"></state_interface>
+			<command_interface name="velocity"></command_interface>
+			<command_interface name="effort"></command_interface>
+		</joint>
+		<xacro:mobilebase-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="shelf_lifter-gz_reference" params="prefix='' name='shelf_lifter' suffix=''">
+		<xacro:mobilebase-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:mobilebase-gz_reference>
+	</xacro:macro>
+</robot>
