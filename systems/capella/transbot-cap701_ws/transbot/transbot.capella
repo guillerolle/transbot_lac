@@ -1949,6 +1949,9 @@
           <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
               id="f169ce0a-3361-4445-8c82-3183172ae982" name="tf tree" source="#e58ac82d-8220-417b-bf69-9ec52b8cdd8b"
               target="#606128c9-6309-4871-a945-ebddb8e460df" kind="FLOW"/>
+          <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+              id="8b1c2039-f148-444d-8b2d-3b43363672a8" name="tf2 /odom" source="#f5a76b7c-86b4-4c11-b7a3-71042937786a"
+              target="#29f1d8f7-dc02-4465-898a-d16dc0a59b7e" kind="FLOW"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="7277a841-56b8-44fb-8d25-ef09f31e8a52"
               name="Mobile Base" abstractType="#cff974e5-9cd1-46d1-8e8b-75568b59f356"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="554aaf64-5d79-4b3d-8a61-e0a21a00c901"
@@ -2105,6 +2108,9 @@
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                 id="e58ac82d-8220-417b-bf69-9ec52b8cdd8b" name="CP 3" orientation="OUT"
                 kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="29f1d8f7-dc02-4465-898a-d16dc0a59b7e" name="CP 5" orientation="IN"
+                kind="FLOW"/>
           </ownedPhysicalComponents>
           <ownedPhysicalComponentPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
               id="233f8829-3d11-4440-8fdb-9fa86b049d16" name="Gazebo Simulation">
@@ -2152,7 +2158,11 @@
                     sourceElement="#70be5012-bd53-411b-b9b9-210cf7693e7f"/>
               </ownedFeatures>
               <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="7d4d7d1b-933f-4ca9-abb1-bc11e4512900" name="PP 4"/>
+                  id="7d4d7d1b-933f-4ca9-abb1-bc11e4512900" name="PP 4">
+                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                    id="7553f497-adb2-4268-a82a-c08786d0e5c4" targetElement="#e58ac82d-8220-417b-bf69-9ec52b8cdd8b"
+                    sourceElement="#7d4d7d1b-933f-4ca9-abb1-bc11e4512900"/>
+              </ownedFeatures>
             </ownedPhysicalComponents>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                 id="ec480b3c-977a-486d-bcfd-334464e0dfca" name="GazeboSimSystem&#xA;&lt;transbot>"
@@ -2178,7 +2188,11 @@
                 id="28df7417-80e6-4cd8-99da-9f95c04bdbe0" name="Visualization Process Stack"
                 nature="NODE">
               <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="18566af3-8411-4b0f-8631-00ede452094a" name="PP 1"/>
+                  id="18566af3-8411-4b0f-8631-00ede452094a" name="PP 1">
+                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                    id="46ed7db5-2c80-4b08-a95c-96383772a0d5" targetElement="#606128c9-6309-4871-a945-ebddb8e460df"
+                    sourceElement="#18566af3-8411-4b0f-8631-00ede452094a"/>
+              </ownedFeatures>
             </ownedPhysicalComponents>
           </ownedPhysicalComponentPkgs>
           <ownedPhysicalComponentPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
@@ -2282,6 +2296,9 @@
                     kind="FLOW"/>
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                     id="1f4e5eef-0f73-41c7-aa66-1978cabfb6a8" name="CP 3" orientation="IN"
+                    kind="FLOW"/>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                    id="f5a76b7c-86b4-4c11-b7a3-71042937786a" name="CP 3" orientation="OUT"
                     kind="FLOW"/>
               </ownedPhysicalComponents>
               <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
