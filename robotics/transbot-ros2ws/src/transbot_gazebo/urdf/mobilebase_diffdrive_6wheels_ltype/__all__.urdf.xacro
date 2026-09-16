@@ -4,6 +4,7 @@
 	<xacro:arg name="ros2_control_dict" default="mobilebase_diffdrive_6wheels_ltype//ros2_control.yaml"></xacro:arg>
 	<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype/__all__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/mobilebase_diffdrive_6wheels_ltype.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/__extras__.urdf.xacro"></xacro:include>
 	<gazebo>
 		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
 			<parameters>$(find transbot_gazebo)/config/$(arg ros2_control_dict)</parameters>

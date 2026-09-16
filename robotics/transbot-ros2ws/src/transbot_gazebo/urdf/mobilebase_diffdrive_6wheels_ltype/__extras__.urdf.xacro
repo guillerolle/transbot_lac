@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype">
+	<gazebo>
+		<plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+			<odom_frame>/transbot/odom</odom_frame>
+            <robot_base_frame>/transbot/gz_base_link</robot_base_frame>
+            <odom_topic>/model/transbot/ground_truth/odometry</odom_topic>
+            <tf_topic>/model/transbot/ground_truth/pose</tf_topic>
+            <odom_publish_rate>50</odom_publish_rate>
+            <dimensions>3</dimensions>
+            <gaussian_noise>0.0</gaussian_noise>
+		</plugin>
+	</gazebo>
+</robot>

@@ -49,6 +49,28 @@ def generate_launch_description():
             '-Y', Y,
         ]
     )
+    
+    ground_truth_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/ground_truth/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V"'
+                ]),
+
+            # PythonExpression(['/model/', robot_name, '/ground_truth/odometry',
+            # '@nav_msgs/msg/Odometry[gz.msgs.Odometry']),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/ground_truth/pose"']), '/tf'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
 
     
     return LaunchDescription([
@@ -62,5 +84,6 @@ def generate_launch_description():
         DeclareLaunchArgument('P', default_value='0.0'),
         DeclareLaunchArgument('Y', default_value='0.0'),
         rsp_launch,
-        spawn_node
+        spawn_node,
+        ground_truth_bridge
     ])
