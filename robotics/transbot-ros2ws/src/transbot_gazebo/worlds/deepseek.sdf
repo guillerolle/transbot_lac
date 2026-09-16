@@ -110,7 +110,7 @@
 
     <include>
       <uri>package://transbot_gazebo/models/floor</uri>
-      <pose>0 -3 0.01 0 0 3.1415</pose>
+      <pose>0 -3 0.0 0 0 3.1415</pose>
     </include>    
   </world>
 </sdf>
