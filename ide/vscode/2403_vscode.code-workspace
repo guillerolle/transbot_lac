@@ -5,7 +5,7 @@
 		},//*/
 		{
 			"path": "../.."
-		},
+		},//*/
 		{
 			"path": "../../libs/python/mobilecarts"
 		},
@@ -16,12 +16,33 @@
 			"path": "../../libs/python/openscad2physical"
 		},
 		{
-			"path": "../../robotics"
+			"path": "../../robotics/transbot-ros2ws"
 		}
 	],
 	"settings": {
 		"pythonEnvy.venvName": ".venv",
 		"python.terminal.activateEnvInCurrentTerminal": true,
 		"git.ignoreLimitWarning": true,
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/.hg/store/**": true,
+			"**/__pycache__/**": true,
+			"**/.venv/**": true,
+		},
+		"search.exclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/.hg/store/**": true,
+			"**/__pycache__/**": true,
+			"**/.venv/**": true,
+		},
+		"python.analysis.exclude": [
+			"**/build/**",
+			"**/devel/**",
+			"**/log/**",
+			"**/output/**",
+			"**/.venv/**"
+		]
 	}
 }

@@ -12,5 +12,17 @@
             "envManager": "ms-python.python:system",
             "packageManager": "ms-python.python:pip"
         }
-    ]
+    ],
+    "files.exclude": {
+        "**/build/**": true,
+        "**/devel/**": true
+    },
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/devel/**": true
+    },
+    "search.exclude": {
+        "**/build/**": true,
+        "**/devel/**": true
+    }
 }
