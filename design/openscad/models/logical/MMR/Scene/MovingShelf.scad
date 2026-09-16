@@ -51,7 +51,7 @@ module MovingShelf(display="*", prefix="", length=500, width=500, height=500, tu
         CastorWheel(display=_s, prefix=get_full_prefix(prefix, "castor"), ch=castor_height);
     }
 }
-
+/*
 module Shelf_TrailerType(display="*", prefix="", length=500, width=500, height=500, tube_profile = [20, 20], sheet_thickness=3, castor_height=130, coupler_cube_size=100, coupler_position_z=250, coupler_position_x=200, coupler_hollow_size=80)
 {
     _xdisp = extract_assembly_parts(display);
@@ -126,12 +126,12 @@ module Shelf_TrailerType(display="*", prefix="", length=500, width=500, height=5
     module _castor(){
         CastorWheel(display=_s, prefix=get_full_prefix(prefix, "castor"), ch=castor_height);
     }
-}
+} //*/
 
 display="*";
 length=500;
 width=700;
 height=500;
-use_back_sheet=true;
-//MovingShelf(display=display, width=width, length=length, height=height, use_back_sheet=use_back_sheet);
-Shelf_TrailerType(display=display, width=width, length=length, height=height);
+use_back_sheet=true; 
+MovingShelf(display=display, width=width, length=length, height=height, use_back_sheet=use_back_sheet);
+// Shelf_TrailerType(display=display, width=width, length=length, height=height);

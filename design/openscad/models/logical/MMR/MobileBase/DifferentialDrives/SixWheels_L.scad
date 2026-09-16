@@ -28,11 +28,11 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         _chassis();
         
     if (differential_suspension==""){
-        FixedJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5, 0, fwheel_d/2])
+        FixedJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d/2])
         _diffmodule();
         
     } else if (differential_suspension=="P") {
-        PrismaticJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5, 0, fwheel_d/2], axis=[0,0,1], limits=[0,-50], draw=true){
+        PrismaticJoint(name="diff", prefix=prefix, p_translate=[-bbox[0]/2+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d/2], axis=[0,0,1], limits=[0,-50], draw=true){
         ReferenceFrame(factor=100);
         _diffmodule();
         }
