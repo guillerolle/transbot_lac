@@ -24,7 +24,7 @@
     joy_topic: joy
     command_topic: /transbot/lifter_pid_velocity_controller/reference
     enable_button: 7               # Button index (e.g., 2 = X on many gamepads)
-    deadzone: 0.05
+    deadzone: 0.0
     dof_names:
       - j/lifter
 

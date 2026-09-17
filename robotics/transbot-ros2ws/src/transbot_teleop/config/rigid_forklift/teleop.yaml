@@ -1,21 +1,21 @@
 /**/joint_teleop_joy:
   ros__parameters:
     joy_topic: joy
-    command_topic: /transbot/manipulator_pid_velocity_controller/reference
-    enable_button: 2               # Button index (e.g., 2 = X on many gamepads)
-    deadzone: 0.05
+    command_topic: manipulator_pid_velocity_controller/reference
+    enable_button: 5               # Button index (e.g., 2 = X on many gamepads)
+    deadzone: 0.0
     dof_names:
       - j/manipulator/_
       - j/manipulator/horquilla 
       - j/manipulator/unna0
 
     j/manipulator/_: 
-      axis: 0
+      axis: 1
       scale: 1.0
 
     j/manipulator/horquilla: 
-      axis: 1
-      inver: true
+      axis: 4
+      inver: false
 
     j/manipulator/unna0: 
       axis: 3
@@ -25,16 +25,18 @@
     publish_stamped_twist: true
 
     axis_linear:
-      x: 1
+      x: 4
     scale_linear:
-      x: 0.7
+      x: -0.3
     scale_linear_turbo:
-      x: 1.5
+      x: -0.7
 
     axis_angular:
       yaw: 0
     scale_angular:
-      yaw: 0.4
+      yaw: 0.3
+    scale_angular_turbo:
+      yaw: 0.7
 
-    enable_button: 8  # L2 shoulder button
-    enable_turbo_button: 10  # L1 shoulder button
+    enable_button: 6  # L2 shoulder button
+    enable_turbo_button: 4  # L1 shoulder button
