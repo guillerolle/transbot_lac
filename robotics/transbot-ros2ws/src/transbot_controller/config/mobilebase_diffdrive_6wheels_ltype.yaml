@@ -24,3 +24,20 @@
     odom_frame_id: odom 
     base_frame_id: _
     enable_odom_tf: true
+
+
+/**/twist_mux:
+  ros__parameters:
+    topics:
+      keyboard:
+        topic: cmd_vel_keyboard
+        timeout: 0.5
+        priority: 10
+      joystick:
+        topic: cmd_vel_joy
+        timeout: 0.5
+        priority: 20
+      navigation:
+        topic: cmd_vel_nav
+        timeout: 0.5
+        priority: 0

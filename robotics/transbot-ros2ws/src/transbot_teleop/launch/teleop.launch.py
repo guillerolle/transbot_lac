@@ -27,7 +27,7 @@ def generate_launch_description():
         package='teleop_twist_joy', executable='teleop_node', name='teleop_twist_joy_node',
         namespace=LaunchConfiguration('robot_name'),
         parameters=[joint_config],
-        remappings={('cmd_vel', PythonExpression(['"/', LaunchConfiguration('robot_name'), '/diff_drive_controller/cmd_vel"']))},
+        remappings=[('cmd_vel', 'cmd_vel_joy')],
     )
     
     joy_node = Node(

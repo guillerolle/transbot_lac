@@ -30,6 +30,20 @@ def generate_launch_description():
         namespace=LaunchConfiguration('robot_name'),
         arguments=['diff_drive_controller']
     )
+    
+    twist_mux = Node(
+        package='twist_mux',
+        executable='twist_mux',
+        name='twist_mux',
+        namespace=LaunchConfiguration('robot_name'),
+        parameters=[
+            PathJoinSubstitution([
+                FindPackageShare('transbot_controller'), 'config', 
+                PythonExpression(['"', robot_model, '.yaml"'])
+            ]),
+        ],
+        remappings=[('cmd_vel_out', 'diff_drive_controller/cmd_vel')]
+    )
  
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
@@ -37,4 +51,5 @@ def generate_launch_description():
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         joint_state_publisher,
         diff_drive_controller,
+        twist_mux
     ])
