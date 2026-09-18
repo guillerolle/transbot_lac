@@ -70,6 +70,7 @@ RUN apt-get update \
         ros-$ROSDISTRO-navigation2 \
         ros-$ROSDISTRO-nav2-bringup \
         ros-$ROSDISTRO-turtlebot3 \
+        ros-$ROSDISTRO-twist-mux \
     && rm -rf /var/lib/apt/lists/*
 
 
