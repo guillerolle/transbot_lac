@@ -53,6 +53,7 @@ def generate_launch_description():
     ground_truth_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
+        name='gz_ground_truth_bridge',
         namespace=robot_name,
         arguments=[
             PythonExpression([
@@ -71,6 +72,15 @@ def generate_launch_description():
         ],
         output='screen'
     )
+    
+    controllers_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),
+        ),
+        launch_arguments={
+            'robot_name': robot_name
+        }.items()
+    )
 
     
     return LaunchDescription([
@@ -85,5 +95,6 @@ def generate_launch_description():
         DeclareLaunchArgument('Y', default_value='0.0'),
         rsp_launch,
         spawn_node,
-        ground_truth_bridge
+        ground_truth_bridge,
+        controllers_launch
     ])

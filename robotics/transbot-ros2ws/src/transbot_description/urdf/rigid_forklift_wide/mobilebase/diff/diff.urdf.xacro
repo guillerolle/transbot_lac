@@ -9,7 +9,7 @@
 			</inertial>
 			<visual>
 				<geometry>
-					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+					<mesh filename="package://transbot_description/meshes/rigid_forklift_wide/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
 					<color rgba="1 1 0 1"></color>
@@ -17,7 +17,7 @@
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+					<mesh filename="package://transbot_description/meshes/rigid_forklift_wide/mobilebase/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 			</collision>
 		</link>

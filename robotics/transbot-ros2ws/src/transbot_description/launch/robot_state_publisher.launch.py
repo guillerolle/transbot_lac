@@ -41,8 +41,10 @@ def generate_launch_description():
             namespace=robot_name,
             output='screen',
             parameters=[{
-                'robot_description': Command(['xacro "', robot_urdf, 
-                                              '" ros2_control_namespace:=/', robot_name,
+                'robot_description': Command(['xacro "', robot_urdf, '"'
+                                              ' ros2_control_namespace:=/', robot_name,
+                                              ' gz_odometry_frame_prefix:=/', robot_name,
+                                              ' robot_name:=', robot_name,
                                               *control_config_list,
                                               *control_pkg_list]),
                 'frame_prefix': [robot_name, '/'],

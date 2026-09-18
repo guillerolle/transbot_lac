@@ -3,13 +3,13 @@
 	<xacro:macro name="control" params="prefix='' name='control' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="13800">
-				<origin xyz="0.002084133424969194 -0.1180087385611795 0.10163798440735253" rpy="0 0 0"></origin>
-				<mass value="11.36414830883344"></mass>
-				<inertia ixx="0.1792783214037889" ixy="-0.005400248580619397" ixz="0.0018980197654414812" iyy="0.17123017326450496" iyz="0.033806977088390505" izz="0.2231786465435561"></inertia>
+				<origin xyz="0.006921931017760558 -0.04374911256185983 0.016953211369279058" rpy="0 0 0"></origin>
+				<mass value="3.4216465428471565"></mass>
+				<inertia ixx="0.06684930260049168" ixy="-0.0036414557355901483" ixz="-0.00010768790123973424" iyy="0.07845860219646296" iyz="0.0030195033418340465" izz="0.14366063335138574"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
-					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
+					<mesh filename="package://transbot_description/meshes/rigid_forklift_wide/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 				<material name="">
 					<color rgba="1 0 0 1"></color>
@@ -17,7 +17,7 @@
 			</visual>
 			<collision>
 				<geometry>
-					<mesh filename="file:$(find transbot_description)/meshes/rigid_forklift_wide/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
+					<mesh filename="package://transbot_description/meshes/rigid_forklift_wide/mobilebase/control.stl" scale="1e-3 1e-3 1e-3"></mesh>
 				</geometry>
 			</collision>
 		</link>

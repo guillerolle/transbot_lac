@@ -606,6 +606,15 @@ class Component():
                 }
             }
         }
+
+    def xacro_extras_blank(self):
+        root = self.get_root_component()
+        return {
+            'robot': {
+                '@xmlns:xacro': "http://www.ros.org/wiki/xacro",
+                '@name': self.name,
+            }
+        }
         
     def xacro_gazebo_all(self):
         root = self.get_root_component()
@@ -616,20 +625,51 @@ class Component():
                 '@name': self.name,
                 'xacro:arg': [
                     {
+                        '@name': 'robot_name',
+                        '@default': 'transbot',
+                    },
+                    {
                         '@name': 'ros2_control_namespace',
                         '@default': '/transbot',
                     },
                     {
                         '@name': 'ros2_control_dict',
-                        '@default': f"{root.name}/{"/".join([*self.get_parent_display_list()]).removeprefix('/')}/ros2_control.yaml"
+                        '@default': f"{"/".join(
+                            [root.name, *[x for x in self.get_parent_display_list() if x != '']]
+                            ).removeprefix('/')}.yaml"
+                    },
+                    {
+                        '@name': 'ros2_control_pkg',
+                        '@default': f"{getattr(root, 'ros_pkg_controller')}"
+                    },
+                    {
+                        '@name': 'gz_odometry_frame_prefix',
+                        '@default': ''
+                    },
+                    {
+                        '@name': 'gz_odometry_frame',
+                        '@default': 'odom'
                     }
+                ],
+                'xacro:property': [
+                    {
+                        '@name': '_ros2_control_pkg',
+                        '@value': '$(arg ros2_control_pkg)',
+                    },
+                    {
+                        '@name': '_ros2_control_path',
+                        '@value': '$(find ${_ros2_control_pkg})',
+                    },
                 ],
                 'xacro:include': [
                     {
-                        '@filename': f"$(find {root.ros_pkg_description})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), "__all__"])}.urdf.xacro".replace("//","/"),
+                        '@filename': f"$(find {getattr(root, 'ros_pkg_description')})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), "__all__"])}.urdf.xacro".replace("//","/"),
                     },
                     {
                         '@filename': f"$(find {getattr(root, 'ros_pkg_gazebo')})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), self.name]).removeprefix('/')}.urdf.xacro",
+                    },
+                    {
+                        '@filename': f"$(find {getattr(root, 'ros_pkg_gazebo')})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), "__extras__"]).removeprefix('/')}.urdf.xacro",
                     },
                 ],
                 'gazebo': [
@@ -637,12 +677,25 @@ class Component():
                         'plugin': {
                             '@filename': 'gz_ros2_control-system',
                             '@name': 'gz_ros2_control::GazeboSimROS2ControlPlugin',
-                            'parameters': f"$(find {getattr(root,'ros_pkg_gazebo')})/config/$(arg ros2_control_dict)",
+                            'parameters': f"${{_ros2_control_path}}/config/$(arg ros2_control_dict)",
                             "ros" : {
                                 'namespace': "$(arg ros2_control_namespace)"
                             }
                         }
                     },
+                    {
+                        'plugin': {
+                            '@filename': 'gz-sim-odometry-publisher-system',
+                            '@name': 'gz::sim::systems::OdometryPublisher',
+                            'odom_frame': f"$(arg gz_odometry_frame_prefix)/$(arg gz_odometry_frame)",
+                            'robot_base_frame': f"$(arg gz_odometry_frame_prefix)/gz_gtruth",
+                            'odom_topic': f"/model/$(arg robot_name)/ground_truth/odometry",
+                            'tf_topic': f"/model/$(arg robot_name)/ground_truth/pose",
+                            'odom_publish_rate': 50,
+                            'dimensions': 3,
+                            'gaussian_noise': 0.0
+                        }
+                    }
                 ],
                 f"xacro:{self.name}-gz_reference": {
                     '@prefix': "",
@@ -688,6 +741,13 @@ class Component():
                 
             with open(os.path.join(_export_dir_gz, f"__all__.urdf.xacro"), "w") as f:
                 xmltodict.unparse(self.xacro_gazebo_all(), f, pretty=True)
+
+            ### CREATE BLANK EXTRAS IF THEY DON'T ALREADY EXIST ###
+            with open(os.path.join(_export_dir, f"__extras__.urdf.xacro"), 'x') as f:
+                xmltodict.unparse(self.xacro_extras_blank(), f, pretty=True)
+
+            with open(os.path.join(_export_dir_gz, f"__extras__.urdf.xacro"), 'x') as f:
+                xmltodict.unparse(self.xacro_extras_blank(), f, pretty=True)
    
 def process_export_dict(data):
     logger.debug("Exporting SCAD data: %s", data)
@@ -695,7 +755,17 @@ def process_export_dict(data):
     scad_fullpath = os.path.join(OPENSCAD_DIR, "models", data['scad']) 
     scad_path = os.path.dirname(data['scad'])
     logger.debug("SCAD path: %s", scad_path)
+
+    if not 'ros_pkg_description' in data:
+        data['ros_pkg_description'] = f"{data['robot_name']}_description"
+    if not 'ros_pkg_gazebo' in data:
+        data['ros_pkg_gazebo'] = f"{data['robot_name']}_gazebo"
+    if not 'ros_pkg_controller' in data:
+        data['ros_pkg_controller'] = \
+        f"{data['robot_name']}_controller" if 'robot_name' in data \
+            else f"{data['ros_pkg_description'].split("_")[0]}_controller"
     
+
     ros_pkg_description = data['ros_pkg_description']
     ros_pkg_gazebo = data['ros_pkg_gazebo']
 

@@ -24,25 +24,6 @@ def generate_launch_description():
     #         ])
     #     )
     # )
-    spawn_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
-        ),
-        launch_arguments={
-            'robot_name': robot_name,
-            'robot_model': robot_model,
-            'robot_pkg': robot_pkg,
-        }.items()
-    )
-    
-    controllers_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),
-        ),
-        launch_arguments={
-            'robot_name': robot_name
-        }.items()
-    )
    
     teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -69,8 +50,8 @@ def generate_launch_description():
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
-        spawn_launch,
-        controllers_launch,
+        # spawn_launch,
+        # controllers_launch,
         teleop_launch,
         passive_spawn
     ])

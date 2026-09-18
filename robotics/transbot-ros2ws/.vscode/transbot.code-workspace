@@ -4,9 +4,6 @@
 			"path": ".."
 		},
 		{
-			"path": "../../project"
-		},
-		{
 			"path": "../../../../opt/ros/jazzy/share"
 		}
 	],

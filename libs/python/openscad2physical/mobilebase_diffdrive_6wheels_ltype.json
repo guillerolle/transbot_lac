@@ -1,8 +1,9 @@
 {
     "scad": "logical/MMR/MobileBase/DifferentialDrives/SixWheels_L.scad",
     "density": 7850,
-    "ros_pkg_description": "transbot_description",
-    "ros_pkg_gazebo": "transbot_gazebo",
+    "robot_name": "transbot",
+    "__ros_pkg_description": "transbot_description",
+    "__ros_pkg_gazebo": "transbot_gazebo",
     "params":{
         "extra_wide": false,
         "differential_axle_suspension": "RR",

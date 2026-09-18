@@ -11,13 +11,22 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    diff_drive_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        namespace=LaunchConfiguration('robot_name'),
-        arguments=['diff_drive_controller']
-    )
+    # diff_drive_controller = Node(
+    #     package='controller_manager',
+    #     executable='spawner',
+    #     namespace=LaunchConfiguration('robot_name'),
+    #     arguments=['diff_drive_controller']
+    # )
     
+    teleop_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
+        ),
+        launch_arguments={
+            'robot_name': LaunchConfiguration('robot_name')
+        }.items()
+    )
+        
     teleop_joy_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare('teleop_twist_joy'), 'launch', 'teleop-launch.py']),
@@ -30,6 +39,5 @@ def generate_launch_description():
     
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
-        diff_drive_controller,
-        teleop_joy_launch
+        teleop_launch
     ])
