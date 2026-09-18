@@ -30,9 +30,7 @@ def generate_launch_description():
         namespace=LaunchConfiguration('robot_name'),
         arguments=['diff_drive_controller']
     )
-
-
-    
+ 
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),

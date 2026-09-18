@@ -43,17 +43,6 @@ def generate_launch_description():
             'robot_name': robot_name
         }.items()
     )
-    
-    # controller_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         PathJoinSubstitution([
-    #             FindPackageShare('transbot_controller'), 'launch', 'differential_drive_controller.launch.py'
-    #         ])
-    #     ),
-    #     launch_arguments={
-    #         'controller_config': 'mobilebase_diffdrive_6wheels_ltype.yaml'
-    #     }.items()
-    # )
    
     teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
