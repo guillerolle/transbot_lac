@@ -30,40 +30,25 @@ def generate_launch_description():
         }.items()
     )
     
-    spawn_launch = IncludeLaunchDescription(
+    robot_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
+            PathJoinSubstitution([
+                FindPackageShare('transbot_gazebo'), 'launch', 
+                PythonExpression(['"', robot_model, '.launch.py"'])
+            ]),
         ),
         launch_arguments={
             'robot_name': robot_name,
             'robot_model': robot_model,
             'robot_pkg': robot_pkg,
         }.items()
-    )
-    
-    joint_state_publisher_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        namespace=LaunchConfiguration('robot_name'),
-        arguments=['joint_state_broadcaster']
-    )
-    
-    controllers_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),
-        ),
-        launch_arguments={
-            'robot_name': robot_name
-        }.items()
-    )
-    
+    )    
+
     return LaunchDescription([
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf'),
         world_launch,
-        spawn_launch,
-        joint_state_publisher_spawner,
-        controllers_launch,
+        robot_launch
     ])

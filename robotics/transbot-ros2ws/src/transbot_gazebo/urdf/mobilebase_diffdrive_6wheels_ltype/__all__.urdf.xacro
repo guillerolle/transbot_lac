@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype">
 	<xacro:arg name="ros2_control_namespace" default="/transbot"></xacro:arg>
-	<xacro:arg name="ros2_control_dict" default="mobilebase_diffdrive_6wheels_ltype//ros2_control.yaml"></xacro:arg>
+	<xacro:arg name="ros2_control_dict" default="mobilebase_diffdrive_6wheels_ltype.yaml"></xacro:arg>
+	<xacro:arg name="ros2_control_pkg" default="transbot_controller"></xacro:arg>  
+	<!-- 2. Pasar el argumento a una propiedad -->
+  	<xacro:property name="_ros2_control_pkg" value="$(arg ros2_control_pkg)" />
+  	<xacro:property name="_ros2_control_path" value="$(find ${_ros2_control_pkg})" />
+
 	<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype/__all__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/mobilebase_diffdrive_6wheels_ltype.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/__extras__.urdf.xacro"></xacro:include>
 	<gazebo>
 		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-			<parameters>$(find transbot_gazebo)/config/$(arg ros2_control_dict)</parameters>
+			<parameters>${_ros2_control_path}/config/$(arg ros2_control_dict)</parameters>
 			<ros>
 				<namespace>$(arg ros2_control_namespace)</namespace>
 			</ros>

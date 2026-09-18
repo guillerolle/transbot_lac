@@ -11,13 +11,50 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    diff_drive_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        namespace=LaunchConfiguration('robot_name'),
-        arguments=['diff_drive_controller']
+    # Launch Configurations
+    robot_name = LaunchConfiguration('robot_name')
+    robot_model = LaunchConfiguration('robot_model')
+    robot_pkg = LaunchConfiguration('robot_pkg')
+    
+    # controller_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         PathJoinSubstitution([
+    #             FindPackageShare('transbot_controller'), 'launch', LaunchConfiguration('robot_model'), 
+    #             PythonExpression(['"', LaunchConfiguration('robot_model'), '.launch.py"'])
+    #         ])
+    #     )
+    # )
+    spawn_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
+        ),
+        launch_arguments={
+            'robot_name': robot_name,
+            'robot_model': robot_model,
+            'robot_pkg': robot_pkg,
+        }.items()
     )
     
+    controllers_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),
+        ),
+        launch_arguments={
+            'robot_name': robot_name
+        }.items()
+    )
+    
+    # controller_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         PathJoinSubstitution([
+    #             FindPackageShare('transbot_controller'), 'launch', 'differential_drive_controller.launch.py'
+    #         ])
+    #     ),
+    #     launch_arguments={
+    #         'controller_config': 'mobilebase_diffdrive_6wheels_ltype.yaml'
+    #     }.items()
+    # )
+   
     teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
@@ -42,7 +79,9 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),
-        diff_drive_controller,
+        DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
+        spawn_launch,
+        controllers_launch,
         teleop_launch,
         passive_spawn
     ])
