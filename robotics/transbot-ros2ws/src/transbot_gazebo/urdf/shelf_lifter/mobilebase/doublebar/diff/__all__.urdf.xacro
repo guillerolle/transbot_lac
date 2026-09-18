@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff">
+	<xacro:arg name="robot_name" default="transbot"></xacro:arg>
 	<xacro:arg name="ros2_control_namespace" default="/transbot"></xacro:arg>
-	<xacro:arg name="ros2_control_dict" default="shelf_lifter/mobilebase/doublebar/ros2_control.yaml"></xacro:arg>
+	<xacro:arg name="ros2_control_dict" default="shelf_lifter/mobilebase/doublebar.yaml"></xacro:arg>
+	<xacro:arg name="ros2_control_pkg" default="transbot_controller"></xacro:arg>
+	<xacro:arg name="gz_odometry_frame_prefix" default=""></xacro:arg>
+	<xacro:arg name="gz_odometry_frame" default="odom"></xacro:arg>
+	<xacro:property name="_ros2_control_pkg" value="$(arg ros2_control_pkg)"></xacro:property>
+	<xacro:property name="_ros2_control_path" value="$(find ${_ros2_control_pkg})"></xacro:property>
 	<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/doublebar/__all__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/doublebar/diff.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/doublebar/__extras__.urdf.xacro"></xacro:include>
 	<gazebo>
 		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-			<parameters>$(find transbot_gazebo)/config/$(arg ros2_control_dict)</parameters>
+			<parameters>${_ros2_control_path}/config/$(arg ros2_control_dict)</parameters>
 			<ros>
 				<namespace>$(arg ros2_control_namespace)</namespace>
 			</ros>
+		</plugin>
+	</gazebo>
+	<gazebo>
+		<plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+			<odom_frame>$(arg gz_odometry_frame_prefix)/$(arg gz_odometry_frame)</odom_frame>
+			<robot_base_frame>$(arg gz_odometry_frame_prefix)/gz_gtruth</robot_base_frame>
+			<odom_topic>/model/$(arg robot_name)/ground_truth/odometry</odom_topic>
+			<tf_topic>/model/$(arg robot_name)/ground_truth/pose</tf_topic>
+			<odom_publish_rate>50</odom_publish_rate>
+			<dimensions>3</dimensions>
+			<gaussian_noise>0.0</gaussian_noise>
 		</plugin>
 	</gazebo>
 	<xacro:diff-gz_reference prefix="" name=""></xacro:diff-gz_reference>

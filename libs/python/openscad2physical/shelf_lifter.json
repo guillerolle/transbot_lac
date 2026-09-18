@@ -1,8 +1,7 @@
 {
     "scad": "logical/MMR/ShelfLifter.scad",
     "density": 7850,
-    "ros_pkg_description": "transbot_description",
-    "ros_pkg_gazebo": "transbot_gazebo",
+    "robot_name": "transbot",
     "params":{
         "extra_wide": false,
         "differential_axle_suspension": "RR",

@@ -11,29 +11,6 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    diff_drive_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        namespace=LaunchConfiguration('robot_name'),
-        arguments=['diff_drive_controller']
-    )
-    
-    lifter_pid_velocity_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        namespace=LaunchConfiguration('robot_name'),
-        arguments=['lifter_pid_velocity_controller']
-    )
-    
-    teleop_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
-        ),
-        launch_arguments={
-            'robot_name': LaunchConfiguration('robot_name')
-        }.items()
-    )
-    
     passive_spawn = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
@@ -49,8 +26,5 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='shelf_lifter'),
-        diff_drive_controller,
-        lifter_pid_velocity_controller,
-        teleop_launch,
         passive_spawn
     ])

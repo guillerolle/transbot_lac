@@ -50,6 +50,19 @@ def generate_launch_description():
         }.items()
     )
 
+    robot_customs_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([
+                FindPackageShare('transbot_gazebo'), 'launch', 
+                PythonExpression(['"', robot_model, '.launch.py"'])
+            ]),
+        ),
+        launch_arguments={
+            'robot_name': robot_name,
+            'robot_model': robot_model,
+            'robot_pkg': robot_pkg,
+        }.items()
+    )    
 
     return LaunchDescription([
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
@@ -58,5 +71,6 @@ def generate_launch_description():
         DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf'),
         world_launch,
         robot_spawn_launch,
-        teleop_launch
+        teleop_launch,
+        robot_customs_launch
     ])

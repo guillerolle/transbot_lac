@@ -1,3 +1,4 @@
+
 #!/bin/env python3
 # coding: utf-8
 
@@ -15,25 +16,17 @@ def generate_launch_description():
     robot_name = LaunchConfiguration('robot_name')
     robot_model = LaunchConfiguration('robot_model')
     robot_pkg = LaunchConfiguration('robot_pkg')
-        
-    passive_spawn = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
-        ),
-        launch_arguments={
-            'robot_name': 'movingshelf',
-            'robot_model': 'movingshelf_4wheels',
-            'robot_pkg': 'transbot_gazebo',
-            'y': '2.0',
-        }.items()
-    )
     
+    joint_state_publisher = Node(
+        package='controller_manager',
+        executable='spawner',
+        namespace=LaunchConfiguration('robot_name'),
+        arguments=['joint_state_broadcaster']
+    )
+ 
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
-        DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),
+        DeclareLaunchArgument('robot_model', default_value='movingshelf_4wheels_low_lifter'),
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
-        # spawn_launch,
-        # controllers_launch,
-        # teleop_launch,
-        passive_spawn
+        joint_state_publisher,
     ])

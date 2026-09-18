@@ -1,4 +1,4 @@
-module IrregularFloor(length=1020, width=720, thickness=20, cell_size=60, noise_amplitude=15, mode="bumps", seed=42, z_top=50)
+module IrregularFloor(length=1000, width=800, thickness=20, cell_size=50, noise_amplitude=10, mode="bumps", seed=42)
 {
     cols = max(1, floor(length/cell_size));
     rows = max(1, floor(width/cell_size));
@@ -40,7 +40,7 @@ module IrregularFloor(length=1020, width=720, thickness=20, cell_size=60, noise_
             translate([-length/2, 0, 0])
             rotate([0, -90, 90])
             linear_extrude(width, center = true)
-            polygon([ [0,0], [thickness,0], [thickness,cell_size], [0,300]]);
+            polygon([ [0,0], [thickness-noise_amplitude/2,0], [thickness-noise_amplitude/2,cell_size], [0,300]]);
         }
         /*
         else if (mode=="craters")

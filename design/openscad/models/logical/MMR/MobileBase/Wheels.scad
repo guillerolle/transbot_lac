@@ -1,15 +1,18 @@
 use <RobotUtils/core.scad>
+include <BOSL2/std.scad>
+include <BOSL2/shapes3d.scad>
 
-module FixedWheel(d, w, h, $fn=60){
+module FixedWheel(d, w, h, rb=15, $fn=60){
     /*
         params:
             d: diameter
             w: width
             h: hole diameter
+            rb: rounding border
     */
     difference(){
         color([.3,.3,.3])
-        cylinder(d=d, h=w, center=true);
+        cyl(d=d, l=w, rounding=rb, center=true);
         cylinder(d=h, h=w*1.1, center=true);
     }
 }
@@ -93,6 +96,6 @@ module CastorWheel(display="*", prefix="", wd=120, ww=40, wh=0, cd=40, ch=130, c
     }
 }
 
-rotate([90, 0, 0]) FixedWheel(d=120, w=40, h=20);
+rotate([90, 0, 0]) FixedWheel(d=120, w=40, h=20, rb=15);
 
 //translate([0, 100, 150]) CastorWheel(display="*", wh=20);
