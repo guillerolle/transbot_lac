@@ -30,5 +30,6 @@
         "**/install/**": true,
         "**/output/**": true,
         "**/log/**": true
-    }
+    },
+    "cmake.ignoreCMakeListsMissing": true
 }
