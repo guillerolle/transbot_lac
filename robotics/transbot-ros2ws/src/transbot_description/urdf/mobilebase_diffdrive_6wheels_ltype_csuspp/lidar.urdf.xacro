@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lidar">
+	<xacro:macro name="lidar" params="prefix='' name='lidar' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2000">
+				<origin xyz="-7.776759568375659e-10 8.703287563826666e-10 0.050000009954252245" rpy="0 0 0"></origin>
+				<mass value="3.1186758230129876"></mass>
+				<inertia ixx="0.01033879515792523" ixy="-7.57912462559945e-12" ixz="-1.913728676402928e-10" iyy="0.010338794187797547" iyz="1.8290556958213972e-10" izz="0.015479797730222343"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/mobilebase_diffdrive_6wheels_ltype_csuspp/lidar.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.8 0.1 0.15 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/mobilebase_diffdrive_6wheels_ltype_csuspp/lidar.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+	<xacro:macro name="camera" params="prefix='' name='camera' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2000">
+				<origin xyz="0.0015456753955469056 -7.860687397225977e-12 1.8865649753342346e-11" rpy="0 0 0"></origin>
+				<mass value="0.2824747934937477"></mass>
+				<inertia ixx="0.0002409766617953816" ixy="-7.916904363093267e-13" ixz="-1.4349346685098745e-13" iyy="0.00015319900510290196" iyz="-1.8503717495987516e-15" izz="0.000279198877682898"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/mobilebase_diffdrive_6wheels_ltype_csuspp/camera.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.75 0.75 0.75 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/mobilebase_diffdrive_6wheels_ltype_csuspp/camera.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,76 @@
+{
+    "scad": "logical/MMR/MobileBase/DifferentialDrives/SixWheels_L.scad",
+    "density": 7850,
+    "robot_name": "transbot",
+    "params":{
+        "extra_wide": false,
+        "differential_axle_suspension": "RR",
+        "force_internal_castor": false,
+        "castor_suspension": "P"
+    },
+    "components": [
+        {
+            "name": "chassis",
+            "type": "part",
+            "density": 7850,
+            "rgba": "1 1 0 1"
+        },
+        {
+            "name": "control",
+            "type": "part",
+            "rgba": "1 0 0 1",
+            "density": 13800
+        },
+        {
+            "name": "doublebar",
+            "type": "assembly",
+            "density": "7850",
+            "rgba": "0 1 1 1",
+            "components": [
+                {
+                    "name": "diff",
+                    "type": "assembly",
+                    "rgba": "1 1 0 1",
+                    "components": [
+                        {
+                            "name": "wheel",
+                            "type": "part",
+                            "density": 2500,
+                            "rgba": "0.2 0.2 0.2 1",
+                            "replica": ["0", "1"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "castor",
+            "type": "assembly",
+            "replica": ["0", "1", "2", "3"],
+            "components": [
+                {
+                    "name": "arm",
+                    "type": "part",
+                    "density": 7850
+                },
+                {
+                    "name": "wheel",
+                    "type": "part",
+                    "rgba": "0.2 0.2 0.2 1",
+                    "density": 2500
+                }
+            ]
+        },
+        {
+            "name": "camera",
+            "type": "part",
+            "density": 2000,
+            "rgba": "0.75 0.75 0.75 1"
+        },        {
+            "name": "lidar",
+            "type": "part",
+            "density": 2000,
+            "rgba": "0.8 0.1 0.15 1"
+        }
+    ]
+}
