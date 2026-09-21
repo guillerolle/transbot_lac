@@ -4,6 +4,7 @@
 import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, PythonExpression
 from launch_ros.actions import Node
@@ -63,14 +64,28 @@ def generate_launch_description():
             'robot_pkg': robot_pkg,
         }.items()
     )    
+    
+    rviz = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution(
+                [FindPackageShare('transbot_description'), 'launch', 'rviz.launch.py']
+            ),
+        ),
+        launch_arguments={
+            'use_sim_time': 'true',
+        }.items(),
+        condition=IfCondition(LaunchConfiguration('rviz'))
+    )
 
     return LaunchDescription([
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf'),
+        DeclareLaunchArgument('rviz', description='Launch Rviz', default_value='true', choices=['false', 'true']),
         world_launch,
         robot_spawn_launch,
         teleop_launch,
-        robot_customs_launch
+        robot_customs_launch,
+        rviz
     ])
