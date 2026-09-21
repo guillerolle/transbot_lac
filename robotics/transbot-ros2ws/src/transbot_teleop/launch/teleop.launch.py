@@ -39,6 +39,15 @@ def generate_launch_description():
             'autorepeat_rate': LaunchConfiguration('joy_autorepeat_rate'),
         }]
     )
+    
+    keyboard_twist_teleop = Node(
+        package='key_teleop_ros',
+        executable='key_drive',
+        name='teleop_twist_keyboard_node',
+        namespace=LaunchConfiguration('robot_name'),
+        remappings=[('cmd_vel', 'cmd_vel_keyboard')],
+        parameters=[{}]
+    )
 
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'), 
@@ -49,4 +58,5 @@ def generate_launch_description():
         joy_node,
         twist_joy_node,
         joint_teleop_node,
+        keyboard_twist_teleop
     ])

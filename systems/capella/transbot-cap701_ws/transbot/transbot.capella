@@ -1941,9 +1941,8 @@
               id="e9a53f5b-00e9-4e32-9ab1-d17ec00c84cc" name="commands" source="#f2bc8264-5c61-4b46-b7e1-bc191e109eea"
               target="#e168de2d-8cf5-4f75-8ff5-2b2da0498366" kind="FLOW"/>
           <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
-              id="d8548153-fcf9-4fd9-9a44-4dc5caf0f0bc" name="velocity command topic"
-              source="#7ef9d541-257a-431a-abc8-8a2eacdcafe4" target="#1f4e5eef-0f73-41c7-aa66-1978cabfb6a8"
-              kind="FLOW"/>
+              id="d8548153-fcf9-4fd9-9a44-4dc5caf0f0bc" name="cmd_vel_joy" source="#7ef9d541-257a-431a-abc8-8a2eacdcafe4"
+              target="#1f4e5eef-0f73-41c7-aa66-1978cabfb6a8" kind="FLOW"/>
           <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
               id="4af608fb-c6d5-408a-928e-8681aa60d4c9" name="digital/analog signals"
               source="#e28a736c-14da-484f-9819-781aba5ea675" target="#923d4659-0ed8-4137-8646-bb3fa1b85bf1"
@@ -1962,6 +1961,15 @@
               id="0a952a23-5fdb-4e0d-8da5-f1cf3262f22c" name="robot tf_tree" convoyedInformations="#98eb56db-1d09-4759-8461-82097817ff39"
               source="#79766121-5904-4f23-9328-dcca2026d745" target="#29f1d8f7-dc02-4465-898a-d16dc0a59b7e"
               kind="FLOW"/>
+          <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+              id="20f797b2-98d4-4ef7-b1ab-ad0560ffd78a" name="cmd_vel" source="#016ee614-0980-42d9-909c-4781f2aefb08"
+              target="#1e957c96-83b1-4f71-86ab-5891ce18577d" kind="FLOW"/>
+          <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+              id="d30dae00-0d92-4778-963f-dc6455c932a6" name="keys pressed" source="#32fe233a-1309-4657-abed-d4c7e983658b"
+              target="#8cdaa326-1ebc-4ac2-856c-ca621f235cc0" kind="FLOW"/>
+          <ownedComponentExchanges xsi:type="org.polarsys.capella.core.data.fa:ComponentExchange"
+              id="08c33fc4-9a44-441d-9dea-076beb44e40c" name="cmd_vel_keyboard" source="#afa248df-1414-4d03-a0ba-8e6feecf2d3f"
+              target="#4c52caf7-8c89-428a-af1c-9634fbd4243f" kind="FLOW"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="7277a841-56b8-44fb-8d25-ef09f31e8a52"
               name="Mobile Base" abstractType="#cff974e5-9cd1-46d1-8e8b-75568b59f356"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="554aaf64-5d79-4b3d-8a61-e0a21a00c901"
@@ -1973,15 +1981,21 @@
                 location="#1bb0dc51-8e5d-49d4-950a-351001d59e79"/>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="48a09791-b09d-41f7-8200-338cf9c83550"
-              name="Joystick Node Stack" abstractType="#07c17cca-6857-45ef-a20e-82dfb5cc276b"/>
+              name="joy nodes stack" abstractType="#07c17cca-6857-45ef-a20e-82dfb5cc276b"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="67d7be77-e3f2-46d7-9432-f3da440f9c60"
-              name="Digital Signals Generator" abstractType="#b6d4e4a4-9307-4aaf-930f-10bf60fbc6e4"/>
+              name="Digital and Analog Signals Generator" abstractType="#b6d4e4a4-9307-4aaf-930f-10bf60fbc6e4"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4b125030-51db-4589-8a39-5b457ccfcddd"
               name="ROS2 Localisation Stack" abstractType="#b5c27b81-65de-4e97-b973-c44d5c3d3e36"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c58cdcc5-e16e-4b37-ab6b-f557c9e0c079"
               name="RViz Node Stack" abstractType="#7bf48709-47a7-40c7-b0db-6fa4c6eef0d6"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="6990bff9-8c68-4782-853b-e2fe94d6faa0"
               name="robot_state_publisher" abstractType="#fa766ba1-bd50-4bb9-807f-7adf574956d6"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="3c1d4e28-ad2a-493e-9432-83768ca05f32"
+              name="twist_mux" abstractType="#b279a60a-c81c-4876-a8ff-ac24e5db5b65"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="194fd4b4-5df9-468b-8413-c30f1eed2837"
+              name="Digital Signals Generator" abstractType="#1fd62c3e-a9fd-47d4-a88b-a46c282478e7"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="6e5eb82b-b749-47f1-afaf-940b2247d060"
+              name="keyboard nodes stack" abstractType="#50e1cf75-1e97-400c-afda-f56d8c140ad8"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="a765a7bf-90f3-4523-8a32-419ae44e2d6c" targetElement="#7299ca01-4fcd-4430-a343-e111cdd83571"
               sourceElement="#243dfee7-1f82-439b-9142-ca6a23fe579d"/>
@@ -2000,11 +2014,11 @@
             </ownedConstraints>
           </ownedPhysicalLinks>
           <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-              id="ebb2d84b-0fe0-433d-840a-f4eaa0bf0fce" name="network (localhost)"
-              linkEnds="#70be5012-bd53-411b-b9b9-210cf7693e7f #f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd"/>
-          <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-              id="e9ae5e97-25dd-47f7-b4cb-e8e9a7bbd453" name="network (localhost)"
-              linkEnds="#9a8f10a4-fdda-4cc0-94bc-963dacdae1d6 #157387c7-9a71-4074-9e42-a112b34a0fc3"/>
+              id="e9ae5e97-25dd-47f7-b4cb-e8e9a7bbd453" name="loopback" linkEnds="#9a8f10a4-fdda-4cc0-94bc-963dacdae1d6 #157387c7-9a71-4074-9e42-a112b34a0fc3">
+            <ownedComponentExchangeAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeAllocation"
+                id="62545b26-ba90-4c5e-ac01-f93395be77cc" targetElement="#d8548153-fcf9-4fd9-9a44-4dc5caf0f0bc"
+                sourceElement="#e9ae5e97-25dd-47f7-b4cb-e8e9a7bbd453"/>
+          </ownedPhysicalLinks>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
               id="cff974e5-9cd1-46d1-8e8b-75568b59f356" name="Mobile Base" nature="NODE">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="968052ff-533d-4227-ab32-7af4ce507b66"
@@ -2078,8 +2092,7 @@
             </ownedFeatures>
           </ownedPhysicalComponents>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-              id="07c17cca-6857-45ef-a20e-82dfb5cc276b" name="Joystick Node Stack"
-              nature="BEHAVIOR">
+              id="07c17cca-6857-45ef-a20e-82dfb5cc276b" name="joy nodes stack" nature="BEHAVIOR">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                 id="7ef9d541-257a-431a-abc8-8a2eacdcafe4" name="CP 1" orientation="OUT"
                 kind="FLOW"/>
@@ -2088,7 +2101,7 @@
                 kind="FLOW"/>
           </ownedPhysicalComponents>
           <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-              id="b6d4e4a4-9307-4aaf-930f-10bf60fbc6e4" name="Digital Signals Generator"
+              id="b6d4e4a4-9307-4aaf-930f-10bf60fbc6e4" name="Digital and Analog Signals Generator"
               nature="BEHAVIOR">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                 id="e28a736c-14da-484f-9819-781aba5ea675" name="CP 1" orientation="OUT"
@@ -2117,66 +2130,53 @@
                 id="79766121-5904-4f23-9328-dcca2026d745" name="CP 2" providedInterfaces="#b6ce5c06-3887-420f-89da-4f0c05a4ff0a"
                 orientation="OUT" kind="FLOW"/>
           </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="b279a60a-c81c-4876-a8ff-ac24e5db5b65" name="twist_mux" nature="BEHAVIOR">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="1f4e5eef-0f73-41c7-aa66-1978cabfb6a8" name="CP 3" orientation="IN"
+                kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="016ee614-0980-42d9-909c-4781f2aefb08" name="CP 2" orientation="OUT"
+                kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="4c52caf7-8c89-428a-af1c-9634fbd4243f" name="CP 4" orientation="IN"
+                kind="FLOW"/>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="1fd62c3e-a9fd-47d4-a88b-a46c282478e7" name="Digital Signals Generator"
+              nature="BEHAVIOR">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="32fe233a-1309-4657-abed-d4c7e983658b" name="CP 1" orientation="OUT"
+                kind="FLOW"/>
+          </ownedPhysicalComponents>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="50e1cf75-1e97-400c-afda-f56d8c140ad8" name="keyboard nodes stack"
+              nature="BEHAVIOR">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="8cdaa326-1ebc-4ac2-856c-ca621f235cc0" name="CP 1" orientation="IN"
+                kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                id="afa248df-1414-4d03-a0ba-8e6feecf2d3f" name="CP 2" orientation="OUT"
+                kind="FLOW"/>
+          </ownedPhysicalComponents>
           <ownedPhysicalComponentPkgs xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
               id="233f8829-3d11-4440-8fdb-9fa86b049d16" name="Gazebo Simulation">
-            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="511b9873-32bb-40c8-b8c8-337ba7765c01"
-                name="Gazebo Sim" abstractType="#5e4deb83-7ab0-4378-8aef-c065d4bbb546">
-              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="9e658590-507c-4a32-ac09-095e0b3dc501" deployedElement="#e793cb91-2602-4ca8-82f0-722bcb8e90f7"
-                  location="#511b9873-32bb-40c8-b8c8-337ba7765c01"/>
-              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="79d3b302-9918-415e-a80d-25ff594fb3ea" deployedElement="#669c9593-d54f-4647-8cdf-b346032e84ea"
-                  location="#511b9873-32bb-40c8-b8c8-337ba7765c01"/>
-            </ownedParts>
             <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e793cb91-2602-4ca8-82f0-722bcb8e90f7"
                 name="GazeboSimSystem&#xA;&lt;transbot>" abstractType="#ec480b3c-977a-486d-bcfd-334464e0dfca"/>
-            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="f1cde271-33a6-46bf-8a84-644485407797"
-                name="Localisation Process Stack" abstractType="#a9032480-459d-433d-90f5-17f51e141e2a">
+            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="c95cee34-1d21-4211-8776-a7cf9bd0d18c"
+                name="SIM PC" abstractType="#f9ad8aca-e17c-41f7-88d3-9025040cdd06"/>
+            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="fe15bfa1-b3d5-4b1f-b54f-da5de042a5cc"
+                name="Keyboard" abstractType="#85be8b69-ff1d-40b1-b0c0-d1ac531b36fd">
               <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="86fff211-9443-4d2c-921a-fd248d8bc8b2" deployedElement="#4b125030-51db-4589-8a39-5b457ccfcddd"
-                  location="#f1cde271-33a6-46bf-8a84-644485407797"/>
-            </ownedParts>
-            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="4662d705-868b-43b4-a835-67abbfb8574d"
-                name="Visualization Process Stack" abstractType="#28df7417-80e6-4cd8-99da-9f95c04bdbe0">
-              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="38414828-3b07-488e-ad92-0c027213ccec" deployedElement="#c58cdcc5-e16e-4b37-ab6b-f557c9e0c079"
-                  location="#4662d705-868b-43b4-a835-67abbfb8574d"/>
-            </ownedParts>
-            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="479952a8-4117-45d8-8ed2-8b7534bb5fcd"
-                name="Robot State Publisher Stack" abstractType="#1d96bf1a-9271-4c62-b09c-b479b01b2d8a">
-              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="0c167fa3-eabe-4977-b181-72a0f01d1045" deployedElement="#6990bff9-8c68-4782-853b-e2fe94d6faa0"
-                  location="#479952a8-4117-45d8-8ed2-8b7534bb5fcd"/>
+                  id="182598b1-6e39-4e59-be1a-c1690c46d2c9" deployedElement="#194fd4b4-5df9-468b-8413-c30f1eed2837"
+                  location="#fe15bfa1-b3d5-4b1f-b54f-da5de042a5cc"/>
             </ownedParts>
             <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-                id="de68b3fe-8053-497c-8441-bacbfb1685c2" name="network (localhost)"
-                linkEnds="#7d4d7d1b-933f-4ca9-abb1-bc11e4512900 #18566af3-8411-4b0f-8631-00ede452094a"/>
+                id="875f9ad3-77bc-405b-985e-a75cf5eac2b6" name="loopback" linkEnds="#22cfa9aa-6513-406c-9684-5ba3bb529e7a #53859ba2-e917-4840-9a5b-782efd2abd6c"/>
             <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-                id="875f9ad3-77bc-405b-985e-a75cf5eac2b6" name="network (localhost)"
-                linkEnds="#22cfa9aa-6513-406c-9684-5ba3bb529e7a #53859ba2-e917-4840-9a5b-782efd2abd6c"/>
-            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="5e4deb83-7ab0-4378-8aef-c065d4bbb546" name="Gazebo Sim" nature="NODE">
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="157387c7-9a71-4074-9e42-a112b34a0fc3" name="PP 2">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="81dc1563-8cca-4f81-92fe-375e1ad74e62" targetElement="#1f4e5eef-0f73-41c7-aa66-1978cabfb6a8"
-                    sourceElement="#157387c7-9a71-4074-9e42-a112b34a0fc3"/>
-              </ownedFeatures>
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="70be5012-bd53-411b-b9b9-210cf7693e7f" name="PP 3"/>
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="7d4d7d1b-933f-4ca9-abb1-bc11e4512900" name="PP 4">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="72cb656e-75dc-4ee9-8618-1cd5001873d8" targetElement="#f5a76b7c-86b4-4c11-b7a3-71042937786a"
-                    sourceElement="#7d4d7d1b-933f-4ca9-abb1-bc11e4512900"/>
-              </ownedFeatures>
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="22cfa9aa-6513-406c-9684-5ba3bb529e7a" name="PP 5">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="419ba901-e549-4665-90f0-bff9d3885911" targetElement="#ac2c5e99-e3ea-4572-8af6-3891c083d6a2"
-                    sourceElement="#22cfa9aa-6513-406c-9684-5ba3bb529e7a"/>
-              </ownedFeatures>
-            </ownedPhysicalComponents>
+                id="0f15e7dd-3e2e-413b-87f3-58984293dcbd" name="bluetooth" linkEnds="#346df213-e69a-4ad6-bb6a-448b1b51563c #52eab98f-4814-46a3-871b-5f429efc75be"/>
+            <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+                id="b0486252-76d5-423a-980a-f69ce665e85c" name="USB Cable" linkEnds="#be345b43-b3cf-4742-9d9f-26d5ad259371 #c627895a-5570-4992-8acc-2b0d45ba9703"/>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                 id="ec480b3c-977a-486d-bcfd-334464e0dfca" name="GazeboSimSystem&#xA;&lt;transbot>"
                 kind="SOFTWARE" nature="BEHAVIOR">
@@ -2188,33 +2188,193 @@
                   orientation="OUT" kind="FLOW"/>
             </ownedPhysicalComponents>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="a9032480-459d-433d-90f5-17f51e141e2a" name="Localisation Process Stack"
-                nature="NODE">
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd" name="PP 1">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="d137041a-4bd1-40f5-b25b-fd75a1b61290" targetElement="#3f04acbb-4d95-43c2-998c-6b45c5c2586a"
-                    sourceElement="#f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd"/>
+                id="f9ad8aca-e17c-41f7-88d3-9025040cdd06" name="SIM PC" nature="NODE">
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="479952a8-4117-45d8-8ed2-8b7534bb5fcd"
+                  name="Robot State Publisher Stack" abstractType="#1d96bf1a-9271-4c62-b09c-b479b01b2d8a">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="0c167fa3-eabe-4977-b181-72a0f01d1045" deployedElement="#6990bff9-8c68-4782-853b-e2fe94d6faa0"
+                    location="#479952a8-4117-45d8-8ed2-8b7534bb5fcd"/>
               </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4662d705-868b-43b4-a835-67abbfb8574d"
+                  name="Visualization Process Stack" abstractType="#28df7417-80e6-4cd8-99da-9f95c04bdbe0">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="38414828-3b07-488e-ad92-0c027213ccec" deployedElement="#c58cdcc5-e16e-4b37-ab6b-f557c9e0c079"
+                    location="#4662d705-868b-43b4-a835-67abbfb8574d"/>
+              </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="9c77fcd9-ccb4-4de3-a2e1-d40ac30fa098"
+                  name="Twist-Mux Process Stack" abstractType="#6080d7fb-0345-4693-98d9-b877d1ed5dfb">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="780514de-3267-4e94-9698-6efb85aa5145" deployedElement="#3c1d4e28-ad2a-493e-9432-83768ca05f32"
+                    location="#9c77fcd9-ccb4-4de3-a2e1-d40ac30fa098"/>
+              </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f1cde271-33a6-46bf-8a84-644485407797"
+                  name="Localisation Process Stack" abstractType="#a9032480-459d-433d-90f5-17f51e141e2a">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="86fff211-9443-4d2c-921a-fd248d8bc8b2" deployedElement="#4b125030-51db-4589-8a39-5b457ccfcddd"
+                    location="#f1cde271-33a6-46bf-8a84-644485407797"/>
+              </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="814afe44-ebbd-49fc-aacb-53abc6bbf0ea"
+                  name="Joystick Teleop Process Stack" abstractType="#ddda6153-45f3-4083-b440-8fd8be406d04">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="b84a4f02-778a-49ae-ad65-7d84eb21043f" deployedElement="#48a09791-b09d-41f7-8200-338cf9c83550"
+                    location="#814afe44-ebbd-49fc-aacb-53abc6bbf0ea"/>
+              </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="511b9873-32bb-40c8-b8c8-337ba7765c01"
+                  name="Gazebo Sim" abstractType="#5e4deb83-7ab0-4378-8aef-c065d4bbb546">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="9e658590-507c-4a32-ac09-095e0b3dc501" deployedElement="#e793cb91-2602-4ca8-82f0-722bcb8e90f7"
+                    location="#511b9873-32bb-40c8-b8c8-337ba7765c01"/>
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="79d3b302-9918-415e-a80d-25ff594fb3ea" deployedElement="#669c9593-d54f-4647-8cdf-b346032e84ea"
+                    location="#511b9873-32bb-40c8-b8c8-337ba7765c01"/>
+              </ownedFeatures>
+              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4005d975-4fc6-489d-a368-248b2a7535a9"
+                  name="Keyboard Teleop Process Stack" abstractType="#3922e871-f554-465a-bb75-ac10155b0d3c">
+                <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                    id="7b55e1d5-d980-4382-bc48-a44af83fceb7" deployedElement="#6e5eb82b-b749-47f1-afaf-940b2247d060"
+                    location="#4005d975-4fc6-489d-a368-248b2a7535a9"/>
+              </ownedFeatures>
+              <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+                  id="b551601c-b802-491f-93ab-25040b87bab6" name="loopback" linkEnds="#4ecafc56-65a0-40c0-b6c4-58ecf33c1252 #fab4e733-d858-4100-85d7-8e318c1d7207"/>
+              <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+                  id="53277e08-d336-4383-8dbd-876d3d94058c" name="loopback" linkEnds="#68bf0fbb-9a09-4067-b3c4-0e7885da6106 #18566af3-8411-4b0f-8631-00ede452094a"/>
+              <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+                  id="bb7fa646-9cf7-49fc-9d11-3cd050298dae" name="loopback" linkEnds="#b55b2f3f-40e8-4f87-b46e-7e83be9c1cc7 #f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd"/>
+              <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
+                  id="537b07fc-a64c-47fd-a7cf-f124d36834db" name="loopback" linkEnds="#5e29d510-def6-43a1-855a-037bc0c91475 #1e78d759-9b7a-4b14-82ac-e6542a7f8463"/>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="1d96bf1a-9271-4c62-b09c-b479b01b2d8a" name="Robot State Publisher Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="53859ba2-e917-4840-9a5b-782efd2abd6c" name="PP 1">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="5c09c916-ea14-4b10-90c6-1ed8bbcdb81f" targetElement="#088e2316-2676-4c53-8578-e5f403e3c131"
+                      sourceElement="#53859ba2-e917-4840-9a5b-782efd2abd6c"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="28df7417-80e6-4cd8-99da-9f95c04bdbe0" name="Visualization Process Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="18566af3-8411-4b0f-8631-00ede452094a" name="PP 1">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="12697870-a636-4cb1-bc31-7d42027b9e08" targetElement="#29f1d8f7-dc02-4465-898a-d16dc0a59b7e"
+                      sourceElement="#18566af3-8411-4b0f-8631-00ede452094a"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="6080d7fb-0345-4693-98d9-b877d1ed5dfb" name="Twist-Mux Process Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="157387c7-9a71-4074-9e42-a112b34a0fc3" name="PP 2">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="81dc1563-8cca-4f81-92fe-375e1ad74e62" targetElement="#1f4e5eef-0f73-41c7-aa66-1978cabfb6a8"
+                      sourceElement="#157387c7-9a71-4074-9e42-a112b34a0fc3"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="4ecafc56-65a0-40c0-b6c4-58ecf33c1252" name="PP 3">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="1a11baa2-f82d-43b7-9f3b-aacf396c640c" targetElement="#016ee614-0980-42d9-909c-4781f2aefb08"
+                      sourceElement="#4ecafc56-65a0-40c0-b6c4-58ecf33c1252"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="1e78d759-9b7a-4b14-82ac-e6542a7f8463" name="PP 4">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="ec7f87f4-7749-4b8b-b101-a0f161e20922" targetElement="#4c52caf7-8c89-428a-af1c-9634fbd4243f"
+                      sourceElement="#1e78d759-9b7a-4b14-82ac-e6542a7f8463"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="a9032480-459d-433d-90f5-17f51e141e2a" name="Localisation Process Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd" name="PP 1">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="d137041a-4bd1-40f5-b25b-fd75a1b61290" targetElement="#3f04acbb-4d95-43c2-998c-6b45c5c2586a"
+                      sourceElement="#f908ee0d-ad9d-4316-9a1f-78fdca8ea3bd"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="ddda6153-45f3-4083-b440-8fd8be406d04" name="Joystick Teleop Process Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="9a8f10a4-fdda-4cc0-94bc-963dacdae1d6" name="PP 1">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="8f9a169d-20b1-4970-af78-fdd82fceb516" targetElement="#7ef9d541-257a-431a-abc8-8a2eacdcafe4"
+                      sourceElement="#9a8f10a4-fdda-4cc0-94bc-963dacdae1d6"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="5c60d996-6925-4549-a071-13601faf02ef" name="PP 2">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="357cce17-c65a-4145-808c-5c787bda3448" targetElement="#923d4659-0ed8-4137-8646-bb3fa1b85bf1"
+                      sourceElement="#5c60d996-6925-4549-a071-13601faf02ef"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="cc8e8a2a-da3c-40c9-8330-d04a1a0c97b2" name="PP 3">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="c732d447-21c5-457e-999c-fd9c6288653f" targetElement="#923d4659-0ed8-4137-8646-bb3fa1b85bf1"
+                      sourceElement="#cc8e8a2a-da3c-40c9-8330-d04a1a0c97b2"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="5e4deb83-7ab0-4378-8aef-c065d4bbb546" name="Gazebo Sim" nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="22cfa9aa-6513-406c-9684-5ba3bb529e7a" name="PP 5">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="419ba901-e549-4665-90f0-bff9d3885911" targetElement="#ac2c5e99-e3ea-4572-8af6-3891c083d6a2"
+                      sourceElement="#22cfa9aa-6513-406c-9684-5ba3bb529e7a"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="fab4e733-d858-4100-85d7-8e318c1d7207" name="PP 2">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="1388af51-bed1-4526-80ed-9024fc9ac372" targetElement="#1e957c96-83b1-4f71-86ab-5891ce18577d"
+                      sourceElement="#fab4e733-d858-4100-85d7-8e318c1d7207"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="68bf0fbb-9a09-4067-b3c4-0e7885da6106" name="PP 3">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="4dbbb1e6-7c85-49d0-9d38-351a7f2f6b06" targetElement="#f5a76b7c-86b4-4c11-b7a3-71042937786a"
+                      sourceElement="#68bf0fbb-9a09-4067-b3c4-0e7885da6106"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="b55b2f3f-40e8-4f87-b46e-7e83be9c1cc7" name="PP 4"/>
+              </ownedPhysicalComponents>
+              <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+                  id="3922e871-f554-465a-bb75-ac10155b0d3c" name="Keyboard Teleop Process Stack"
+                  nature="NODE">
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="52eab98f-4814-46a3-871b-5f429efc75be" name="PP 1">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="17a4eb53-bf26-4956-adc4-d72ed8237441" targetElement="#8cdaa326-1ebc-4ac2-856c-ca621f235cc0"
+                      sourceElement="#52eab98f-4814-46a3-871b-5f429efc75be"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="c627895a-5570-4992-8acc-2b0d45ba9703" name="PP 2">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="7beece0b-a934-47eb-b076-54d48e860e62" targetElement="#8cdaa326-1ebc-4ac2-856c-ca621f235cc0"
+                      sourceElement="#c627895a-5570-4992-8acc-2b0d45ba9703"/>
+                </ownedFeatures>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
+                    id="5e29d510-def6-43a1-855a-037bc0c91475" name="PP 3">
+                  <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
+                      id="a33f72aa-6757-4bfb-b14a-c2133bffbb78" targetElement="#afa248df-1414-4d03-a0ba-8e6feecf2d3f"
+                      sourceElement="#5e29d510-def6-43a1-855a-037bc0c91475"/>
+                </ownedFeatures>
+              </ownedPhysicalComponents>
             </ownedPhysicalComponents>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="28df7417-80e6-4cd8-99da-9f95c04bdbe0" name="Visualization Process Stack"
-                nature="NODE">
+                id="85be8b69-ff1d-40b1-b0c0-d1ac531b36fd" name="Keyboard" nature="NODE">
               <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="18566af3-8411-4b0f-8631-00ede452094a" name="PP 1">
+                  id="346df213-e69a-4ad6-bb6a-448b1b51563c" name="PP 1">
                 <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="12697870-a636-4cb1-bc31-7d42027b9e08" targetElement="#29f1d8f7-dc02-4465-898a-d16dc0a59b7e"
-                    sourceElement="#18566af3-8411-4b0f-8631-00ede452094a"/>
+                    id="54cfa66d-3ec3-42ed-a6b2-ddedfd9ea6ab" targetElement="#32fe233a-1309-4657-abed-d4c7e983658b"
+                    sourceElement="#346df213-e69a-4ad6-bb6a-448b1b51563c"/>
               </ownedFeatures>
-            </ownedPhysicalComponents>
-            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="1d96bf1a-9271-4c62-b09c-b479b01b2d8a" name="Robot State Publisher Stack"
-                nature="NODE">
               <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="53859ba2-e917-4840-9a5b-782efd2abd6c" name="PP 1">
+                  id="be345b43-b3cf-4742-9d9f-26d5ad259371" name="PP 2">
                 <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="5c09c916-ea14-4b10-90c6-1ed8bbcdb81f" targetElement="#088e2316-2676-4c53-8578-e5f403e3c131"
-                    sourceElement="#53859ba2-e917-4840-9a5b-782efd2abd6c"/>
+                    id="fc32fbb9-ccd1-4a92-a5c7-da7f7136977a" targetElement="#32fe233a-1309-4657-abed-d4c7e983658b"
+                    sourceElement="#be345b43-b3cf-4742-9d9f-26d5ad259371"/>
               </ownedFeatures>
             </ownedPhysicalComponents>
           </ownedPhysicalComponentPkgs>
@@ -2298,12 +2458,6 @@
               id="44ba978f-7e6b-4e7f-a626-52d5193b3b8a" name="ROS2">
             <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="669c9593-d54f-4647-8cdf-b346032e84ea"
                 name="ROS2 Controller Manager" abstractType="#9e9efcf6-93c6-47cc-aa44-9b587549b4f2"/>
-            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="814afe44-ebbd-49fc-aacb-53abc6bbf0ea"
-                name="Joystick Teleop Process Stack" abstractType="#ddda6153-45f3-4083-b440-8fd8be406d04">
-              <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
-                  id="b84a4f02-778a-49ae-ad65-7d84eb21043f" deployedElement="#48a09791-b09d-41f7-8200-338cf9c83550"
-                  location="#814afe44-ebbd-49fc-aacb-53abc6bbf0ea"/>
-            </ownedParts>
             <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                 id="9e9efcf6-93c6-47cc-aa44-9b587549b4f2" name="ROS2 Controller Manager"
                 kind="SOFTWARE" nature="BEHAVIOR">
@@ -2318,11 +2472,11 @@
                     id="f2bc8264-5c61-4b46-b7e1-bc191e109eea" name="CP 1" orientation="OUT"
                     kind="FLOW"/>
                 <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-                    id="1f4e5eef-0f73-41c7-aa66-1978cabfb6a8" name="CP 3" orientation="IN"
-                    kind="FLOW"/>
-                <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                     id="f5a76b7c-86b4-4c11-b7a3-71042937786a" name="CP 3" providedInterfaces="#b6ce5c06-3887-420f-89da-4f0c05a4ff0a"
                     orientation="OUT" kind="FLOW"/>
+                <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
+                    id="1e957c96-83b1-4f71-86ab-5891ce18577d" name="CP 4" orientation="IN"
+                    kind="FLOW"/>
               </ownedPhysicalComponents>
               <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
                   id="358f72ab-11a7-412a-8ac5-319479a3e7e8" name="joint_state_broadcaster"
@@ -2334,28 +2488,6 @@
                     id="ac2c5e99-e3ea-4572-8af6-3891c083d6a2" name="CP 3" providedInterfaces="#675ee98a-e1b1-4306-b67a-9f163a184fe7"
                     orientation="OUT" kind="FLOW"/>
               </ownedPhysicalComponents>
-            </ownedPhysicalComponents>
-            <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-                id="ddda6153-45f3-4083-b440-8fd8be406d04" name="Joystick Teleop Process Stack"
-                nature="NODE">
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="9a8f10a4-fdda-4cc0-94bc-963dacdae1d6" name="PP 1">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="8f9a169d-20b1-4970-af78-fdd82fceb516" targetElement="#7ef9d541-257a-431a-abc8-8a2eacdcafe4"
-                    sourceElement="#9a8f10a4-fdda-4cc0-94bc-963dacdae1d6"/>
-              </ownedFeatures>
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="5c60d996-6925-4549-a071-13601faf02ef" name="PP 2">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="357cce17-c65a-4145-808c-5c787bda3448" targetElement="#923d4659-0ed8-4137-8646-bb3fa1b85bf1"
-                    sourceElement="#5c60d996-6925-4549-a071-13601faf02ef"/>
-              </ownedFeatures>
-              <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-                  id="cc8e8a2a-da3c-40c9-8330-d04a1a0c97b2" name="PP 3">
-                <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                    id="c732d447-21c5-457e-999c-fd9c6288653f" targetElement="#923d4659-0ed8-4137-8646-bb3fa1b85bf1"
-                    sourceElement="#cc8e8a2a-da3c-40c9-8330-d04a1a0c97b2"/>
-              </ownedFeatures>
             </ownedPhysicalComponents>
           </ownedPhysicalComponentPkgs>
         </ownedPhysicalComponents>

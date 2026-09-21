@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-venv \
     python3-colcon-common-extensions \
+    python3-pynput \
     git \
     nano \
     vim \
