@@ -72,6 +72,7 @@ RUN apt-get update \
         ros-$ROSDISTRO-nav2-bringup \
         ros-$ROSDISTRO-turtlebot3 \
         ros-$ROSDISTRO-twist-mux \
+        ros-$ROSDISTRO-rviz-imu-plugin \
     && rm -rf /var/lib/apt/lists/*
 
 
