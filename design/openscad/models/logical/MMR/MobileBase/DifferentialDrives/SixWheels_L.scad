@@ -9,6 +9,7 @@ use <../Chassis/Cubierta.scad>
 use <../ControlModule/ControlModule.scad>
 use <../../Sensors/Camera.scad>
 use <../../Sensors/Lidar.scad>
+use <../../Sensors/IMU.scad>
 
 module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false, back_width=0, back_height=600, gap=150, castor_suspension="F"){
     
@@ -63,18 +64,18 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         FixedJoint(name="castor3", prefix=prefix, p_translate=[-1*(+bbox[0]/2-cwheel_f/2), (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180])
         _castor();
     } else if (castor_suspension=="P"){
-        PrismaticJoint(name="castor0", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?-(-bbox[1]/2+cwheel_d/2+cwheel_cd):-(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[10], damping=[0.1], draw=false){
+        PrismaticJoint(name="castor0", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?-(-bbox[1]/2+cwheel_d/2+cwheel_cd):-(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[3000], damping=[10], draw=false){
         _castor();
         }
 
-        PrismaticJoint(name="castor1", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[10], damping=[0.1] )
+        PrismaticJoint(name="castor1", prefix=prefix, p_translate=[+bbox[0]/2-cwheel_f/2, (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[3000], damping=[10] )
         _castor();
         
-        PrismaticJoint(name="castor2", prefix=prefix, p_translate=[-1*(+bbox[0]/2-cwheel_f/2), (force_internal_castor)?-(-bbox[1]/2+cwheel_d/2+cwheel_cd):-(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[10], damping=[0.1] ){
+        PrismaticJoint(name="castor2", prefix=prefix, p_translate=[-1*(+bbox[0]/2-cwheel_f/2), (force_internal_castor)?-(-bbox[1]/2+cwheel_d/2+cwheel_cd):-(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[3000], damping=[10] ){
         _castor();
         }
 
-        PrismaticJoint(name="castor3", prefix=prefix, p_translate=[-1*(+bbox[0]/2-cwheel_f/2), (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[10], damping=[0.1] )
+        PrismaticJoint(name="castor3", prefix=prefix, p_translate=[-1*(+bbox[0]/2-cwheel_f/2), (force_internal_castor)?+(-bbox[1]/2+cwheel_d/2+cwheel_cd):+(-bbox[1]/2+cwheel_f/2), cwheel_h], p_rotate=[0,0,180], limits=[-50, 50], spring=[3000], damping=[10] )
         _castor();
     }
     
@@ -92,6 +93,9 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
     
     FixedJoint(name="lidar", prefix=prefix, p_translate=[bbox[0]/2-100,0,cwheel_h+40], p_rotate=[0,0,0])
     _lidar();
+    
+    FixedJoint(name="imu", prefix=prefix, p_translate=[bbox[0]/2-100,-bbox[1]/2+50,cwheel_h+40], p_rotate=[0,0,0])
+    _imu();
         
     } else if (_d=="_") {
         // MAIN LINK 
@@ -115,6 +119,8 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         _camera();
     } else if (_d=="lidar") {
         _lidar();
+    } else if (_d=="imu") {
+        _imu();
     } else {
         echo(str_join(["Unknown component: <", _d, ">"]));
     } 
@@ -167,6 +173,10 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
     
     module _lidar(){
         Lidar();
+    }
+    
+    module _imu(){
+        IMU();
     }
 }
 

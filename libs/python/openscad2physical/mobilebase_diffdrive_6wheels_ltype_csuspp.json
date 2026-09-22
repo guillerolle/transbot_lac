@@ -66,11 +66,18 @@
             "type": "part",
             "density": 2000,
             "rgba": "0.75 0.75 0.75 1"
-        },        {
+        },        
+	{
             "name": "lidar",
             "type": "part",
             "density": 2000,
             "rgba": "0.8 0.1 0.15 1"
+        },
+	{
+            "name": "imu",
+            "type": "part",
+            "density": 2000,
+            "rgba": "0.2 0.8 0.2 1"
         }
     ]
 }

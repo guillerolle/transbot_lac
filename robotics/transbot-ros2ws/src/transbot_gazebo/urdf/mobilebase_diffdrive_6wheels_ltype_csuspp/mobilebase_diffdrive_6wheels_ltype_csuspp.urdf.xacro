@@ -16,9 +16,6 @@
 			</state_interface>
 			<state_interface name="velocity"></state_interface>
 			<state_interface name="effort"></state_interface>
-			<command_interface name="position"></command_interface>
-			<command_interface name="velocity"></command_interface>
-			<command_interface name="effort"></command_interface>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}castor1/_">
 			<state_interface name="position">
@@ -26,9 +23,6 @@
 			</state_interface>
 			<state_interface name="velocity"></state_interface>
 			<state_interface name="effort"></state_interface>
-			<command_interface name="position"></command_interface>
-			<command_interface name="velocity"></command_interface>
-			<command_interface name="effort"></command_interface>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}castor2/_">
 			<state_interface name="position">
@@ -36,9 +30,6 @@
 			</state_interface>
 			<state_interface name="velocity"></state_interface>
 			<state_interface name="effort"></state_interface>
-			<command_interface name="position"></command_interface>
-			<command_interface name="velocity"></command_interface>
-			<command_interface name="effort"></command_interface>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}castor3/_">
 			<state_interface name="position">
@@ -46,9 +37,6 @@
 			</state_interface>
 			<state_interface name="velocity"></state_interface>
 			<state_interface name="effort"></state_interface>
-			<command_interface name="position"></command_interface>
-			<command_interface name="velocity"></command_interface>
-			<command_interface name="effort"></command_interface>
 		</joint>
 		<joint name="j/${prefix}${name}${suffix}control">
 			<state_interface name="position">
@@ -72,22 +60,22 @@
 		</gazebo>
 		<gazebo reference="j/${prefix}${name}${suffix}castor0/_">
 			<implicitSpringDamper>true</implicitSpringDamper>
-			<springStiffness>0.5</springStiffness>
+			<springStiffness>3000</springStiffness>
 			<springReference>0.0</springReference>
 		</gazebo>
 		<gazebo reference="j/${prefix}${name}${suffix}castor1/_">
 			<implicitSpringDamper>true</implicitSpringDamper>
-			<springStiffness>0.5</springStiffness>
+			<springStiffness>3000</springStiffness>
 			<springReference>0.0</springReference>
 		</gazebo>
 		<gazebo reference="j/${prefix}${name}${suffix}castor2/_">
 			<implicitSpringDamper>true</implicitSpringDamper>
-			<springStiffness>0.5</springStiffness>
+			<springStiffness>3000</springStiffness>
 			<springReference>0.0</springReference>
 		</gazebo>
 		<gazebo reference="j/${prefix}${name}${suffix}castor3/_">
 			<implicitSpringDamper>true</implicitSpringDamper>
-			<springStiffness>0.5</springStiffness>
+			<springStiffness>3000</springStiffness>
 			<springReference>0.0</springReference>
 		</gazebo>
 		<gazebo reference="j/${prefix}${name}${suffix}control">
