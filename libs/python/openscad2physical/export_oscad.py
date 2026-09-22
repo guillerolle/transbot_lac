@@ -483,7 +483,13 @@ class Component():
         if self.type == 'assembly':
             macro['xacro:include'] = []
             macro['joint'] = []
+            macro[f"xacro:{self.name}-extras-description"] = {
+                    '@prefix': "${prefix}${name}${suffix}",
+                },
             root = self.get_root_component()
+            macro['xacro:include'].append({
+                                    '@filename': f"$(find {root.ros_pkg_description})/urdf/{root.name}/{"/".join([self.get_base_path(), '__extras__'])}.urdf.xacro",
+                                })
             for c in self.children:
                 if c.type == 'part':
                     macro['xacro:include'].append({
@@ -514,7 +520,8 @@ class Component():
             'robot': {
                 '@xmlns:xacro': "http://www.ros.org/wiki/xacro",
                 '@name': self.name,
-                'xacro:macro': macro}
+                'xacro:macro': macro,
+            }
         }
         
     def xacro_gazebo(self):
@@ -527,7 +534,7 @@ class Component():
             '@name': f"{self.name}-gz_reference",
             '@params': f"prefix='' name='{self.name}' suffix=''"
         }
-        
+
         xacro_includes = []
         if self.type == 'assembly':
             macro_ros2control['xacro:include'] = []
@@ -535,13 +542,20 @@ class Component():
             macro_gzreference['xacro:include'] = []
             macro_gzreference['gazebo'] = []
             root = self.get_root_component()
+
+            if self.type == 'assembly':
+                xacro_includes.append({
+                    '@filename': f"$(find {root.ros_pkg_gazebo})/urdf/{root.name}/{"/".join([self.get_base_path(), "__extras__"])}.urdf.xacro",
+                })  
+
             for c in self.children:     
                 if c.type == 'part':
                     continue
                 elif c.type == 'assembly':
                     xacro_includes.append({
                         '@filename': f"$(find {root.ros_pkg_gazebo})/urdf/{root.name}/{"/".join([*c.get_parent_display_list(), c.name, c.name])}.urdf.xacro",
-                    })           
+                    })      
+              
                 if hasattr(c, 'replica'):
                     macro_ros2control[f'xacro:{c.name}-ros2_control_gazebo'] = []
                     for r in c.replica:
@@ -583,8 +597,12 @@ class Component():
                 'xacro:include': xacro_includes,
                 'xacro:macro': [
                     macro_ros2control,
-                    macro_gzreference
-                ]
+                    macro_gzreference,
+                ],
+                f"xacro:{self.name}-extras-gazebo": {
+                    '@prefix': "",
+                    '@name': "",
+                }
             }
         }
             
@@ -607,12 +625,16 @@ class Component():
             }
         }
 
-    def xacro_extras_blank(self):
+    def xacro_extras_blank(self, suffix=''):
         root = self.get_root_component()
         return {
             'robot': {
                 '@xmlns:xacro': "http://www.ros.org/wiki/xacro",
                 '@name': self.name,
+                'xacro:macro': {
+                    '@name': f"{self.name}-extras-{suffix}",
+                    '@params': f"prefix='' name='{self.name}' suffix=''",
+                }
             }
         }
         
@@ -667,9 +689,6 @@ class Component():
                     },
                     {
                         '@filename': f"$(find {getattr(root, 'ros_pkg_gazebo')})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), self.name]).removeprefix('/')}.urdf.xacro",
-                    },
-                    {
-                        '@filename': f"$(find {getattr(root, 'ros_pkg_gazebo')})/urdf/{root.name}/{"/".join([*self.get_parent_display_list(), "__extras__"]).removeprefix('/')}.urdf.xacro",
                     },
                 ],
                 'gazebo': [
@@ -743,11 +762,17 @@ class Component():
                 xmltodict.unparse(self.xacro_gazebo_all(), f, pretty=True)
 
             ### CREATE BLANK EXTRAS IF THEY DON'T ALREADY EXIST ###
-            with open(os.path.join(_export_dir, f"__extras__.urdf.xacro"), 'x') as f:
-                xmltodict.unparse(self.xacro_extras_blank(), f, pretty=True)
+            try:
+                with open(os.path.join(_export_dir, f"__extras__.urdf.xacro"), 'x') as f:
+                    xmltodict.unparse(self.xacro_extras_blank(suffix='description'), f, pretty=True)
+            except FileExistsError:
+                pass
 
-            with open(os.path.join(_export_dir_gz, f"__extras__.urdf.xacro"), 'x') as f:
-                xmltodict.unparse(self.xacro_extras_blank(), f, pretty=True)
+            try:
+                with open(os.path.join(_export_dir_gz, f"__extras__.urdf.xacro"), 'x') as f:
+                    xmltodict.unparse(self.xacro_extras_blank(suffix='gazebo'), f, pretty=True)
+            except FileExistsError:
+                pass
    
 def process_export_dict(data):
     logger.debug("Exporting SCAD data: %s", data)
@@ -790,11 +815,11 @@ def process_export_dict(data):
         c.export_stl(scad_file=scad_fullpath, EXPORT_DIR=EXPORT_DIR, oscad_params=oscad_params)
 
     EXPORT_DIR = os.path.join(ROSSRC_DIR, ros_pkg_description, "urdf", data['name'])
-    shutil.rmtree(EXPORT_DIR, True) # clear the export directory before exporting new files
+    #shutil.rmtree(EXPORT_DIR, True) # clear the export directory before exporting new files
     os.makedirs(EXPORT_DIR, exist_ok=True)
 
     EXPORT_DIR_GZ = os.path.join(ROSSRC_DIR, ros_pkg_gazebo, "urdf", data['name'])
-    shutil.rmtree(EXPORT_DIR_GZ, True) # clear the export directory before exporting new files
+    #shutil.rmtree(EXPORT_DIR_GZ, True) # clear the export directory before exporting new files
     os.makedirs(EXPORT_DIR_GZ, exist_ok=True)
     for c in component_root.iterate_tree():
         c.compute_inertial()
