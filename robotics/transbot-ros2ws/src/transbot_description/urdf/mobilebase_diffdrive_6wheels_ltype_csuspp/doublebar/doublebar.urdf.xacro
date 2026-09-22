@@ -21,6 +21,7 @@
 				</geometry>
 			</collision>
 		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/doublebar/__extras__.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/doublebar/diff/diff.urdf.xacro"></xacro:include>
 		<joint name="j/${prefix}${name}${suffix}diff/_" type="revolute">
 			<origin xyz="-0.1 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
@@ -30,6 +31,7 @@
 			<axis xyz="1 0 0"></axis>
 			<limit lower="-5" upper="5" effort="1000000.0" velocity="1000000.0"></limit>
 		</joint>
+		<xacro:doublebar-extras-description prefix="${prefix}${name}${suffix}"></xacro:doublebar-extras-description>
 		<xacro:diff prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff>
 	</xacro:macro>
 </robot>

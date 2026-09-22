@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype_csuspp"></robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype_csuspp">
+	<xacro:macro name="mobilebase_diffdrive_6wheels_ltype_csuspp-extras-description" params="prefix='' name='mobilebase_diffdrive_6wheels_ltype_csuspp' suffix=''">
+	<!-- THIS FILE SHOULD BE PERSISTENT-->
+	</xacro:macro>
+</robot>

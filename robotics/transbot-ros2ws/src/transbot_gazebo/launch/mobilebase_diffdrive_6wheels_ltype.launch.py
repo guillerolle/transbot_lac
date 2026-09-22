@@ -28,6 +28,26 @@ def generate_launch_description():
         }.items()
     )
     
+    camera_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_camera_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/camera/image_raw"']), 'camera/image_raw'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
+    
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),
@@ -35,5 +55,6 @@ def generate_launch_description():
         # spawn_launch,
         # controllers_launch,
         # teleop_launch,
+        camera_bridge,
         passive_spawn
     ])

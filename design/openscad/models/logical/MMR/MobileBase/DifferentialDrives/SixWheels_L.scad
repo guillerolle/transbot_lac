@@ -193,6 +193,6 @@ DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differe
 // */
 
 display="*";
-castor_suspension="P";
+castor_suspension="F";
 translate([0,0,0])
 DD6W_L(display=display, display_bbox=false, force_internal_castor=false, differential_suspension="RR", back_width=150, castor_suspension=castor_suspension); //*/

@@ -21,6 +21,7 @@
 				</geometry>
 			</collision>
 		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype/doublebar/diff/__extras__.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype/doublebar/diff/wheel.urdf.xacro"></xacro:include>
 		<joint name="j/${prefix}${name}${suffix}wheel0" type="continuous">
 			<origin xyz="0.0 -0.25 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
@@ -34,6 +35,7 @@
 			<child link="${prefix}${name}${suffix}wheel1"></child>
 			<axis xyz="0 0 1"></axis>
 		</joint>
+		<xacro:diff-extras-description prefix="${prefix}${name}${suffix}"></xacro:diff-extras-description>
 		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="0"></xacro:wheel>
 		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="1"></xacro:wheel>
 	</xacro:macro>

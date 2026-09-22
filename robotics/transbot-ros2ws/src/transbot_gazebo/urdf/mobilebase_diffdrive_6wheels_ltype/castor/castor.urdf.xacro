@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/castor/__extras__.urdf.xacro"></xacro:include>
 	<xacro:macro name="castor-ros2_control_gazebo" params="prefix='' name='castor' suffix=''">
 		<joint name="j/${prefix}${name}${suffix}arm">
 			<state_interface name="position">
@@ -17,4 +18,5 @@
 		</joint>
 	</xacro:macro>
 	<xacro:macro name="castor-gz_reference" params="prefix='' name='castor' suffix=''"></xacro:macro>
+	<xacro:castor-extras-gazebo prefix="" name=""></xacro:castor-extras-gazebo>
 </robot>

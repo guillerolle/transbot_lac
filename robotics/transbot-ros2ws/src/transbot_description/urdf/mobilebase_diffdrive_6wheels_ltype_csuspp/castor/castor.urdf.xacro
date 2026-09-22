@@ -21,6 +21,7 @@
 				</geometry>
 			</collision>
 		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/castor/__extras__.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/castor/arm.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/castor/wheel.urdf.xacro"></xacro:include>
 		<joint name="j/${prefix}${name}${suffix}arm" type="continuous">
@@ -35,6 +36,7 @@
 			<child link="${prefix}${name}${suffix}wheel"></child>
 			<axis xyz="0 0 1"></axis>
 		</joint>
+		<xacro:castor-extras-description prefix="${prefix}${name}${suffix}"></xacro:castor-extras-description>
 		<xacro:arm prefix="${prefix}${name}${suffix}" suffix=""></xacro:arm>
 		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix=""></xacro:wheel>
 	</xacro:macro>

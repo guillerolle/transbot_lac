@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="castor">
+	<xacro:macro name="castor-extras-description" params="prefix='' name='castor' suffix=''"></xacro:macro>
+</robot>

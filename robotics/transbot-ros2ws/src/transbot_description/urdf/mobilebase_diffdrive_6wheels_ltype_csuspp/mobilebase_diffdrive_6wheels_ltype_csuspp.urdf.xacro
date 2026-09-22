@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype_csuspp">
 	<xacro:macro name="mobilebase_diffdrive_6wheels_ltype_csuspp" params="prefix='' name='mobilebase_diffdrive_6wheels_ltype_csuspp' suffix=''">
 		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp//__extras__.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/chassis.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/control.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/doublebar/doublebar.urdf.xacro"></xacro:include>
@@ -77,6 +78,7 @@
 			<parent link="${prefix}${name}${suffix}_"></parent>
 			<child link="${prefix}${name}${suffix}imu"></child>
 		</joint>
+		<xacro:mobilebase_diffdrive_6wheels_ltype_csuspp-extras-description prefix="${prefix}${name}${suffix}"></xacro:mobilebase_diffdrive_6wheels_ltype_csuspp-extras-description>
 		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>
 		<xacro:control prefix="${prefix}${name}${suffix}" suffix=""></xacro:control>
 		<xacro:doublebar prefix="${prefix}${name}${suffix}" suffix="/"></xacro:doublebar>

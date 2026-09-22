@@ -2,4 +2,5 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="imu">
 	<xacro:macro name="imu-ros2_control_gazebo" params="prefix='' name='imu' suffix=''"></xacro:macro>
 	<xacro:macro name="imu-gz_reference" params="prefix='' name='imu' suffix=''"></xacro:macro>
+	<xacro:imu-extras-gazebo prefix="" name=""></xacro:imu-extras-gazebo>
 </robot>

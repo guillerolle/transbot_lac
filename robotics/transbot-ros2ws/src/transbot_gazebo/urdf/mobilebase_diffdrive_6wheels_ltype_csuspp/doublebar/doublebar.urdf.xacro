@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="doublebar">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/doublebar/__extras__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype_csuspp/doublebar/diff/diff.urdf.xacro"></xacro:include>
 	<xacro:macro name="doublebar-ros2_control_gazebo" params="prefix='' name='doublebar' suffix=''">
 		<joint name="j/${prefix}${name}${suffix}diff/_">
@@ -19,4 +20,5 @@
 		</gazebo>
 		<xacro:diff-gz_reference prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff-gz_reference>
 	</xacro:macro>
+	<xacro:doublebar-extras-gazebo prefix="" name=""></xacro:doublebar-extras-gazebo>
 </robot>

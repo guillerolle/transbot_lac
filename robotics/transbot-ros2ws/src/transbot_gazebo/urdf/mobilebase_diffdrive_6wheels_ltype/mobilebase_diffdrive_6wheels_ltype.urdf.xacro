@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase_diffdrive_6wheels_ltype">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype//__extras__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/doublebar/doublebar.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/mobilebase_diffdrive_6wheels_ltype/castor/castor.urdf.xacro"></xacro:include>
 	<xacro:macro name="mobilebase_diffdrive_6wheels_ltype-ros2_control_gazebo" params="prefix='' name='mobilebase_diffdrive_6wheels_ltype' suffix=''">
@@ -41,4 +42,5 @@
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor-gz_reference>
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor-gz_reference>
 	</xacro:macro>
+	<xacro:mobilebase_diffdrive_6wheels_ltype-extras-gazebo prefix="" name=""></xacro:mobilebase_diffdrive_6wheels_ltype-extras-gazebo>
 </robot>

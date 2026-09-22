@@ -3,9 +3,9 @@
 	<xacro:macro name="chassis" params="prefix='' name='chassis' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="7850">
-				<origin xyz="-0.11609746575277051 -0.00026483609977699 0.24375729246905095" rpy="0 0 0"></origin>
-				<mass value="3.7706432243188224"></mass>
-				<inertia ixx="0.26229166671580284" ixy="-0.00021814183586693777" ixz="0.08820158966257266" iyy="0.38611388218655324" iyz="-7.276365055565556e-05" izz="0.4149797591892294"></inertia>
+				<origin xyz="-0.08710447351018899 -5.427290924626776e-08 0.23152132526298272" rpy="0 0 0"></origin>
+				<mass value="3.7537477910518646"></mass>
+				<inertia ixx="0.24047775252227827" ixy="1.7745516803445148e-08" ixz="0.05998296526638469" iyy="0.31535036791706106" iyz="1.313363916849617e-07" izz="0.3762323023952737"></inertia>
 			</inertial>
 			<visual>
 				<geometry>
