@@ -12,3 +12,6 @@ ECHO: ["joint", "continuous", "mobilebase/castor/arm", "xyz: [0, 0, -10]", "rpy:
 ECHO: ["joint", "continuous", "mobilebase/castor/arm/wheel", "xyz: [40, 0, -60]", "rpy: [90, 0, 0]", "axis: [0, 0, 1]", "command_interfaces: []", "mimic: []", "spring: []", "damping: []", "friction: []"]
 ECHO: ["joint", "prismatic", "mobilebase/control", "xyz: [0, 0, 170]", "rpy: [0, 0, 90]", "axis: [0, -1, 0]", "limits: [0, 500]", "command_interfaces: [\"position\"]", "mimic: []", "spring: [200]", "damping: [10]", "friction: [10]"]
 ECHO: ["joint", "prismatic", "lifter", "xyz: [0, 0, 300]", "rpy: [0, 0, 0]", "axis: [0, 0, 1]", "limits: [-5, 100]", "command_interfaces: [\"velocity\", \"effort\"]", "mimic: []", "spring: []", "damping: []", "friction: []"]
+ECHO: ["joint", "fixed", "camera", "xyz: [-375, 0, 600]", "rpy: [0, 5, 0]"]
+ECHO: ["joint", "fixed", "lidar", "xyz: [275, 0, 180]", "rpy: [0, 0, 0]"]
+ECHO: ["joint", "fixed", "imu", "xyz: [275, -250, 180]", "rpy: [0, 0, 0]"]

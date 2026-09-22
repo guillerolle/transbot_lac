@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="shelf_lifter"></robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="shelf_lifter">
+	<xacro:macro name="shelf_lifter-extras-description" params="prefix='' name='shelf_lifter' suffix=''"></xacro:macro>
+</robot>

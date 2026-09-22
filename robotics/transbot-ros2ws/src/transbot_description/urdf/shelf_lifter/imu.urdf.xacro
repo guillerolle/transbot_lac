@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="imu">
+	<xacro:macro name="imu" params="prefix='' name='imu' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2000">
+				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"></origin>
+				<mass value="0.003600000127335079"></mass>
+				<inertia ixx="2.727000525855801e-07" ixy="-0.0" ixz="-0.0" iyy="4.82700069961058e-07" iyz="-0.0" izz="7.500001212671729e-07"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/imu.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.8 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/imu.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

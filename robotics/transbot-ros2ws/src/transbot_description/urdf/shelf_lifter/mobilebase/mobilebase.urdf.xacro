@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
 	<xacro:macro name="mobilebase" params="prefix='' name='mobilebase' suffix=''">
 		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/__extras__.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/chassis.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/control.urdf.xacro"></xacro:include>
 		<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/doublebar/doublebar.urdf.xacro"></xacro:include>
@@ -37,6 +38,7 @@
 			<axis xyz="0 -1 0"></axis>
 			<limit lower="0.0" upper="0.5" effort="1000000.0" velocity="1000000.0"></limit>
 		</joint>
+		<xacro:mobilebase-extras-description prefix="${prefix}${name}${suffix}"></xacro:mobilebase-extras-description>
 		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>
 		<xacro:control prefix="${prefix}${name}${suffix}" suffix=""></xacro:control>
 		<xacro:doublebar prefix="${prefix}${name}${suffix}" suffix="/"></xacro:doublebar>

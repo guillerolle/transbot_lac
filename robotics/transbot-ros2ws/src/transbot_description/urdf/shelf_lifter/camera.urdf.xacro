@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+	<xacro:macro name="camera" params="prefix='' name='camera' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2000">
+				<origin xyz="0.022873617230322527 4.012244512595053e-11 -0.10329133571705253" rpy="0 0 0"></origin>
+				<mass value="0.4722495408107837"></mass>
+				<inertia ixx="0.011152980445892406" ixy="4.3340486836167287e-13" ixz="0.0022718524517538973" iyy="0.011538837938968663" iyz="-9.536266735059987e-12" izz="0.0007654856444501203"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/camera.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.75 0.75 0.75 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/shelf_lifter/camera.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

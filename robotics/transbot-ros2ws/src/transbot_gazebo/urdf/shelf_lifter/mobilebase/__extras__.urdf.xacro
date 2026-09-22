@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase"></robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:macro name="mobilebase-extras-gazebo" params="prefix='' name='mobilebase' suffix=''"></xacro:macro>
+</robot>

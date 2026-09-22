@@ -10,7 +10,6 @@
 	<xacro:property name="_ros2_control_path" value="$(find ${_ros2_control_pkg})"></xacro:property>
 	<xacro:include filename="$(find transbot_description)/urdf/shelf_lifter/mobilebase/__all__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/doublebar.urdf.xacro"></xacro:include>
-	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/__extras__.urdf.xacro"></xacro:include>
 	<gazebo>
 		<plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
 			<parameters>${_ros2_control_path}/config/$(arg ros2_control_dict)</parameters>

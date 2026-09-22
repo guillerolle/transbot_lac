@@ -2,4 +2,5 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lifter">
 	<xacro:macro name="lifter-ros2_control_gazebo" params="prefix='' name='lifter' suffix=''"></xacro:macro>
 	<xacro:macro name="lifter-gz_reference" params="prefix='' name='lifter' suffix=''"></xacro:macro>
+	<xacro:lifter-extras-gazebo prefix="" name=""></xacro:lifter-extras-gazebo>
 </robot>

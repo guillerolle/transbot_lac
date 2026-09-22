@@ -5,6 +5,9 @@ use <RobotUtils/beam.scad>
 use <RobotUtils/profiles.scad>
 use <MobileBase/DifferentialDrives/FourWheels.scad>
 use <MobileBase/DifferentialDrives/SixWheels_L.scad>
+use <Sensors/Camera.scad>
+use <Sensors/Lidar.scad>
+use <Sensors/IMU.scad>
 //use <ManipulationStructures/RobotArm.scad>
 
 
@@ -20,11 +23,28 @@ module ShelfLifter(display="*", prefix="", base_length=650, base_width=600, base
         
         PrismaticJoint(name="lifter", prefix=prefix, p_translate=[0, 0, base_height], limits=[-5,100], pos=0, command_interfaces=["velocity", "effort"])
         _lifter();
+        
+        FixedJoint(name="camera", prefix=prefix, p_translate=[-base_length/2-50,0,base_height+300], p_rotate=[0,5,0])
+        _camera();
+        
+        FixedJoint(name="lidar", prefix=prefix, p_translate=[base_length/2-50,0,180], p_rotate=[0,0,0])
+        _lidar();
+        
+        FixedJoint(name="imu", prefix=prefix, p_translate=[base_length/2-50,-base_width/2+50,180], p_rotate=[0,0,0])
+        _imu();
     } else if(_d=="mobilebase"){
         _mobilebase();
     } else if(_d=="lifter"){
         _lifter();
-    }
+    } else if (_d=="camera") {
+        _camera();
+    } else if (_d=="lidar") {
+        _lidar();
+    } else if (_d=="imu") {
+        _imu();
+    } else {
+        echo(str_join(["Unknown component: <", _d, ">"]));
+    } 
     
     module _mobilebase(){
         DD4W_Rigid(display=_s, prefix=get_full_prefix(prefix, "mobilebase"), 
@@ -38,6 +58,21 @@ module ShelfLifter(display="*", prefix="", base_length=650, base_width=600, base
             beam3([x*(base_length/3),y*(base_width/4),-100], [x*(base_length/3),y*(base_width/4),0], 0)
             RectangularProfileHollow([40,40], 1.2);
         }
+    }
+    
+    module _camera(){
+        Camera();
+        rotate([0,-12,0])
+        translate([0,0,-250])
+        cube([20, 20, 500], center=true);
+    }
+    
+    module _lidar(){
+        Lidar();
+    }
+    
+    module _imu(){
+        IMU();
     }
 }
 

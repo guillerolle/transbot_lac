@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobilebase">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/__extras__.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/doublebar/doublebar.urdf.xacro"></xacro:include>
 	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/castor/castor.urdf.xacro"></xacro:include>
 	<xacro:macro name="mobilebase-ros2_control_gazebo" params="prefix='' name='mobilebase' suffix=''">
@@ -37,4 +38,5 @@
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-gz_reference>
 		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-gz_reference>
 	</xacro:macro>
+	<xacro:mobilebase-extras-gazebo prefix="" name=""></xacro:mobilebase-extras-gazebo>
 </robot>

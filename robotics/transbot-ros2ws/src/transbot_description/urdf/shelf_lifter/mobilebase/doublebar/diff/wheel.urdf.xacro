@@ -3,9 +3,9 @@
 	<xacro:macro name="wheel" params="prefix='' name='wheel' suffix=''">
 		<link name="${prefix}${name}${suffix}">
 			<inertial density="2500">
-				<origin xyz="4.752325537276356e-09 -4.403267049900442e-10 1.1552381330584986e-09" rpy="0 0 0"></origin>
+				<origin xyz="4.750857169773262e-09 -4.447318074993235e-10 1.1552381330584986e-09" rpy="0 0 0"></origin>
 				<mass value="0.40324983031799394"></mass>
-				<inertia ixx="0.00039830266587159653" ixy="1.0545151870168692e-11" ixz="7.179444439778207e-12" iyy="0.0003983027871375477" iyz="-7.221077640592899e-13" izz="0.0006993444306620614"></inertia>
+				<inertia ixx="0.00039830266587159653" ixy="1.05451518619902e-11" ixz="7.1794444390941686e-12" iyy="0.0003983027871375477" iyz="-7.221077661114051e-13" izz="0.0006993444306620614"></inertia>
 			</inertial>
 			<visual>
 				<geometry>

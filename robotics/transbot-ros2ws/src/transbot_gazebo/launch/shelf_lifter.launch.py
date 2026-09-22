@@ -11,6 +11,8 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
+    
+    robot_name = LaunchConfiguration('robot_name')
     passive_spawn = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([FindPackageShare('transbot_gazebo'), 'launch', 'spawner.launch.py']),
@@ -23,8 +25,29 @@ def generate_launch_description():
         }.items()
     )
     
+    camera_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_camera_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/camera/image_raw"']), 'camera/image_raw'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
+    
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='shelf_lifter'),
-        passive_spawn
+        camera_bridge,
+        passive_spawn,
     ])

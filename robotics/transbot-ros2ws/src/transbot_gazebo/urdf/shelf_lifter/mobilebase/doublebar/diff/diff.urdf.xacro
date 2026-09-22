@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/shelf_lifter/mobilebase/doublebar/diff/__extras__.urdf.xacro"></xacro:include>
 	<xacro:macro name="diff-ros2_control_gazebo" params="prefix='' name='diff' suffix=''">
 		<joint name="j/${prefix}${name}${suffix}wheel0">
 			<state_interface name="position">
@@ -21,4 +22,5 @@
 		</joint>
 	</xacro:macro>
 	<xacro:macro name="diff-gz_reference" params="prefix='' name='diff' suffix=''"></xacro:macro>
+	<xacro:diff-extras-gazebo prefix="" name=""></xacro:diff-extras-gazebo>
 </robot>
