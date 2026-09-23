@@ -3,7 +3,41 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "transbot_gazebo_launch_file",
+            "type": "pickString",
+            "description": "transbot_gazebo launch files",
+            "options": ["world.launch.py", "gazebo.launch.py", "spawner.launch.py"]
+        },
+        {
+            "id": "launch_args",
+            "type": "promptString",
+            "description": "Extra launch args (e.g. world:=deepseek running:=false gz_args:=\"--verbose 3\")",
+            "default": ""
+        }
+    ],
     "configurations": [
+        {
+            "name": "ros2 launch transbot_gazebo <launch_file> <launch_args>",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.vscode/ros_python.sh",
+            "program": "${workspaceFolder}/.vscode/ros2_shim.py",
+            "args": ["launch", "transbot_gazebo", "${input:transbot_gazebo_launch_file}", "${input:launch_args}"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "ros2 launch transbot_controller controller.launch.py",
+            "type": "debugpy",
+            "request": "launch",
+            "python": ["${workspaceFolder}/.vscode/ros_python.sh"],
+            "program": "${workspaceFolder}/.vscode/ros2_shim.py",
+            "args": ["launch", "transbot_controller", "controller.launch.py", "${input:launch_args}"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
         {
             "name": "joint_teleop_joy defaults",
             "type": "debugpy",

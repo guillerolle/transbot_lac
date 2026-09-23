@@ -23,8 +23,8 @@ def generate_launch_description():
         ),
         launch_arguments={
             # 'gz_args': '-r empty.sdf --physics-engine gz-physics-bullet-featherstone-plugin'
-            'gz_args': '-r',
-            'world': LaunchConfiguration('world')
+            # 'gz_args': '-r',
+            # 'world': LaunchConfiguration('world')
             # 'robot_name': robot_name,
             # 'robot_model': robot_model,
             # 'robot_pkg': robot_pkg,
@@ -81,7 +81,6 @@ def generate_launch_description():
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
         DeclareLaunchArgument('robot_name', default_value='transbot'),
-        DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf'),
         DeclareLaunchArgument('rviz', description='Launch Rviz', default_value='true', choices=['false', 'true']),
         world_launch,
         robot_spawn_launch,

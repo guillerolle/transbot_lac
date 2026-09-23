@@ -9,18 +9,25 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, PythonExpression
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch.logging import logging
 
 
 def generate_launch_description():
     # Declare Arguments
     declare_gz_args = DeclareLaunchArgument('gz_args', default_value='',
-                              description='Arguments to be passed to Gazebo Sim')
+                              description='Other arguments to be passed to Gazebo Sim')
     
-    declare_world = DeclareLaunchArgument('world', default_value='transbot_gazebo/worlds/empty.sdf',description='Gazebo world to load')
+    gz_args_list = ['"']
+    gz_args_list.append(
+        PythonExpression(["'-r ' if '", LaunchConfiguration('running'), "' == 'true' else ''"])
+    )
+    gz_args_list.append(
+        PythonExpression(["'-s ' if '", LaunchConfiguration('headless'), "' == 'true' else ''"])
+    )
+    gz_args_list.extend(['transbot_gazebo/worlds/', LaunchConfiguration('world'), '.sdf '])
+    gz_args_list.append('"')
     
-    gz_args = PythonExpression([
-        '"', LaunchConfiguration('gz_args'), ' ', LaunchConfiguration('world'), '"'
-    ])
+    gz_args = PythonExpression(gz_args_list)
     
     # Paths  
     pkg_ros_gz_sim = FindPackageShare(package='ros_gz_sim')
@@ -40,14 +47,19 @@ def generate_launch_description():
     clock_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
+        name='ros_gz_clock_bridge',
         arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
         parameters=[{'use_sim_time': True}],
         output='screen'
     )
             
     return LaunchDescription([
+        DeclareLaunchArgument('running', default_value='true', choices=['true', 'false'],
+                              description='Run simulation at start (true) or not (false)'),
+        DeclareLaunchArgument('world', default_value='empty',description='Gazebo world to load'),
+        DeclareLaunchArgument('headless', default_value='false', choices=['true', 'false'],
+                              description='Run Gazebo in headless mode'),
         declare_gz_args,
-        declare_world,
         gazebo_launch,
         clock_bridge
     ])
