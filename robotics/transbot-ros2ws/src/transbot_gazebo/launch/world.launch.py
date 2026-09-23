@@ -57,7 +57,7 @@ def generate_launch_description():
         DeclareLaunchArgument('running', default_value='true', choices=['true', 'false'],
                               description='Run simulation at start (true) or not (false)'),
         DeclareLaunchArgument('world', default_value='empty',description='Gazebo world to load'),
-        DeclareLaunchArgument('headless', default_value='false', choices=['true', 'false'],
+        DeclareLaunchArgument('headless', default_value='true', choices=['true', 'false'],
                               description='Run Gazebo in headless mode'),
         declare_gz_args,
         gazebo_launch,
