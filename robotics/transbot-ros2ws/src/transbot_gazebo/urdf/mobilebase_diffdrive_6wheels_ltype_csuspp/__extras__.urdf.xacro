@@ -21,5 +21,49 @@
 				</camera>
 			</sensor>
 		</gazebo>
+				<gazebo reference="${prefix}${name}${prefix}imu">
+			<sensor name="imu" type="imu">
+				<always_on>true</always_on>
+				<update_rate>100</update_rate>
+				<topic>model/$(arg robot_name)/imu</topic>
+				<gz_frame_id>$(arg robot_name)/${prefix}${name}${prefix}imu</gz_frame_id>
+				<imu>
+					<angular_velocity>
+						<x><noise type="gaussian"><mean>0.0</mean><stddev>2e-4</stddev></noise></x>
+						<y><noise type="gaussian"><mean>0.0</mean><stddev>2e-4</stddev></noise></y>
+						<z><noise type="gaussian"><mean>0.0</mean><stddev>2e-4</stddev></noise></z>
+					</angular_velocity>
+					<linear_acceleration>
+						<x><noise type="gaussian"><mean>0.0</mean><stddev>1.7e-2</stddev></noise></x>
+						<y><noise type="gaussian"><mean>0.0</mean><stddev>1.7e-2</stddev></noise></y>
+						<z><noise type="gaussian"><mean>0.0</mean><stddev>1.7e-2</stddev></noise></z>
+					</linear_acceleration>
+				</imu>
+			</sensor>
+		</gazebo>
+
+		<gazebo reference="${prefix}${name}${prefix}lidar">
+			<sensor name="lidar" type="gpu_lidar">
+				<always_on>true</always_on>
+				<update_rate>10</update_rate>
+				<topic>model/$(arg robot_name)/scan</topic>
+				<gz_frame_id>$(arg robot_name)/${prefix}${name}${prefix}lidar</gz_frame_id>
+				<lidar>
+					<scan>
+						<horizontal>
+						<samples>360</samples>
+						<resolution>1</resolution>
+						<min_angle>-3.14159</min_angle>
+						<max_angle>3.14159</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.12</min>
+						<max>12.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</lidar>
+			</sensor>
+		</gazebo>
 	</xacro:macro>
 </robot>

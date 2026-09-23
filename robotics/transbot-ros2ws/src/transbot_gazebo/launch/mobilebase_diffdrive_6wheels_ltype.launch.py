@@ -48,6 +48,46 @@ def generate_launch_description():
         output='screen'
     )
     
+    imu_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_imu_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/imu"']), 'imu'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
+    
+    lidar_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_lidar_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/scan"']), 'scan'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
+    
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
         DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype'),
@@ -56,5 +96,7 @@ def generate_launch_description():
         # controllers_launch,
         # teleop_launch,
         camera_bridge,
+        imu_bridge,
+        lidar_bridge,
         passive_spawn
     ])
