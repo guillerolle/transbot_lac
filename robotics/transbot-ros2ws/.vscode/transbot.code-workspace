@@ -4,7 +4,7 @@
 			"path": ".."
 		},
 		{
-			"path": "../../../../opt/ros/jazzy/share"
+			"path": "/opt/ros/jazzy/share"
 		}
 	],
 	"settings": {
