@@ -75,7 +75,7 @@ def generate_launch_description():
     
     controllers_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', robot_model, '.launch.py"']) ]),
+            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', LaunchConfiguration('controllers_launch'), '.launch.py"']) ]),
         ),
         launch_arguments={
             'robot_name': robot_name
@@ -87,6 +87,7 @@ def generate_launch_description():
         DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
         DeclareLaunchArgument('robot_name', default_value='transbot'),        
+        DeclareLaunchArgument('controllers_launch', default_value='diff_drive'),        
         DeclareLaunchArgument('x', default_value='0.0'),
         DeclareLaunchArgument('y', default_value='0.0'),
         DeclareLaunchArgument('z', default_value='0.1'),
