@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table_4wheels_vtable">
+	<xacro:include filename="$(find transbot_gazebo)/urdf/table_4wheels_vtable//__extras__.urdf.xacro"></xacro:include>
+	<xacro:include filename="$(find transbot_gazebo)/urdf/table_4wheels_vtable/castor/castor.urdf.xacro"></xacro:include>
+	<xacro:macro name="table_4wheels_vtable-ros2_control_gazebo" params="prefix='' name='table_4wheels_vtable' suffix=''">
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor-ros2_control_gazebo>
+		<xacro:castor-ros2_control_gazebo prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor-ros2_control_gazebo>
+	</xacro:macro>
+	<xacro:macro name="table_4wheels_vtable-gz_reference" params="prefix='' name='table_4wheels_vtable' suffix=''">
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor-gz_reference>
+		<xacro:castor-gz_reference prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor-gz_reference>
+	</xacro:macro>
+	<xacro:table_4wheels_vtable-extras-gazebo prefix="" name=""></xacro:table_4wheels_vtable-extras-gazebo>
+</robot>

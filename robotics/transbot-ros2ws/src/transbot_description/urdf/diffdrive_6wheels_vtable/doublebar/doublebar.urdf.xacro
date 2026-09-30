@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="doublebar">
+	<xacro:macro name="doublebar" params="prefix='' name='doublebar' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="-0.010022616107711189 -1.687895336161272e-09 4.2001436719048214e-10" rpy="0 0 0"></origin>
+				<mass value="0.021837494083835434"></mass>
+				<inertia ixx="0.00023439306377307878" ixy="2.5470462161670473e-13" ixz="1.585610306218604e-14" iyy="1.337168355264802e-05" iyz="-1.3762155057562093e-14" izz="0.00024670370214808146"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/doublebar/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/doublebar/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/doublebar/__extras__.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/doublebar/diff/diff.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}diff/_" type="revolute">
+			<origin xyz="-0.1 0.0 0.0" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}diff/_"></child>
+			<dynamics damping="2" friction="2"></dynamics>
+			<axis xyz="1 0 0"></axis>
+			<limit lower="-5" upper="5" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<xacro:doublebar-extras-description prefix="${prefix}${name}${suffix}"></xacro:doublebar-extras-description>
+		<xacro:diff prefix="${prefix}${name}${suffix}" suffix="/"></xacro:diff>
+	</xacro:macro>
+</robot>

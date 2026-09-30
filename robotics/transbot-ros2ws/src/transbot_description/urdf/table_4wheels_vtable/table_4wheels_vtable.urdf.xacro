@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table_4wheels_vtable">
+	<xacro:macro name="table_4wheels_vtable" params="prefix='' name='table_4wheels_vtable' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="4.6335882012781285e-08 9.267176402556257e-08 0.4803361946255319" rpy="0 0 0"></origin>
+				<mass value="1.2562113503615062"></mass>
+				<inertia ixx="0.07042857465408492" ixy="3.8805161217711106e-09" ixz="-6.565807496126518e-08" iyy="0.039234937830647465" iyz="5.2037981954892e-08" izz="0.09845503373070202"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/table_4wheels_vtable/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 1 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/table_4wheels_vtable/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/table_4wheels_vtable//__extras__.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/table_4wheels_vtable/castor/castor.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/table_4wheels_vtable/vtable.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">
+			<origin xyz="0.25 0.35000000000000003 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor1/_" type="fixed">
+			<origin xyz="-0.25 0.35000000000000003 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor1/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor2/_" type="fixed">
+			<origin xyz="0.25 -0.35000000000000003 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor2/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor3/_" type="fixed">
+			<origin xyz="-0.25 -0.35000000000000003 0.13" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor3/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}vtable" type="fixed">
+			<origin xyz="0.0 0.0 0.3" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}vtable"></child>
+		</joint>
+		<xacro:table_4wheels_vtable-extras-description prefix="${prefix}${name}${suffix}"></xacro:table_4wheels_vtable-extras-description>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor>
+		<xacro:vtable prefix="${prefix}${name}${suffix}" suffix=""></xacro:vtable>
+	</xacro:macro>
+</robot>

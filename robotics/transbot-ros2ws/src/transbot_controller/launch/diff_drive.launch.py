@@ -52,5 +52,5 @@ def generate_launch_description():
         # DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
         joint_state_publisher,
         diff_drive_controller,
-        twist_mux
+        #twist_mux
     ])

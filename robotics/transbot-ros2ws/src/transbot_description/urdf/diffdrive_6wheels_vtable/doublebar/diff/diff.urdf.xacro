@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff">
+	<xacro:macro name="diff" params="prefix='' name='diff' suffix=''">
+		<link name="${prefix}${name}${suffix}_">
+			<inertial density="7850">
+				<origin xyz="0.0 -7.140475252957773e-09 3.3574163806808317e-10" rpy="0 0 0"></origin>
+				<mass value="0.14345904734606543"></mass>
+				<inertia ixx="0.002533222366452029" ixy="-0.0" ixz="6.02527287322611e-14" iyy="7.1207054475052994e-06" iyz="-8.215653821448599e-13" izz="0.0025332223692942006"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/doublebar/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/doublebar/diff/_.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/doublebar/diff/__extras__.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/doublebar/diff/wheel.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}wheel0" type="continuous">
+			<origin xyz="0.0 -0.2 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel0"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}wheel1" type="continuous">
+			<origin xyz="0.0 0.2 0.0" rpy="-1.5707963267948966 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}wheel1"></child>
+			<axis xyz="0 0 1"></axis>
+		</joint>
+		<xacro:diff-extras-description prefix="${prefix}${name}${suffix}"></xacro:diff-extras-description>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="0"></xacro:wheel>
+		<xacro:wheel prefix="${prefix}${name}${suffix}" suffix="1"></xacro:wheel>
+	</xacro:macro>
+</robot>

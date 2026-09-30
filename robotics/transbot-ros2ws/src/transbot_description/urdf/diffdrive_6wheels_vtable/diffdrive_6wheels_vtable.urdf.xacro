@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffdrive_6wheels_vtable">
+	<xacro:macro name="diffdrive_6wheels_vtable" params="prefix='' name='diffdrive_6wheels_vtable' suffix=''">
+		<link name="${prefix}${name}${suffix}_"></link>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable//__extras__.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/chassis.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/control.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/doublebar/doublebar.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/castor/castor.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/camera.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/lidar.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/imu.urdf.xacro"></xacro:include>
+		<xacro:include filename="$(find transbot_description)/urdf/diffdrive_6wheels_vtable/vtable.urdf.xacro"></xacro:include>
+		<joint name="j/${prefix}${name}${suffix}chassis" type="fixed">
+			<origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}chassis"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}doublebar/_" type="revolute">
+			<origin xyz="0.09 0.0 0.045" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}doublebar/_"></child>
+			<dynamics damping="2" friction="2"></dynamics>
+			<axis xyz="0 1 0"></axis>
+			<limit lower="-10" upper="10" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor0/_" type="fixed">
+			<origin xyz="0.3 0.2 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor0/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor1/_" type="fixed">
+			<origin xyz="0.3 -0.2 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor1/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor2/_" type="fixed">
+			<origin xyz="-0.3 0.2 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor2/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}castor3/_" type="fixed">
+			<origin xyz="-0.3 -0.2 0.13" rpy="0.0 0.0 3.141592653589793"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}castor3/_"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}control" type="prismatic">
+			<origin xyz="-0.075 0.0 0.14" rpy="0.0 0.0 1.5707963267948966"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}control"></child>
+			<dynamics damping="10" friction="10"></dynamics>
+			<axis xyz="0 1 0"></axis>
+			<limit lower="0.0" upper="0.5" effort="1000000.0" velocity="1000000.0"></limit>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}camera" type="fixed">
+			<origin xyz="-0.13 0.0 0.65" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}camera"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}lidar" type="fixed">
+			<origin xyz="0.25 0.0 0.17" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}lidar"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}imu" type="fixed">
+			<origin xyz="0.25 -0.2 0.17" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}imu"></child>
+		</joint>
+		<joint name="j/${prefix}${name}${suffix}vtable" type="fixed">
+			<origin xyz="0.15 0.0 0.293" rpy="0.0 0.0 0.0"></origin>
+			<parent link="${prefix}${name}${suffix}_"></parent>
+			<child link="${prefix}${name}${suffix}vtable"></child>
+		</joint>
+		<xacro:diffdrive_6wheels_vtable-extras-description prefix="${prefix}${name}${suffix}"></xacro:diffdrive_6wheels_vtable-extras-description>
+		<xacro:chassis prefix="${prefix}${name}${suffix}" suffix=""></xacro:chassis>
+		<xacro:control prefix="${prefix}${name}${suffix}" suffix=""></xacro:control>
+		<xacro:doublebar prefix="${prefix}${name}${suffix}" suffix="/"></xacro:doublebar>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="0/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="1/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="2/"></xacro:castor>
+		<xacro:castor prefix="${prefix}${name}${suffix}" suffix="3/"></xacro:castor>
+		<xacro:camera prefix="${prefix}${name}${suffix}" suffix=""></xacro:camera>
+		<xacro:lidar prefix="${prefix}${name}${suffix}" suffix=""></xacro:lidar>
+		<xacro:imu prefix="${prefix}${name}${suffix}" suffix=""></xacro:imu>
+		<xacro:vtable prefix="${prefix}${name}${suffix}" suffix=""></xacro:vtable>
+	</xacro:macro>
+</robot>

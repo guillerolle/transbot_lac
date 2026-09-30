@@ -10,15 +10,24 @@ use <../ControlModule/ControlModule.scad>
 use <../../Sensors/Camera.scad>
 use <../../Sensors/Lidar.scad>
 use <../../Sensors/IMU.scad>
+use <../../ManipulationStructures/VPusher.scad>
 
-module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false, back_width=0, back_height=600, gap=150, castor_suspension="F"){
+module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], floor_clearance=100, fwheel_d=120, fwheel_w=40, daxle_d=20, cwheel_d=120, cwheel_w=45, cwheel_h=130, cwheel_f=100, cwheel_cd=40, force_internal_castor=true, differential_suspension="", double_bar_offset = 100, fixed_control=false, back_width=0, back_height=600, gap=150, castor_suspension="F", rounded_front="", pusher_module=""){
+
+    module _chassis(){
+        Chassis03_Double(length=bbox[0], width=bbox[1], bottom_align=true, gap=gap, back_width=back_width, height=back_height, rounded_front=rounded_front);
+    }
+    
+    module _vtable(){
+        vtable(table_length=400, gap=100);
+    }
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
     _s = _xdisp[1];
-    echo(_xdisp);
+    echo(_xdisp); 
     
-    floor_clearance=cwheel_h;
+    //floor_clearance=cwheel_h;
     daxle_t = bbox[1];
     
     if (_d=="*"){
@@ -44,7 +53,7 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         //ReferenceFrame(factor=200);
         RevoluteJoint(name="doublebar", prefix=prefix, 
         p_translate=[-100+fwheel_d/2*1.5+double_bar_offset, 0, fwheel_d*3/8],
-        axis=[0,1,0], spring=[50], damping=[2], limits=[-10,10], draw=true){
+        axis=[0,1,0], spring=[50], damping=[2], limits=[-10,10], draw=true, angle=-5){
             _doublebar();
             }
         }
@@ -88,7 +97,7 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         _controlmodule();
     }
     
-    FixedJoint(name="camera", prefix=prefix, p_translate=[-bbox[0]/2+back_width-30,0,back_height+gap-70], p_rotate=[0,0,0])
+    FixedJoint(name="camera", prefix=prefix, p_translate=[-bbox[0]/2+back_width-30,0,back_height+gap-100], p_rotate=[0,0,0])
     _camera();
     
     FixedJoint(name="lidar", prefix=prefix, p_translate=[bbox[0]/2-100,0,cwheel_h+40], p_rotate=[0,0,0])
@@ -96,6 +105,11 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
     
     FixedJoint(name="imu", prefix=prefix, p_translate=[bbox[0]/2-100,-bbox[1]/2+50,cwheel_h+40], p_rotate=[0,0,0])
     _imu();
+
+    if (pusher_module=="vtable") {
+        FixedJoint(name="vtable", prefix=prefix, p_translate=[150, 0, floor_clearance+gap+43])
+        _vtable();
+    }
         
     } else if (_d=="_") {
         // MAIN LINK 
@@ -121,6 +135,8 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
         _lidar();
     } else if (_d=="imu") {
         _imu();
+    } else if (_d=="vtable") {
+        _vtable();
     } else {
         echo(str_join(["Unknown component: <", _d, ">"]));
     } 
@@ -157,10 +173,7 @@ module DD6W_L(display="*", prefix="", display_bbox=false, bbox=[800, 600, 450], 
     module _castor(){
         CastorWheel(display=_s, prefix=get_full_prefix(prefix, "castor"), wd=cwheel_d, ww=cwheel_w, wh=20, ch=cwheel_h, cf=cwheel_f, cd=cwheel_cd);
     }
-    
-    module _chassis(){
-        Chassis03_Double(length=bbox[0], width=bbox[1], bottom_align=true, gap=gap, back_width=back_width, height=back_height);
-    }
+
     
     module _controlmodule(){
         //rotate([0,0,-90])
@@ -194,5 +207,14 @@ DD4W_Rigid(display="*", display_bbox=false, force_internal_castor=false, differe
 
 display="*";
 castor_suspension="F";
+rounded_front="";
+length=800;
+width=500;
+height=450;
+pusher_module="";
+back_width=100;
+double_bar_offset=100;
+differential_suspension="RR";
 translate([0,0,0])
-DD6W_L(display=display, display_bbox=false, force_internal_castor=false, differential_suspension="RR", back_width=150, castor_suspension=castor_suspension); //*/
+DD6W_L(display=display, display_bbox=false, force_internal_castor=false, differential_suspension=differential_suspension, back_width=back_width, bbox=[length,width,height], castor_suspension=castor_suspension, rounded_front=rounded_front,
+pusher_module=pusher_module, double_bar_offset=double_bar_offset); //*/

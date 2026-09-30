@@ -27,6 +27,9 @@ module CastorWheel(display="*", prefix="", wd=120, ww=40, wh=0, cd=40, ch=130, c
             ch: castor height (full height of castor assembly)
             cf: castor flange size (plate size)
     */
+    module _baselink(){
+        cube([cf, cf, 1], center=true);
+    }
     
     _xdisp = extract_assembly_parts(display);
     _d = _xdisp[0];
@@ -58,10 +61,6 @@ module CastorWheel(display="*", prefix="", wd=120, ww=40, wh=0, cd=40, ch=130, c
     
     module _wheel(){
         FixedWheel(d=wd, w=ww, h=wh);
-    }
-    
-    module _baselink(){
-        cube([cf, cf, 1], center=true);
     }
     
     module _castorarm(){

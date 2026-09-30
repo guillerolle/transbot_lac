@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wheel">
+	<xacro:macro name="wheel" params="prefix='' name='wheel' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2500">
+				<origin xyz="-1.4969936422980736e-08 -5.144158568062235e-10 1.8303409173741014e-09" rpy="0 0 0"></origin>
+				<mass value="0.45941327698528767"></mass>
+				<inertia ixx="0.00047094995352381207" ixy="6.53762991817001e-13" ixz="-3.5823322140876724e-12" iyy="0.00047094937751039807" iyz="-2.574330070913089e-12" izz="0.0008008167242222831"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/castor/wheel.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.2 0.2 0.2 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/castor/wheel.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

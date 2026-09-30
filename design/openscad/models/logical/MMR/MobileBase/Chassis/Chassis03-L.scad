@@ -3,7 +3,7 @@ use <RobotUtils/profiles.scad>
 use <RobotUtils/core.scad>
 
 
-module Chassis03_Double(length=800, width=600, tube_profile=[40,20], bottom_align=false, transversal_beams=[1, 0.33, -0.33, -1], height=700, gap=200, sheet_thickness=3, back_width=0, rounded_front=false)
+module Chassis03_Double(length=800, width=600, tube_profile=[40,20], bottom_align=false, transversal_beams=[1, 0.33, -0.33, -1], height=700, gap=200, sheet_thickness=3, back_width=0, rounded_front="")
 {
     translate( (bottom_align) ? [0,0,0]:[0,0,-tube_profile[0]/2]) 
     {
@@ -77,17 +77,42 @@ module Chassis03_Double(length=800, width=600, tube_profile=[40,20], bottom_alig
         }
         
         // FRONT ARC
-        /*
-        for (y=[1, -1])
-        for (z=[0, gap]){
-            translate([length/2, 0, z])
-            rotate([0, 0, 00])
-            rotate_extrude(angle=90, convexity=2)
-            translate([200, tube_profile[0]/2, 0])
-            rotate([0, 0, 90])
+        if (rounded_front == "ARC"){
+            for (y=[1,-1])
+            for (z=[0, gap]){ 
+                translate([length/2, width/2-width/2, z])
+                rotate_extrude(angle=y*90, convexity=2) 
+                translate([width/2-tube_profile[1]/2, tube_profile[0]/2, 0])
+                rotate([0, 0, 90]) 
+                RectangularProfileHollow(tube_profile, 1.2);
+            } //*/
+            beam3(
+                N1 = [length/2+width/2-tube_profile[1]/2, 0, tube_profile[0]], 
+                N2 = [length/2+width/2-tube_profile[1]/2, 0, gap], profile_angle=90)
             RectangularProfileHollow(tube_profile, 1.2);
+            // COVER
+            translate(v = [length/2, 0, gap+tube_profile[0]]) 
+            linear_extrude(height = 3){
+                difference(){
+                    circle(width/2); 
+                    translate(v = [-width/2, 0, 0]) 
+                    square(width, center=true);
+                }
+            }
+        } else if(rounded_front == "ARROW"){
+            points=[
+                [0, width/2],
+                [100, width/5],
+                [100, 0],
+                [100, -width/5],
+                [0, -width/2]
+            ];
+            offset_points = offset(points, -40);
+            difference(){
+                polygon(points);
+                !polygon(offset_points, convexity=0);
+            }
         }
-        //*/
     }
 }
 
@@ -104,7 +129,6 @@ module Chassis03_Plane(length=800, width=600, tube_profile=[40,20], bottom_align
            [l*(length/2-tube_profile[1]/2), +width/2-tube_profile[0]/2, 0], 90) 
             RectangularProfileHollow(tube_profile, 1.2);
         }
-
         //beam3([] );
     }
 }
@@ -112,7 +136,7 @@ module Chassis03_Plane(length=800, width=600, tube_profile=[40,20], bottom_align
 translate([0, -1000, 0])
 Chassis03_Double(bottom_align=false, tube_profile=[30,20], back_width=200);
 
-Chassis03_Double(bottom_align=false, tube_profile=[30,20]);
+Chassis03_Double(bottom_align=false, tube_profile=[30,20], rounded_front="ARC", length=500);
 
 translate([0, 1000, 0])
 Chassis03_Plane(bottom_align=true, tube_profile=[30,20]);

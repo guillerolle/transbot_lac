@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chassis">
+	<xacro:macro name="chassis" params="prefix='' name='chassis' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="7850">
+				<origin xyz="-0.05071074642237339 -2.0265676945046474e-07 0.23758841281548718" rpy="0 0 0"></origin>
+				<mass value="3.0637107168634734"></mass>
+				<inertia ixx="0.16845045850297052" ixy="3.5365886006736126e-08" ixz="0.03038257874729841" iyy="0.2008119710008635" iyz="1.4740451374681838e-07" izz="0.2097591224964238"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/chassis.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="1 1 0 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/chassis.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

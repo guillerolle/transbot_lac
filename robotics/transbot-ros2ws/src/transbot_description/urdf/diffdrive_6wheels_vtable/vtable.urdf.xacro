@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="vtable">
+	<xacro:macro name="vtable" params="prefix='' name='vtable' suffix=''">
+		<link name="${prefix}${name}${suffix}">
+			<inertial density="2000">
+				<origin xyz="-0.06136193895839025 0.0 0.07698417908584777" rpy="0 0 0"></origin>
+				<mass value="4.218141237894694"></mass>
+				<inertia ixx="0.021494958649858134" ixy="-1.2126596023639044e-10" ixz="0.012549143239015719" iyy="0.07852624565614164" iyz="-2.425319204727809e-10" izz="0.0720766353671076"></inertia>
+			</inertial>
+			<visual>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/vtable.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+				<material name="">
+					<color rgba="0.5 0.9 0.6 1"></color>
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<mesh filename="package://transbot_description/meshes/diffdrive_6wheels_vtable/vtable.stl" scale="1e-3 1e-3 1e-3"></mesh>
+				</geometry>
+			</collision>
+		</link>
+	</xacro:macro>
+</robot>

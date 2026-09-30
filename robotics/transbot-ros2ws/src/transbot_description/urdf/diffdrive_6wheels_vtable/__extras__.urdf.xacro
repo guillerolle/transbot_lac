@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffdrive_6wheels_vtable">
+	<xacro:macro name="diffdrive_6wheels_vtable-extras-description" params="prefix='' name='diffdrive_6wheels_vtable' suffix=''"></xacro:macro>
+</robot>

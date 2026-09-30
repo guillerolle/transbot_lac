@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table_4wheels_vtable">
+	<xacro:macro name="table_4wheels_vtable-extras-description" params="prefix='' name='table_4wheels_vtable' suffix=''"></xacro:macro>
+</robot>
