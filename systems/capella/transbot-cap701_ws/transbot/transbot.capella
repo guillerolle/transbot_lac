@@ -1930,7 +1930,10 @@
             name="ROS2::TOPIC"/>
       </ownedInterfacePkg>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
-          id="09fcf485-37cb-419f-8dfd-e8c2c2a669e8" name="Data"/>
+          id="09fcf485-37cb-419f-8dfd-e8c2c2a669e8" name="Data">
+        <ownedDataPkgs xsi:type="org.polarsys.capella.core.data.information:DataPkg"
+            id="a4c68558-2f36-495c-b78d-f040b4b11738" name="transbot_description"/>
+      </ownedDataPkg>
       <ownedPhysicalComponentPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
           id="ee96f7a4-d275-4227-aede-ecde8dc46079" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e055b3cb-63a9-4c6a-b274-80a0e815dd35"
