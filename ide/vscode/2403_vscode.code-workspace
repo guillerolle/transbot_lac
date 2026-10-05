@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "../../robotics/transbot-ros2ws"
+		},
+		{
+			"path": "/opt/ros/jazzy/share"
 		}
 	],
 	"settings": {
