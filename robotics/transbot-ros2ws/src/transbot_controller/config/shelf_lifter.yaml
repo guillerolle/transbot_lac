@@ -21,11 +21,11 @@
     use_sim_time: true
     left_wheel_names: ["j/mobilebase/doublebar/diff/wheel1"]
     right_wheel_names: ["j/mobilebase/doublebar/diff/wheel0"]
-    wheel_separation: 0.500
+    wheel_separation: 0.540
     wheel_radius: 0.060
     use_stamped_vel: true
     odom_frame_id: odom 
-    base_frame_id: _
+    base_frame_id: drive_link
     enable_odom_tf: true
 
 /**/twist_mux:

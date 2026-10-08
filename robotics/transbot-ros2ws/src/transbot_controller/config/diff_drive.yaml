@@ -22,5 +22,5 @@
     wheel_radius: 0.060
     use_stamped_vel: true
     odom_frame_id: odom 
-    base_frame_id: _
+    base_frame_id: mobilebase/drive_link
     enable_odom_tf: true
