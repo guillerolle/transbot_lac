@@ -1,0 +1,13 @@
+self_filter:
+  ros__parameters:
+    sensor_frame: transbot/lidar
+    keep_organized: false
+    invert: false
+    min_sensor_dist: 0.01
+
+    default_sphere_padding: 0.01
+    default_box_padding: [0.01, 0.01, 0.01]
+    default_cylinder_padding: [0.01, 0.01]
+
+    #self_see_links:
+     # names: [base_link, arm_link_1, arm_link_2]
