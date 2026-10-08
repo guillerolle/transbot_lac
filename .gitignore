@@ -550,6 +550,8 @@ TSWLatexianTemp*
 .stversions
 # Syncthing conflicts
 *.sync-conflict-*
+# Syncthing temps #
+.syncthing.*.tmp
 
 .vscode/*
 !.vscode/settings.json
