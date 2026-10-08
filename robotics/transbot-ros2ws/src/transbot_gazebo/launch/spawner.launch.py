@@ -73,14 +73,14 @@ def generate_launch_description():
         output='screen'
     )
     
-    controllers_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', LaunchConfiguration('controllers_launch'), '.launch.py"']) ]),
-        ),
-        launch_arguments={
-            'robot_name': robot_name
-        }.items()
-    )
+    # controllers_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         PathJoinSubstitution([FindPackageShare('transbot_controller'), 'launch', PythonExpression(['"', LaunchConfiguration('controllers_launch'), '.launch.py"']) ]),
+    #     ),
+    #     launch_arguments={
+    #         'robot_name': robot_name
+    #     }.items()
+    # )
 
     
     return LaunchDescription([
@@ -97,5 +97,5 @@ def generate_launch_description():
         rsp_launch,
         spawn_node,
         ground_truth_bridge,
-        controllers_launch
+        # controllers_launch
     ])

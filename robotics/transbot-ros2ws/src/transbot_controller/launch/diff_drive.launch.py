@@ -39,7 +39,7 @@ def generate_launch_description():
         parameters=[
             PathJoinSubstitution([
                 FindPackageShare('transbot_controller'), 'config', 
-                PythonExpression(['"', LaunchConfiguration('control_config'), '.yaml"'])
+                PythonExpression(['"', LaunchConfiguration('twist_mux_config'), '.yaml"'])
             ]),
         ],
         remappings=[('cmd_vel_out', 'diff_drive_controller/cmd_vel')]
@@ -47,10 +47,8 @@ def generate_launch_description():
  
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'),
-        DeclareLaunchArgument('control_config', default_value='diff_drive'),
-        # DeclareLaunchArgument('robot_model', default_value='mobilebase_diffdrive_6wheels_ltype_csuspp'),
-        # DeclareLaunchArgument('robot_pkg', default_value='transbot_gazebo'),
+        DeclareLaunchArgument('twist_mux_config', default_value='twist_mux'),
         joint_state_publisher,
         diff_drive_controller,
-        #twist_mux
+        twist_mux
     ])

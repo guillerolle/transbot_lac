@@ -12,7 +12,9 @@ def generate_launch_description():
     
     # Paths to config files
     # base_config = os.path.join(pkg_share, 'config', 'base_teleop.yaml')
-    joint_config = PathJoinSubstitution([pkg_share, 'config', LaunchConfiguration('robot_model'), 'teleop.yaml'])
+    joint_config = PathJoinSubstitution([pkg_share, 'config', 
+                                         PythonExpression(['"', LaunchConfiguration('teleop_config'), '.yaml"'])
+                                         ])
     
     joint_teleop_node = Node(
         package='transbot_teleop',
@@ -51,7 +53,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         DeclareLaunchArgument('robot_name', default_value='transbot'), 
-        DeclareLaunchArgument('robot_model', default_value='rigid_forklift'),
+        DeclareLaunchArgument('teleop_config', default_value='default'),
         DeclareLaunchArgument('joy_dev', default_value='0'),
         DeclareLaunchArgument('joy_deadzone', default_value='0.0'),
         DeclareLaunchArgument('joy_autorepeat_rate', default_value='20.0'),
