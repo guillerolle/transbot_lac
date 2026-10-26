@@ -17,11 +17,10 @@
     <gazebo_ros gazebo_model_path="${prefix}/../"></gazebo_ros>
   </export>
 
-
-
   <depend>gazebo_ros_pkgs</depend>
   <depend>robot_state_publisher</depend>
   <depend>transbot_description</depend>
+  <depend>transbot_controller</depend>
   <depend>xacro</depend>
 
   <exec_depend>gazebo_ros</exec_depend> 

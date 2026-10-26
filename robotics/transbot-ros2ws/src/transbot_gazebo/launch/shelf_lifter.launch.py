@@ -108,26 +108,43 @@ def generate_launch_description():
         ],
         output='screen'
     )    
-    
-    rgbd_camera_points_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        name='gz_rgbd_camera_bridge',
+     
+    depth_cloud = Node(
+        package='depth_image_proc',
+        executable='point_cloud_xyzrgb_node',
+        name='depth_cloud',
         namespace=robot_name,
-        arguments=[
-            PythonExpression([
-                '"/model/', robot_name,
-                '/rgbd_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"'
-                ]),
-        ],
         remappings=[
-            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/points"']), 'rgbd_camera/points'),
+            ('depth_registered/image_rect', 'rgbd_camera/depth'),
+            ('points', 'rgbd_camera/points'),
+            ('rgb/camera_info', 'rgbd_camera/camera_info'),
+            ('rgb/image_rect_color', 'rgbd_camera/rgb'),
         ],
         parameters=[
             {'use_sim_time': True},
         ],
         output='screen'
     )
+    
+    # rgbd_camera_points_bridge = Node(
+    #     package='ros_gz_bridge',
+    #     executable='parameter_bridge',
+    #     name='gz_rgbd_camera_bridge',
+    #     namespace=robot_name,
+    #     arguments=[
+    #         PythonExpression([
+    #             '"/model/', robot_name,
+    #             '/rgbd_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"'
+    #             ]),
+    #     ],
+    #     remappings=[
+    #         (PythonExpression(['"/model/', robot_name, '/rgbd_camera/points"']), 'rgbd_camera/points'),
+    #     ],
+    #     parameters=[
+    #         {'use_sim_time': True},
+    #     ],
+    #     output='screen'
+    # )
     
     imu_bridge = Node(
         package='ros_gz_bridge',
@@ -169,14 +186,14 @@ def generate_launch_description():
         output='screen'
     )
     
-    teleop_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
-        ),
-        launch_arguments={
-            'robot_name': LaunchConfiguration('robot_name')
-        }.items()
-    )
+    # teleop_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         PathJoinSubstitution([FindPackageShare('transbot_teleop'), 'launch', 'teleop.launch.py' ]), # PythonExpression(['"', robot_model, '.launch.py"'])
+    #     ),
+    #     launch_arguments={
+    #         'robot_name': LaunchConfiguration('robot_name')
+    #     }.items()
+    # )
     
     passive_spawn = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -203,6 +220,7 @@ def generate_launch_description():
         # rgbd_camera_points_bridge,
         imu_bridge,
         lidar_bridge,
-        teleop_launch,
+        depth_cloud,
+        # teleop_launch,
         # passive_spawn,
     ])
