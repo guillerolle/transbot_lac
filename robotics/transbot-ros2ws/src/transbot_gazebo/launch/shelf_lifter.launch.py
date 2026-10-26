@@ -49,46 +49,6 @@ def generate_launch_description():
         }.items()
     )
     
-    camera_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        name='gz_camera_bridge',
-        namespace=robot_name,
-        arguments=[
-            PythonExpression([
-                '"/model/', robot_name,
-                '/rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image"'
-                ]),
-        ],
-        remappings=[
-            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/image"']), 'rgbd_camera/image'),
-        ],
-        parameters=[
-            {'use_sim_time': True},
-        ],
-        output='screen'
-    )    
-    
-    rgbd_camera_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        name='gz_rgbd_camera_bridge',
-        namespace=robot_name,
-        arguments=[
-            PythonExpression([
-                '"/model/', robot_name,
-                '/rgbd_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"'
-                ]),
-        ],
-        remappings=[
-            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/points"']), 'rgbd_camera/points'),
-        ],
-        parameters=[
-            {'use_sim_time': True},
-        ],
-        output='screen'
-    )
-    
     rgbd_camera_info_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -102,6 +62,66 @@ def generate_launch_description():
         ],
         remappings=[
             (PythonExpression(['"/model/', robot_name, '/rgbd_camera/camera_info"']), 'rgbd_camera/camera_info'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )
+    
+    rgbd_camera_rgb_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_camera_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/image"']), 'rgbd_camera/rgb'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )        
+    
+    rgbd_camera_depth_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_camera_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/rgbd_camera/depth_image@sensor_msgs/msg/Image[gz.msgs.Image"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/depth_image"']), 'rgbd_camera/depth'),
+        ],
+        parameters=[
+            {'use_sim_time': True},
+        ],
+        output='screen'
+    )    
+    
+    rgbd_camera_points_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='gz_rgbd_camera_bridge',
+        namespace=robot_name,
+        arguments=[
+            PythonExpression([
+                '"/model/', robot_name,
+                '/rgbd_camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"'
+                ]),
+        ],
+        remappings=[
+            (PythonExpression(['"/model/', robot_name, '/rgbd_camera/points"']), 'rgbd_camera/points'),
         ],
         parameters=[
             {'use_sim_time': True},
@@ -177,9 +197,10 @@ def generate_launch_description():
         world_launch,
         robot_spawn_launch,
         controllers_launch,
-        camera_bridge,
-        rgbd_camera_bridge,
         rgbd_camera_info_bridge, 
+        rgbd_camera_rgb_bridge,
+        rgbd_camera_depth_bridge,
+        # rgbd_camera_points_bridge,
         imu_bridge,
         lidar_bridge,
         teleop_launch,
