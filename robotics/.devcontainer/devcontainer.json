@@ -13,7 +13,7 @@
     "image": "roslac:jazzy",
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
-       "source=${env:XAUTHORITY},target=${env:XAUTHORITY},type=bind,consistency=cached",
+       "source=/tmp/.docker.xauth,target=/tmp/.docker.xauth,type=bind,consistency=cached",
        "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
        "source=/etc/localtime,target=/etc/localtime,type=bind,consistency=cached,ro",
        "source=${localWorkspaceFolder}/..,target=/home/roslac/project,type=bind,consistency=cached"
@@ -43,7 +43,8 @@
         }
     },
     "containerEnv": {
-        "DISPLAY": "unix:0"
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "XAUTHORITY": "/tmp/.docker.xauth"
         // "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
         // "ROS_DOMAIN_ID": "42"
     },
@@ -51,9 +52,10 @@
         "--net=host",
         "--pid=host",
         "--ipc=host",
-        "-e", "DISPLAY=${env:DISPLAY}",
-        "-e", "XAUTHORITY=${env:XAUTHORITY}",
+        // "-e", "DISPLAY=${env:DISPLAY}",
+        // "-e", "XAUTHORITY=${env:XAUTHORITY}",
         "-e", "WORKSPACEDIR=transbot",
         "-v", "/dev/input:/dev/input"
-    ]
+    ],
+    "initializeCommand": "touch /tmp/.docker.xauth && xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f /tmp/.docker.xauth nmerge -"
 }
